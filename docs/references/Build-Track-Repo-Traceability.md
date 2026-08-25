@@ -49,8 +49,8 @@ flowchart LR
     end
 
     subgraph CH["Clearinghouse"]
-        BAPI[Builder API (Go)<br/>users, sk_ keys, RFC 8693 token exchange<br/>/users/me/usage, /balance]
-        IDW[identity-webhook (Node)<br/>/authorize]
+        BAPI[Builder API<br/>users, sk_ keys, RFC 8693 token exchange<br/>/users/me/usage, /balance]
+        IDW[identity-webhook<br/>/authorize]
         SIGNER[go-livepeer -remoteSigner<br/>/sign-orchestrator-info<br/>/generate-live-payment<br/>/discover-orchestrators]
         KAFKA[(Redpanda<br/>livepeer-gateway-events)]
         COLL[Benthos collector<br/>wei → USD micros]

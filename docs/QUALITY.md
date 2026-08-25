@@ -28,9 +28,11 @@ Agent-to-clearinghouse path.
 
 ## Review notes
 
-- `NetworkEngieneerSPE2-Notes-v2.md` repeats a substantial portion of its
-  proposal content and contains editorial defects. It remains untouched because
-  it is source material; cleanup should happen in a dedicated bead.
+- `NetworkEngieneerSPE2-Notes-v2.md` has been normalized against five screenshots
+  of the current Notion draft. Duplicate sections and editorial defects were
+  removed. The screenshot's budget rows total $240,000 while its request and
+  displayed total say $230,000. The document preserves that inconsistency as an
+  upstream draft detail rather than tracking its resolution as Cloud SPE work.
 - This repository should not declare a canonical capability, identity, pricing,
   or metering contract until the owning projects and committee accept one.
 - The next useful artefacts are decisions and reproducible baseline evidence,
