@@ -1,0 +1,19 @@
+name: Attribution policy
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reject co-author messages
+        run: python3 scripts/check_attribution.py --event-file "$GITHUB_EVENT_PATH"

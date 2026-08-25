@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "netspe",
+  "project_id": "2d6dba07-d309-4a09-99b4-544d9a6c147a"
+}
