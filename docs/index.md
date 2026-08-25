@@ -11,6 +11,8 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
   and source precedence.
 - [Core beliefs](design-docs/core-beliefs.md) — principles for shaping the SPE
   and its agent-facing environment.
+- [Draft September–December 2026 Cloud SPE milestones](design-docs/cloud-spe-september-december-2026-milestones-draft.md)
+  — high-level proposal awaiting Network Engineering SPE and Cloud SPE review.
 - [Design document index](design-docs/index.md) — accepted and proposed designs.
 - [Product specification index](product-specs/index.md) — intended outcomes and
   acceptance contracts.

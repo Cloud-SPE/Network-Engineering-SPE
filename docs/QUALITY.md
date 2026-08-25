@@ -24,7 +24,7 @@ Agent-to-clearinghouse path.
 | End-to-end readiness | Blocked by decisions and integration gaps | The reported production Agent credential/payment path and stated clearinghouse path do not connect. No shared job identifier ties builder usage to network payment. |
 | Acceptance evidence | Partial | A timed walletless first call and on-chain fees are named, but the demand-source definition, thresholds, environment, and evidence bundle are not fixed. |
 | Repository legibility | Established | Entry points, knowledge categories, source precedence, agent instructions, and a documentation check now exist. |
-| Work persistence | Established locally | Beads is initialized with Codex hooks and a Dolt remote mapping. Remote Beads data has not been pushed. |
+| Work persistence | Established | Beads is initialized with Codex hooks and a Dolt remote mapping. Remote synchronization was verified on 25 August 2026. |
 
 ## Review notes
 
@@ -35,5 +35,6 @@ Agent-to-clearinghouse path.
   upstream draft detail rather than tracking its resolution as Cloud SPE work.
 - This repository should not declare a canonical capability, identity, pricing,
   or metering contract until the owning projects and committee accept one.
-- The next useful artefacts are decisions and reproducible baseline evidence,
-  not additional narrative summaries.
+- The next useful artefacts are joint review decisions on the draft Cloud SPE
+  milestones, followed by an accepted scope and evidence contract. Additional
+  implementation detail should wait until those boundaries are approved.
