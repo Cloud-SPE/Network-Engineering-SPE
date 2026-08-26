@@ -10,8 +10,9 @@
 
 **Drafting work:** `netspe-vun.2`
 
-**Blocking decision:** `netspe-vun.7` — determine whether live-demand
-application adoption belongs in the Build Track
+**Blocking decisions:** `netspe-vun.7` — determine whether live-demand
+application adoption belongs in the Build Track; `netspe-vun.12` — confirm the
+Live Runner-centric end-state architecture
 
 **Required approvals:** Network Engineering SPE (`netspe-vun.4`) and Cloud SPE
 (`netspe-vun.5`)
@@ -27,9 +28,10 @@ This is not an approved Cloud SPE product specification. It does not assign
 work to another Network Engineering SPE participant, commit a production
 repository owner, or turn an upstream working draft into a Cloud SPE
 obligation. The proposal cannot be agreed until `netspe-vun.7` resolves the
-disputed application-adoption condition. It becomes final only after that
-decision is incorporated, the Network Engineering SPE and Cloud SPE approve the
-same revision, and the accepted plan is published through `netspe-vun.6`.
+disputed application-adoption condition and `netspe-vun.12` confirms the
+Live Runner-centric end-state architecture. It becomes final only after those
+decisions are incorporated, the Network Engineering SPE and Cloud SPE approve
+the same revision, and the accepted plan is published through `netspe-vun.6`.
 
 ## Source outcome and disputed condition
 
@@ -65,6 +67,13 @@ state the Build Track needs from the Cloud SPE contribution while leaving room
 to change architecture, repository assignments, funding mechanisms, and
 implementation order as evidence improves.
 
+The number of tasks under a milestone is determined by the distinct outcomes
+needed to complete that gate, not by a fixed template count. These task lists
+remain intentionally high level: each item describes a reviewable deliverable
+or evidence state. Repository-level implementation tasks, sequencing, and work
+status belong in Beads after the relevant scope and architecture decisions are
+approved.
+
 Each gate should eventually name:
 
 - the Cloud-owned deliverable and accountable owner;
@@ -82,6 +91,102 @@ Each gate should eventually name:
 | September–October | **A supported paid-call journey works end to end** | For at least one representative capability, a builder can obtain the required credential, discover and price the service, invoke it through a supported interface, receive a result or understandable failure, and pay through the agreed path. | Reproducible production-oriented calls; payment evidence; exact deployed versions; documented ownership of any manual or external step. |
 | October–November | **The supported builder experience is consistent and observable** | Supported service types present a coherent experience for discovery, pricing, invocation, errors, usage, and resulting charges, with enough correlation to explain an individual job. | Representative cross-service evidence; an agreed correlation approach; usable cost and usage records; known exceptions documented rather than hidden. |
 | November–December | **The deployed experience is documented and independently proven** | Published SDK guidance and documentation match the deployed system, and an independent builder can reproduce the supported journey from a clean environment without contacting an Operator. | Timed independent first call; documentation and SDK verification; production payment and usage evidence; operational handoff; unresolved limitations stated. |
+
+### Milestone 1: Agree Builder Architecture and Scope
+
+**Estimated:** September 2026
+
+**Working budget:** TBD — no allocation should be proposed until architecture,
+ownership, capacity, and application-adoption scope are decided.
+
+- Resolve whether application adoption or live-demand generation creates any
+  Cloud SPE deliverable, dependency, or acceptance evidence.
+- Approve the Live Runner-centric target architecture and retain batch AI,
+  BYOC, LV2V, and transcoding as explicit non-goals for this scope.
+- Map each of the seven builder outcomes to its authoritative component,
+  repository, interface, owner, and required evidence.
+- Select the target clearinghouse direction and define the supported credential,
+  walletless payment, balance, metering, usage, and charge boundaries.
+- Define the on-chain ServiceRegistry, runtime capability and price discovery,
+  gateway selection, and failover responsibilities.
+- Confirm the roles and boundaries of Agent 2.0, the builder-facing SDK or
+  gateway, Live Runner, `go-livepeer`, and any hosted services.
+- Record Cloud-owned deliverables, external dependencies and handoffs,
+  repository approvers, decision owners, delivery assumptions, and budget
+  inputs.
+- Obtain Network Engineering SPE and Cloud SPE approval of the same milestone
+  plan revision before implementation commitments are treated as final.
+
+### Milestone 2: Deliver Paid Live Runner Call
+
+**Estimated:** September–October 2026
+
+**Working budget:** TBD — allocate after Milestone 1 establishes the Cloud-owned
+repositories, external dependencies, and supported payment path or paths.
+
+- Enable a builder to obtain one supported credential through the agreed
+  self-service boundary.
+- Expose a supported way to discover the representative Live Runner capability
+  and the information required to invoke it.
+- Present an understandable expected price or rate before invocation, using the
+  agreed authoritative pricing source.
+- Invoke the representative capability through the agreed standard
+  builder-facing interface and return a result or an understandable failure.
+- Complete payment without requiring the builder to hold crypto through the
+  approved walletless path.
+- Make the builder's usage and resulting charge available through the agreed
+  interface or record.
+- Correlate credential, request, execution, payment, usage, and charge evidence
+  sufficiently to explain one end-to-end call.
+- Record the exact deployed versions, external steps, owner handoffs, and known
+  limitations required to reproduce the journey.
+
+### Milestone 3: Unify Discovery Pricing and Evidence
+
+**Estimated:** October–November 2026
+
+**Working budget:** TBD — refine after end-to-end evidence identifies the
+integration, reliability, and observability work actually required.
+
+- Apply the agreed capability, discovery, price, invocation, and payment
+  contracts consistently across the supported Live Runner journey.
+- Define stable request, job, execution, payment, and billing identifiers that
+  allow an individual invocation to be traced across component boundaries.
+- Standardize builder-understandable validation, capacity, execution, payment,
+  and settlement failures for supported interfaces.
+- Make usage quantities, rates, and resulting charges consistent enough for a
+  builder and operator to reconcile the same invocation.
+- Validate orchestrator discovery, eligibility, selection, health, and failover
+  behavior against the approved ServiceRegistry and runtime-discovery split.
+- Establish production-oriented observability and evidence retention for the
+  supported journey without making unrelated programme operations a Cloud SPE
+  obligation.
+- Document supported behavior, declared exceptions, external dependencies, and
+  any residual manual steps rather than masking them as completed automation.
+
+### Milestone 4: Prove Independent Builder Journey
+
+**Estimated:** November–December 2026
+
+**Working budget:** TBD — finalize after earlier milestones establish the
+documentation, release, operational-handoff, and validation effort.
+
+- Publish builder guidance for credential acquisition, capability discovery,
+  expected pricing, invocation, failures, walletless payment, usage, and
+  resulting charges.
+- Verify that supported SDKs, examples, schemas, endpoints, and documentation
+  match the deployed versions and agreed architecture.
+- Have an independent builder reproduce the supported paid Live Runner journey
+  from a clean environment without contacting an Operator.
+- Capture timed first-call evidence, result or understandable-failure evidence,
+  payment evidence, and reconcilable usage and charge records.
+- Complete the agreed release and operational handoffs, including named owners
+  for supported services, repositories, incidents, and documentation.
+- State known limitations, unsupported capabilities, external dependencies, and
+  unresolved follow-up work explicitly.
+- Obtain final Network Engineering SPE and Cloud SPE acceptance against the
+  approved scope and evidence gates, distinct from the Milestone 1 approval
+  that authorized the plan.
 
 These four gates intentionally do not require the Cloud SPE to build, fund,
 recruit, operate, or generate traffic for the Livepeer Agent or additional
@@ -131,10 +236,14 @@ deployments before implementation work is funded or accepted.
 
 ## Prerequisite decision and review questions
 
-Decision `netspe-vun.7` must be resolved before either SPE review begins. It
-must identify whether application adoption belongs in the Build Track, the
-accountable programme and owners, any resulting Cloud SPE responsibility, and
-the definitions and evidence required for any retained application condition.
+Decision `netspe-vun.7` must identify whether application adoption belongs in
+the Build Track, the accountable programme and owners, any resulting Cloud SPE
+responsibility, and the definitions and evidence required for any retained
+application condition. Decision `netspe-vun.12` must map the seven builder
+outcomes to an agreed Live Runner-centric architecture, repositories, owners,
+and evidence. Both must be resolved before either SPE review begins. The
+[survey and workshop process](../references/Build-Track-Architecture-Alignment-Process.md)
+defines the preparation for the architecture decision.
 
 After that decision is incorporated, the joint reviews need to resolve the
 remaining questions before the plan can be accepted:
@@ -152,27 +261,29 @@ remaining questions before the plan can be accepted:
 
 ## Review and approval
 
-After `netspe-vun.7` is resolved, Network Engineering SPE approval must confirm
-that the proposal reflects that decision, supports the authoritative Build
-Track outcome, and represents programme and cross-track dependencies correctly.
-Cloud SPE approval must then confirm that the decision is represented without
-creating an implicit Cloud obligation and that Cloud-owned deliverables,
-repositories, evidence, capacity, and budget assumptions are realistic
-commitments.
+After `netspe-vun.7` and `netspe-vun.12` are resolved, Network Engineering SPE
+approval must confirm that the proposal reflects both decisions, supports the
+authoritative Build Track outcome, and represents programme and cross-track
+dependencies correctly. Cloud SPE approval must then confirm that the decisions
+are represented without creating an implicit Cloud obligation and that
+Cloud-owned deliverables, repositories, evidence, capacity, and budget
+assumptions are realistic commitments.
 
 Approval state and requested changes are tracked in Beads rather than copied
 into a competing Markdown status list:
 
 - `netspe-vun.7` — prerequisite application-adoption scope decision;
+- `netspe-vun.12` — prerequisite Live Runner-centric architecture decision;
 - `netspe-vun.4` — Network Engineering SPE review and approval;
 - `netspe-vun.5` — Cloud SPE review and approval; and
 - `netspe-vun.6` — publication of the jointly approved product specification.
 
-Both approval beads are blocked by `netspe-vun.7`. Their approval records must
-identify the same reviewed revision and confirm that it reflects the
-prerequisite decision. A review that requests unresolved changes is not
-sign-off. The final plan should preserve the draft and its source history while
-linking the accepted specification to the decision and both approval records.
+Both approval beads are blocked by `netspe-vun.7` and `netspe-vun.12`. Their
+approval records must identify the same reviewed revision and confirm that it
+reflects both prerequisite decisions. A review that requests unresolved changes
+is not sign-off. The final plan should preserve the draft and its source history
+while linking the accepted specification to the decisions and both approval
+records.
 
 ## Change history
 
@@ -180,3 +291,5 @@ linking the accepted specification to the decision and both approval records.
 | --- | --- | --- |
 | 25 August 2026 | Draft | Initial four-gate proposal prepared for Network Engineering SPE and Cloud SPE review. |
 | 25 August 2026 | Revised draft | Made the application-adoption scope decision an explicit prerequisite and excluded the disputed condition from proposed milestones pending that decision. |
+| 26 August 2026 | Revised draft | Added the Live Runner-centric end-state architecture decision and two-part survey/workshop process as approval prerequisites. |
+| 26 August 2026 | Revised draft | Expanded the four milestone gates into estimated windows, unallocated working budgets, and scope-driven lists of outcome-oriented deliverables. |

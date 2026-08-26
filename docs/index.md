@@ -27,5 +27,17 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 - [Build Track repository traceability](references/Build-Track-Repo-Traceability.md)
 - [Network Engineering SPE II notes](references/NetworkEngieneerSPE2-Notes-v2.md)
 
+## Architecture alignment working materials
+
+- [Survey and workshop process](references/Build-Track-Architecture-Alignment-Process.md)
+  — scheduling sequence, roles, decision classifications, and required outputs.
+- [Architecture survey](references/Build-Track-Architecture-Survey.md) — a
+  10–15 minute diagnostic survey and synthesis method.
+- [Workshop Part 1](references/Build-Track-Architecture-Workshop-Part-1.md) — a
+  60-minute outcomes, current-state, and target-architecture facilitator guide.
+- [Workshop Part 2](references/Build-Track-Architecture-Workshop-Part-2.md) — a
+  60-minute architecture decision, ownership, and requirements facilitator
+  guide.
+
 Files in `references/` are not automatically normative. Their status, date,
 method, and verification limits determine how they may be used.

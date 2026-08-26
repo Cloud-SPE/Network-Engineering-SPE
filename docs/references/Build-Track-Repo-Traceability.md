@@ -10,16 +10,28 @@
 
 The Outcome document states what must be true for a builder by 31 December 2026. This document traces each of those statements to a feature or function that exists today in the four repositories that make up the builder path, and records where nothing exists, where two components do the same thing differently, or where components contradict each other.
 
+This is a current-state traceability report, not an accepted end-state
+architecture. The architecture-alignment process proposes Live Runner as the
+execution focus and treats batch AI, BYOC, LV2V and transcoding as target-scope
+non-goals. Those paths remain in this report only because they exist in the
+current code and help explain present duplication and gaps.
+
 Every claim below cites a file path in the repository as checked out on 24 August 2026. Repositories reviewed:
 
 | Repo | Local checkout | Branch / last commit | What it is |
 | --- | --- | --- | --- |
 | **Livepeer Agent** (`livepeer/storyboard`) | `~/git-repos/livepeer-agent-2.0` | `main`, 2026-08-24 (`739ab8e`) | Next.js/TypeScript app + MCP server + CLI, deployed at agent.livepeer.org. ~256k LOC. |
-| **Clearinghouse** (`livepeer/clearinghouse`) | `~/git-repos/livepeer-cloud-spe/livepeer-clearninghouse` | `main`, 2026-08-20 (`b604893`) | Docker Compose stack: identity webhook (Node), go-livepeer remote signer, Redpanda/Kafka, Benthos → OpenMeter collector, Go Builder API, Auth0/Konnect provisioners. |
+| **Clearinghouse repository** (`livepeer/clearinghouse`) | `~/git-repos/livepeer-cloud-spe/livepeer-clearninghouse` | `main`, 2026-08-20 (`b604893`) | Docker Compose implementation: identity webhook (Node), go-livepeer remote signer, Redpanda/Kafka, Benthos → OpenMeter collector, Go Builder API, Auth0/Konnect provisioners. Its relationship to Elite Encoder's hosted Pymthouse clearinghouse is not verified. |
 | **go-livepeer** (`livepeer/go-livepeer`) | `~/git-repos/go-livepeer` | `master`, 2026-08-18 (`176aa415`) | The network node binary: gateway, orchestrator, AI worker, remote signer, redeemer. |
 | **Python gateway SDK** (`livepeer/livepeer-python-gateway`) | `~/git-repos/livepeer-cloud-spe/livepeer-python-gateway` | `main`, 2026-08-12 (`44df061`), v1.0.0 | Pure client SDK (`pip install livepeer-gateway`) that acts as its own gateway: talks gRPC/HTTP to orchestrators and HTTP to a remote signer. |
 
 **A fifth component is on the critical path but in none of these repos:** the **SDK Service** (`sdk.daydream.monster`, a Python FastAPI app in `simple-infra` that vendors the Python gateway SDK and fronts the BYOC orchestrator and fal.ai adapter). The Agent calls only this service. It is referenced in `livepeer-agent-2.0/CLAUDE.md:156-230` and `agent.md:129-132` but its code was not reviewed. Similarly the **discovery-service** (`discovery-service-production-8955.up.railway.app`) that the clearinghouse hands to clients is external.
+
+Elite Encoder's hosted clearinghouse, referred to as **Pymthouse**, must also be
+treated as a distinct named system until its codebase, deployed revision,
+ownership, and relationship to `livepeer/clearinghouse` are confirmed. This
+review inspected the Git repository and must not be read as verification of the
+hosted Pymthouse deployment.
 
 ## Component diagram
 
@@ -212,7 +224,13 @@ None of the three paths satisfies "without a wallet, without setup and without c
 
 1. Does the deployed `byoc-orch.daydream.monster` run go-livepeer master, or a branch with `/sign-byoc-job` and `/process/train`? Same question for the clearinghouse's pinned SHA versus master.
 2. Is the SDK Service in `simple-infra` in scope for the Build Track? It is the only thing the Agent calls and it is where capability → orchestrator routing (`CAPABILITY_ORCH_MAP`) and the fal adapter live.
-3. Is the target clearinghouse the `livepeer/clearinghouse` repo (Auth0 + OpenMeter, pymthouse-operated) or Daydream's signer? The SPE glossary defines "payment clearinghouse" generically; the two are not interoperable today.
+3. Is the target clearinghouse Elite Encoder's hosted Pymthouse, the
+   `livepeer/clearinghouse` repository implementation, both behind a common
+   interface, or a justified new implementation? What code and deployed
+   revision power Pymthouse, and how does that relate to the repository? The SPE
+   glossary defines "payment clearinghouse" generically; Daydream's signer is
+   another current payment path and is not interoperable with the reviewed
+   clearinghouse repository today.
 4. What unblocked, or still blocks, `PYMTHOUSE-PAYMENT-BLOCKER.md` (JWT mismatch at `/generate-live-payment`, 2026-06-25)? This is the single dependency that decides whether the Agent can count as a demand source "via the clearinghouse."
 5. Who owns the join between Agent `network_events` and signer `create_signed_ticket` events, and what key should join them?
 6. Should the Operate Track's service registry / Live Runner `/discovery` become the source for the Agent's registry (via `discovery-sync.ts`), retiring `CAPABILITIES_JSON` and the hand-maintained `registry.json` pricing fields?
