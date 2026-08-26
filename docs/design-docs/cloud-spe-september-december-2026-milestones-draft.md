@@ -1,6 +1,6 @@
 # Draft Cloud SPE Milestones: September–December 2026
 
-**Status:** Draft — blocked on application-adoption scope decision
+**Status:** Draft — blocked on end-state architecture decision and joint approval
 
 **Date:** 25 August 2026
 
@@ -10,9 +10,11 @@
 
 **Drafting work:** `netspe-vun.2`
 
-**Blocking decisions:** `netspe-vun.7` — determine whether live-demand
-application adoption belongs in the Build Track; `netspe-vun.12` — confirm the
-Live Runner-centric end-state architecture
+**Blocking decision:** `netspe-vun.12` — confirm the Live Runner-centric
+end-state architecture
+
+**Resolved scope decision:** `netspe-vun.7` — the Build Track has no demand-
+generation or application-adoption requirements
 
 **Required approvals:** Network Engineering SPE (`netspe-vun.4`) and Cloud SPE
 (`netspe-vun.5`)
@@ -27,13 +29,13 @@ uncertainty remains high.
 This is not an approved Cloud SPE product specification. It does not assign
 work to another Network Engineering SPE participant, commit a production
 repository owner, or turn an upstream working draft into a Cloud SPE
-obligation. The proposal cannot be agreed until `netspe-vun.7` resolves the
-disputed application-adoption condition and `netspe-vun.12` confirms the
-Live Runner-centric end-state architecture. It becomes final only after those
-decisions are incorporated, the Network Engineering SPE and Cloud SPE approve
-the same revision, and the accepted plan is published through `netspe-vun.6`.
+obligation. The proposal cannot be agreed until `netspe-vun.12` confirms the
+Live Runner-centric end-state architecture. It becomes final only after that
+decision and the resolved scope decision in `netspe-vun.7` are incorporated,
+the Network Engineering SPE and Cloud SPE approve the same revision, and the
+accepted plan is published through `netspe-vun.6`.
 
-## Source outcome and disputed condition
+## Source conflict and resolved scope
 
 The latest normalized Network Engineering SPE II source draft describes the
 Build outcome as a developer going from a clean machine to a working, paid call
@@ -50,15 +52,14 @@ clearinghouse. See the
 The difference is not limited to the number of applications. The source also
 says that the SPE does not fund the Agent framework or demand generation, and
 its detailed Build milestone list does not include delivering applications or
-generating demand. Whether application adoption belongs in the Build Track at
-all is therefore disputed.
+generating demand.
 
-Decision `netspe-vun.7` must determine whether this condition is a Build Track
-deliverable, externally supplied validation evidence, limited integration or
-onboarding work, or work owned entirely by another programme. Until that
-decision is recorded, this proposal excludes the application-adoption condition
-from its milestones and does not use either application count as a Cloud SPE
-commitment or acceptance gate.
+Mike Zupper reported on 26 August 2026 that the scope was confirmed with Rich
+on 25 August 2026: the Build Track has no demand-generation or application-
+adoption requirements. Decision `netspe-vun.7` records that application counts,
+application recruitment or operation, traffic generation, and live-demand
+evidence are not Build Track or Cloud SPE deliverables or acceptance gates. The
+conflicting draft language remains cited above for provenance only.
 
 ## Planning approach
 
@@ -97,10 +98,8 @@ Each gate should eventually name:
 **Estimated:** September 2026
 
 **Working budget:** TBD — no allocation should be proposed until architecture,
-ownership, capacity, and application-adoption scope are decided.
+ownership, capacity, and delivery boundaries are decided.
 
-- Resolve whether application adoption or live-demand generation creates any
-  Cloud SPE deliverable, dependency, or acceptance evidence.
 - Approve the Live Runner-centric target architecture and retain batch AI,
   BYOC, LV2V, and transcoding as explicit non-goals for this scope.
 - Map each of the seven builder outcomes to its authoritative component,
@@ -188,33 +187,27 @@ documentation, release, operational-handoff, and validation effort.
   approved scope and evidence gates, distinct from the Milestone 1 approval
   that authorized the plan.
 
-These four gates intentionally do not require the Cloud SPE to build, fund,
-recruit, operate, or generate traffic for the Livepeer Agent or additional
-applications. Any such obligation may be added only if `netspe-vun.7` assigns it
-explicitly and the resulting scope, budget, ownership, and evidence changes are
-approved.
+These four gates do not require the Build Track or Cloud SPE to build, fund,
+recruit, or operate applications, generate application traffic, or provide
+live-demand evidence. This is a resolved scope boundary recorded in
+`netspe-vun.7`, not a pending milestone option.
 
 The windows indicate sequencing, not fixed implementation deadlines. Reviewers
 may combine, split, or reorder gates without changing the intended progression:
 agree the contract, connect the path, make it coherent, and prove it works.
 
-## Disputed application-adoption condition
+## Application-adoption exclusion
 
-The latest source draft includes an Agent-plus-two-applications condition, but
-whether it belongs to the Build Track is unresolved. It must not be treated as
-a Build Track or Cloud SPE definition of done merely because it appears in the
-working draft. The prerequisite decision must distinguish:
-
-- Cloud SPE responsibility for enabling, integrating, documenting, or
-  evidencing a reusable builder platform;
-- another programme's responsibility for recruiting, funding, and operating
-  applications that produce live demand; and
-- the minimum traffic, duration, fee, and identity evidence needed to
-  distinguish live use from tests or demonstrations.
-
-Until that decision is approved and incorporated, application adoption and live
-demand remain outside the proposed milestones. The source language is retained
-here for provenance, not endorsement.
+The Agent-plus-applications conditions in the working source drafts are not
+part of the Build Track. No application count, application recruitment or
+operation, demand generation, traffic threshold, or live-demand evidence may
+be used as a milestone deliverable or definition of done. This exclusion does
+not prevent sample or reference applications, runnable examples, or controlled
+technical integrations from demonstrating how to use the supported Build Track
+interfaces. Those artifacts are documentation and validation aids; they create
+no application-adoption, production-demand, traffic-volume, funding, or ongoing
+application-operation requirement. The source language is retained for
+provenance, not endorsement.
 
 ## Repository and system boundaries to confirm
 
@@ -228,7 +221,7 @@ not confirmed Cloud SPE ownership:
 | `livepeer/livepeer-python-gateway` | Builder-facing gateway SDK and remote-signer integration | Confirm supported capability types, public interfaces, documentation scope, and release responsibility. |
 | `livepeer/go-livepeer` | Gateway, orchestrator, job, ticket, signer, and network payment behavior | Confirm which changes are Cloud deliverables and which require upstream ownership and review. |
 | SDK Service in `simple-infra` | The service currently called by the Livepeer Agent for capability routing | Confirm whether it is in scope, who owns it, and which deployed code must be reviewed. |
-| Livepeer Agent | Reference builder integration and possible adoption evidence | The Agent framework is funded separately; confirm integration and evidence responsibilities only. |
+| Livepeer Agent | Possible reference builder integration | The Agent framework is funded separately; any technical integration must not create an application-adoption or demand-generation requirement. |
 | Operate Track registry and discovery surfaces | Capability, hardware, pricing, and supply discovery | Treat as a cross-track contract and handoff, not implied Cloud SPE ownership. |
 
 These boundaries should be re-verified against current repositories and
@@ -236,12 +229,10 @@ deployments before implementation work is funded or accepted.
 
 ## Prerequisite decision and review questions
 
-Decision `netspe-vun.7` must identify whether application adoption belongs in
-the Build Track, the accountable programme and owners, any resulting Cloud SPE
-responsibility, and the definitions and evidence required for any retained
-application condition. Decision `netspe-vun.12` must map the seven builder
-outcomes to an agreed Live Runner-centric architecture, repositories, owners,
-and evidence. Both must be resolved before either SPE review begins. The
+Decision `netspe-vun.7` is resolved: application adoption and demand generation
+are excluded from the Build Track. Decision `netspe-vun.12` must now map the
+seven builder outcomes to an agreed Live Runner-centric architecture,
+repositories, owners, and evidence before either SPE review begins. The
 [survey and workshop process](../references/Build-Track-Architecture-Alignment-Process.md)
 defines the preparation for the architecture decision.
 
@@ -261,29 +252,30 @@ remaining questions before the plan can be accepted:
 
 ## Review and approval
 
-After `netspe-vun.7` and `netspe-vun.12` are resolved, Network Engineering SPE
-approval must confirm that the proposal reflects both decisions, supports the
-authoritative Build Track outcome, and represents programme and cross-track
-dependencies correctly. Cloud SPE approval must then confirm that the decisions
-are represented without creating an implicit Cloud obligation and that
-Cloud-owned deliverables, repositories, evidence, capacity, and budget
-assumptions are realistic commitments.
+After `netspe-vun.12` is resolved, Network Engineering SPE approval must confirm
+that the proposal reflects the accepted architecture and the application-
+adoption exclusion, supports the authoritative Build Track outcome, and
+represents programme and cross-track dependencies correctly. Cloud SPE approval
+must then confirm that the scope boundaries do not create an implicit Cloud
+obligation and that Cloud-owned deliverables, repositories, evidence, capacity,
+and budget assumptions are realistic commitments.
 
 Approval state and requested changes are tracked in Beads rather than copied
 into a competing Markdown status list:
 
-- `netspe-vun.7` — prerequisite application-adoption scope decision;
+- `netspe-vun.7` — resolved application-adoption scope decision;
 - `netspe-vun.12` — prerequisite Live Runner-centric architecture decision;
 - `netspe-vun.4` — Network Engineering SPE review and approval;
 - `netspe-vun.5` — Cloud SPE review and approval; and
 - `netspe-vun.6` — publication of the jointly approved product specification.
 
-Both approval beads are blocked by `netspe-vun.7` and `netspe-vun.12`. Their
-approval records must identify the same reviewed revision and confirm that it
-reflects both prerequisite decisions. A review that requests unresolved changes
-is not sign-off. The final plan should preserve the draft and its source history
-while linking the accepted specification to the decisions and both approval
-records.
+The application-adoption prerequisite is satisfied through `netspe-vun.7`;
+both approval beads remain blocked by `netspe-vun.12`. Their approval records
+must identify the same reviewed revision and confirm that it reflects the
+resolved exclusion and accepted architecture. A review that requests unresolved
+changes is not sign-off. The final plan should preserve the draft and its source
+history while linking the accepted specification to the decisions and both
+approval records.
 
 ## Change history
 
@@ -293,3 +285,4 @@ records.
 | 25 August 2026 | Revised draft | Made the application-adoption scope decision an explicit prerequisite and excluded the disputed condition from proposed milestones pending that decision. |
 | 26 August 2026 | Revised draft | Added the Live Runner-centric end-state architecture decision and two-part survey/workshop process as approval prerequisites. |
 | 26 August 2026 | Revised draft | Expanded the four milestone gates into estimated windows, unallocated working budgets, and scope-driven lists of outcome-oriented deliverables. |
+| 26 August 2026 | Revised draft | Recorded the confirmed exclusion of demand generation and application adoption from the Build Track, removed it from Milestone 1, and cleared `netspe-vun.7` as a blocker. |

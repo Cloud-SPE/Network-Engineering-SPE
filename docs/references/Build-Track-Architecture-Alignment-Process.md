@@ -58,6 +58,14 @@ target architecture unless the Network Engineering SPE changes the scope:
 These paths may remain in the current-state diagram when needed for accuracy,
 but they must be visually and verbally separated from the target scope.
 
+Demand generation and application adoption are also excluded from the Build
+Track. The architecture process must not introduce application counts, traffic
+targets, or live-demand evidence as delivery or acceptance requirements.
+Sample or reference applications and runnable examples may demonstrate the
+supported interfaces or provide controlled integration evidence, but they are
+documentation and validation aids rather than adoption, production-demand,
+funding, or ongoing-operation commitments.
+
 Live Runner focus does not remove the builder-facing and control-plane systems
 from discussion. Agent 2.0/Storyboard, SDKs, SDK Service, gateways, identity,
 ServiceRegistry contracts, discovery, clearinghouse and signer services,
@@ -210,12 +218,12 @@ The process should produce:
 | `netspe-vun.10` | Conduct Part 1 and record its outputs |
 | `netspe-vun.11` | Conduct Part 2 and record its outputs |
 | `netspe-vun.12` | Confirm the end-state architecture |
-| `netspe-vun.7` | Separately resolve whether application adoption belongs in the Build Track |
+| `netspe-vun.7` | Resolved: exclude demand generation and application adoption from the Build Track |
 | `netspe-vun.4` | Network Engineering SPE milestone approval after prerequisite decisions |
 | `netspe-vun.5` | Cloud SPE milestone approval after prerequisite decisions |
 | `netspe-vun.6` | Publish the jointly approved milestone plan |
 
-The application-adoption decision remains separate from architecture. The
-workshops may collect technical implications or recommendations, but they must
-not close `netspe-vun.7` unless the required Network Engineering SPE authority
-records the decision.
+The application-adoption decision remains separate from architecture and is
+closed. The workshops may discuss voluntary reference integrations, but they
+must treat the absence of demand-generation and application-adoption
+requirements as a fixed scope guardrail.

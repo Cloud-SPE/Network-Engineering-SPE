@@ -112,8 +112,8 @@ Part 2 should not:
 - conflate the on-chain ServiceRegistry, runtime Orchestrator discovery, and
   local Live Runner registration;
 - treat Agent 2.0-specific behavior as canonical without an accepted contract;
-- approve application-adoption scope tracked by `netspe-vun.7` without the
-  required authority; or
+- reopen demand generation or application adoption as Build Track requirements;
+  or
 - approve the final Cloud SPE milestones in place of the separate Network
   Engineering SPE and Cloud SPE gates.
 
@@ -347,8 +347,8 @@ false precision.
 
 - Every milestone advances one or more builder outcomes.
 - No milestone relies on batch AI, BYOC, LV2V, or transcoding for acceptance.
-- No milestone assumes application adoption belongs in Build before
-  `netspe-vun.7` is resolved.
+- No milestone includes demand generation, application adoption, application
+  counts, traffic targets, or live-demand evidence as acceptance requirements.
 - Clearinghouse work names the selected implementation or contract and owner.
 - Registry and discovery work distinguishes on-chain and dynamic behavior.
 - Agent 2.0 work is integration-scoped unless broader ownership is approved.
@@ -369,8 +369,8 @@ Within two business days, circulate:
 - proposed requirements;
 - revised milestone table;
 - unresolved escalations with owners and dates; and
-- implications for `netspe-vun.12`, `netspe-vun.7`, `netspe-vun.4`, and
-  `netspe-vun.5`.
+- implications for `netspe-vun.12`, `netspe-vun.4`, and `netspe-vun.5`, while
+  preserving the resolved scope boundary in `netspe-vun.7`.
 
 Recipients should distinguish factual corrections from decision objections.
 All architecture acceptance must identify the approving authority and reviewed

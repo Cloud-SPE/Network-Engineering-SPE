@@ -90,8 +90,7 @@ Part 1 should not:
 - choose detailed implementation tasks or estimate individual pull requests;
 - expand the execution scope beyond Live Runner without an explicit escalation;
 - treat survey responses as votes;
-- decide that application adoption belongs in the Build Track unless the
-  authority required by `netspe-vun.7` is present and records that decision;
+- reopen demand generation or application adoption as Build Track requirements;
 - select a clearinghouse without understanding the relationship between hosted
   Pymthouse and `livepeer/clearinghouse`; or
 - declare capabilities or prices on-chain simply because an on-chain
@@ -185,8 +184,8 @@ This block is complete when:
 - objections to the seven outcomes are recorded;
 - scope and non-goals are confirmed or escalated;
 - the most important architecture disagreements are visible; and
-- disputed application-adoption language remains separated under
-  `netspe-vun.7`.
+- demand generation and application adoption remain excluded under the resolved
+  decision in `netspe-vun.7`.
 
 ## Block 2 — current-state architecture validation
 
