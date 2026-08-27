@@ -1,16 +1,24 @@
 # Build Track: Outcome and High-Level Concepts
 
-**Status:** Working draft
-**Date:** 24 August 2026
+**Status:** Revised working draft
+**Date:** 27 August 2026
 **Track:** Easy to Build — Builder
 **Track owner:** Mike Zupper
 **Source:** [Network Engineering SPE II notes](NetworkEngieneerSPE2-Notes-v2.md)
+
+> **Scope correction:** Demand generation, application adoption, application
+> counts, production-traffic targets, and live-demand evidence are not Build
+> Track requirements. Decision `netspe-vun.7` supersedes the adoption language
+> in earlier drafts. Sample or reference applications may demonstrate an
+> interface, but they are documentation or controlled validation aids only.
 
 ## Intended outcome
 
 By 31 December 2026:
 
-> The Livepeer Agent and four additional demand sources are generating real, attributable traffic through the Livepeer network using the clearinghouse. A developer, application, or agent can make a successful call and pay for network services without managing a crypto wallet, configuring network infrastructure, or contacting an operator.
+> A developer, application, or agent can make a successful paid call through
+> the supported Livepeer builder interface without managing crypto mechanics,
+> configuring network infrastructure, or contacting an Operator.
 
 The Build Track is successful when Livepeer can be consumed as a practical developer platform—not merely when individual components have shipped.
 
@@ -69,15 +77,7 @@ Different capabilities may use different execution and billing models, but those
 
 The common concepts—identity, discovery, invocation, payment, usage, and errors—should remain consistent.
 
-### 7. Attributable demand
-
-Network traffic must be attributable to a specific demand source and capability. This allows the programme to distinguish genuine adoption from internal tests, demos, retries, or unattributed network activity.
-
-### 8. Proven adoption
-
-The Livepeer Agent serves as the reference integration, but the outcome requires more than one internally controlled client. Four additional demand sources demonstrate that the builder experience is reusable outside its original implementation.
-
-### 9. Verifiable success
+### 7. Verifiable success
 
 The outcome should be demonstrated through observable facts:
 
@@ -85,7 +85,6 @@ The outcome should be demonstrated through observable facts:
 - no wallet or operator coordination is required;
 - payment and usage are visible;
 - traffic passes through the clearinghouse;
-- the Agent and four additional sources produce attributable usage; and
 - documentation describes the system that is actually deployed.
 
 ## Responsibility boundary
@@ -99,7 +98,8 @@ The Build Track owns the demand-side experience:
 - usage and cost visibility;
 - SDKs and documentation;
 - integration support; and
-- demand attribution.
+- correlation of an invocation with its usage, network payment, and resulting
+  charge.
 
 It depends on the Operate Track for healthy, discoverable capability supply and on the separate credits and demand programmes for funding and recruiting external users.
 
@@ -116,35 +116,22 @@ The Build Track does not primarily fund:
 
 ## Core principle
 
-> The Build Track is not complete when the infrastructure exists. It is complete when independent builders can use that infrastructure successfully, pay through it, understand what happened, and return with real demand.
+> The Build Track is not complete when the infrastructure exists. It is
+> complete when an independent builder can use that infrastructure
+> successfully, pay through it, and understand the result and resulting charge.
 
 ## Open questions
 
-### 1. Why are "demand sources" part of the Build Track outcome?
-
-The outcome requires the Livepeer Agent plus four additional demand sources to be putting real, attributable traffic through the clearinghouse. Yet the SPE notes state that this SPE is *not* a demand generation or credits fund, and that go-to-market and end-user product work sit in a separate SPE. The "what must be true" list also holds the Build Track to "demand side programme has funded 2-3 core demand bets", which the Build Track does not own.
-
-This leaves the Build Track accountable for an adoption result whose funding, recruitment, and timing sit elsewhere. Two readings are possible:
-
-- **Platform reading.** The Build Track owns the builder-facing surface (identity, discovery, invocation, walletless payment, usage, SDK, docs). The demand sources are the *proof* that the surface works, recruited and funded by the demand/credits SPE.
-- **Programme reading.** The Build Track itself selects, builds or onboards the five demand sources as reference integrations, using its contributor budget.
-
-These need different milestones and a different use of the $50,000. Proposed phrasing for Rich and the committee:
-
-> "The outcome names five demand sources, but demand generation and credits are explicitly out of scope for this SPE. Is the Build Track responsible for the builder platform being *ready and proven* by five integrations, or for *delivering* those five integrations? If the former, who owns recruiting and funding the four external sources and by when? If the latter, should the demand-side bets line be removed from the Build Track's 'what must be true'?"
-
-A related definition is needed regardless: what counts as a demand source (deployed application, unique credential, external organisation, minimum job or fee threshold), and what makes its traffic "attributable".
-
-### 2. What is the current state of the builder path?
+### 1. What is the current state of the builder path?
 
 The concepts above read as if starting from a blank slate, but several repositories already cover parts of the journey. Before milestones are set, the track needs a baseline of what each provides today, what is deployed, and what gaps remain:
 
 | Repository | Presumed role in the builder journey | Questions |
 | --- | --- | --- |
-| [livepeer/storyboard](https://github.com/livepeer/storyboard) (the Livepeer Agent) | Reference client and first demand source | Does it call the network today, and through which path? Is it integrated with the clearinghouse? Who owns its integration timeline, given the agent framework is funded outside this SPE? |
+| [livepeer/storyboard](https://github.com/livepeer/storyboard) (the Livepeer Agent) | Possible reference integration and builder-facing client | Does it call the network today, through which path, and against which supported interfaces? Which parts are reusable platform behavior versus Agent-specific behavior? |
 | [livepeer/go-livepeer](https://github.com/livepeer/go-livepeer) | Core node: gateway, orchestrator, ticket broker payments | Which capabilities are invokable through a gateway today? Where does capability discovery and pricing currently live, and is there a service registry contract or only per-capability behaviour? |
 | [livepeer/livepeer-python-gateway](https://github.com/livepeer/livepeer-python-gateway) | Gateway or SDK surface that builders would call | Is this the intended standard builder interface, or an interim one? What is its deployment status and how far is it from the "one credential, discover, price, invoke" promise? |
-| [livepeer/clearinghouse](https://github.com/livepeer/clearinghouse) | Walletless auth, credits, metering and settlement | What works end to end today: account creation, credit balance, per-job metering, on-chain settlement through the ticket broker? What is the attribution model (per credential, per source, per capability)? Who is funding and maintaining it? |
+| [livepeer/clearinghouse](https://github.com/livepeer/clearinghouse) | Walletless auth, credits, metering and settlement | What works end to end today: account creation, credit balance, per-job metering, on-chain settlement through the ticket broker? What is the correlation model across credential, job, capability, usage, and charge? Who is funding and maintaining it? |
 
 Specific questions:
 

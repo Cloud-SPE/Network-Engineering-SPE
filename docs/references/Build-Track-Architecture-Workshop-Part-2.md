@@ -179,6 +179,13 @@ decision, record one of:
 
 #### Live Runner path
 
+- Does December acceptance require a reusable service contract proven with one
+  representative capability, a prescribed capability set, or one fixed
+  integration?
+- Have Rich, Rick, and Josh each confirmed the outcome, architecture, and
+  delivery interpretation respectively?
+- What makes a capability “supported,” and must it satisfy the complete
+  confirmed builder journey?
 - How does a Live Runner register with an Orchestrator?
 - Which capability identity and version contract is advertised?
 - How does a builder invocation reach the selected Live Runner?
@@ -195,6 +202,10 @@ decision, record one of:
 
 #### Clearinghouse and payment
 
+- Are both wallet-funded and walletless journeys required Build Track
+  acceptance paths, or is either path an external compatibility dependency?
+- Who owns each required journey and what minimum observable evidence proves
+  it without prematurely specifying settlement mechanics?
 - Is the target hosted Pymthouse, `livepeer/clearinghouse`, both through a
   common contract, a justified new implementation, or an escalation?
 - What common credential, authorization, signer, usage, and receipt contract is
@@ -213,6 +224,8 @@ decision, record one of:
 | On-chain ServiceRegistry |  |  |  |  |  |
 | Runtime discovery |  |  |  |  |  |
 | Live Runner registration |  |  |  |  |  |
+| Live Runner capability support model |  |  |  |  |  |
+| Payment-path scope and ownership |  |  |  |  |  |
 | Clearinghouse direction |  |  |  |  |  |
 | Walletless payment contract |  |  |  |  |  |
 | Job identity and evidence |  |  |  |  |  |
@@ -260,6 +273,8 @@ Before leaving the block, verify:
 - the quoted price can be related to the resulting charge;
 - the error model can state whether payment occurred;
 - the same job identity can join invocation, result, usage, and payment; and
+- every required payment journey has a named owner, boundary, and minimum
+  acceptance evidence; and
 - walletless payment results in verifiable network payment evidence.
 
 ## Block 3 — confirm repository ownership and approval gates

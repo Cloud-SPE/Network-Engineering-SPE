@@ -108,7 +108,7 @@ because Cloud SPE deliverables may integrate with or depend on them:
 
 | System | Role in the journey |
 | --- | --- |
-| Livepeer Agent (`livepeer/storyboard`) | Reference demand source and builder-facing MCP, CLI, and application surface |
+| Livepeer Agent (`livepeer/storyboard`) | Possible reference integration and builder-facing MCP, CLI, and application surface |
 | Clearinghouse (`livepeer/clearinghouse`) | Credential issuance, walletless signer policy, metering, credits, and balances |
 | `go-livepeer` | Gateway, orchestrator, capability discovery, payment tickets, and network execution |
 | Livepeer Python Gateway | Builder SDK for discovery, signing, payment, and several job families |

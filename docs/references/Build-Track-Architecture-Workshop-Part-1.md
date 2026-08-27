@@ -31,7 +31,8 @@
 
 Include links to:
 
-- [the survey](Build-Track-Architecture-Survey.md);
+- [the survey instructions](Build-Track-Architecture-Survey-Instructions.md);
+- [the fillable survey template](Build-Track-Architecture-Survey-Template.md);
 - [survey synthesis when available](Build-Track-Architecture-Survey.md#survey-synthesis-template);
 - [current-state diagram](Build-Track-Repo-Traceability.md#component-diagram);
 - [draft milestone proposal](../design-docs/cloud-spe-september-december-2026-milestones-draft.md); and
@@ -100,7 +101,8 @@ Part 1 should not:
 
 Participants should complete before the meeting:
 
-- the [10–15 minute survey](Build-Track-Architecture-Survey.md);
+- the [10–15 minute survey template](Build-Track-Architecture-Survey-Template.md)
+  using the [respondent instructions](Build-Track-Architecture-Survey-Instructions.md);
 - review of the seven builder outcomes;
 - review of the current-state component diagram;
 - identification of incorrect components, missing repositories, and deployed
@@ -156,10 +158,15 @@ external dependency, or disputed programme outcome:
 Ask for explicit agreement, objection, or escalation on:
 
 - Live Runner as the execution focus;
+- a reusable Live Runner service contract proven through at least one
+  representative capability as the working support model, pending confirmation
+  from Rich, Rick, and Josh;
 - batch AI as a non-goal;
 - BYOC as a non-goal;
-- LV2V as a non-goal; and
-- transcoding as a non-goal.
+- LV2V as a non-goal;
+- transcoding as a non-goal; and
+- both wallet-funded and walletless payment journeys as the working target,
+  pending Rich's confirmation and an explicit ownership decision.
 
 Clarify that Agent 2.0, SDKs, gateway, clearinghouse, registry, discovery, and
 metering remain in scope as supporting components even though other execution
@@ -172,9 +179,12 @@ Discuss only the highest-impact differences:
 - primary builder-facing interface;
 - Agent 2.0's intended role;
 - gateway and SDK Service permanence;
+- reusable-contract versus named-capability-set support;
 - on-chain versus runtime registry responsibilities;
 - Orchestrator selection owner;
-- clearinghouse relationship and likely direction; and
+- clearinghouse relationship and likely direction;
+- required payment journeys, ownership boundaries, interface convergence, and
+  minimum acceptance evidence; and
 - missing decision authority.
 
 ### Exit criteria
@@ -316,6 +326,10 @@ Questions:
   `livepeer/clearinghouse`?
 - Should one implementation be selected, should both implement a shared
   contract, or is a new implementation justified?
+- Are both wallet-funded and walletless journeys required for December
+  acceptance, and which authority confirms that scope?
+- For each required journey, which boundary is Cloud-owned and which is an
+  external dependency or compatibility obligation?
 - Can wallet and walletless paths converge after authorization?
 - Which component supplies the expected price, balance decision, payment
   authorization, usage record, and per-job charge?

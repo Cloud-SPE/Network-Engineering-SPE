@@ -16,6 +16,11 @@ execution focus and treats batch AI, BYOC, LV2V and transcoding as target-scope
 non-goals. Those paths remain in this report only because they exist in the
 current code and help explain present duplication and gaps.
 
+Demand generation and application adoption are not Build Track requirements.
+Any older demand-source or application-count framing is superseded by decision
+`netspe-vun.7`; this report evaluates only reusable builder-platform behavior
+and optional reference integrations.
+
 Every claim below cites a file path in the repository as checked out on 24 August 2026. Repositories reviewed:
 
 | Repo | Local checkout | Branch / last commit | What it is |
@@ -111,7 +116,7 @@ Solid lines are paths that exist in code today. Dashed lines are optional or fla
 
 ### Livepeer Agent (storyboard)
 
-- **Role in the builder path:** the reference demand source and, in practice, the only builder-facing product surface. Exposes an MCP server (`app/api/mcp/{raw,creative,full}`, `lib/mcp-server/server.ts`), a CLI (`packages/agent`), and REST proxies (`app/api/capabilities/*`).
+- **Role in the builder path:** a possible reference integration and, in practice, the only builder-facing product surface. Exposes an MCP server (`app/api/mcp/{raw,creative,full}`, `lib/mcp-server/server.ts`), a CLI (`packages/agent`), and REST proxies (`app/api/capabilities/*`).
 - **Network access:** never talks to go-livepeer directly. All inference is HTTP to the SDK Service (`lib/sdk/client.ts:39-65`, `lib/mcp-server/sdk-call.ts`; base URL default `https://sdk.daydream.monster`, `lib/sdk/provider-server.ts:50`). Only exception is the operator-only billing proxy `app/api/billing-events/route.ts:28` to the BYOC orchestrator's `/admin/billing-events`.
 - **Credential:** any ≥16-char bearer is accepted (`lib/mcp-server/auth.ts`, `key-validation.ts:50-58` recognises `sk_`, `naap_`, `pmth_`, `app_*_pmth_*`). Only Daydream `sk_` keys actually clear payment today (`CLAUDE.md:222`: "Without the Daydream API key, ALL inference fails (signer 401)"). Keyless demo mode substitutes a server key with a Blob-backed spend ledger (`demo-budget.ts`). OAuth/NaaP/pymthouse credential paths exist but are flag-gated and blocked upstream (`PYMTHOUSE-PAYMENT-BLOCKER.md`).
 - **Capabilities:** three layers — live list from SDK `/capabilities` (`lib/sdk/capabilities.ts:119`, 60s cache in `capabilities-cache.ts`), a committed 200-entry `lib/capabilities/registry.json` with SLA/fallback/usage/pricing metadata, and a mutable Blob overlay (`registry-overlay.ts`). A Zod "Capability Descriptor" standard (`lib/capabilities/descriptor.ts`, `standard.ts`) and a cron that syncs descriptors from orchestrator `/discovery` (`discovery-sync.ts`, default off).
@@ -168,12 +173,11 @@ Status legend: **Exists** — works end to end for a builder; **Partial** — ex
 
 | Concept (Outcome doc) | Status | Evidence | Gap |
 | --- | --- | --- | --- |
-| Attributable demand (§7) | Partial | Agent `UsageEvent{principal, capability, cost_usd, job_id, utm}` → Kafka `network_events` (`events/types.ts`, `sink.ts`); Clearinghouse `create_signed_ticket{auth_id, pipeline, model_id, manifest_id}` → OpenMeter (`collector.yaml:186-214`); go-livepeer `X-Metadata`, `Signer-Auth-Id`, BYOC `JobRequest.ID` | **No shared job identifier flows end to end.** Agent events and on-chain tickets live in different Kafka clusters with different envelopes; orchestrator metrics have no builder dimension. "Demand source" is not a field anywhere. |
+| End-to-end job and payment correlation | Partial | Agent `UsageEvent{principal, capability, cost_usd, job_id}` → Kafka `network_events` (`events/types.ts`, `sink.ts`); Clearinghouse `create_signed_ticket{auth_id, pipeline, model_id, manifest_id}` → OpenMeter (`collector.yaml:186-214`); go-livepeer `X-Metadata`, `Signer-Auth-Id`, BYOC `JobRequest.ID` | **No shared job identifier flows end to end.** Agent events and on-chain tickets live in different Kafka clusters with different envelopes; orchestrator metrics have no builder dimension. |
 | Docs match what's deployed (§9) | Partial | Agent has drift tests (`readme-onboarding.test.ts`, `capability-golden.test.ts`, `pricing-*-parity.test.ts`); go-livepeer `doc/*.md` current per feature | SDK README omits BYOC/Live Runner/Scope; SDK and Agent docs hardcode `daydream.monster`/`daydream.live` hosts; clearinghouse `builder-api/README.md:3-7` says its paths "do not exist yet" (stale); `bootstrap.sh` emits placeholder URLs. |
 | Consistent experience across capabilities (§6) | Missing below the Agent | go-livepeer: 4 invocation styles, 3 price units, 2 payment paths; SDK: 3 API shapes | Consistency is enforced only inside Storyboard (`registry.json`, `dispatch-quote.ts`, `failure-codes.ts`). |
 | Self-service participation (§1) | Missing | Agent: `sk_` obtained at app.daydream.live (outside repos); Clearinghouse: user creation is an M2M call by an app owner, top-ups manual | No path where a stranger gets a credential, credit, and a first call without a contributor or Daydream account. |
 | Discoverable supply reflecting real network (§3) | Partial | Agent `discovery-sync.ts` cron (default off) reads orch `/discovery`; otherwise VM env `CAPABILITIES_JSON` (`CLAUDE.md:279-310`) and `orch-map.reference.json` | Catalog is operator-configured, not derived from on-chain/gRPC supply. |
-| Livepeer Agent + four demand sources on the clearinghouse (§8) | Missing | No Agent ↔ clearinghouse integration; `PYMTHOUSE-PAYMENT-BLOCKER.md` (2026-06-25) blocked at `/generate-live-payment` JWT mismatch | The reference integration is not on the clearinghouse. Zero of five demand sources currently meet the outcome as written. |
 
 ## Duplications and conflicts
 
@@ -204,11 +208,8 @@ Status legend: **Exists** — works end to end for a builder; **Partial** — ex
 | Self-service credential + credits for a stranger | 1, 6, §1 | Clearinghouse: public signup flow, onramp/top-up (currently "manual via Konnect UI"), live balance gate (currently demo-fixed) |
 | Single end-to-end job identifier carried from Agent → SDK → signer ticket → orchestrator → metering | 7, §7 | All four: SDK `job_id` → `Livepeer` header (exists) → remote-signer state `App`/`auth_id` (exists) → `create_signed_ticket` event (has `request_id`) → Agent `UsageEvent.job_id` (exists). **The pieces exist; nothing asserts they are the same value.** |
 | Per-job receipt (usage units, rate, fee in USD and wei, orchestrator) | 7, §5 | Clearinghouse Builder API (`/users/me/usage` is aggregate only) |
-| "Demand source" as a first-class dimension | §7, §8 | Clearinghouse `client_id` is the closest; Agent `principal`/`utm`; needs a definition first (see Outcome doc open question 1) |
 | Cross-capability error code taxonomy | 5, §6 | go-livepeer (currently masks 500/503); SDK normalisation; Agent `failure-codes.ts` is the only candidate vocabulary |
-| Remote signer support for batch AI, transcoding, and (explicitly) BYOC | 6 | go-livepeer `server/ai_process.go`, `byoc/job_gateway.go` |
-| BYOC example and docs in the SDK; SDK docs for Live Runner/Scope | §9 | Python SDK README/examples |
-| Agent on the clearinghouse | §8 | Agent `providers/pymthouse.ts` + clearinghouse `/generate-live-payment` JWT contract (blocker dated 2026-06-25) |
+| Live Runner and Scope examples and documentation in the SDK | Deployed documentation | Python SDK README/examples |
 
 ## What a "first call" looks like today, honestly
 
@@ -231,7 +232,7 @@ None of the three paths satisfies "without a wallet, without setup and without c
    glossary defines "payment clearinghouse" generically; Daydream's signer is
    another current payment path and is not interoperable with the reviewed
    clearinghouse repository today.
-4. What unblocked, or still blocks, `PYMTHOUSE-PAYMENT-BLOCKER.md` (JWT mismatch at `/generate-live-payment`, 2026-06-25)? This is the single dependency that decides whether the Agent can count as a demand source "via the clearinghouse."
+4. What unblocked, or still blocks, `PYMTHOUSE-PAYMENT-BLOCKER.md` (JWT mismatch at `/generate-live-payment`, 2026-06-25)? This determines whether the Agent can serve as an optional reference integration for the selected clearinghouse contract and may reveal a platform-level interoperability gap.
 5. Who owns the join between Agent `network_events` and signer `create_signed_ticket` events, and what key should join them?
 6. Should the Operate Track's service registry / Live Runner `/discovery` become the source for the Agent's registry (via `discovery-sync.ts`), retiring `CAPABILITIES_JSON` and the hand-maintained `registry.json` pricing fields?
 

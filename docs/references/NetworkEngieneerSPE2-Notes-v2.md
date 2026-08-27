@@ -6,6 +6,14 @@
 
 **Proposed by:** Rich O'Grady, Ecosystem Director, Livepeer Foundation
 
+> **Scope resolution recorded 26 August 2026:** This file preserves the
+> upstream working draft as captured. Its application-adoption and live-demand
+> language is not a current Build Track requirement. The confirmed scope
+> excludes demand generation, application adoption, application counts,
+> production-traffic targets, and live-demand evidence. See decision
+> `netspe-vun.7` and the
+> [current milestone draft](../design-docs/cloud-spe-september-december-2026-milestones-draft.md#application-adoption-exclusion).
+
 ---
 
 ## Abstract

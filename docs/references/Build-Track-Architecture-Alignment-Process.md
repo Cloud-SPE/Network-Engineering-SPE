@@ -58,6 +58,14 @@ target architecture unless the Network Engineering SPE changes the scope:
 These paths may remain in the current-state diagram when needed for accuracy,
 but they must be visually and verbally separated from the target scope.
 
+The working capability-support model is a reusable Live Runner service
+contract proven end to end with at least one representative capability. It does
+not imply a required multi-capability catalog. Rich must confirm the outcome
+intent, and Rick and Josh must confirm the architecture and delivery
+interpretation, before that model is used as an accepted milestone constraint.
+The exact representative capability and any additional named capability set
+remain decisions rather than assumptions.
+
 Demand generation and application adoption are also excluded from the Build
 Track. The architecture process must not introduce application counts, traffic
 targets, or live-demand evidence as delivery or acceptance requirements.
@@ -65,6 +73,13 @@ Sample or reference applications and runnable examples may demonstrate the
 supported interfaces or provide controlled integration evidence, but they are
 documentation and validation aids rather than adoption, production-demand,
 funding, or ongoing-operation commitments.
+
+The working payment assumption is that both wallet-funded and walletless
+journeys are in the December target because both appear in the upstream
+outcomes. Rich must confirm that interpretation. Confirmation that a journey is
+required does not by itself assign its implementation to the Cloud SPE; the
+workshops must name the owner, Cloud boundary, external dependencies, interface
+convergence, and minimum acceptance evidence for each required journey.
 
 Live Runner focus does not remove the builder-facing and control-plane systems
 from discussion. Agent 2.0/Storyboard, SDKs, SDK Service, gateways, identity,
@@ -138,7 +153,9 @@ unscheduled until after Part 1.
 
 ## Planning package
 
-- [Architecture survey](Build-Track-Architecture-Survey.md)
+- [Survey administration](Build-Track-Architecture-Survey.md)
+- [Respondent instructions](Build-Track-Architecture-Survey-Instructions.md)
+- [Fillable survey template](Build-Track-Architecture-Survey-Template.md)
 - [Workshop Part 1: outcomes and target architecture](Build-Track-Architecture-Workshop-Part-1.md)
 - [Workshop Part 2: decisions and requirements](Build-Track-Architecture-Workshop-Part-2.md)
 - [Current-state repository traceability and component diagram](Build-Track-Repo-Traceability.md)
@@ -158,6 +175,10 @@ The relationship between hosted Pymthouse and `livepeer/clearinghouse` must not
 be asserted without confirmation. The survey and workshops must establish
 whether they share code, whether one is a fork or reference implementation, who
 owns and operates each, and which is intended for production use.
+
+“Walletless” remains an implementation-neutral builder outcome during this
+process. It must not be used as shorthand for hosted Pymthouse or
+`livepeer/clearinghouse` until the clearinghouse direction is accepted.
 
 ## Registry and discovery terminology
 

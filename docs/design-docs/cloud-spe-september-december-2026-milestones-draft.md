@@ -35,24 +35,13 @@ decision and the resolved scope decision in `netspe-vun.7` are incorporated,
 the Network Engineering SPE and Cloud SPE approve the same revision, and the
 accepted plan is published through `netspe-vun.6`.
 
-## Source conflict and resolved scope
+## Resolved scope
 
-The latest normalized Network Engineering SPE II source draft describes the
-Build outcome as a developer going from a clean machine to a working, paid call
-using published documentation and without contacting an Operator. It says both
-the wallet-default and pymthouse payment paths work, and that the Livepeer Agent
-and at least two further applications send live demand through the network
-rather than test traffic. See the
-[source draft](../references/NetworkEngieneerSPE2-Notes-v2.md#four-new-tracks-to-focus-work).
-
-The earlier Build Track working document instead says the Livepeer Agent plus
-four additional demand sources generate real, attributable traffic through the
-clearinghouse. See the
-[earlier outcome draft](../references/Build-Track-Outcome-and-High-Level-Concepts.md#intended-outcome).
-The difference is not limited to the number of applications. The source also
-says that the SPE does not fund the Agent framework or demand generation, and
-its detailed Build milestone list does not include delivering applications or
-generating demand.
+Earlier working drafts contained conflicting application-adoption and live-
+demand conditions. Those dated drafts remain available as provenance in the
+[normalized source](../references/NetworkEngieneerSPE2-Notes-v2.md) and
+[earlier outcome analysis](../references/Build-Track-Outcome-and-High-Level-Concepts.md),
+but they do not define the current Build Track scope.
 
 Mike Zupper reported on 26 August 2026 that the scope was confirmed with Rich
 on 25 August 2026: the Build Track has no demand-generation or application-
@@ -89,8 +78,8 @@ Each gate should eventually name:
 | Window | Milestone | Outcome state | Indicative evidence |
 | --- | --- | --- | --- |
 | September | **Cloud SPE delivery boundary and target builder journey agreed** | The supported builder journey, Cloud-owned surfaces, repository boundaries, external dependencies, acceptance evidence, and budget assumptions are explicit enough to authorize delivery. | Jointly reviewed scope map; named owners and handoffs; agreed payment paths and representative capabilities; unresolved items have owners and decision dates. |
-| September–October | **A supported paid-call journey works end to end** | For at least one representative capability, a builder can obtain the required credential, discover and price the service, invoke it through a supported interface, receive a result or understandable failure, and pay through the agreed path. | Reproducible production-oriented calls; payment evidence; exact deployed versions; documented ownership of any manual or external step. |
-| October–November | **The supported builder experience is consistent and observable** | Supported service types present a coherent experience for discovery, pricing, invocation, errors, usage, and resulting charges, with enough correlation to explain an individual job. | Representative cross-service evidence; an agreed correlation approach; usable cost and usage records; known exceptions documented rather than hidden. |
+| September–October | **A supported paid-call journey works end to end** | For at least one representative capability, a builder can obtain the required credential, discover and price the service, invoke it through a supported interface, receive a result or understandable failure, and complete each confirmed required payment journey. | Reproducible production-oriented calls through each required payment path; payment evidence; exact deployed versions; documented ownership of any manual or external step. |
+| October–November | **The supported builder experience is consistent and observable** | A reusable Live Runner service contract presents a coherent experience for discovery, pricing, invocation, errors, usage, and resulting charges, with enough correlation to explain an individual job. | Contract-conformance evidence; representative end-to-end evidence; an agreed correlation approach; usable cost and usage records; known exceptions documented rather than hidden. |
 | November–December | **The deployed experience is documented and independently proven** | Published SDK guidance and documentation match the deployed system, and an independent builder can reproduce the supported journey from a clean environment without contacting an Operator. | Timed independent first call; documentation and SDK verification; production payment and usage evidence; operational handoff; unresolved limitations stated. |
 
 ### Milestone 1: Agree Builder Architecture and Scope
@@ -104,6 +93,13 @@ ownership, capacity, and delivery boundaries are decided.
   BYOC, LV2V, and transcoding as explicit non-goals for this scope.
 - Map each of the seven builder outcomes to its authoritative component,
   repository, interface, owner, and required evidence.
+- Confirm with Rich, Rick, and Josh whether December acceptance requires a
+  reusable Live Runner service contract proven through at least one
+  representative capability, a prescribed capability set, or one fixed
+  integration; record the representative capability and any required list.
+- Confirm the working assumption that both wallet-funded and walletless payment
+  journeys are required, then assign the Cloud-owned boundary, external
+  dependencies, interface convergence, and minimum evidence for each.
 - Select the target clearinghouse direction and define the supported credential,
   walletless payment, balance, metering, usage, and charge boundaries.
 - Define the on-chain ServiceRegistry, runtime capability and price discovery,
@@ -131,8 +127,9 @@ repositories, external dependencies, and supported payment path or paths.
   agreed authoritative pricing source.
 - Invoke the representative capability through the agreed standard
   builder-facing interface and return a result or an understandable failure.
-- Complete payment without requiring the builder to hold crypto through the
-  approved walletless path.
+- Complete the representative call through each payment journey confirmed in
+  Milestone 1, including a walletless journey that does not require the builder
+  to hold crypto.
 - Make the builder's usage and resulting charge available through the agreed
   interface or record.
 - Correlate credential, request, execution, payment, usage, and charge evidence
@@ -148,7 +145,9 @@ repositories, external dependencies, and supported payment path or paths.
 integration, reliability, and observability work actually required.
 
 - Apply the agreed capability, discovery, price, invocation, and payment
-  contracts consistently across the supported Live Runner journey.
+  contracts to the representative Live Runner capability and define how any
+  additional supported capability conforms without creating a parallel
+  identity, discovery, payment, or metering stack.
 - Define stable request, job, execution, payment, and billing identifiers that
   allow an individual invocation to be traced across component boundaries.
 - Standardize builder-understandable validation, capacity, execution, payment,
@@ -239,8 +238,9 @@ defines the preparation for the architecture decision.
 After that decision is incorporated, the joint reviews need to resolve the
 remaining questions before the plan can be accepted:
 
-1. Which portions of the wallet-default and pymthouse paths are Cloud SPE
-   deliverables?
+1. Does Rich confirm that both wallet-funded and walletless journeys are
+   required December acceptance paths, and which portions of each are Cloud SPE
+   deliverables, external dependencies, or compatibility obligations?
 2. Which repositories, deployed services, and interfaces are within the Cloud
    SPE scope?
 3. Which discovery and capability-contract work belongs to the Operate Track or
@@ -286,3 +286,6 @@ approval records.
 | 26 August 2026 | Revised draft | Added the Live Runner-centric end-state architecture decision and two-part survey/workshop process as approval prerequisites. |
 | 26 August 2026 | Revised draft | Expanded the four milestone gates into estimated windows, unallocated working budgets, and scope-driven lists of outcome-oriented deliverables. |
 | 26 August 2026 | Revised draft | Recorded the confirmed exclusion of demand generation and application adoption from the Build Track, removed it from Milestone 1, and cleared `netspe-vun.7` as a blocker. |
+| 27 August 2026 | Revised draft | Removed superseded demand and application-count details from active planning text while preserving the dated upstream drafts as clearly marked historical evidence. |
+| 27 August 2026 | Revised draft | Recorded both wallet-funded and walletless payment journeys as a working assumption pending Rich's confirmation, with ownership and minimum evidence to be decided before milestone approval. |
+| 27 August 2026 | Revised draft | Proposed a reusable Live Runner service contract proven with at least one representative capability, pending confirmation from Rich, Rick, and Josh. |

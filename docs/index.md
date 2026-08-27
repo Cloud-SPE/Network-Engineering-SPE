@@ -32,8 +32,12 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 - [Survey and workshop process](references/Build-Track-Architecture-Alignment-Process.md)
   — scheduling sequence, roles, decision classifications, and required outputs.
-- [Architecture survey](references/Build-Track-Architecture-Survey.md) — a
-  10–15 minute diagnostic survey and synthesis method.
+- [Survey administration](references/Build-Track-Architecture-Survey.md) —
+  owner guidance for distribution, private collection, and synthesis.
+- [Survey instructions](references/Build-Track-Architecture-Survey-Instructions.md)
+  — respondent guidance and neutral agent-interview prompt.
+- [Survey template](references/Build-Track-Architecture-Survey-Template.md) —
+  the fillable 10–15 minute Markdown questionnaire.
 - [Workshop Part 1](references/Build-Track-Architecture-Workshop-Part-1.md) — a
   60-minute outcomes, current-state, and target-architecture facilitator guide.
 - [Workshop Part 2](references/Build-Track-Architecture-Workshop-Part-2.md) — a
