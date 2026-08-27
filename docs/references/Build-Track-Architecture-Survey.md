@@ -57,7 +57,7 @@ Required initial respondents:
 
 Potential additional respondents:
 
-- John Mull or another Elite Encoder representative for hosted Pymthouse;
+- John Mull (Elite Encoder) Pymthouse;
 - the Agent 2.0/Storyboard technical owner;
 - the SDK Service owner;
 - `livepeer/clearinghouse` maintainers; and
