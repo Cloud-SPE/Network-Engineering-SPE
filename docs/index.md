@@ -27,6 +27,8 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 - [Build Track outcome and concepts](references/Build-Track-Outcome-and-High-Level-Concepts.md)
 - [Build Track repository traceability](references/Build-Track-Repo-Traceability.md)
 - [Network Engineering SPE II notes](references/NetworkEngieneerSPE2-Notes-v2.md)
+- [21 August Build Track alignment transcript extract](references/2026-08-21-Build-Track-Alignment-Transcript-Extract.md)
+  — timestamped historical evidence relevant to the Cloud SPE scope.
 
 ## Architecture alignment working materials
 
@@ -43,6 +45,12 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 - [Workshop Part 2](references/Build-Track-Architecture-Workshop-Part-2.md) — a
   60-minute architecture decision, ownership, and requirements facilitator
   guide.
+- [Doug Build Track feedback discussion guide](references/Doug-Build-Track-Feedback-Discussion-Guide.md)
+  — a 60-minute 15/30/15 agenda for confirming the August vision, architecture
+  implications, milestone intent, and decision authority.
+- [John Mull clearinghouse roadmap discussion guide](references/John-Mull-Clearinghouse-Roadmap-Discussion-Guide.md)
+  — a 60-minute 15/30/15 fact-finding agenda covering Pymthouse provenance,
+  deployed behavior, contract coverage, ownership, and roadmap.
 
 Files in `references/` are not automatically normative. Their status, date,
 method, and verification limits determine how they may be used.
