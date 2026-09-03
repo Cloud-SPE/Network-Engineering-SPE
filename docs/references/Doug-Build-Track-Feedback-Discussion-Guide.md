@@ -27,6 +27,7 @@ SPE milestones or wider Network Engineering SPE architecture.
 - [Current-state component diagram](Build-Track-Repo-Traceability.md#component-diagram)
 - [Draft September–December milestones](../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
 - [Josh's survey response](Build-Track-Architecture-Survey-Response-Josh-2026-08-31.md)
+- [2 September Rich, Doug, and Hunter feedback](2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
 
 ## Starting evidence, not assumed decisions
 
@@ -40,6 +41,8 @@ SPE milestones or wider Network Engineering SPE architecture.
 | Build and Operate are different but work together | Directional boundary; discovery, routing, registration, pricing, and metrics still need owners |
 | ServiceRegistry should address manual discovery | Problem statement only; no accepted on-chain data model |
 | Agent could expose hundreds of models | Product vision, not an application count or December capability commitment |
+| Easy wallet-controlled payments, potentially using an approach such as x402 | Relayed direction requiring confirmation; x402 is a candidate, not a selected requirement |
+| Builders need expected-performance visibility and recourse after failure | Hunter's product concern requiring a high-level outcome, ownership, and acceptance decision |
 
 ## Block 1 — confirm intent and changes since 21 August
 
@@ -63,6 +66,8 @@ Establish which August statements remain current before discussing components.
    product to supported SDK/API surfaces over a canonical platform contract?
 5. Which August assumptions have changed because of the litepaper, Live Runner
    work, repository evolution, or later discussions with Rich, Rick, and Josh?
+6. Does the new emphasis on a wallet-controlled payment path change the meaning
+   or priority of “self-sovereign” relative to the August discussion?
 
 ### Exit evidence
 
@@ -91,25 +96,37 @@ Establish which August statements remain current before discussing components.
 6. Does every capability called “supported” have to satisfy the complete
    credential, discovery, price, invocation, result/failure, payment, usage,
    and charge journey?
+7. Must a builder also see expected service behavior before invoking a
+   capability? Which uptime, capacity, completion-time, or other performance
+   signal is essential at this architecture stage?
+8. For a long-running job that fails late, which component owns retry,
+   failover, payment-state reporting, and any financial or operational
+   recourse?
 
 ### Payment and clearinghouse
 
-7. Are wallet-funded and walletless journeys both required acceptance paths,
+9. Are wallet-funded and walletless journeys both required acceptance paths,
    or is either an externally owned compatibility obligation?
-8. When Doug said “complete payment house,” did that mean John's hosted
+10. Is the easy wallet-controlled path now the canonical self-sovereign path?
+    If so, does walletless access remain a mandatory outcome, a co-equal path,
+    or an optional hosted convenience?
+11. Was x402 offered as an example to investigate, a preferred direction, or a
+    required compatibility target? Which builder-visible properties matter
+    independent of that implementation choice?
+12. When Doug said “complete payment house,” did that mean John's hosted
    Pymthouse, a self-hostable implementation, an implementation-neutral
    clearinghouse contract, or simply a working walletless outcome?
-9. Should both paths converge after authorization on the same invocation, job,
+13. Should both paths converge after authorization on the same invocation, job,
    result, error, usage, and charge interfaces?
 
 ### Build and Operate boundary
 
-10. Which track and repository own Live Runner registration, Orchestrator and
+14. Which track and repository own Live Runner registration, Orchestrator and
     gateway enumeration, capability discovery, selection, retry, failover,
     current pricing, capacity, health, and builder-facing catalog projection?
-11. What must be durable in the on-chain ServiceRegistry, and what must remain
+15. What must be durable in the on-chain ServiceRegistry, and what must remain
     dynamic? What self-sovereignty property justifies each on-chain field?
-12. Where does the Cloud SPE's delivery responsibility end, and which named
+16. Where does the Cloud SPE's delivery responsibility end, and which named
     external owner accepts each handoff?
 
 ### Exit evidence
@@ -147,6 +164,7 @@ Establish which August statements remain current before discussing components.
 | --- | --- | --- | --- | --- | --- |
 | Demand/adoption boundary |  |  |  |  |  |
 | Self-sovereignty definition |  |  |  |  |  |
+| Canonical payment path and x402 status |  |  |  |  |  |
 | Agent role |  |  |  |  |  |
 | Live Runner focus |  |  |  |  |  |
 | Capability support model |  |  |  |  |  |
@@ -154,6 +172,8 @@ Establish which August statements remain current before discussing components.
 | Clearinghouse requirement |  |  |  |  |  |
 | Build/Operate boundary |  |  |  |  |  |
 | ServiceRegistry boundary |  |  |  |  |  |
+| Expected-performance information |  |  |  |  |  |
+| Failure recovery and recourse |  |  |  |  |  |
 | Milestone arc |  |  |  |  |  |
 | Budget |  |  |  |  |  |
 

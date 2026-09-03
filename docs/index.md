@@ -29,6 +29,13 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 - [Network Engineering SPE II notes](references/NetworkEngieneerSPE2-Notes-v2.md)
 - [21 August Build Track alignment transcript extract](references/2026-08-21-Build-Track-Alignment-Transcript-Extract.md)
   — timestamped historical evidence relevant to the Cloud SPE scope.
+- [2 September John Mull clearinghouse meeting notes](references/2026-09-02-John-Mull-Clearinghouse-Meeting-Notes.md)
+  — reported current-state findings, outcome gaps, and evidence required for a
+  follow-up with Elite Encoder.
+- [2 September Rich, Doug, and Hunter Build Track feedback](references/2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
+  — stakeholder input on self-sovereign payment, expected performance, failure
+  recovery, and recourse; recorded as unresolved direction rather than an
+  approved requirement.
 
 ## Architecture alignment working materials
 
