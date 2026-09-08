@@ -58,6 +58,10 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 - [John Mull clearinghouse roadmap discussion guide](references/John-Mull-Clearinghouse-Roadmap-Discussion-Guide.md)
   — a 60-minute 15/30/15 fact-finding agenda covering Pymthouse provenance,
   deployed behavior, contract coverage, ownership, and roadmap.
+- [8 September Rick survey discussion agenda](references/2026-09-08-Rick-Build-Track-Survey-Discussion-Agenda.md)
+  — a 60-minute decision-oriented agenda covering the December deliverable
+  hypothesis, self-sovereign Agent ambiguity, SDK-versus-gateway architecture,
+  discovery, payment, service assurance, ownership, and acceptance evidence.
 
 Files in `references/` are not automatically normative. Their status, date,
 method, and verification limits determine how they may be used.
