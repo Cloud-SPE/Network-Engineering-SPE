@@ -36,6 +36,21 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
   — stakeholder input on self-sovereign payment, expected performance, failure
   recovery, and recourse; recorded as unresolved direction rather than an
   approved requirement.
+- [8 September Rick Build Track discussion consolidated notes](references/2026-09-08-Rick-Build-Track-Survey-Discussion-Consolidated-Notes.md)
+  — evidence-qualified synthesis of the proposed minimal builder architecture,
+  Open Clearinghouse, provisional December deliverables, Cloud SPE boundary,
+  and decisions still requiring external or joint approval.
+- [9 September Doug Agent GTM and Build Track alignment meeting context](references/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Context.md)
+  — request, purpose, scope boundaries, and intended evidence for the
+  30-minute alignment discussion.
+- [9 September Doug Agent GTM and Build Track alignment findings](references/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Findings.md)
+  — evidence-qualified synthesis of the three access paths, commercial Agent
+  boundary, open Agent handoff, minimal clearinghouse direction, security risk,
+  provisional December outcome, and decisions still requiring approval.
+- [9 September emerging Build Track architecture](references/2026-09-09-Build-Track-Emerging-Architecture.md)
+  — standalone architecture image and evidence-qualified explanation of the
+  three access paths, shared builder layer, discovery and payment control,
+  Live Runner execution, responsibility boundaries, and unresolved decisions.
 
 ## Architecture alignment working materials
 

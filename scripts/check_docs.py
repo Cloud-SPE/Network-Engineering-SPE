@@ -22,6 +22,16 @@ REQUIRED = (
     "docs/decisions/index.md",
 )
 LINK_RE = re.compile(r"(?<!!)\[[^]]+\]\(([^)]+)\)")
+LOCAL_ONLY_EVIDENCE = (
+    "docs/references/*-transcript.txt",
+    "docs/references/*-Transcript.txt",
+    "docs/references/*-gemini-*-notes.md",
+)
+
+
+def is_local_only_evidence(path: Path) -> bool:
+    relative = path.relative_to(ROOT)
+    return any(relative.match(pattern) for pattern in LOCAL_ONLY_EVIDENCE)
 
 
 def markdown_files() -> list[Path]:
@@ -30,6 +40,7 @@ def markdown_files() -> list[Path]:
         path
         for path in ROOT.rglob("*.md")
         if not any(part in excluded for part in path.relative_to(ROOT).parts)
+        and not is_local_only_evidence(path)
     )
 
 
@@ -64,6 +75,11 @@ def main() -> int:
                 resolved.relative_to(ROOT)
             except ValueError:
                 errors.append(f"{relative}: link escapes repository: {target}")
+                continue
+            if is_local_only_evidence(resolved):
+                errors.append(
+                    f"{relative}: link targets local-only evidence: {target}"
+                )
                 continue
             if not resolved.exists():
                 errors.append(f"{relative}: broken local link: {target}")
