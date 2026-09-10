@@ -4,7 +4,7 @@
 **Date:** 24 August 2026
 **Track:** Easy to Build — Builder
 **Track owner:** Mike Zupper
-**Companion to:** [Build Track: Outcome and High-Level Concepts](Build-Track-Outcome-and-High-Level-Concepts.md)
+**Companion to:** [Build Track: Outcome and High-Level Concepts](2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md)
 
 ## Purpose
 

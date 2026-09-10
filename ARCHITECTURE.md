@@ -26,7 +26,12 @@ docs/
 ├── design-docs/          durable principles and approved designs
 ├── product-specs/        outcome and acceptance contracts
 ├── decisions/            accepted decisions and their rationale
-├── references/           evidence, source notes, and working drafts
+├── references/           indexed evidence and working material
+│   ├── index.md          chronological reference catalog
+│   ├── source-material/  upstream and historical source evidence
+│   ├── stakeholder-input/ meeting findings and survey responses
+│   ├── analysis/         scope, traceability, and architecture synthesis
+│   └── facilitation/     surveys, workshops, and meeting guides
 └── QUALITY.md            review findings and scaffold health
 .beads/                   durable work graph and project memory
 scripts/check_docs.py     local documentation validation

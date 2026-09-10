@@ -21,7 +21,7 @@ preferred to guessing.
 ## What to return
 
 Return one completed copy of the
-[survey template](Build-Track-Architecture-Survey-Template.md) through the
+[survey template](2026-08-27-Build-Track-Architecture-Survey-Template.md) through the
 private channel named in the invitation. Use this filename:
 
 ```text

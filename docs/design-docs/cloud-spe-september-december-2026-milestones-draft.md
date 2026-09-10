@@ -39,8 +39,8 @@ accepted plan is published through `netspe-vun.6`.
 
 Earlier working drafts contained conflicting application-adoption and live-
 demand conditions. Those dated drafts remain available as provenance in the
-[normalized source](../references/NetworkEngieneerSPE2-Notes-v2.md) and
-[earlier outcome analysis](../references/Build-Track-Outcome-and-High-Level-Concepts.md),
+[normalized source](../references/source-material/2026-08-25-NetworkEngieneerSPE2-Notes-v2.md) and
+[earlier outcome analysis](../references/analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md),
 but they do not define the current Build Track scope.
 
 Mike Zupper reported on 26 August 2026 that the scope was confirmed with Rich
@@ -232,7 +232,7 @@ Decision `netspe-vun.7` is resolved: application adoption and demand generation
 are excluded from the Build Track. Decision `netspe-vun.12` must now map the
 seven builder outcomes to an agreed Live Runner-centric architecture,
 repositories, owners, and evidence before either SPE review begins. The
-[survey and workshop process](../references/Build-Track-Architecture-Alignment-Process.md)
+[survey and workshop process](../references/facilitation/2026-08-26-Build-Track-Architecture-Alignment-Process.md)
 defines the preparation for the architecture decision.
 
 After that decision is incorporated, the joint reviews need to resolve the

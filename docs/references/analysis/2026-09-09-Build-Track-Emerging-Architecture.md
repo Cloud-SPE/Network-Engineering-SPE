@@ -28,9 +28,9 @@ assign its delivery to the Cloud SPE, or approve its production operation.
 
 ## Architecture image
 
-![Emerging Build Track architecture showing builders and applications branching into hosted Agent, generic walletless, and self-hosted paths; converging on shared builder interfaces, clearinghouse or wallet payment, discovery, Remote Signer, Orchestrators, Live Runner, and capability backends](../assets/build-track-emerging-architecture-2026-09-09.png)
+![Emerging Build Track architecture showing builders and applications branching into hosted Agent, generic walletless, and self-hosted paths; converging on shared builder interfaces, clearinghouse or wallet payment, discovery, Remote Signer, Orchestrators, Live Runner, and capability backends](../../assets/build-track-emerging-architecture-2026-09-09.png)
 
-The [standalone PNG](../assets/build-track-emerging-architecture-2026-09-09.png)
+The [standalone PNG](../../assets/build-track-emerging-architecture-2026-09-09.png)
 is 1672 by 941 pixels and can be shared independently of this document.
 
 ### Visual language
@@ -48,11 +48,11 @@ is 1672 by 941 pixels and can be shared independently of this document.
 
 The model synthesizes:
 
-- the [Build Track builder outcomes](Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise);
-- the [repository traceability review](Build-Track-Repo-Traceability.md);
-- the [8 September Rick discussion](2026-09-08-Rick-Build-Track-Survey-Discussion-Consolidated-Notes.md);
-- the [8 September Network Engineering SPE meeting summary](2026-09-08-NE-SPE-Weekly-Meeting-summary.md); and
-- the [9 September Doug alignment findings](2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Findings.md).
+- the [Build Track builder outcomes](2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise);
+- the [repository traceability review](2026-08-24-Build-Track-Repo-Traceability.md);
+- the [8 September Rick discussion](../stakeholder-input/meetings/2026-09-08-Rick-Build-Track-Survey-Discussion-Consolidated-Notes.md);
+- the [8 September Network Engineering SPE meeting summary](../source-material/2026-09-08-NE-SPE-Weekly-Meeting-summary.md); and
+- the [9 September Doug alignment findings](../stakeholder-input/meetings/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Findings.md).
 
 Source material under `docs/references/` remains evidence and working material.
 Production behavior, approved decisions, and accepted specifications have

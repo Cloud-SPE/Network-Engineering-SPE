@@ -72,7 +72,7 @@ The current review identifies several material gaps:
   bundle still need committee approval.
 
 See the [quality review](docs/QUALITY.md) and
-[repository traceability report](docs/references/Build-Track-Repo-Traceability.md)
+[repository traceability report](docs/references/analysis/2026-08-24-Build-Track-Repo-Traceability.md)
 for the detailed assessment. Work state and blockers are maintained in Beads.
 
 ## Cloud SPE scope
@@ -128,7 +128,11 @@ docs/
 ├── design-docs/          durable principles and accepted designs
 ├── product-specs/        approved outcomes and acceptance contracts
 ├── decisions/            accepted decisions and rationale
-├── references/           dated evidence, notes, and working drafts
+├── references/           chronological index and categorized working evidence
+│   ├── source-material/  upstream and historical source evidence
+│   ├── stakeholder-input/ meeting findings and survey responses
+│   ├── analysis/         scope, traceability, and architecture synthesis
+│   └── facilitation/     surveys, workshops, and meeting guides
 └── QUALITY.md            repository and Cloud SPE delivery-readiness review
 .beads/                   durable issue graph and project memory
 scripts/                  dependency-free repository validation
@@ -144,7 +148,7 @@ This repository deliberately separates four kinds of information:
 
 | Kind | Location | Meaning |
 | --- | --- | --- |
-| Evidence and source material | `docs/references/` | What was observed or proposed at a stated date; not automatically normative |
+| Evidence and source material | [`docs/references/index.md`](docs/references/index.md) | Chronologically indexed observations, inputs, and working analyses; not automatically normative |
 | Product specifications | `docs/product-specs/` | Approved intended outcomes, scope, and acceptance evidence |
 | Designs and decisions | `docs/design-docs/`, `docs/decisions/` | Durable constraints, choices, owners, and rationale |
 | Work state | Beads | Tasks, dependencies, blockers, discoveries, progress, and handoffs |
@@ -159,9 +163,9 @@ automated checks when possible.
 
 Start with:
 
-1. [Build Track outcome and high-level concepts](docs/references/Build-Track-Outcome-and-High-Level-Concepts.md)
-2. [Repository traceability and gap analysis](docs/references/Build-Track-Repo-Traceability.md)
-3. [Network Engineering SPE II notes](docs/references/NetworkEngieneerSPE2-Notes-v2.md)
+1. [Build Track outcome and high-level concepts](docs/references/analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md)
+2. [Repository traceability and gap analysis](docs/references/analysis/2026-08-24-Build-Track-Repo-Traceability.md)
+3. [Network Engineering SPE II notes](docs/references/source-material/2026-08-25-NetworkEngieneerSPE2-Notes-v2.md)
 4. [Quality review](docs/QUALITY.md)
 
 ### Work with Beads

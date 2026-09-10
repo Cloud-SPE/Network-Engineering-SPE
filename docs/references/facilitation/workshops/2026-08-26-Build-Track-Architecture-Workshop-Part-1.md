@@ -31,12 +31,12 @@
 
 Include links to:
 
-- [the survey instructions](Build-Track-Architecture-Survey-Instructions.md);
-- [the fillable survey template](Build-Track-Architecture-Survey-Template.md);
-- [survey synthesis when available](Build-Track-Architecture-Survey.md#survey-synthesis-template);
-- [current-state diagram](Build-Track-Repo-Traceability.md#component-diagram);
-- [draft milestone proposal](../design-docs/cloud-spe-september-december-2026-milestones-draft.md); and
-- [the complete alignment process](Build-Track-Architecture-Alignment-Process.md).
+- [the survey instructions](../surveys/2026-08-27-Build-Track-Architecture-Survey-Instructions.md);
+- [the fillable survey template](../surveys/2026-08-27-Build-Track-Architecture-Survey-Template.md);
+- [survey synthesis when available](../surveys/2026-08-27-Build-Track-Architecture-Survey.md#survey-synthesis-template);
+- [current-state diagram](../../analysis/2026-08-24-Build-Track-Repo-Traceability.md#component-diagram);
+- [draft milestone proposal](../../../design-docs/cloud-spe-september-december-2026-milestones-draft.md); and
+- [the complete alignment process](../2026-08-26-Build-Track-Architecture-Alignment-Process.md).
 
 ## Participants
 
@@ -101,8 +101,8 @@ Part 1 should not:
 
 Participants should complete before the meeting:
 
-- the [10–15 minute survey template](Build-Track-Architecture-Survey-Template.md)
-  using the [respondent instructions](Build-Track-Architecture-Survey-Instructions.md);
+- the [10–15 minute survey template](../surveys/2026-08-27-Build-Track-Architecture-Survey-Template.md)
+  using the [respondent instructions](../surveys/2026-08-27-Build-Track-Architecture-Survey-Instructions.md);
 - review of the seven builder outcomes;
 - review of the current-state component diagram;
 - identification of incorrect components, missing repositories, and deployed

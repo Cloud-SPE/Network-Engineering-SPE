@@ -153,14 +153,14 @@ unscheduled until after Part 1.
 
 ## Planning package
 
-- [Survey administration](Build-Track-Architecture-Survey.md)
-- [Respondent instructions](Build-Track-Architecture-Survey-Instructions.md)
-- [Fillable survey template](Build-Track-Architecture-Survey-Template.md)
-- [Workshop Part 1: outcomes and target architecture](Build-Track-Architecture-Workshop-Part-1.md)
-- [Workshop Part 2: decisions and requirements](Build-Track-Architecture-Workshop-Part-2.md)
-- [Current-state repository traceability and component diagram](Build-Track-Repo-Traceability.md)
-- [Draft Cloud SPE milestones](../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
-- [Build Track outcome and high-level concepts](Build-Track-Outcome-and-High-Level-Concepts.md)
+- [Survey administration](surveys/2026-08-27-Build-Track-Architecture-Survey.md)
+- [Respondent instructions](surveys/2026-08-27-Build-Track-Architecture-Survey-Instructions.md)
+- [Fillable survey template](surveys/2026-08-27-Build-Track-Architecture-Survey-Template.md)
+- [Workshop Part 1: outcomes and target architecture](workshops/2026-08-26-Build-Track-Architecture-Workshop-Part-1.md)
+- [Workshop Part 2: decisions and requirements](workshops/2026-08-26-Build-Track-Architecture-Workshop-Part-2.md)
+- [Current-state repository traceability and component diagram](../analysis/2026-08-24-Build-Track-Repo-Traceability.md)
+- [Draft Cloud SPE milestones](../../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
+- [Build Track outcome and high-level concepts](../analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md)
 
 ## Clearinghouse terminology that must remain unresolved
 

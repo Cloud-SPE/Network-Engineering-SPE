@@ -10,7 +10,7 @@
 
 **Date completed:** `2026-09-01`
 
-Read the [survey instructions](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/main/docs/references/Build-Track-Architecture-Survey-Instructions.md)
+Read the [survey instructions](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/main/docs/references/2026-08-27-Build-Track-Architecture-Survey-Instructions.md)
 before beginning. Preserve the original questions and answer choices. Replace
 the answer placeholders, mark unanswerable items as **Unknown**, and review the
 completed file yourself before returning it.

@@ -27,7 +27,7 @@ Agent-to-clearinghouse path.
 
 ## Review notes
 
-- `NetworkEngieneerSPE2-Notes-v2.md` has been normalized against five screenshots
+- `2026-08-25-NetworkEngieneerSPE2-Notes-v2.md` has been normalized against five screenshots
   of the current Notion draft. Duplicate sections and editorial defects were
   removed. The screenshot's budget rows total $240,000 while its request and
   displayed total say $230,000. The document preserves that inconsistency as an

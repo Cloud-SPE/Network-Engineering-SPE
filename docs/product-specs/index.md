@@ -2,7 +2,7 @@
 
 No Cloud SPE product specification has been accepted yet. The current wider
 Build Track outcome is working context in
-[the reference directory](../references/Build-Track-Outcome-and-High-Level-Concepts.md),
+[the reference directory](../references/analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md),
 not a statement that the Cloud SPE owns every outcome it describes.
 
 A Cloud SPE specification promoted into this directory should include:

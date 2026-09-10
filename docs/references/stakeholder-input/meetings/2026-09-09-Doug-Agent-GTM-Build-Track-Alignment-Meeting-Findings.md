@@ -15,12 +15,12 @@ not an approved architecture or milestone plan
 
 This document consolidates Build Track findings from:
 
-- the [meeting context](2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Context.md);
+- the [meeting context](../../facilitation/meeting-guides/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Context.md);
 - a participant-provided meeting transcript reviewed locally on 9 September
   and intentionally excluded from version control;
-- the [seven builder outcomes](Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise);
+- the [seven builder outcomes](../../analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise);
 - the [8 September discussion with Rick](2026-09-08-Rick-Build-Track-Survey-Discussion-Consolidated-Notes.md); and
-- the [draft September–December milestones](../design-docs/cloud-spe-september-december-2026-milestones-draft.md).
+- the [draft September–December milestones](../../../design-docs/cloud-spe-september-december-2026-milestones-draft.md).
 
 Its purpose is to preserve what Doug and Mike aligned on, identify the likely
 effect on the Cloud SPE's Build Track contribution, and isolate the decisions

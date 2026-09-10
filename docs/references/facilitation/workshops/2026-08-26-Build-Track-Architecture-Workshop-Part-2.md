@@ -32,10 +32,10 @@
 
 Include links to:
 
-- [the complete process](Build-Track-Architecture-Alignment-Process.md);
-- [Part 1 facilitator guide and output requirements](Build-Track-Architecture-Workshop-Part-1.md#part-1-output-package);
+- [the complete process](../2026-08-26-Build-Track-Architecture-Alignment-Process.md);
+- [Part 1 facilitator guide and output requirements](2026-08-26-Build-Track-Architecture-Workshop-Part-1.md#part-1-output-package);
 - the completed Part 1 output package when available;
-- [the draft milestone proposal](../design-docs/cloud-spe-september-december-2026-milestones-draft.md); and
+- [the draft milestone proposal](../../../design-docs/cloud-spe-september-december-2026-milestones-draft.md); and
 - any specialist findings or architecture alternatives included in the
   decision packet.
 

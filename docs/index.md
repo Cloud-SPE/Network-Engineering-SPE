@@ -24,56 +24,59 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 ## Source material and evidence
 
-- [Build Track outcome and concepts](references/Build-Track-Outcome-and-High-Level-Concepts.md)
-- [Build Track repository traceability](references/Build-Track-Repo-Traceability.md)
-- [Network Engineering SPE II notes](references/NetworkEngieneerSPE2-Notes-v2.md)
-- [21 August Build Track alignment transcript extract](references/2026-08-21-Build-Track-Alignment-Transcript-Extract.md)
+- [Complete chronological reference index](references/index.md) — canonical
+  catalog of every versioned reference, including its date, exact context,
+  functional category, lifecycle status, participants, and provenance limits.
+- [Build Track outcome and concepts](references/analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md)
+- [Build Track repository traceability](references/analysis/2026-08-24-Build-Track-Repo-Traceability.md)
+- [Network Engineering SPE II notes](references/source-material/2026-08-25-NetworkEngieneerSPE2-Notes-v2.md)
+- [21 August Build Track alignment transcript extract](references/source-material/2026-08-21-Build-Track-Alignment-Transcript-Extract.md)
   — timestamped historical evidence relevant to the Cloud SPE scope.
-- [2 September John Mull clearinghouse meeting notes](references/2026-09-02-John-Mull-Clearinghouse-Meeting-Notes.md)
+- [2 September John Mull clearinghouse meeting notes](references/stakeholder-input/meetings/2026-09-02-John-Mull-Clearinghouse-Meeting-Notes.md)
   — reported current-state findings, outcome gaps, and evidence required for a
   follow-up with Elite Encoder.
-- [2 September Rich, Doug, and Hunter Build Track feedback](references/2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
+- [2 September Rich, Doug, and Hunter Build Track feedback](references/stakeholder-input/meetings/2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
   — stakeholder input on self-sovereign payment, expected performance, failure
   recovery, and recourse; recorded as unresolved direction rather than an
   approved requirement.
-- [8 September Rick Build Track discussion consolidated notes](references/2026-09-08-Rick-Build-Track-Survey-Discussion-Consolidated-Notes.md)
+- [8 September Rick Build Track discussion consolidated notes](references/stakeholder-input/meetings/2026-09-08-Rick-Build-Track-Survey-Discussion-Consolidated-Notes.md)
   — evidence-qualified synthesis of the proposed minimal builder architecture,
   Open Clearinghouse, provisional December deliverables, Cloud SPE boundary,
   and decisions still requiring external or joint approval.
-- [9 September Doug Agent GTM and Build Track alignment meeting context](references/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Context.md)
+- [9 September Doug Agent GTM and Build Track alignment meeting context](references/facilitation/meeting-guides/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Context.md)
   — request, purpose, scope boundaries, and intended evidence for the
   30-minute alignment discussion.
-- [9 September Doug Agent GTM and Build Track alignment findings](references/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Findings.md)
+- [9 September Doug Agent GTM and Build Track alignment findings](references/stakeholder-input/meetings/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Findings.md)
   — evidence-qualified synthesis of the three access paths, commercial Agent
   boundary, open Agent handoff, minimal clearinghouse direction, security risk,
   provisional December outcome, and decisions still requiring approval.
-- [9 September emerging Build Track architecture](references/2026-09-09-Build-Track-Emerging-Architecture.md)
+- [9 September emerging Build Track architecture](references/analysis/2026-09-09-Build-Track-Emerging-Architecture.md)
   — standalone architecture image and evidence-qualified explanation of the
   three access paths, shared builder layer, discovery and payment control,
   Live Runner execution, responsibility boundaries, and unresolved decisions.
 
 ## Architecture alignment working materials
 
-- [Survey and workshop process](references/Build-Track-Architecture-Alignment-Process.md)
+- [Survey and workshop process](references/facilitation/2026-08-26-Build-Track-Architecture-Alignment-Process.md)
   — scheduling sequence, roles, decision classifications, and required outputs.
-- [Survey administration](references/Build-Track-Architecture-Survey.md) —
+- [Survey administration](references/facilitation/surveys/2026-08-27-Build-Track-Architecture-Survey.md) —
   owner guidance for distribution, private collection, and synthesis.
-- [Survey instructions](references/Build-Track-Architecture-Survey-Instructions.md)
+- [Survey instructions](references/facilitation/surveys/2026-08-27-Build-Track-Architecture-Survey-Instructions.md)
   — respondent guidance and neutral agent-interview prompt.
-- [Survey template](references/Build-Track-Architecture-Survey-Template.md) —
+- [Survey template](references/facilitation/surveys/2026-08-27-Build-Track-Architecture-Survey-Template.md) —
   the fillable 10–15 minute Markdown questionnaire.
-- [Workshop Part 1](references/Build-Track-Architecture-Workshop-Part-1.md) — a
+- [Workshop Part 1](references/facilitation/workshops/2026-08-26-Build-Track-Architecture-Workshop-Part-1.md) — a
   60-minute outcomes, current-state, and target-architecture facilitator guide.
-- [Workshop Part 2](references/Build-Track-Architecture-Workshop-Part-2.md) — a
+- [Workshop Part 2](references/facilitation/workshops/2026-08-26-Build-Track-Architecture-Workshop-Part-2.md) — a
   60-minute architecture decision, ownership, and requirements facilitator
   guide.
-- [Doug Build Track feedback discussion guide](references/Doug-Build-Track-Feedback-Discussion-Guide.md)
+- [Doug Build Track feedback discussion guide](references/facilitation/meeting-guides/2026-09-02-Doug-Build-Track-Feedback-Discussion-Guide.md)
   — a 60-minute 15/30/15 agenda for confirming the August vision, architecture
   implications, milestone intent, and decision authority.
-- [John Mull clearinghouse roadmap discussion guide](references/John-Mull-Clearinghouse-Roadmap-Discussion-Guide.md)
+- [John Mull clearinghouse roadmap discussion guide](references/facilitation/meeting-guides/2026-09-02-John-Mull-Clearinghouse-Roadmap-Discussion-Guide.md)
   — a 60-minute 15/30/15 fact-finding agenda covering Pymthouse provenance,
   deployed behavior, contract coverage, ownership, and roadmap.
-- [8 September Rick survey discussion agenda](references/2026-09-08-Rick-Build-Track-Survey-Discussion-Agenda.md)
+- [8 September Rick survey discussion agenda](references/facilitation/meeting-guides/2026-09-08-Rick-Build-Track-Survey-Discussion-Agenda.md)
   — a 60-minute decision-oriented agenda covering the December deliverable
   hypothesis, self-sovereign Agent ambiguity, SDK-versus-gateway architecture,
   discovery, payment, service assurance, ownership, and acceptance evidence.

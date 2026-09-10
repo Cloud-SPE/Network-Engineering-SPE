@@ -10,7 +10,7 @@
 
 **Date completed:** `2026-08-31`
 
-Read the [survey instructions](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/3ce5ec9d31551ee52e8fae8031010f3c35a62a57/docs/references/Build-Track-Architecture-Survey-Instructions.md)
+Read the [survey instructions](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/3ce5ec9d31551ee52e8fae8031010f3c35a62a57/docs/references/2026-08-27-Build-Track-Architecture-Survey-Instructions.md)
 before beginning. Preserve the original questions and answer choices. Replace
 the answer placeholders, mark unanswerable items as **Unknown**, and review the
 completed file yourself before returning it.
@@ -44,7 +44,7 @@ direction, repository approval, or programme approval:
 
 **Confidence:** Medium
 
-**Basis/source:** Respondent's stated authority; Operate Track mandate; `Build-Track-Architecture-Alignment-Process.md` participant/authority map and `NetworkEngieneerSPE2-Notes-v2.md` governance table at survey version `3ce5ec9d`.
+**Basis/source:** Respondent's stated authority; Operate Track mandate; `2026-08-26-Build-Track-Architecture-Alignment-Process.md` participant/authority map and `2026-08-25-NetworkEngieneerSPE2-Notes-v2.md` governance table at survey version `3ce5ec9d`.
 
 ### 2. Missing decision makers
 
@@ -57,7 +57,7 @@ accepted? Name the person, team, repository, and decision where possible.
 
 **Confidence:** Medium
 
-**Basis/source:** `Build-Track-Architecture-Alignment-Process.md`, `Build-Track-Architecture-Survey.md`, and the draft milestones at survey version `3ce5ec9d`; these are planning drafts rather than final approvals.
+**Basis/source:** `2026-08-26-Build-Track-Architecture-Alignment-Process.md`, `2026-08-27-Build-Track-Architecture-Survey.md`, and the draft milestones at survey version `3ce5ec9d`; these are planning drafts rather than final approvals.
 
 **Required owner or follow-up:** Mike to confirm the final participant/authority map; Rich to confirm outcome and payment scope; Rick to confirm cross-track technical gates; John Mull/Elite Encoder and the named repository/deployment owners to provide missing implementation evidence.
 
@@ -79,7 +79,7 @@ execution focus?
 
 **Confidence:** High
 
-**Basis/source:** Respondent's consolidated architecture decision; Operate Track mandate; `Build-Track-Outcome-and-High-Level-Concepts.md`; `Build-Track-Repo-Traceability.md`; draft milestones at survey version `3ce5ec9d`.
+**Basis/source:** Respondent's consolidated architecture decision; Operate Track mandate; `2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md`; `2026-08-24-Build-Track-Repo-Traceability.md`; draft milestones at survey version `3ce5ec9d`.
 
 What should “supported Live Runner service types” mean for December acceptance?
 
@@ -149,7 +149,7 @@ What should an independent builder call in the target architecture?
 
 **Confidence:** High
 
-**Basis/source:** Respondent's consolidated architecture decision and correction; `Build-Track-Repo-Traceability.md` shows that consistency currently exists only inside the Agent while lower layers have incompatible identity, discovery, invocation, pricing, and payment behavior.
+**Basis/source:** Respondent's consolidated architecture decision and correction; `2026-08-24-Build-Track-Repo-Traceability.md` shows that consistency currently exists only inside the Agent while lower layers have incompatible identity, discovery, invocation, pricing, and payment behavior.
 
 ### 7. Agent 2.0 role
 
@@ -172,7 +172,7 @@ should remain in Agent 2.0 and what should move to canonical services.
 
 **Confidence:** High
 
-**Basis/source:** Respondent correction: the Agent product is not salvageable as the target architecture; `Build-Track-Repo-Traceability.md` documents its product-specific registry, pricing, credit, event, and SDK Service layers as disconnected projections rather than authoritative network contracts.
+**Basis/source:** Respondent correction: the Agent product is not salvageable as the target architecture; `2026-08-24-Build-Track-Repo-Traceability.md` documents its product-specific registry, pricing, credit, event, and SDK Service layers as disconnected projections rather than authoritative network contracts.
 
 **Required owner or follow-up:** Agent-development owners must inventory and separate reusable network capabilities/platform artifacts from the Agent product. Josh and Rick should determine technical eligibility and contract conformance; Mike should ensure that reuse does not reintroduce Agent-product or application-adoption requirements.
 
@@ -215,7 +215,7 @@ apply, then distinguish current facts from target recommendations.
 
 **Confidence:** High
 
-**Basis/source:** Respondent's consolidated decision; `Build-Track-Architecture-Alignment-Process.md` registry terminology; `Build-Track-Repo-Traceability.md` current implementation review.
+**Basis/source:** Respondent's consolidated decision; `2026-08-26-Build-Track-Architecture-Alignment-Process.md` registry terminology; `2026-08-24-Build-Track-Repo-Traceability.md` current implementation review.
 
 ### 10. Dynamic discovery and selection
 
@@ -251,7 +251,7 @@ What is their relationship?
 
 **Confidence:** High
 
-**Basis/source:** `Build-Track-Repo-Traceability.md` explicitly did not verify hosted Pymthouse's codebase, deployed revision, ownership, or relationship to `livepeer/clearinghouse`.
+**Basis/source:** `2026-08-24-Build-Track-Repo-Traceability.md` explicitly did not verify hosted Pymthouse's codebase, deployed revision, ownership, or relationship to `livepeer/clearinghouse`.
 
 **Person who can verify:** John Mull or another Elite Encoder representative, together with the `livepeer/clearinghouse` maintainer and deployment owner.
 
@@ -327,7 +327,7 @@ holding crypto” is satisfied? Mark all that apply.
 
 **Confidence:** High
 
-**Basis/source:** Respondent's consolidated payment decision; seven builder outcomes; draft milestones; current gaps in `Build-Track-Repo-Traceability.md`.
+**Basis/source:** Respondent's consolidated payment decision; seven builder outcomes; draft milestones; current gaps in `2026-08-24-Build-Track-Repo-Traceability.md`.
 
 **Comments or constraints:** “Walletless” is an outcome, not a product name. Both paths should converge after authorization. Compatibility with the wallet-funded path may be externally owned; that does not remove the requirement for a named owner and observable acceptance evidence.
 

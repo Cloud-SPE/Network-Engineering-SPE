@@ -37,3 +37,6 @@ temp/
 docs/references/*-transcript.txt
 docs/references/*-Transcript.txt
 docs/references/*-gemini-*-notes.md
+docs/references/**/*-transcript.txt
+docs/references/**/*-Transcript.txt
+docs/references/**/*-gemini-*-notes.md

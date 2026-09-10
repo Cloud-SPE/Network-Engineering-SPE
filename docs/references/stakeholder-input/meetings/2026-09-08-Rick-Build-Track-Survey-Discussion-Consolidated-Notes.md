@@ -25,8 +25,8 @@ automated meeting-note variants reviewed locally on 8 September. Those raw
 records are intentionally excluded from version control; this consolidated
 record preserves the Build Track-relevant findings and evidence limitations.
 
-The [meeting agenda](2026-09-08-Rick-Build-Track-Survey-Discussion-Agenda.md),
-[Rick's survey response](Build-Track-Architecture-Survey-Response-Rick-Staa-2026-09-07.md),
+The [meeting agenda](../../facilitation/meeting-guides/2026-09-08-Rick-Build-Track-Survey-Discussion-Agenda.md),
+[Rick's survey response](../surveys/2026-09-07-Build-Track-Architecture-Survey-Response-Rick-Staa.md),
 and [Rich, Doug, and Hunter feedback](2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
 provide context but are not substitutes for the meeting record.
 

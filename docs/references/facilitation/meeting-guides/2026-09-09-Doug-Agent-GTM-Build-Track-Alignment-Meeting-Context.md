@@ -109,4 +109,4 @@ target recommendation, accepted decision, unknown, or out of Cloud SPE scope.
 
 - A participant-provided raw transcript was reviewed locally and is
   intentionally excluded from version control.
-- [Evidence-qualified findings](2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Findings.md)
+- [Evidence-qualified findings](../../stakeholder-input/meetings/2026-09-09-Doug-Agent-GTM-Build-Track-Alignment-Meeting-Findings.md)

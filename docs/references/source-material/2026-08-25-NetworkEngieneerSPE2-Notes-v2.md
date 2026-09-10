@@ -12,7 +12,7 @@
 > excludes demand generation, application adoption, application counts,
 > production-traffic targets, and live-demand evidence. See decision
 > `netspe-vun.7` and the
-> [current milestone draft](../design-docs/cloud-spe-september-december-2026-milestones-draft.md#application-adoption-exclusion).
+> [current milestone draft](../../design-docs/cloud-spe-september-december-2026-milestones-draft.md#application-adoption-exclusion).
 
 ---
 

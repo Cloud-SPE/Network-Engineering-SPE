@@ -1,6 +1,7 @@
 # Doug Build Track Feedback Discussion Guide
 
-**Status:** Draft facilitator guide
+**Status:** Historical draft facilitator guide; superseded in execution by the
+9 September 2026 Doug–Mike alignment meeting
 
 **Prepared:** 2 September 2026
 
@@ -22,12 +23,12 @@ SPE milestones or wider Network Engineering SPE architecture.
 
 ## Required pre-read
 
-- [21 August transcript extract](2026-08-21-Build-Track-Alignment-Transcript-Extract.md)
-- [Seven builder outcomes](Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise)
-- [Current-state component diagram](Build-Track-Repo-Traceability.md#component-diagram)
-- [Draft September–December milestones](../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
-- [Josh's survey response](Build-Track-Architecture-Survey-Response-Josh-2026-08-31.md)
-- [2 September Rich, Doug, and Hunter feedback](2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
+- [21 August transcript extract](../../source-material/2026-08-21-Build-Track-Alignment-Transcript-Extract.md)
+- [Seven builder outcomes](../../analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise)
+- [Current-state component diagram](../../analysis/2026-08-24-Build-Track-Repo-Traceability.md#component-diagram)
+- [Draft September–December milestones](../../../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
+- [Josh's survey response](../../stakeholder-input/surveys/2026-08-31-Build-Track-Architecture-Survey-Response-Josh.md)
+- [2 September Rich, Doug, and Hunter feedback](../../stakeholder-input/meetings/2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
 
 ## Starting evidence, not assumed decisions
 

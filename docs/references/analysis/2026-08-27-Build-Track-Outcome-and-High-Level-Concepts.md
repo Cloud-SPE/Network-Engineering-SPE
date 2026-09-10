@@ -4,7 +4,7 @@
 **Date:** 27 August 2026
 **Track:** Easy to Build — Builder
 **Track owner:** Mike Zupper
-**Source:** [Network Engineering SPE II notes](NetworkEngieneerSPE2-Notes-v2.md)
+**Source:** [Network Engineering SPE II notes](../source-material/2026-08-25-NetworkEngieneerSPE2-Notes-v2.md)
 
 > **Scope correction:** Demand generation, application adoption, application
 > counts, production-traffic targets, and live-demand evidence are not Build

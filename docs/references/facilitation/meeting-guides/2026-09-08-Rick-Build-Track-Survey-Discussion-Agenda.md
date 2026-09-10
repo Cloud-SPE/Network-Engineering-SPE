@@ -1,6 +1,7 @@
 # Rick Build Track Survey Discussion Agenda
 
-**Status:** Draft facilitator agenda
+**Status:** Historical facilitator agenda; meeting held 8 September 2026 and
+superseded by the consolidated meeting record
 
 **Meeting date:** 8 September 2026
 
@@ -76,12 +77,12 @@ Rick knows, what he recommends, and what only Doug can answer.
 
 ## Required pre-read
 
-- [Rick's survey response](Build-Track-Architecture-Survey-Response-Rick-Staa-2026-09-07.md)
-- [Josh's survey response](Build-Track-Architecture-Survey-Response-Josh-2026-08-31.md)
-- [Shane's survey response](Build-Track-Architecture-Survey-Response-Shane-2026-09-01.md)
-- [Rich, Doug, and Hunter feedback](2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
-- [Current repository traceability](Build-Track-Repo-Traceability.md)
-- [Draft September–December milestones](../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
+- [Rick's survey response](../../stakeholder-input/surveys/2026-09-07-Build-Track-Architecture-Survey-Response-Rick-Staa.md)
+- [Josh's survey response](../../stakeholder-input/surveys/2026-08-31-Build-Track-Architecture-Survey-Response-Josh.md)
+- [Shane's survey response](../../stakeholder-input/surveys/2026-09-01-Build-Track-Architecture-Survey-Response-Shane.md)
+- [Rich, Doug, and Hunter feedback](../../stakeholder-input/meetings/2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
+- [Current repository traceability](../../analysis/2026-08-24-Build-Track-Repo-Traceability.md)
+- [Draft September–December milestones](../../../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
 
 ## Known alignment before the meeting
 

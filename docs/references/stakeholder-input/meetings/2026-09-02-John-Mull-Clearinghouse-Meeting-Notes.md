@@ -12,7 +12,7 @@
 
 **Execution bead:** `netspe-vun.19`
 
-**Discussion guide:** [John Mull Clearinghouse Roadmap Discussion Guide](John-Mull-Clearinghouse-Roadmap-Discussion-Guide.md)
+**Discussion guide:** [John Mull Clearinghouse Roadmap Discussion Guide](../../facilitation/meeting-guides/2026-09-02-John-Mull-Clearinghouse-Roadmap-Discussion-Guide.md)
 
 ## Purpose and method
 

@@ -38,11 +38,11 @@ implementation selection, security review, or architecture approval.
 
 ## Required pre-read
 
-- [Repository traceability and current gaps](Build-Track-Repo-Traceability.md)
-- [Seven builder outcomes](Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise)
-- [Josh's clearinghouse recommendations](Build-Track-Architecture-Survey-Response-Josh-2026-08-31.md#section-5-clearinghouse-and-payment)
-- [21 August Build Track transcript extract](2026-08-21-Build-Track-Alignment-Transcript-Extract.md)
-- [Draft September–December milestones](../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
+- [Repository traceability and current gaps](../../analysis/2026-08-24-Build-Track-Repo-Traceability.md)
+- [Seven builder outcomes](../../analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise)
+- [Josh's clearinghouse recommendations](../../stakeholder-input/surveys/2026-08-31-Build-Track-Architecture-Survey-Response-Josh.md#section-5-clearinghouse-and-payment)
+- [21 August Build Track transcript extract](../../source-material/2026-08-21-Build-Track-Alignment-Transcript-Extract.md)
+- [Draft September–December milestones](../../../design-docs/cloud-spe-september-december-2026-milestones-draft.md)
 
 Ask John to bring non-sensitive references to the relevant repositories,
 branches or releases, deployed version identifiers, public API documentation,

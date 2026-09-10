@@ -14,8 +14,8 @@ This document is the survey administrator's guide for collecting and
 synthesizing the Build Track architecture pre-work. It is not intended to be
 sent to respondents. The respondent-facing package consists of:
 
-- [survey instructions](Build-Track-Architecture-Survey-Instructions.md); and
-- [fillable survey template](Build-Track-Architecture-Survey-Template.md).
+- [survey instructions](2026-08-27-Build-Track-Architecture-Survey-Instructions.md); and
+- [fillable survey template](2026-08-27-Build-Track-Architecture-Survey-Template.md).
 
 The survey is diagnostic. It should expose agreements, conflicting
 assumptions, missing facts, missing components, and decision-authority gaps
@@ -110,11 +110,11 @@ individual positions and avoid merge conflicts or accidental consensus.
 
 Include the two respondent-facing files and links to:
 
-- [the architecture-alignment process](Build-Track-Architecture-Alignment-Process.md);
-- [the current-state diagram](Build-Track-Repo-Traceability.md#component-diagram);
-- [the seven builder outcomes](Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise);
+- [the architecture-alignment process](../2026-08-26-Build-Track-Architecture-Alignment-Process.md);
+- [the current-state diagram](../../analysis/2026-08-24-Build-Track-Repo-Traceability.md#component-diagram);
+- [the seven builder outcomes](../../analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md#builder-promise);
   and
-- [the draft milestone proposal](../design-docs/cloud-spe-september-december-2026-milestones-draft.md).
+- [the draft milestone proposal](../../../design-docs/cloud-spe-september-december-2026-milestones-draft.md).
 
 Use a separate scheduling poll. Combining architecture and availability makes
 the survey harder to complete within 10–15 minutes and complicates synthesis.

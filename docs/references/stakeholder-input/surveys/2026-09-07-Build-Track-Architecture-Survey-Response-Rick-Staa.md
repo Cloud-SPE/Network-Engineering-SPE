@@ -10,7 +10,7 @@
 
 **Date completed:** 2026-09-07
 
-Read the [survey instructions](Build-Track-Architecture-Survey-Instructions.md)
+Read the [survey instructions](../../facilitation/surveys/2026-08-27-Build-Track-Architecture-Survey-Instructions.md)
 before beginning. Preserve the original questions and answer choices. Replace
 the answer placeholders, mark unanswerable items as **Unknown**, and review the
 completed file yourself before returning it.

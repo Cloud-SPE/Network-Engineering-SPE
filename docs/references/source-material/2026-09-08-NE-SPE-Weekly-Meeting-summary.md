@@ -5,6 +5,9 @@ approved decision record or Cloud SPE task tracker
 
 **Meeting date:** 8 September 2026
 
+**People represented in updates or discussion:** Mehrdad Sadeghi, Mike Zupper,
+Josh Allmann, Elliott Conway, Shane, Rich O'Grady, and Doug Petkanics
+
 The action-item checkboxes below are preserved from the supplied source
 summary. Cloud SPE work state and ownership remain authoritative in Beads.
 
