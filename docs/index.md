@@ -7,6 +7,14 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 ## Durable guidance
 
+- [Primary builder-engine architecture proposal](design-docs/self-sovereign-open-builder-stack-draft.md)
+  — consolidated 23 September direction: new backend packages/services,
+  enterprise extension, persistence and acceptance boundaries.
+- [Architecture diagrams and sequences](design-docs/open-builder-architecture-and-sequences.md)
+  — repository roles, imported/service integration, self-operated/hosted payments,
+  shared execution and separate accounting.
+- [Capability and gap inventory](design-docs/console-capability-and-gap-matrix.md)
+  — pinned implementation evidence, new homes and unverified integration gaps.
 - [Repository architecture](../ARCHITECTURE.md) — boundaries, information model,
   and source precedence.
 - [Core beliefs](design-docs/core-beliefs.md) — principles for shaping the SPE
@@ -24,6 +32,16 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 ## Source material and evidence
 
+- [23 September John–Mike architecture discussion](references/stakeholder-input/meetings/john-mike-build-track-architecture-discussion-0923-2026.txt)
+  — supplied transcript; working alignment on the reusable backend, enterprise
+  boundaries and upstream scope, qualified in the primary architecture.
+
+- [21 September Mike–Josh clearinghouse-batteries conversation](references/stakeholder-input/meetings/2026-09-21-Mike-Josh-Clearinghouse-Batteries-Conversation.md)
+  — supplied conversation, Inc's stated support direction, payment-core scope,
+  credential options, ticket-EV accounting, and the seven-outcome boundary.
+- [21 September capture of Josh's Payments Clearinghouse proposal](references/source-material/2026-09-21-Josh-Payments-Clearinghouse-Reference.md)
+  — preserved Notion PDF, provenance, source limitations, and payment-core
+  implications for the proposed shared open-source clearinghouse.
 - [Complete chronological reference index](references/index.md) — canonical
   catalog of every versioned reference, including its date, exact context,
   functional category, lifecycle status, participants, and provenance limits.

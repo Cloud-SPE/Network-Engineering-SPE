@@ -1,6 +1,6 @@
 # Build Track Architecture Workshop Part 1: Outcomes and Target Architecture
 
-**Status:** Draft facilitator guide
+**Status:** Historical facilitation draft; mandatory workshop sequence superseded on 21 September 2026
 
 **Prepared:** 26 August 2026
 
@@ -11,6 +11,13 @@
 **Facilitator:** Mike Zupper
 
 **Execution bead:** `netspe-vun.10`
+
+## September 2026 process update
+
+This is optional historical facilitation material under the
+[updated alignment process](../2026-08-26-Build-Track-Architecture-Alignment-Process.md#september-2026-process-update).
+Its execution bead now tracks proposal preparation. This does not record the
+workshop as completed.
 
 ## Suggested calendar title
 

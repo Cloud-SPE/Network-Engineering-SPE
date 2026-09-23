@@ -1,0 +1,926 @@
+00:00:00 Speaker 1
+Invent the clearinghouse work you already did on Payment House. That also means the work you guys did on that console app is going to be changed and reinvented again. So, like the the MCP server is now storyboard console has one, and now this new open source one is also going to be reinventing. Thankfully, though, based on what I'm doing, I expect to take. The console app, and fix it, meaning rewrite it to use, you know, the stuff I'm sharing in that diagram. So that diagram, let me pull that up quick and share. Customer, your demo customer app. Yeah, let me share my screen and we can get into the specifics here. So, um, this this is that diagram I shared with you, right?
+
+00:00:59 Speaker 1
+Now you can see I got tons of documentation on the left here. We're going to ignore that for now. You can see my screen,
+
+00:01:05 Speaker 2
+Right? Yeah, just moving.
+
+00:01:06 Speaker 1
+Some windows around. Let me see if I can zoom in here a little bit. I can't zoom in on that one, but I can zoom in on this one. All right. So, like, looking at this.
+
+00:01:26 Speaker 1
+You know, and this is the diagram that we talked about. I want to ignore this enterprise part for now. We'll come back to this one in a second, but I want to come to this guy right here. So, actually, I'll start at the bottom. So, remote signer, we're completely familiar with, right? There's nothing really to talk about here at all. I think so.
+
+00:01:47 Speaker 2
+Other than that's a good point. That's a good place to start.
+
+00:01:51 Speaker 1
+We know how this works. You've seen it with Payment House. I've seen it with. Livepeer modules. I've seen it with my own clearinghouse on top of this. So, like, I know how this works inside and out. And discovery and ticket signing is what it does. That's it. Like, and it sends the data, the transport data to Kafka. So, like,
+
+00:02:13 Speaker 2
+We know that part. Yeah, that's these are these are core primitives that I think we might just settle on up front. Is we have a identity webhook or something in there. And when we have Kafka for usage, we keep those the same, and then we move from there.
+
+00:02:31 Speaker 1
+Yeah. So remote signer, I think we're in agreement. Everyone knows what that is. We know what it does. We know what it provides. We're not changing that. So Kafka remote signer, that's in stone. In fact, Payment House batteries they already are built on top of that. So that's good. We have at least we have one agreement on one piece of the architecture that everyone agrees on,
+
+00:02:55 Speaker 2
+And it helps us define what problem we're solving too. Because any changes to pricing or the way payments are made on, like at the network level, off chain. When I say payments, I mean off chain tickets. That that's that's sort of out of scope, right?
+
+00:03:09 Speaker 1
+I think for what we're initially doing.
+
+00:03:11 Speaker 2
+Yeah,
+
+00:03:11 Speaker 1
+I'm not touching remote signer at all. It does what it does. We're just gonna have to use it.
+
+00:03:16 Speaker 2
+Yeah. Okay. That makes sense.
+
+00:03:18 Speaker 1
+Like now. I would argue that you know our discussion last week, where you and I were talking about is it session based or account based? How do you do refunds and debits and credits and all that? Like I still feel feel like that's broken and it needs to be fixed. But I'm not doing that in this in this bill track.
+
+00:03:37 Speaker 2
+Yeah, I agree.
+
+00:03:38 Speaker 1
+We can have that discussion with Josh in the future, and I think that's going to be an important discussion to have. But right now, that's not part of it. So we can. We're gonna put that whole thing aside because it does what it does, and we're just gonna use it, and that's fine. Now, the new piece that was added was batteries, so that's this thing. And guess what? Batteries is a repo that sits on top of Remote Signer, so Batteries uses Remote Signer but gives you simplistic stuff that Payment House already does. So Payment House does a lot of what Batteries does, but differently.
+
+00:04:18 Speaker 1
+And and more than that, so batteries is allocations and network accounting, and it has a SQLite ledger for that piece. We're not changing that either. Now, if we find that there's something in there it doesn't work, or it needs to be enhanced to do more things, and I think the provisioning and reporting APIs are something that it really isn't that good at right now. Like it doesn't. It's really basic.
+
+00:04:48 Speaker 2
+Yeah, it's a good question. Like, we probably, I wonder how far we go with that because SQLite could do all the usage reporting and stuff, but it's not going to really handle like super duper heavy queries. I think the primary, the maybe the expectation for customers that they do eventually pick something like a Lago or an Open Meter to push that SQLite data to, but but let's say if it was like user specific queries. That's probably getting pretty lightweight on the on this.
+
+00:05:19 Speaker 1
+Yeah, this is not a querying engine. That's the whole point of this thing. Is like, it's a write ahead log. It's an append only log. So, if you need to do customized querying and capabilities, you need to basically pull this account this write ahead log into your data. Yeah. Like, and if you see here, like right now, it basically now this is where we're going to get into some things. This is the part that. I don't care about any of this in here because I'm not changing any of this. That's why, when Josh offered yesterday to host this for me, I was like, " Oh, perfect, sure." Like, host this because guess what? I don't want the when we talk about a self - sovereign approach. There's two things that the build outcome requires, and I'm gonna flip to that in a second here. Let me just show you that part.
+
+00:06:08 Speaker 2
+And one quick thought too on the on the usage and date of that whole like payment service as a whole. When we look at projects like Arc Network and some others, I really think that one day the usage can be on chain and the payments are on chain, fully and in a trustless way. Usage maybe not so much, but it's definitely feasible, and that kind of puts that in that little box where it can be swapped out. I think down the road. But what's really cool about.
+
+00:06:34 Speaker 1
+This part here you're talking about where which part?
+
+00:06:37 Speaker 2
+Yeah, like network ledger, batteries, network accounting. You know the the auth the authentication. If you think about like something like Arc Network, where people can like deposits and withdraw and have a wallet of their own, identity of their own.
+
+00:06:50 Speaker 1
+But why would that be up? Why would that be like? How would you replace that in here? Because like, technically, you need like. Are you saying batteries itself would be replaced by Arc or.
+
+00:07:05 Speaker 2
+Very likely down the road?
+
+00:07:07 Speaker 1
+How does that integrate with Remote Signer?
+
+00:07:09 Speaker 2
+Well, that is the open question that probably would take us too half the day to discuss. But there's a few options really, and and one of them is just like, use you can import Ticket Broker into something like Arc. Instantly works EVM compatible. But the problem with Ticket Broker is, um, in order for it to work in a smart contract, that means in the EVM chain, um, it would still have to have the raw private key to sign a ticket. Nothing can sign a ticket without a raw private key. I haven't looked into this as much. Yeah, that's what I'm saying.
+
+00:07:45 Speaker 1
+That part of Arc makes it like a non - starter. Well,
+
+00:07:50 Speaker 2
+And I think it's a non - starter for everything. Multisig, everything on Arbitrum. You can't run a gateway in the EVM. You just can't. There's no way to do it. You can put deposit on a contract, but you can't sign a ticket without the private key.
+
+00:08:05 Speaker 1
+Right, but that's what I'm saying is that in that just that fact alone is something that you're gonna have to basically say, you know what, to get Arc on the network, then you got to really redesign something somewhere. Yeah,
+
+00:08:17 Speaker 2
+That's that's another trap.
+
+00:08:18 Speaker 1
+I don't want to even get into that because that's where I said deep rabbit hole. Yeah, you and I will be we'll be talking about that and working on that for months before, and ultimately it'll result in the same problem. Livepeer Inc. won't support us, and then we'll be off doing our own thing. So this is I want to just.
+
+00:08:34 Speaker 2
+I just was mentioning because I I know there are auditors and smart contract people coming in that are looking at stuff like that, and I've been kind of shooting these ideas over to people like Chris and Doug and those guys to see if, because I I know they may be waiting on us to and depending on this this database you know based solution so to speak, but I think down the road they should really be thinking about that within the next three to six months.
+
+00:08:57 Speaker 1
+Because I agree, I agree, I can't argue with that. But but yeah,
+
+00:09:03 Speaker 2
+This looks good, and I would consider that changing a remote signer, so it's out of scope for what we're looking.
+
+00:09:08 Speaker 1
+At. Yeah, so that's what I'm saying. So now we're we're in agreement here. I think there's one area that is of concern to me is this provisioning API. I think I got to look at that. I haven't run batteries. I looked at the code. I looked at the output. I looked. I did some deep dive on it, so I understand at a high level, but I haven't used it, so I really don't want to. I don't want to assume that this is going to be good, but I think there's going to be changes to batteries to make sure that whatever the data it's collecting, we have a better way of getting that data out. And I think that's something we'll have to look at. But again, it'll be a minor change to that repo. I'll put a PR up. I'll have Josh look at it. Again, we'll have to look at that when we get there. But we will only know that part better when we get up to this part here.
+
+00:09:57 Speaker 1
+The enterprise, or not the enterprise, this this open components here. So, one live runner. This part here, I think we are completely in agreement. Live runner, remote signer, batteries. The this layer here, we're not touching at all for for what we are doing in the bill track. Everything that happens here, we're gonna just accept as the way it is, and whatever issues or limitations or concerns we have. We'll have to raise them if needed, but Josh is going to be fixing any of this crap. None of this is going to be within our scope. Now, if we have time and we could put PRs up to make changes to fix things that we find in here, that's fine. We'll do that. But I want to try to not do any of that. Most of this stuff is going to be, we will open up an issue in these repos and describe what we need and let Josh implement that. Makes sense.
+
+00:10:55 Speaker 1
+And then, if he can't implement them, if but at least he agrees with the idea, we'll put a PR up, and then we'll implement them. But we will agree with him first that here's the idea. If you agree with the idea, we'll implement it. You approve it, you merge it in. That's fine. Or you implement it and approve it, and then merge it in. But either way, if we have an issue, we're gonna document it in these repos so that he can address them. So I think this layer here is done. There's nothing more to discuss here. This is. Clear,
+
+00:11:26 Speaker 2
+Right? Yeah, I think so. Yeah, yeah, like you said, reporting and provisioning API is a is a thing. The provisioning kind of fits in with that top part that you had. You had mentioned, so I see the events maps all the way down to provision allowances and stuff. The allowances and grants are living inside of batteries right now today, but up top on the top of your map, I think you have. Entitlements and retail billing. There, entitlements really go with allowances. Almost, they're. No term entitlement. Well, let me. What do you think of the term entitlement?
+
+00:12:04 Speaker 1
+So this, we'll come to that in a second. But I, I hear, I know where you're going, and this is something that I hit with Blue Claw immediately, and I think we'll talk about this one second. Let me just drop back down to this middle box, and we'll come back to that one in a second because I know where you're going with that, and I ran into the same issue. And I'll and I'll show you what I did in Blue Claw to address that. But we'll we'll come back to that one. So the next piece up in this puzzle here, right? This is all good. We're all happy with this. This piece right here, the Worker Python SDK. So we already know that if you're going to send a job into the network, you need the ability to do so. The only way to send a job to the network today is through this Python SDK.
+
+00:12:51 Speaker 2
+Pretty much,
+
+00:12:51 Speaker 1
+Yeah. So, like,
+
+00:12:54 Speaker 2
+That's our canonical gateway at the moment,
+
+00:12:57 Speaker 1
+Right? So, console. The way it works is, you submit a job to the console. The console executes the the the work against it and sends it to the runner. Like, unless I'm mistaken on that one.
+
+00:13:15 Speaker 2
+So there's. There's two things to think about. One first first thing to think about is that Live Runner was sort of built with the intention of being able to run this from a browser. That's why the gRPC was dropped and remote signing. That's why the SSL certificates were needed on the the discovery. The idea was that we wanted to enable the use case of someone literally sending a job from a browser to the network.
+
+00:13:41 Speaker 1
+But you can't send a job to a browser from the browser to the runner because there's, Cores issues. There's domain issues. There's SSL issues.
+
+00:13:51 Speaker 2
+Well, yeah, at large across the network, yes. But under the current stack, you can, I believe, um, part of the latest work. If you have an orc that has a valid SSL, and you're using Live Runner and you're on zero nine two, and you're using remote signing, I actually did build Gateway Web, which does that.
+
+00:14:11 Speaker 1
+Yeah, but Gateway Web has to have cores enabled for that runner to work.
+
+00:14:18 Speaker 1
+How do you get around the the cross origin support?
+
+00:14:23 Speaker 2
+So, cross. I I maybe need to double check something, but I don't think you'll run into a chorus block interacting with the orchestrator directly. But if you put, you will. Really? Okay.
+
+00:14:37 Speaker 1
+You will. The only way you won't is if the orchestrator allows. If the orchestrator slash live runner exposes cross origin headers that says, " I don't care." Everyone's allowed, right? That might just be what what's going on, and they might have hard coded that in the app. And if they did, that's terrible. But okay, fine. Let's just assume that's the case. If the if the orchestrator slash live runner exposes cross origin headers that doesn't care who runs it, anyone can run it from the browser. Then that's fine. I don't see the real question.
+
+00:15:08 Speaker 2
+I have is to have course restriction on a work.
+
+00:15:13 Speaker 1
+No, sorry, but but that's. Hold on, though. Let let me just take a step back right now. What I saw in the app, ignoring the browser calling, because I saw in Payment House there was a gateway web, and that gateway web component is used by the console app.
+
+00:15:33 Speaker 2
+Yeah, it was a quick hack, honestly. Like we weren't really sure that we were going to stick with that. The idea was.
+
+00:15:40 Speaker 1
+I don't think that's normal, right? Like, I don't think most. Builder, like if I'm if I'm building an app, like I don't want my API keys coming into the browser over the network, right? Like you typically have a server that handles that kind of stuff.
+
+00:15:58 Speaker 2
+No, yeah,
+
+00:15:59 Speaker 1
+There might be some UI cases, like what I have here, for example. If I go into, you know, here, I'm. This is BlueCloth. I go here to my playground. Like, hey, this is a browser. This is a browser client sending work to orcs. You know what I mean. So, you know, sure, in this kind of scenario, you might want to do something like that.
+
+00:16:23 Speaker 2
+That's kind of the use case. I mean, it's not a requirement at all, and and actually, one reason for not doing it is because the Python gateways are canonical right now. That's right. So, and you know, I I fully agree there. No, no, no reason to this, but just keeping the idea open that that we we technically could. Use this in some cases at some point, where where we're just routing from a browser. I think now, like way the gateway.
+
+00:16:51 Speaker 1
+Technically, yes, but that's not going to be documented as part of the build track,
+
+00:16:56 Speaker 2
+Right? I think so. Yeah, yeah. And and with with now again,
+
+00:16:59 Speaker 1
+Like this is where we start to say what's in scope, what's not in scope. And right now,
+
+00:17:04 Speaker 2
+I think, Lisa. Yeah, I always start high level and dive it in. So, yeah.
+
+00:17:09 Speaker 1
+And that's fine. Again, I think that you know you have good ideas, and they are well thought out. And I just think that they are beyond the scope of what we can do because we have until December, dude. It's not like we're sitting here working forever. We and again, I don't know how much that 8k means to you every month. You know what I mean? But like, it's gonna be critical. If you're gonna work, I mean, I know it's critical from you from a financial perspective, but do you really want to work? Sixty, eighty hours for that AK, or do you want to work thirty hours for that AK? Right, right. Or rather, in fact, you're only on the hook for twenty four hours. Do you want to work twenty four hours for that AK, or do you want to work sixty hours for that AK?
+
+00:17:51 Speaker 2
+I'll give you thirty at least.
+
+00:17:53 Speaker 1
+Well, that's what I'm saying. Like you, you really have to look at it and say, you know what? I'm going to put all the extras to the side, and I'm going to deliver just the minimum. We can only deliver just what is required. Everything else we have to put on hold.
+
+00:18:08 Speaker 2
+So some degree, it's healthy for the network to start getting used to that too, because they're too. I mean, at least from the Chung perspective, they are too used to. We can do all this great shit, man. This is awesome.
+
+00:18:19 Speaker 1
+We can do this. We can do that. Let's build it all. You don't build shit unless you have a customer paying for it.
+
+00:18:24 Speaker 2
+Yeah, and if and like as a network, like think about like livepeer network, like Congress, like if you you know you you put together a committee to do something and. They go and work on something else, right? It's it's a frustrating thing from a governance perspective. So, somebody who voted on it who had a vision for it might go and think, "What happened here?" So, if if at least we stay on track, then certainly we can. There may be people that dreamed for more, but you know what? Those people that were living in their own world, like what we're going to do is what we say we're going to do. I think it's I like that about working. But what I've seen your work output in the past, that's been mostly the pattern I've seen is that you deliver exactly what was committed.
+
+00:19:02 Speaker 2
+Nothing extra. Sometimes that could be a a pain point towards the end of things. But at the end of the day, you know, you're able to stand behind your work, and that's what's most important.
+
+00:19:11 Speaker 1
+Well, remember with in NAP, that was the same thing. They kept coming up with new things, new things, new things, new things, and we're like, " Yo, we're not doing new things. Didn't we? Didn't plan for this? Like, we're not going to sit here and work now. You know, we didn't. We did a lot of extras at the end of NAP that we were not on the hook for. And the reason why is because you know you can't be inflexible. You have to give and take on some cases, but we're not going to give and take into a a point where we're taking 24 hours of work for 8k and turning it into 80 hours of work for 8k. Now you're a McDonald's employee,
+
+00:19:46 Speaker 2
+Right?
+
+00:19:47 Speaker 1
+You know what I mean? Like I, my my life and Speedy's life, we can't afford to be McDonald's employees. You know what I mean? Like we can't, like we have, we can't afford that. You're living that McDonald's life right now. In fact, you might even be like a volunteer that gets a you know a per diem. Like you're you're worse than a McDonald's employee right now. The amount of abuse they do to you.
+
+00:20:08 Speaker 2
+Yeah, I appreciate working with you. Yeah, thank you. That's a good perspective. It's true. I need I need that the feedback.
+
+00:20:16 Speaker 1
+But guess what? In this project, you're going to be able to work on this work as if it were your job, right? And you're going to get paid properly. And guess what? You're gonna have free time to do what you want then. Yeah, that's so. Then like your ideas of comfy stream and payment house and and all arc and all this stuff, you can do those things in addition to this.
+
+00:20:38 Speaker 2
+Yeah, that's where we actually see things work out.
+
+00:20:40 Speaker 1
+Yeah, the best part here is that once we get this part ironed out, you could actually build the payment house that that is the equivalent of. What Josh has already built, like you could take the remote signer and batteries, and now you can top of that the shit you want.
+
+00:21:03 Speaker 2
+Right. Yeah. Can build. And then guess what?
+
+00:21:05 Speaker 1
+You're really what you're really talking about for Payment House is this part: checkout plans and invoices, customer identity, and you're talking about this these parts. So like you're literally combining this layer here and this layer here. Right. In a branded approach, so like, if you start to see that, you can take these pieces that are that are here and put your code on top of it. You don't have to rebuild stuff.
+
+00:21:35 Speaker 2
+That was my plan. That was my plan back in June, and I tried it. Well, I won't tell the story again, but you know how it went.
+
+00:21:40 Speaker 1
+I know the story. You and I've talked about it.
+
+00:21:43 Speaker 2
+All right, look at look at focus in. So all right,
+
+00:21:45 Speaker 1
+So let's get back to the diagram here.
+
+00:21:48 Speaker 2
+It seems like we need some server for that Python SDK.
+
+00:21:52 Speaker 1
+Right, so that's this part. So now, this the part that I'm looking at as as a pretty much. This a net new thing that we're gonna have to build. Like it, the logic exists in the console app today, so we're gonna try to take the console app and fix it. So we're gonna whatever that means. It means basically. Taking the separating the UI and the backend, which I think it already has that today. Or actually, I think it's a Next. js app today that uses.
+
+00:22:23 Speaker 2
+Yeah, I'm curious what what you want from Console specific. We did like basically totally rebuild it into that early access web page, and we can again pull back an old fork or something. But but Console was was was really sort of a demo implementation of the full payments flow. You know, check out, add your payment method, check your usage, play with the playground. It was all that. And and it's not that anymore, but we can roll back to it and fork it. But yeah,
+
+00:22:52 Speaker 1
+No, I don't. What I plan to do here is this repo as it exists right now is going to get deleted. I mean, not deleted in the sense that, like, right now it's a Next. js app, right? Yeah. Like the whole thing is Next. js. Yeah. And I think there's nothing wrong with Next. js, but I think the problem is, like. Who is going to support this? That's the real question. Like, it is that I can't as a like if I wanted to blue if I wanted to run Blue Claw or Payment House or Frameworks even if I wanted to build an app on top of this I can't. Like this a welded solution, right? This a a kitchen sink approach.
+
+00:23:42 Speaker 1
+That lets you. This is the. This is an enterprise app. So when we look at our diagram here, this is this part right here. Right.
+
+00:23:51 Speaker 2
+Yeah. Yeah.
+
+00:23:52 Speaker 1
+And even it's this, but unfortunately, it's this without this. It's this and hardcoding payment house and runner. Like it's runner payment house and this. This whole layer here doesn't exist.
+
+00:24:07 Speaker 2
+I would almost suggest we start with a new app instead of trying to play with console. It just has had a couple.
+
+00:24:12 Speaker 1
+Okay, I'll leave console alone. But I was told look at console, and that's why I was thinking, okay, if we're gonna look at console, I'll take the console app and then move that out. So if you're if we're saying it's not that, then that's fine. What I won't do then is I won't worry about console. What I will do though is, I think console is good from this perspective, where there's an open source reference UI. Yeah, like you. There's it gives you a basic user interface, but technically you don't even need this. Like this right here, the UI part is not needed, and I think most enterprise deployments or app builder deployments won't use this user interface. It's yeah,
+
+00:24:55 Speaker 2
+It's you. Yeah,
+
+00:24:56 Speaker 1
+I've learned the headless end endpoint is all you're gonna want.
+
+00:25:00 Speaker 2
+Yeah, I agree. Like there's ways you can make like a create next app example script or something just like quickly generates a. Framework, you know, or something like that.
+
+00:25:09 Speaker 1
+Yeah, a little scaffold on top of these REST APIs. And again, I think that might be useful for someone to see how would I build a enterprise app. Now, that's where I keep coming back to. Okay, what we need to do in the build track is get this part correct.
+
+00:25:25 Speaker 2
+Yeah, yeah. So yeah,
+
+00:25:27 Speaker 1
+We got to get this correct and this part integrated. So like this is the thrust of the work we're gonna do right here.
+
+00:25:36 Speaker 2
+Yeah, let's let's dive in on that a little bit. So we know we need some server for the Python piece. That could be a package to the side that imports.
+
+00:25:47 Speaker 1
+Yeah, I think this server is going to be written in Python.
+
+00:25:50 Speaker 2
+Yeah, and then the the MCP part. One thing to think about with console that got a little bit tangled up is, and one and it's very important too for for an actual custom wrap. Now it's not really a clearinghouse function, but it is the gateway function where. You have an authorization server. This is a OAuth two point O, and you have clients known as Claude, Hermes, Open Code, whatever you know, and and users authenticate to those clients to use the MCP. And in some cases, the if you know Chat GPT or Codex isn't actually already in the platform, they can follow. It's called digital client registration, and they can register a client. Slightly less secure, but.
+
+00:26:33 Speaker 2
+You know, it depends on whether you want to pre - configure these support for these clients ahead of time, or if you want to allow anyone to kind of just register their own app into it. And of course, Claude supports that.
+
+00:26:45 Speaker 1
+You're talking about the MCP server that exists in Console right now,
+
+00:26:50 Speaker 2
+Right? Yeah.
+
+00:26:52 Speaker 1
+So what what is right now, as you can tell, like what what I'm disc what I'm discussing so far is literally this con. So, backend are the APIs that you can integrate with. If you were building a web UI, like an enterprise web UI, you would call these endpoints. Now, what you're saying is, hey, by the way, there is a customer out here that is not going to use a branded website. They might just want to say Claude Add MCP. So, like, there would be an MCP arm drawn off to the side here and an MCP server.
+
+00:27:30 Speaker 1
+That would come in here, and basically the MCP server is going to call the APIs. Exactly. Or if it doesn't call the APIs, there might be an MCP box here that calls the Python code and calls remote signer and batteries and whatnot. But it's not going to. It may not be this HTTP endpoint approach, which I think that's that. By the way, is part of the bill track too. Like the MCP part is. Now the question is, if I look at what MCP functions exist, the tools that the MCP provide, what are they? They are list capabilities, right? Get pricing. They are send job, right? Invoke job. Like what? What else needs to be in there?
+
+00:28:27 Speaker 1
+Actually, let's go look at that now. While we're here, I want to go look at that now. Because where is the MCP server?
+
+00:28:35 Speaker 2
+I'm gonna share. I'm a. What's really cool is you can actually plug the MCP into Cursor. I've actually added its support for Cursor, so you can actually build and test from end to end the live pair network with the with that agent.
+
+00:28:50 Speaker 1
+It's pretty sweet. Yeah, but but hold on. What I want to see is. So you have something to share. Let's take a look at what we.
+
+00:28:59 Speaker 2
+Sure what I've got up here too. Um, this should work. Okay. Okay. Here we go. Perfect. Um, am I sharing my screen?
+
+00:29:10 Speaker 1
+Right. So this is what I. This is exactly what I said. List capabilities. Get pricing. Run job. Right. Like now.
+
+00:29:17 Speaker 2
+Seventy - seven caps.
+
+00:29:19 Speaker 1
+Oh. Yeah. Now here. Here is where I start to get concerned. Where I see get assets. And search and forget assets like that to me sounds like a, a builder concern, not a network concern.
+
+00:29:36 Speaker 2
+Yeah, this is exactly where Inc. shoves their stuff in. You know what I mean? Like that they they wanted that. That was a thing. Now, part of the idea was that Fall was returning URLs, so they wanted it to be a branded URL for the media. But which is fine.
+
+00:29:52 Speaker 1
+But this goes back to my whole point, John, is that the the the, Open source project is going to have those top two, right? The discovery and execution ones. And if you, as an enterprise Inc, being specific, you want you want more than that. You extend our MCP server and add all the features you want to your own, right? Like there's nothing wrong with having an MCP server that they create, the Inc MCP server that wraps.
+
+00:30:24 Speaker 1
+Our open source MCP server, yeah. So you get all the features of ours, plus you can add whatever else you want to.
+
+00:30:32 Speaker 2
+Yeah, and that that's the the seam is actually kind of evident here with the the usage, right? Because usage is not kept in console; it's kept in payment house. Um, and so when you're authenticated to MCP, you're using a credential that belongs to technically the the payment house. Well,
+
+00:30:50 Speaker 1
+Inc. owns it. Inc. is calling payment house. Actually, when they deploy the console MCP server, you have to configure a payment house key.
+
+00:30:59 Speaker 2
+Yes, but only for the purpose of the the initial authentication.
+
+00:31:05 Speaker 1
+So that's not a network concern, right?
+
+00:31:07 Speaker 2
+Right. Yeah. It's it's only if like how do I say it? So when you're um yeah, so like like if you get uh when you authenticate with this. You're authenticating with the authorization server behind the MCP, which is Livepeer stuff. Once you follow a Google login or whatever, that's OAuth. It then does a a token exchange, OIDC token exchange with Payment House, which gives a short-lived JWT. From that, all the requests go directly to Payment House. If you're signing for, it doesn't even go to Payment House; goes to the signer. But if you, you know, if it's usage request, you're making a request to the clearing house.
+
+00:31:48 Speaker 2
+Not necessarily proxying it through, right? You're not proxying it through Livepeer console or anything like that, because that's where all the usage data is at. Is directly at Payment House. So if I ask it to show me my usage, it'll tell me how much usage I've used today, and that is based off this authenticate. Like right now, I'm logged into the remote signer. Essentially, I'm logged into Payment House. Payment House remote signer gets gets a job request, and it validates it with the public key from the issuer. And which is the payment, which just Payment House's OIDC provider, but it could simply be Better Auth, Auth0, Google Client, whatever you want it in there. I don't, you know, I I think one important thing is there's two ways to do this, right? So Payment House has its own authorization server, and then and then this MCP needs its own authorization server. We didn't that real really ever need to, but but to keep like development simple, we we ultimately did that.
+
+00:32:45 Speaker 2
+Because with with device token exchange, that's exactly what OIDC token exchange is for — is to kind of federate two different login systems together, so that you know you authenticate your customer, and then you pass on and get a temporary credential from the other provider. So that's kind of how it works. Okay, I agree on those aspects.
+
+00:33:04 Speaker 1
+Let's pull this back to let's pull this back to the discussion about self - sovereign bill track, right? So if MCP server is in there. And we know. I again.
+
+00:33:16 Speaker 2
+I think. I'll actually share your screen so we can.
+
+00:33:18 Speaker 1
+Yeah, I think what you're showing is accurate in that. Yes, Payment House had a role to play in that piece, and I think we need to really understand if we were to put an MCP server box in here,
+
+00:33:34 Speaker 2
+Right? Yeah, this is just for your reference while I'm not sharing my screen. If you need it.
+
+00:33:41 Speaker 1
+Oh, all right. Yeah, we'll come back to that. We'll come back to that. But you know what I'm saying? Like, so if we were to put an MCP server box in this this screen, and we and I'm going to put one because I think we need to have one. So, the real question is from a from a box and where it lives. When I when I clone this new repo here, and I say, you know what? Hey, I I don't want to. I'm I'm a builder.
+
+00:34:11 Speaker 1
+I'm going to build my own enterprise app. I want to actually leverage Livepeer for this in a self - sovereign manner. I don't want to. I'm going to run my own. I'm going to run my own remote signer. I'm going to do all this myself.
+
+00:34:24 Speaker 2
+Bring your own authorization server.
+
+00:34:26 Speaker 1
+So like, I put an MCP server box in here, and now you get a backend API. You get an optional user interface, and you get an MCP server now. So we're going to put that in here, right? So we know that that piece is going to be in here. If that piece goes in there, like you just said, the customer has to add that MCP server to their their cloud or Codex or Open Code or whatever the heck they're using. So they add that MCP server into their harness. How does that? What is the impact on that?
+
+00:35:03 Speaker 1
+In terms of security, so obviously, like I said to you before, the the this MCP server is going to be bare bones, right? It's going to just say, how can I run a job? How can I list capabilities? How can I get prices? And I think even usage, since we know the usage data comes out of this stuff through Kafka, like I think we're going to have usage data in here. So like right here. Access mapping, jobs, and cost projections. So, like, cost projections and job executions, we're gonna have that data in here. So, like, some usage data is going to be in that MCP as well. So, like, we'll have that in here. What does that mean from a security perspective? So, you just we went into this whole thing about OIDC and JWK tokens and all that. Like, what does that mean here? Like, does that matter at all?
+
+00:35:58 Speaker 2
+I I think it matters from an MCP perspective, partially to make it simple to connect. For example, those two different paths of like getting a a permanent API key and plugging into an agent isn't like the best way to go. It's one way to go. The OAuth registration is like the smoothest experience, and I can I think I've demoed that a couple times in the chats and stuff. You just yeah,
+
+00:36:22 Speaker 1
+But again, OAuth is this.
+
+00:36:25 Speaker 2
+That is the custom app. Yeah, yeah,
+
+00:36:27 Speaker 1
+Yeah. So like. If I am an app builder who's an enterprise who wants single sign - on, I I would have to build that part. Yeah,
+
+00:36:35 Speaker 2
+And the way for that,
+
+00:36:36 Speaker 1
+And that means extend the M. Like you're not going to run the vanilla MCP server. Then you're going to say in your app you're going to have the enterprise backend. You're going to have an enterprise MCP here.
+
+00:36:47 Speaker 2
+Yeah, yeah. So, yeah.
+
+00:36:51 Speaker 1
+You see what I'm saying? Like the vanilla one's not going to have single sign - on.
+
+00:36:56 Speaker 2
+Yeah. We we did like conflate these two together partly because of that cross domain audience kind of thing, and we were just trying to keep it simple. I mean, there's simply more we can do, but but you're.
+
+00:37:06 Speaker 1
+Seeing how now when you want to separate the open source version from the enterprise version, it's a building block. It's like you think of it as like a a package, like like this SDK is a package. Yeah, this MCP is going to be like a package. You're going to extend it. We're going to write this in Python. So like. You extend this in Python, and now the enterprise MCP can just extend that MCP server and add capabilities to it.
+
+00:37:34 Speaker 2
+Makes sense,
+
+00:37:35 Speaker 1
+Yeah. And then if you want to wrap your MCP server with a SSO endpoint, then whatever you use for SSO over here, your MCP server is going to have to honor that too.
+
+00:37:46 Speaker 2
+Exactly, yeah. Which makes sense.
+
+00:37:50 Speaker 1
+And if you want to override the usage endpoint with your, Retail billing and entitlements billing stuff. You're gonna have to do that in the MCP server too. I mean, you're gonna have to do that in the enterprise backend as well. So, like, both whatever the backend does and whatever the MCP server does, they probably should be using the same code.
+
+00:38:08 Speaker 2
+Yep, right. Truly,
+
+00:38:09 Speaker 1
+There should be a shared package that each of these layers work.
+
+00:38:13 Speaker 2
+Yes. Yes. Absolutely. Yeah.
+
+00:38:15 Speaker 1
+That's what I'm saying. So, like, that's where I, you know, so there will be an MCP here, and this will extend from the MCP that we have here. It won't call this MCP server. It'll just extend it. But in this case, if you look here, the backend, this backend server that's running here. Now, this the other part for an enterprise. You could extend the backend and run your own backend and not call this. Like this assuming that you just call our backend. But technically, you could extend our backend and not run our backend.
+
+00:38:51 Speaker 1
+Like this open source component, you could either extend it, or you could just deploy it and use it. Yeah. So like your backend can call this backend through HTTP. That's the way I have it now,
+
+00:39:03 Speaker 2
+Right? Yeah, I think Python gateway should just be the you know HTTP endpoints and so on. MCP works really good as like a a Node. js module or something. People like to put that in web pages and so on. I think like that would be a good component for it for the MCP.
+
+00:39:21 Speaker 1
+But you see what I'm saying? Where the enterprise, the choices you make in this layer, are going to basically be: do I extend this API or do I just make REST calls to it? Yeah. And that's going to be a choice you can make. Yeah. As an enterprise. And I think the same goes for the MCP server. We'll have an MCP server here, and you can either call the MCP server, or you can extend it. And I think it's going to be more than likely the MCP is not going to get called. Like no one's gonna deploy a generic MCP server. No, like I mean, if you could do that, but it doesn't make a lot of sense.
+
+00:39:57 Speaker 2
+Like, yeah, that's why the authorization server identity kind of belongs almost in the in the customer app, or it could. That's where it is. Then there's but there's also the in the the endpoints of the the the gateway itself. Um, the gateway. That's this. Yeah, those would be exposed, and those are where. Perhaps some auth really needs to to be checked. You know,
+
+00:40:22 Speaker 1
+That's correct. That's right here. The enterprise backend. That's that's where that happens.
+
+00:40:27 Speaker 2
+But there is a there is an unsecure so customer apps on their own domain Python gateway. Do they have that that that?
+
+00:40:39 Speaker 1
+This is deployed in their app. Either they extend it here, or they have this running right next to.
+
+00:40:46 Speaker 2
+Okay. Yeah. All right.
+
+00:40:47 Speaker 1
+But this will never be exposed to the internet.
+
+00:40:50 Speaker 2
+The gate, the gateway,
+
+00:40:52 Speaker 1
+Wouldn't. The open source version will not be exposed to the internet. Like, if you see here, customer goes to their branded website. The branded website calls their enterprise back end. The enterprise back end calls the the back end of the open source component. So, like. You don't see the customer or the website ever talking directly to the back end. This is underneath the enterprise security layer. Okay. Now, this is component one, component two. But as I was saying to you before, this enterprise back end could simply extend this one, and it becomes one component here. There will be no HTTP calls in it.
+
+00:41:38 Speaker 2
+Yeah, I think I think this this makes sense. One thing to think about too is like comparing, like we're starting from Clearinghouse batteries. It does have these like raw API keys, and that's that's not too bad for like a machine to machine kind of situation, where you know you're plugging a an app in permanently. It's what you're going to want to use anyway. Once you do that, then you you know that sounds like your that's your secure your your confidential client, so to speak, where it's not exposed publicly with the payment payment. That's right.
+
+00:42:08 Speaker 1
+That's the back end. The back end is going to, If I am running a branded website here, so I'm an enterprise owner. I'm Blue Claw. I'm going to deploy. I'm going to deploy the open source code, and I'm going to put a layer of enterprise business on top of the open source code. And I have two choices for this layer. I can run it myself, which means I'm going to create my own remote signer. I'm going to fund the wallet. I'm going to set up the Livepeer gateway wallet. Do all that stuff. I'm going to set up the batteries app.
+
+00:42:40 Speaker 1
+I'm going to create my own grant and allowances and all that, and the accounting in here. And I'm going to configure this back end to use that, or I'm going to contact Josh and say, "Hey, Josh, hey Livepeer, can I just call your batteries endpoint automatically? Please give me a grant token so that I can call your app directly. And then in my app, I'm just going to enter the API key in there. And then now I'm calling and enter their URL. Now I'm calling their stuff, or, On the flip side, I could say, "Yo, John, Payment House, my buddy, you run a payment provider. Guess what? I don't really want to deal with customer SSO. I don't really want to deal with checkout plans and invoices and customer entitlements. I just want my website to call your shit. And you, as a a provider, an enterprise provider, take all of what this thing does, and."
+
+00:43:38 Speaker 1
+A bunch of this stuff as well, and you have a package that now. Guess what? My customer, my website, my back end calls Payment House for all of this stuff, and Payment House has this and this automatic.
+
+00:43:51 Speaker 2
+Yeah, makes sense.
+
+00:43:56 Speaker 1
+So, like, then my back end is just this. Then my enterprise solution is just this, and I'm calling Payment House. That's the part you're gonna have to build on your own. And I think it would be wise for you, and me. Now again, I'm we're talking build track now. We're not talking payment house, but for payment house, if if you're really thinking about the, you know, and this goes back to what I said: stop duplicating everything. Like we're gonna build this piece, which is already built. We're gonna build this piece, and then we need to come up with at least one or two example enterprise deployments.
+
+00:44:35 Speaker 1
+And I think this we're gonna have a sample deployment, which is why I think this console UI goes away. I think I'm not gonna bother with this. I'm just gonna create one of these, right? And what we can do is we'll create a really basic one of these that shows how would I use MCP, how would I use security, and that's why I was saying to you like single sign-on with GitHub or Google here, because that's not gonna be in here. Yeah. Like we don't want any of that. We want this thing to be basic and simple. We're not going to have anything with security and all sort of crazy stuff. It's going to be basic, but we need to show an example of something a little more than just unauthenticated endpoint, right? Like it's got to be something a little bit better than that. So, like, but the open source components, and that's true for most open source projects. Like, you look at MinIO, you look at all these other projects. They have these like basic endpoints that you can use, but.
+
+00:45:29 Speaker 1
+They don't tell you to do it that way. They want you to deploy your stuff securely your way, and that means put this business enterprise layer on top of it. So I think I would think that this example app that we're going to build here would be basic, and it would have some of the basic capabilities that like these things, like sign in with Google, and then maybe we'll have like some sort of simple topping up in here where you can like log into an admin UI and just like. Approve a user, top them up. Like we're not going to accept payments because that's out of scope for the bill track, but it it should at least give you some way to like, I approve this user. I want this user to have this amount of limits on how much they can spend and blah. The retail billing part of it, right? Like this part has to kind of be in an example because otherwise we leave this again open for a customer to make choices that they may not know how to do properly. So we're going to have this as a choice.
+
+00:46:27 Speaker 1
+But I would say for you, I would take this as an opportunity to say, okay, let me move this part, this part, and this part into Payment House. Let me build Payment House on these pieces we have here, and some of these pieces we have here. So, like, how would I take Payment House and now build a branded website like your Comfy Peer? Take your little Comfy Peer example app and put your little Comfy Peer backend on top of it. But then, underneath all of this, use Payment House, who's built on top of this and this. Like that would be something that, ultimately, if you truly want to be behind the open source project capabilities that we're building, and and it gives an example to say, hey, guess what? Payment House uses all this stuff too. Livepeer Inc. is going to use this stuff too, by the way. Like their commitment was, whatever we come out of the build track with, Livepeer is going to move to this.
+
+00:47:25 Speaker 1
+So Inc is going to use the stuff we build here.
+
+00:47:28 Speaker 2
+Yeah, I'm. Yeah, I totally get it. I'm. I'm trying to like map all this out. I wrote down a few notes. I think here, it's the way I have it solved already. Is is makes sense to me, but it's it's without getting deep into IDC, it's hard to communicate to anyone. Yeah, that's the problem.
+
+00:47:45 Speaker 1
+Is is that's too. It's a technical. It's a technical implementation, which usually means welding. Yeah, you're welded. Together,
+
+00:47:54 Speaker 2
+Yeah. So I tend to start with the idea that authentication should be at the core of where the data lives, which should be the clearinghouse. But how do you federate that to someone else who wants to bring their own authentication? Right. That's that's token exchange. And so then you end up with two different authentications. You have you have one that's more like machine to machine that's in the clearinghouse batteries that enterprise.
+
+00:48:18 Speaker 1
+Yeah, the enterprise backend calling payment house. Yeah, versus the user calling the enterprise back in.
+
+00:48:25 Speaker 2
+Yeah, yeah, and ideally,
+
+00:48:26 Speaker 1
+But that's normal though. That's normal stuff when you're an enterprise. Like when I worked for healthcare companies, the customers would contact the enterprise servers. So, for example, I worked at United Healthcare. So, like, customer would go to unitedhealthcare. com. They would log in. When they hit log in, that would say, Welcome to United Healthcare login. And then when you enter those credentials and hit submit, it was like, oh, they don't exist here. Go to Ping Identity. Ping Identity here do the authorization. Blah blah blah blah. Oh, okay, cool. You're done. Send me a callback. Oh, I got a callback at United Healthcare. Oh, okay, the callback is valid. Ping says you're good. Okay, you're good. Now you're into our app.
+
+00:49:08 Speaker 2
+Right. And and in those situations, you can log into multiple. It's not too off.
+
+00:49:12 Speaker 1
+That's one.
+
+00:49:13 Speaker 2
+Right. You're logged into one system. Actually,
+
+00:49:15 Speaker 1
+That's what I built with Ping Identity. And then the ping identity just said, " Hey, hey, United Healthcare, we got you. It's covered. You're you're cool." I actually built United Healthcare. Okay, ping said it's good. I'm good. Here's your app.
+
+00:49:29 Speaker 2
+Yeah, I actually built one of these over the week on Monday when I was playing around with that paperclip stuff, and it's it's a EliteCoder company portal. So no matter which of these websites you go to, you get the same login. But once you log into one, you're authenticated. To the the company.
+
+00:49:43 Speaker 1
+Right here it is. This is identity right here.
+
+00:49:45 Speaker 2
+Yep. And so if if we were logged in here, you could also access the wiki and the paperclip company.
+
+00:49:51 Speaker 1
+Auth. Eliteencoder. Net is a ping branded interface. Basically,
+
+00:49:57 Speaker 2
+Same kind of. Yep.
+
+00:49:58 Speaker 1
+And then when you hit login, it says auth gets switched back to Eliteencoder. Com or whatever that other site you sent me. Exactly. Portal. Eliteencoder. All back over. Yeah. Best place. So again, this is. This is standard O Auth login flows. So I mean, again, but that's fine when you're an enterprise. When we're looking back at our diagram now, when you're this guy right here, branded website, and you have customer identity SSO through Ping or whatever you're using, like that's fine. That's cool.
+
+00:50:32 Speaker 2
+And it makes it really great because it makes really simple. So, for example, if you go through this flow. Your remote signer webhook can use the same public key authentication URL. Just configure that, as well as the any other app in the stack that needs authentication. That way, you're logging in once and you're verifying through the same system.
+
+00:50:53 Speaker 1
+That would mean you're running a remote signer. That's true, and and so if you are, where where is your involvement here? Right, like yeah. When I look at this whole stack, what are you building? Are you building this and this and this, or are you just doing this? Yeah. Because if you're just doing this, then these pieces got to come from somebody somewhere. Now, yeah. So you can't just build this without this. So, like, technically, this box, technically, this box right here should be inside this enterprise box. You're missing your mouse or something. Oh.
+
+00:51:33 Speaker 1
+When I look at open source components here in this diagram, open source deployed by the enterprise, like this box where it says open source backend, you see that? Yeah. That back this whole box should technically be inside the enterprise box.
+
+00:51:50 Speaker 2
+Enterprise business backend should go.
+
+00:51:55 Speaker 1
+Yeah, like this. When you look at the middle box where it says open source components deployed by the enterprise,
+
+00:52:01 Speaker 2
+Yeah.
+
+00:52:02 Speaker 1
+And then you look at enterprise - owned applications and commerce at the top. This open - source one should technically be inside the enterprise - owned applications.
+
+00:52:12 Speaker 2
+I agree. Yeah, that makes sense.
+
+00:52:14 Speaker 1
+Yep. No, I separated them because technically, I can deploy the open - source component, and I I could just call the headless APIs directly, and I don't need billing, SSO, I don't need checkouts, I don't need invoices, like. If I were to open up that headless open console backend, I could call those APIs. If you and I were to test this out, and this is how we're going to do it, we're going to deploy a remote signer, we're going to deploy batteries, we're going to deploy the the open source headless backend console endpoint, and we are going to run curl commands against it. There will not be authentication. There will not be.
+
+00:52:58 Speaker 1
+Anything in there, so we can call that directly, and we should be able to submit jobs to the network. There won't be SSO, there won't be invoices, there won't be entitlements and billing or any of that, but it still should work.
+
+00:53:11 Speaker 2
+Yeah. What about usage? Because you got to know who who's. We have usage, right? That's part of batteries. Yeah, but that does have a user identifier already in the SQLite. So once you, Interact with,
+
+00:53:23 Speaker 1
+And that's where access mapping, jobs, and cost projections come in. So that's why you look at that database inside the open source box.
+
+00:53:30 Speaker 2
+The expense.
+
+00:53:31 Speaker 1
+So there will be there will be some level of usage in there. So yes, you will have a basic identity in this system, but it's not this identity here.
+
+00:53:42 Speaker 2
+Yeah, yeah. One thing that you pointed out was I think really important. The the the idea of remote running your own remote signer due to the authentication flow that we were talking about. The webhook, the identity webhook, is what locks you into that. There's absolutely no reason why the identity webhook really needs to be used if you are using OIDC, which seems to be the standard, because you can do that authentication at the upfront. You don't need to do it behind, and because it's being it's it's set up behind the remote signer, you can only ever have one issuer as valid. You know, you can't have multiple ones, or you can't configure it.
+
+00:54:21 Speaker 2
+Per tenant or client or user or anything like that, the the the issuer, essentially because the usage data exists within the clearinghouse batteries, I would expect for authentication to be tied directly there, and that that way. I'm sorry, just jumping around a bit, but with JWTs and OIDC again, that can yeah.
+
+00:54:43 Speaker 1
+But you're looking at what you're talking about down here is this part.
+
+00:54:47 Speaker 2
+Yeah, and that way, like like this one you're talking about. Yeah,
+
+00:54:50 Speaker 1
+Like the authorize in the third party.
+
+00:54:53 Speaker 2
+Yeah, like you only kind of need. Yeah, you only kind of need like one credential to get to the signer, and then when users are on the enterprise app, you've already authenticated them. However, you've done it, and that header is coming through the system up front, not behind. And and right now it's behind it, which makes it it locks it in where you can't have multiple enterprise apps on one clearinghouse without. Doing some some funny stuff like I'd done. Well, really, what I did what was funny was I put the JWTs validation in the webhook, which is sort of an anti pattern because JWTs are made to be validated cross domain with a single issuer. And the advantage of doing so is that when you're signing for jobs and you're sending a lot of requests to it, you don't need to actually do a database lookup or check another system.
+
+00:55:47 Speaker 2
+Yeah, but that's the problem.
+
+00:55:49 Speaker 1
+With this batteries app, right? Like when I look at this and I see enable auth, like that right there is the reason why you can't pass JWT tokens through. Exactly,
+
+00:56:00 Speaker 2
+It should take it off the generate.
+
+00:56:02 Speaker 1
+Like that would mean you're gonna have to come up with an issue with Josh and tell him how he's got to change this crap.
+
+00:56:08 Speaker 2
+Yeah, and this is what I was preaching him in February, man. He don't want to hear that. I was preaching it in February. You, I think you were there. I remember mentioning it. He doesn't want to hear any of that. So the only other option I can think of is keep API keys, you know, the way they are, and do and use it as a confidential authentication. But that means everything that goes through the system is going to have to be proxied before it makes it to the clearinghouse and the remote signer. Well, not necessarily the remote signer.
+
+00:56:37 Speaker 1
+Well, that that is a that is a payment house concern, not necessarily our concern, right? Like, when I look at this layer here, we just described this headless backend API and events. That just means when I deploy that backend, I have to have already set up the API key that the remote signer and authorization that the batteries app uses. Yeah. This makes sense. Like I have to just, I have to hardcode that in my deployment for that to work. Yeah. And there will be no, there will be no customer off pass through. So like the, the, the backend for a third party hosted payment service will never ever know that Mike Zuper from the customer website did the request.
+
+00:57:24 Speaker 2
+Right. It might have an ID for you because it's storing all the.
+
+00:57:27 Speaker 1
+Yeah. It'll have some generic. Hey, this is, you know. Blue Claw submit. This goes back to what I was saying to you. Blue Claw submitting a job. That's all it's going to know. Blue job. Blue Claw submitted a job. Now, what what will allow you to relate Blue Claw submitted a job is that the job gets submitted with a session slash manifest. So, like, I submit the job to Batteries. It's going to know it's this session, this manifest, and only.
+
+00:57:58 Speaker 1
+Through the enterprise backend, will I be able to say Mike Zuper submitted this job, this manifest, and that data gets passed through the whole flow? So, like, I can correlate it together, but that's only like correlation. That's not actually passing the auth all the way down. But if the remote signer and batteries doesn't know that Mike Zuper's not allowed to invoke that job, it won't care.
+
+00:58:25 Speaker 2
+Yeah, that makes sense. Actually, one of the bigger problems is the GDPR data collection when you do you know these consent logins and stuff. So that belongs to the enterprise level, and then that way we're not we're just sort of anonymizing that user data behind an ID. We're not storing an email address or other profile info or any Google stuff. Yeah, because that that's where it becomes regulatory.
+
+00:58:48 Speaker 1
+So it sounds like, based on what I'm hearing here, is that, You and I are in agreement now on this architecture. I think the the difference is, you know, the open source components deployed by the enterprise and the enterprise owned application can either extend it or just use it directly. But either way, it's leveraging core code. So whoever's building an app, you're never building the headless open console backend. You're always leveraging. So if a new release.
+
+00:59:22 Speaker 1
+Of the backend comes out, the open source component comes out. The enterprise just gets it; they don't need to, they don't need to implement that themselves.
+
+00:59:31 Speaker 2
+Yeah, yeah, that makes sense.
+
+00:59:32 Speaker 1
+So this gives us core code, an engine core code that anyone can use, and we're no longer building the same crap over and over again. Yeah, that me that makes sense to me. So I'm gonna add MCP server to this diagram, and I think. This looks like we have an agreement here. I think so. Yeah. Now, obviously, the devil's in the details, right? Like on paper, this makes sense, and I think even when we start to implement it, it's going to actually work. It's going to make a lot of sense, and I'm eager to do it. And you know what? It's been killing me the last two weeks as I was like, "Let me start building it now." But if I do that, then what the hell are you going to do?
+
+01:00:21 Speaker 1
+You know what I mean? If I go ahead and build it all, then you get nothing to do for October. Now I could vibe code this crap with my agent, and I can get this shit working. And believe me, when I say vibe code it, I mean I'm taking a well-defined architecture and implementing it. That's not vibe coding, because that's like there will be no security holes in here. There will no, there will not be. You know, this app's gonna be fully tested. It's gonna have use cases, requirements, like. The whole kit and caboodle. Like this is like, now we have this. We're gonna actually design out the real architecture with requirements and testability and all of that good stuff. And then when you start implementing it, feature by feature, I'm going to be reviewing all of that. And if you don't have the the proper unit tests in place, and there's not the proper documentation in place, rejected, right? Like you have to do those things now.
+
+01:01:18 Speaker 1
+Ideally, you're gonna follow my model where I'm using my agent to build it all, and hopefully you're using an agent to build it all. You're not handwriting any code. Yep. If you're handwriting code, you're just gonna make things harder for yourself.
+
+01:01:35 Speaker 2
+Yeah. This makes sense. Now, one thing we could correct on the diagram might be definitely get the customer identity living on the enterprise app. I wonder if entitlements and retail billing may actually belong kind of where that provisioning and reporting API is at in the third - party hosted payment service because an entitlement defines how the bill is generated.
+
+01:02:04 Speaker 1
+Okay, and and this goes back to what I was saying in Blue Claw. So I'm glad you pointed that out. And this is the part I wanted to show you.
+
+01:02:12 Speaker 2
+So you see that piece in all three of these access mappings, the entitlements, and the reporting are.
+
+01:02:18 Speaker 1
+If You see this right here, yep. All right, so as I told you before, what Blue Claw does is Blue Claw charges the customers independent of the actual compute. So, like in in in this case, you'll see here, like you know, I'm I'm showing you some of this stuff. This kind of proprietary shit here, but I'm I'm showing you it just so you have an understanding, and I'll go down the 24 hours. So, like, right here, what it says is, in the last twenty four hours, we had one hundred and one hundred and thirty seven users. Right, eleven of them were active this week. Four of them were active today. They submitted thirty one million work units through the system, two thousand requests. So this is just, if we look at our diagram, that is, oops, that is this part up here, right here. This customer sending jobs in.
+
+01:03:17 Speaker 1
+Right, customers sending jobs in. So in Blue Claw, we call that retail. That's retail customers. So that these requests are what the customers submitted. Now you'll see, we Blue Claw charge that those customers five dollars and seventy five cents for that work they submitted through the network in the last twenty four hours. Okay. Now, under the covers, you'll see wholesale. Build units and wholesale costs. This what Livepeer actually captured as the ticket value that was submitted to orchestrators. Now you can see clearly I'm undercharging the customers for what I'm sending to the IPeer orchestrators. But this again is this ticket expected value. This not actual ORK fees.
+
+01:04:15 Speaker 1
+Right, the orchestrator gets a probabilistic micro payment. So, like when I send ten dollars and eighty two cents of of estimated value, that does not mean tickets, like redeemed tickets.
+
+01:04:30 Speaker 2
+It means potentially.
+
+01:04:31 Speaker 1
+This is how much way in value we sent to the orcs, but they don't get that in tickets.
+
+01:04:37 Speaker 2
+Yeah, yeah, that that makes sense. That's how the Kafka reporting part works.
+
+01:04:42 Speaker 1
+That's right. So that when you see this. Now, what I want to do in my reporting here is link the actual tickets that are redeemed by this wallet. The problem with LiveHere is that you don't know what job submitted, what ticket. So, like, I can't do that. So right now, the only thing I can do is I can either, for every job type, like OpenAI chat completions, I would have to create a separate wallet, and then OpenAI embeddings, I would have a separate wallet, and audio speech, I would have a separate wallet, and that way.
+
+01:05:15 Speaker 1
+I could say, okay, embeddings paid out this amount of tickets, speech paid out this amount of tickets, chat completions paid out this amount of tickets. So then that way I would know exactly. But but my whole point is, when I talk about retail, what the customer is paid from the enterprise, that's what revenue came in from the customer, and then this wholesale cost is the estimated cost that I'm gonna have to pay the Livepeer network. So, like, they're two separate buckets. So, when you talk about usage being down here, I say it doesn't, right? This usage is the estimated value in a way that gets sent to the network, whereas this is what the customer is paying for.
+
+01:06:05 Speaker 1
+Which is two totally different numbers.
+
+01:06:07 Speaker 2
+Yeah, it makes sense. Yeah, that's one thing that got a little convoluted with Payment House. Just I never got it totally broken down.
+
+01:06:12 Speaker 1
+It has to be two separate ledgers. It has to be, and the so this is the trick when you are a enterprise and you're building an application. You must understand what you take in as revenue, and what you pay out for for work. Are two different buckets.
+
+01:06:33 Speaker 2
+Yeah, and the way we solve this in Payment House, I think, was still a good concept. Is just a markup. Like you don't know what the price of something is in the network until the orchestrators picked. You know.
+
+01:06:44 Speaker 1
+Okay, so here, take a look at this.
+
+01:06:46 Speaker 2
+Billing should just be like a markup.
+
+01:06:49 Speaker 1
+Yeah, here it is. So now, what I don't have in here is what you don't see in here is. So this is, and again, this is my fault for not filling it into. But my app supports it. Is I have the ability to say, what is the vendor input and vendor output cost, right? Like, how much would that cost? And then, like, here is what I pay orchestrators. So, like, I have the ability to say, what's the margin based on? And this is what you're talking about, where one is the cost in retail that I'm paying, the customers are paying for, and then the other is.
+
+01:07:29 Speaker 1
+What the markup is, so like I can go in and say, yo, I want to mark up these Quinn models that go to Livepeer because I know that I better mark it up to a certain point that I can actually stay profitable. Like I don't want to ever run a model on Livepeer where I pay more to the orchestrators than I do get revenue coming in because that's a problem.
+
+01:07:53 Speaker 2
+Yep, you never want to accept a negative margin.
+
+01:07:56 Speaker 1
+Right, which is why I have this, and you'll see there's negative margins right now. Like when at my usage report here, on Blue Claw, it's negative margins. Now, thankfully, I'm the orcs behind it. Like me and Speedy are the only ones running orcs for, for Blue Claw right now. So like, I see here that if you look at 30 days, you'll see, you know, minus 50% of retail, which means I'm, you know, I'm paying orcs. Now, again, this is also not right because it's not real tickets. Like this is only estimated value in way. So like the value in way I'm sending is two hundred fifty nine dollars in the last thirty days, but I actually got in as revenue for the last thirty days is one hundred seventy dollars. So like I'm running a negative eighty dollar margin right now, which is not good. Now if you'll see, that's fifty two percent a minus fifty two percent. Now what you'll see here is.
+
+01:08:52 Speaker 1
+I started to try to like adjust them. Now I didn't. It's not working yet. I'm still have to get more data, but that's why I think this whole idea of value in way is broken. Like, if you're reporting that in your app anywhere, it's always going to be misleading. Yeah. The real, the real thing you need to see is what tickets were actually redeemed.
+
+01:09:12 Speaker 2
+Oh well,
+
+01:09:14 Speaker 1
+Because that's real ETH being paid.
+
+01:09:17 Speaker 2
+Yeah, there is the problem. Okay, so we can dive into that a little bit because. The one thing I notice, like for example, Payment House, the staging environment sends little tiny tickets because it's got low reserve, right? And then you know the production one, we've had one ticket paid out per month, you know. But the usage is obviously pretty far beyond that what we've measured, and so you ultimately yeah.
+
+01:09:38 Speaker 1
+But look at me, I'm getting a lot more usage.
+
+01:09:39 Speaker 2
+Two thousand requests a day. I'm impressed. So this is really neat. And so there is a there's a significant risk slash disconnect with that deposit reserve. It may be something we have to accept right now, but I think down the road, I do I would love to see a trustless kind of model where users bring their own deposit reserve kind of thing. Once you do that, then everything is already on chain essentially.
+
+01:10:05 Speaker 1
+Yeah, but why does that matter though? Like again, you know, as an enterprise, if I think this is the part where you keep getting yourself wrapped around the axle is. You actually think this customer gives a shit about crypto payments?
+
+01:10:20 Speaker 2
+No, they don't. No, it's it's more.
+
+01:10:22 Speaker 1
+It's if you are if you're a business that deals with crypto, you're failed already. Like no no enterprise company uses crypto payments for anything. Yeah. So like if you are using that, you failed.
+
+01:10:38 Speaker 2
+Yeah. So we have a price oracle approach, right, with the way to dollars. That's that's one way of going about. I previously recommended to derive that from the signer or go live peers oracle, but either way is fine. It can live out in the clearinghouse or in your enterprise app. But that's a good question where that price oracle should live. And again, yeah, it's gonna have to. Like if you actually do it off of actual paid tickets, the problem you run into.
+
+01:11:11 Speaker 2
+Is that one user is using a lot more than the other user, and your sender is paying tickets, and it has no idea which user it's for when it when it or claims one, right?
+
+01:11:21 Speaker 1
+So that's correct. Well, that's what I was saying is like you can't correlate this. This is why this is separate from this. Like this is ledger one that is specific to the customer, and the only thing you can bank on is that usage input. Usage output, like you as a backend app, know I submitted a request and it had this amount of input tokens, this amount of output tokens, and then you got to have a pricing model. That's why plans and invoices is in here, right? Like you got to have a pricing model that is based on the work they submitted and the responses they got, because that is the only way to accurately account for what a customer spent. Like that's it. Now.
+
+01:12:07 Speaker 1
+Your infrastructure costs, which is this stuff down here, like the live runner and all this, this is this would be like you paying AWS instead of you paying Livepeer. Like AWS is going to give you a report that says, "Here's how much you spent." They're not going to say, "Oh, Mike Zuper sent job one and John sent job two." Like no, AWS is going to say, "Blue Claw, here's what you owe me." Yeah, Blue Claw, here's your Server infrastructure costs for all the work you did, and I don't give a damn about your customers. You deal with your customers and how you charge them, but you better be charging them more than you're spending on AWS infrastructure, right? Yeah. And the same goes with Livepeer. Like that's the difference between retail costs and wholesale costs. The wholesale costs better be less than your retail, or you're gonna be negative margin and you're fucked.
+
+01:13:01 Speaker 2
+As an as a business, right? That brings the usage and billing engine into the enterprise app entirely,
+
+01:13:07 Speaker 1
+And right usage and billing is always got to be up here because, and I think Josh has argued the same thing, right? Josh is saying we don't want billing and usage in here because it's not really part of that. Yeah, like that's why he has no job usage in here at all. The only thing he has is. What tick what ticket value did I send and receive? That's it. Yeah, ticket value is all he's reporting here,
+
+01:13:38 Speaker 2
+Because that's all he does, right? Because those come from Kafka, right? That the off - chain ticket value,
+
+01:13:42 Speaker 1
+Right? That's ticket in way. That's ticket value in way, and that doesn't even tell you whether paid.
+
+01:13:47 Speaker 2
+Or right. Should the oracle,
+
+01:13:49 Speaker 1
+Which is why also, if you look here, the work gets sent over here. He doesn't even know what work was sent. He has no idea what jobs were sent.
+
+01:13:59 Speaker 2
+Well, it should be in the ticket event transport because the Kafka data will have the the type of job and the units.
+
+01:14:08 Speaker 1
+Not if the Python SDK is sending the work.
+
+01:14:10 Speaker 2
+Yeah, yeah.
+
+01:14:13 Speaker 1
+I mean, it'll know the capability. Yes, it will know the capability. Yeah, but that's it.
+
+01:14:18 Speaker 2
+Yeah, and there are some there are some caveats to consider on the the the what's called the remote payment state. With the between the signer and the gateway, where that session is established, and let's see, you get a you start a session manifest, right? And and you've got a certain quote on a price for a certain capability. There's always like if that or there's there's ways that can be exploited if the job type information is not encoded properly into that remote payment state.
+
+01:14:49 Speaker 2
+For example, um, a an ongoing session could change the parameters and and end up with something that it it it's more expensive than what it originally started the session with. As long as it's with the same,
+
+01:15:01 Speaker 1
+You can't you can do that crap in you can do that crap and go live here because go live here is session based.
+
+01:15:08 Speaker 2
+Yeah, yeah. I tell you,
+
+01:15:11 Speaker 1
+Blueball doesn't use session based anything. Yeah. So if the if the price changes. Let's say an ork goes in and updates his price. Usually, lower is not a problem. Higher is the problem. If you if you agree on a set of tickets at a at a certain price, and then the ork goes in and raises their price, that's the crap that session-based stuff can get really hosed on. Because now you're assuming a lower price, you're now getting charging them a higher price, and the remote signer just doesn't really know how to handle that.
+
+01:15:46 Speaker 1
+The Lipear module stuff won't allow that. Like every time you submit a job, it gets the latest price information, and then it uses that to calculate the tickets that need to be sent. So like, and that goes in as part of the capability pricing stuff. So like, when a job gets submitted, the orc knows what his prices are, and he knows what debiting and crediting, and the agreement is established upfront in that. That crediting cadence stuff that I was telling you about last week. So that's only a problem when you're doing session stuff, because if you got a session open and the the the terms of the session changes, technically you should tear the session down and create a new session.
+
+01:16:30 Speaker 2
+Exactly. Remote signer should reject it if if the pipeline name changes in the middle of session or the price changes. I haven't tested that session.
+
+01:16:39 Speaker 1
+Yeah. That's remote signer crap. That I had I had a hell of a time getting live peer modules working with those kinds of constructs.
+
+01:16:47 Speaker 2
+So because they kept changing and they hadn't had it merged and and like for for what we ultimately had all the way up until July was just the pipeline name. We didn't even know the model. So it was live video to video. Remember what it was? You could pay for a stream diffusion SDXL and send a V to V. Yeah, there's a lot of weird stuff there. Yeah,
+
+01:17:05 Speaker 1
+But if there was so much crap in that live live runner or not live runner, BYOC Python remote signer stuff, it was so anemic the amount of information that was exchanged between the the remote signer and the jobs being submitted that I like I said I I looked at it I was like, this is so basic and so anemic I can't use this. It's unusable for me. Yeah. Yeah, so that's why I created the whole live peer modules in the. Yeah, so, yeah,
+
+01:17:36 Speaker 2
+And I know that I'm probably down a rabbit hole with remote payment state, but it's something that just to be aware of as we we get more interesting with parameters and types of jobs. I think Live Runner has got probably more more that it supports than what the remote payments state enforces. Then we can look that that could might be issues that float up to Josh at some point.
+
+01:18:00 Speaker 1
+Yeah, I'm not a at this point. These are battles that I don't want to. And again, I showed you my answers already. Stack that hasn't used live pair at all. So ultimately, I hope in the future I get enough Blue Claw traffic that people just start running Blue Claw orcs for me, and. I don't ever have to worry about having anyone from Livepeer approve this stack at all, because ultimately, I control Blue Claw, not them. Yeah. So like, they can do whatever the hell they want with Go Livepeer and Live Runner. That's fine, you know. And if if they can make money, if they can deploy apps in production that leverage this stuff, and they can become profitable with it, then orcs run that. And guess what? There's a world in which Blue Claw succeeds and.
+
+01:18:55 Speaker 1
+Inc succeeds, so that technically you will have an orchestrator with a capability called Quan3 LLM model, or running a image-to-image video or whatever the capability is. Right, you could run that on your GPU, and you could have Go Livepeer stack running on top of it, and you could have Blue Claw stack running on top of it, and you could accept work from Livepeer. And you can accept work from Blue Claw, and your GPU is getting worked the same way. So, like these two stacks can coexist. If one, if they're both successful, you just get work from two different pipes. But if one's successful and the other's not, shut down. Go live here. Run Blue Claw. If Blue Claw is not successful, shut down Blue Claw. Run. Go live here. But underneath the runner itself, so when you look at live runner or the Blue Claw runner.
+
+01:19:51 Speaker 1
+They just call VLLM, you know. They just call whatever the work container. And in fact, with Blue Claw, we have API pass through now. So like, I'm running an orchestrator that sends requests to Alibaba Cloud and OpenAI and Anthropic. So like, I'm now using my idle Anthropic tokens and my idle OpenAI tokens. I'm using. I'm putting that on live here. So if I'm not using them at the end of the week, I'm gonna let Lightyear use them, and I'm gonna get paid to to use those those tokens that I'm not using.
+
+01:20:28 Speaker 2
+Yeah, that makes sense. Yeah, this is a cool, really good discussion. I've got a lot of notes, and I'll go through this and try to fit together what this will look like based on our discussion. Well,
+
+01:20:40 Speaker 1
+I'm gonna document this. So like this whole architecture that we just walked through. I'm going to clean up the diagram. I'm going to add MCP server to it because that's missing. I'm going to add that in, and then I'm I'm going to document the actual features and capabilities that each of those boxes represent. And I'm going to also include the idea of the enterprise-owned application extending the backend API and extending the MCP server versus calling it. I think.
+
+01:21:14 Speaker 1
+I think the preferred approach is going to be you can run it vanilla and call it, or you as an enterprise, the preferred approach if you're going to build an enterprise app would be to extend it, not call it. And that way, it gives you all of the. You're still building on the same base of functionality. You're just not having to call it through HTTP. You just extend it and get those capabilities versus calling it over HTTP. But some people aren't going to want to build an enterprise back end. Or maybe they're just prototyping. They're building a simple app on top of it. Then you don't even have you don't even have to build a backend. You can just run the open source version and then put like some sort of like traffic proxy in front of it and have security that way. You know what I'm saying? Like you may not need to build SSO entitlements, retail billing, and all this other stuff. You might just want to have a backend that you know maybe you have a simple subscription model that you know customer signs in, they get a unlimited subscription.
+
+01:22:13 Speaker 1
+And then they just use your app all day, every day, and they don't get charged. You know what I mean? They're not getting tokenized charge. Token, you know, usage billing is one model, but that's not the only model. If I got an unlimited use model, like if you just pay me once one fee every month, and you don't care about you get unlimited usage, then you don't need any of this entitlement and retailing and all this other crap.
+
+01:22:36 Speaker 2
+Yeah. Yeah, this um. So really, I recently I found this really simple. Like it's interesting how, um, Cheng had built his everything and wrapped. I mean, Nap had all this junk in the background and stuff. But, um, this this almost like stupid simple. Where you know you can have a package.json run Python and and the front end. So that might be a good way to couple that Python gateway with the enterprise app. As an example, you just kind of boot both up together. Um.
+
+01:23:05 Speaker 1
+Yeah, well, that's what that part I'm still not clear how we can do of that because you know we have limited scope. So I'm gonna, I I want to, I I am wanting to build an enterprise example that people can look at and use, but I don't know if I'm gonna be able to do that with the scope we have. Yeah, I hope we do, and I think we do. Now this really depends on what you get done.
+
+01:23:29 Speaker 2
+Sure. Yeah, I'm gonna be 100% focused on this. I'm I'm I'm excited to work with you. Probably gonna be the most fun person to work with that I've worked in the past couple of years. Honestly, just honestly,
+
+01:23:40 Speaker 1
+Like I'm gonna be a pain in the ass, John. I'm telling you. If you haven't already, I mean, in a good way. I don't think I'm doing anything that's like no. You know, I'm not talking down to you. I'm not you know, I'm not discounting anything you're saying. I think what you're saying is good stuff. But I spent 24 years, 25 years in enterprise architecture. So like. These are not new to me. Like, when I talk to Cheng and when I talk to Josh, I don't get the sense that they have that experience. Like these guys seem like they're just hackers that are just slapping shit together and flying by the seat of their pants.
+
+01:24:14 Speaker 2
+Yeah, like Josh. If you remember, Josh was brought in because he knew FFmpeg really well and was good at the the encode. We brought him in because I was building audio to speech to text, and we were trying to find a way to. Do the the pricing and the muxing and demuxing of audio and video, so we could just get the audio through the pipeline. And we needed some changes to LPS, and we were pretty well blocked. And he helped us figure some of that stuff out. But he's yeah.
+
+01:24:42 Speaker 1
+But what's his background? Was he an architect before? Because I don't think he was.
+
+01:24:46 Speaker 2
+I don't think so. From my understanding, that's all I know about him is that he was an FFmpeg guru. And after that, I mean, he said to me a couple times like. Thank God I've got AI to help me figure all this out, you know. So, and and I've also heard from other people like Chris Hopcroft that he's not very blockchain native. That's not his his inclination at all.
+
+01:25:08 Speaker 1
+And that's fine. I I was not a blockchain native person either. I think I have a good understanding of it, but I definitely don't feel like, What I'm going to propose is going to be blockchain centered.
+
+01:25:20 Speaker 2
+Like, although I think that's a good like, I always like to build things right the first time, and you know, if it takes eighteen months, like we get it right, that's great. We spent less money, but in this world, that's not how we operate. We build in three month intervals, and we ship what functionally works, and that's and that's okay. I think when I when I look at what Fiserv was doing before I left. You know what is Pfizer? It's the world's big, largest clearinghouse aside from DTCC and the central banks, and so it's essentially essentially just a bunch of IBM databases that move data between processors. Right? It's like what Payment House is, but they were thinking we got five thousand employees, we pay them hundreds of thousands a year, we got risk management, we got chargebacks, we go as junk. We want to build blockchains that do the same thing that our databases do.
+
+01:26:10 Speaker 2
+And interact with the Fed in real time, and that's what they were ultimately shifting to when I left. And when I look at Arc Network, I see that crystallizing because actually the people that are working with them to build it are the same partners that Pfizer uses for their actual rails. And so that's that's an insight that I think we're going to learn more about in the coming year, probably as banks begin to move over to these core accounting systems that are blockchain based.
+
+01:26:38 Speaker 1
+Yeah, To me, John. To be honest with you, that sounds awful. Like I would never want to build systems like that. And I'm not saying that they're not important. I think it's cool that banks are leveraging blockchains for that kind of stuff. I think that's actually cool. But me, as a developer, I never want to build an app like that. I never want to be a part of a system architecture like that. That sucks, if you ask me.
+
+01:27:02 Speaker 2
+It is. Yeah. It's. It's definitely. A very elitist kind of world view, and yeah, I they wanted me to move to New York to get into all that, and I could have made a lot of money, but I didn't want to go to New York or New Jersey, so I I left out of it. But yeah, it's I like to keep a pulse on what's going on, but that's kind of why I left Pfizer because I felt like I was building building the the social credit score system of the the world or something.
+
+01:27:27 Speaker 1
+Yeah, exactly.
+
+01:27:29 Speaker 2
+Now you talk about what we're doing here, like.
+
+01:27:32 Speaker 1
+That meeting app that I showed you, where we're recording people having a you know meeting and transcribing it, and like you want to send a transcoding job to the network, you want to send a you want to build a chat app with integration with AI like LLM models and and do you know orchestrating workflows that take LLMs, transcriptions, audio, image generation, you throw an agent on top of it, now you're generating real time creative videos like. That stuff got gets me fired up.
+
+01:28:01 Speaker 2
+Yeah, that's fun stuff for sure.
+
+01:28:03 Speaker 1
+That is what I'm looking at building. Those kinds of systems are I'm all for that, and doing it at scale with a lot of technology like this, like all these different pieces of the puzzle that you get to stitch together and make this thing. Like that's like reminds me of building Legos when I was a kid, man. That's like yo, I want that.
+
+01:28:22 Speaker 2
+Yeah, yeah, that's that's that's as much more fun than building the singularity.
+
+01:28:27 Speaker 1
+Yeah, a bank app transferring funds from one account to the next. No,
+
+01:28:31 Speaker 2
+Thank you. It it took many years.
+
+01:28:35 Speaker 1
+Important, but no, thank you.
+
+01:28:36 Speaker 2
+It took many years to develop a taste for for some of it. But having run Payment House, it was like it was so much of a like a throwback for me. Like I was I was reliving some past years. It was kind of.
+
+01:28:49 Speaker 1
+Do you know what PCI DSS is?
+
+01:28:52 Speaker 2
+Yep. Oh yeah, I've ran compliance programs on it.
+
+01:28:55 Speaker 1
+Yeah, so I wrote when I did a lot of work in e-commerce back in the day when the internet, you know, the ninety late ninety.

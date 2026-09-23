@@ -1,6 +1,6 @@
 # Build Track Architecture Alignment Process
 
-**Status:** Planning draft
+**Status:** Historical facilitation draft; mandatory workshop sequence superseded on 21 September 2026
 
 **Prepared:** 26 August 2026
 
@@ -10,6 +10,17 @@
 architecture and milestone discussions
 
 **Preparation bead:** `netspe-vun.8`
+
+## September 2026 process update
+
+Mike will prepare a complete architecture proposal and proposed dispositions for
+all outstanding decisions, then present them for Network Engineering SPE review.
+The earlier two-workshop sequence below is retained as optional facilitation
+material, not a prerequisite to drafting. See the
+[21 September direction](../source-material/2026-09-21-Josh-Payments-Clearinghouse-Reference.md#relevance-to-the-cloud-spe-architecture-proposal).
+Execution dependencies are maintained in Beads. The target delivery window is
+1 October through 31 December 2026; formal architecture and SPE approvals remain
+required. This update does not record either workshop as completed.
 
 ## Purpose
 
