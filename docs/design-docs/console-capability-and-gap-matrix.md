@@ -2,6 +2,7 @@
 
 **Status:** Draft capability inventory for Mike's proposal; not approved implementation scope\
 **Prepared:** 23 September 2026\
+**Evidence consolidation:** 24 September 2026\
 **Owner:** Mike Zupper, Cloud SPE\
 **Execution bead:** `netspe-vun.30`\
 **Design:** [Self-sovereign open builder stack](self-sovereign-open-builder-stack-draft.md)\
@@ -37,15 +38,29 @@ is incomplete. **External contract** means Console calls an upstream service;
 the upstream implementation was not inspected. **Gap** means the reviewed
 components do not establish the required independent behavior.
 
-Source baseline: Mike's 22 September research at
-`~/Desktop/livepeer-network-engineering-spe-research`, documents 01–07, reviewed
-under `netspe-vun.27`. Console `009a703d7b6434bab905902375f562e5980728af` and
-Batteries `6b75564247dd6dc20b2690a103445e9a9b392223` were rechecked on
-23 September. Supporting spot checks used go-livepeer
+Source baseline: Mike's 22 September Console/Batteries engineering research,
+reviewed under `netspe-vun.27`, selectively preserved here on 24 September under
+`netspe-vun.29`. This document now contains the useful source map, behavior
+qualifications and integration findings; no external research folder is needed.
+The original seven documents and 25 duplicated diagram sets were not imported.
+Their proposed replacement architecture and delivery choices are superseded by
+the primary design, not adopted as source facts.
+
+Console `009a703d7b6434bab905902375f562e5980728af` and Batteries
+`6b75564247dd6dc20b2690a103445e9a9b392223` remain the inspected local revisions
+as of 24 September. Source paths below were verified in those Git objects;
+execution/payment callback and authorization/funding details were spot-checked.
+This is source evidence, not a fresh complete audit, latest-upstream claim or
+runtime parity test. Supporting earlier spot checks used go-livepeer
 `e8dcf7a34744d5cb6b65ba43c0d9160a3975ccc6` and Python Gateway
-`44df06157fcdb864e37d971e8caba86b2a7dc92e`. The latter two were not fully audited
-for parity with Console's current SDK. This is a pinned source inventory, not a
-claim about latest upstream heads or a tested combined deployment.
+`44df06157fcdb864e37d971e8caba86b2a7dc92e`; neither was fully audited for parity.
+
+Console tests were not run for the original research or this preservation pass.
+The original research reported a Batteries `make check` pass, but no retained
+execution log is supplied here; it is not acceptance evidence. No funded network
+jobs or production-service validation were performed. Recheck the source map and
+relevant behavior when selecting different revisions, without rewriting this
+snapshot as if it described the newer code.
 
 Current providers named below:
 
@@ -169,3 +184,126 @@ Hard spending ceilings, immutable total-job quotes, provably complete final
 fees, production HA/SLAs and generic cancellation are additional guarantees to
 decide explicitly. They must not be mistaken for features already supplied by
 the inspected stack. Execution status and priority remain in Beads.
+
+## Preserved source evidence
+
+Links use immutable commit IDs rather than a moving branch or local Desktop
+paths. They establish where to reproduce the source review, not guarantees about
+a deployed service. Row IDs refer to the inventory above.
+
+| Repository | Pinned source | Evidence supported |
+| --- | --- | --- |
+| Console | [package.json](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/package.json) | Framework and gateway dependencies; package presence does not establish SDK parity |
+| Console | [lib/mcp/mcp-server.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/mcp/mcp-server.ts) | B1–B4/B8/C5: complete MCP tool inventory and invocation/progress interface |
+| Console | [lib/mcp/discovery.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/mcp/discovery.ts) | B1–B3: aggregation and representative rate metadata, not immutable quotes |
+| Console | [lib/mcp/gateway.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/mcp/gateway.ts) | B4: gateway SDK boundary and signer-refresh retry |
+| Console | [lib/runs/execute.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/runs/execute.ts) | B4/B6/B7/C4: persist-before-dispatch, awaited payment callbacks, outcomes |
+| Console | [lib/runs/store.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/runs/store.ts) | B6/C4: owned runs, events, payment lineage and recovery records |
+| Console | [lib/runs/reconcile.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/runs/reconcile.ts) | B7: bounded provider-status recovery, not new inference dispatch |
+| Console | [lib/runs/manifest-billing.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/runs/manifest-billing.ts) | C4/C5: matching owned manifests to cumulative billing observations |
+| Console | [lib/console/manifest-usage.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/console/manifest-usage.ts) | C4/C5: external bearer-scoped usage contract |
+| Console | [lib/console/session-user.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/console/session-user.ts) | A1–A3: browser identity, admission and external-account dependencies |
+| Console | [lib/mcp/jwt.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/mcp/jwt.ts) | A5: provider issuer/JWKS and account binding |
+| Console | [app/token/route.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/app/token/route.ts) | A5: code/refresh flow and external access-token exchange |
+| Console | [lib/console/pymthouse-billing-bff.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/lib/console/pymthouse-billing-bff.ts) | D1–D6: external commerce requests, not provider internals |
+| Console | [app/api/assets/[id]/route.ts](https://github.com/livepeer/console/blob/009a703d7b6434bab905902375f562e5980728af/app/api/assets/%5Bid%5D/route.ts) | B8: owned/signed asset access and controlled provider fetching |
+| Batteries | [internal/app/server.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/app/server.go) | C1/E1: service/listener surface and startup |
+| Batteries | [internal/app/cli.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/app/cli.go) | A3/A4/C2: actual operator command surface |
+| Batteries | [internal/app/presentation.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/app/presentation.go) | C5: report fields actually exposed versus stored evidence |
+| Batteries | [internal/auth/http.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/auth/http.go) | C1: outer webhook credential and transport/decision response distinction |
+| Batteries | [internal/store/auth.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/store/auth.go) | C1/C2: nested credential, session binding and balance policy |
+| Batteries | [internal/store/manage.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/store/manage.go) | C2: grant/allocation/key lifecycle and fresh funding operation IDs |
+| Batteries | [internal/store/ingest.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/store/ingest.go) | C3/C4: validation, deduplication, quarantine and accounting |
+| Batteries | [internal/kafka/listener.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/kafka/listener.go) | C3/E2: consumer checkpoint/offset behavior |
+| Batteries | [internal/store/settlements.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/store/settlements.go) | C6: settlement attribution and compensation |
+| Batteries | [internal/chain/listener.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/chain/listener.go) | C6/E2: chain observations and reorg handling |
+| Batteries | [internal/store/store.go](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/internal/store/store.go) | C2/E2: exact ledger operations and SQLite configuration |
+| Batteries | [migrations/001_initial.sql](https://github.com/livepeer/clearinghouse-batteries/blob/6b75564247dd6dc20b2690a103445e9a9b392223/migrations/001_initial.sql) | C2–C6: domain schema, monetary records and constraints |
+
+### Console MCP behavior inventory
+
+The pinned `mcp-server.ts` above registers these 13 tools. This is a behavior
+inventory, not a decision to put every tool in the new core. Discovery/execution
+and usage evidence belong to the shared journey; application asset-library and
+identity presentation need an explicit core/example disposition.
+
+| Tool(s) | Pinned behavior and qualification |
+| --- | --- |
+| `list_capabilities` | Signer discovery aggregated by app; not an immutable offer |
+| `describe_capability` | Discovery plus local endpoint/schema hints; no guarantee of live capacity |
+| `get_pricing` | Available rate metadata; not a binding total-job quote |
+| `run_capability` | Exact capability/inputs; single-shot or persistent endpoint; queued results/progress |
+| `upload`, `upload_image`, `create_upload_url` | Public-HTTPS-URL instructions/unavailable response; no implemented upload/storage service |
+| `get_recent_assets`, `search_assets` | Owned asset-reference retrieval, not a permanent media archive |
+| `forget_assets` | Hides library records; does not delete provider files or run history |
+| `get_cost_report`, `me_usage` | Provider-backed current UTC-day spend/usage; not generic per-job history |
+| `me` | Principal/account/app identity; response labels Console access unknown although transport enforces admission |
+
+Browser catalog/playground fixtures are distinct from the live MCP execution
+path. The run-list/detail API does not establish a general REST submission API.
+A browser file chooser does not establish an upload service. Newsletter
+subscriptions and Console admission grants are unrelated to paid subscriptions
+and Batteries monetary grants, respectively.
+
+### Console execution and reporting behavior to preserve or disposition
+
+- Persist owned run identity before dispatch. Failure to persist the running
+  transition prevents dispatch. Persistence retries must not repeat inference.
+- Retain the gateway request ID and awaited payment-manifest callbacks across
+  execution. The SDK adapter has a signer-refresh retry; this is not evidence
+  that arbitrary inference failures can be retried safely.
+- Record progress and provider recovery handles separately from terminal results.
+  Client notification failure does not imply failed execution. A failed final
+  save can accompany a real result; report persistence uncertainty honestly.
+- Recovery is bounded, read-only inspection of supported public `queue.fal.run`
+  status/result handles. It neither submits replacement work nor infers success
+  from payment records. Its one-shot script does not prove a deployed scheduler.
+- Join billing by exact owned manifest identifiers, including multiple manifests
+  per run. Cumulative observations are projections, not new financial postings.
+  Missing fees remain pending/unmatched; billing refresh failure must not change
+  a successful execution into a failed one.
+- Asset references represent provider URLs/metadata with controlled access.
+  Provider retention and media availability are external. A `cancelled` status
+  enum does not establish a generic cancellation API.
+
+These are compatibility questions for the Python SDK integration. They do not
+mandate carrying Console's Next.js runtime, Auth0, queue provider, separate
+worker topology or full application schema into the new engine.
+
+### Batteries integration details
+
+- The signer webhook uses an outer `Livepeer-Clearinghouse-Token`; the gateway
+  credential is nested in the body's `headers.Authorization`. Neither is an
+  enterprise customer login. Normal policy responses use HTTP 200 with a JSON
+  decision status; invalid outer token, malformed request and internal failure
+  use transport errors. Adapters must inspect the decision, not just HTTP status.
+- Allocation keys are returned once and stored hashed. At this snapshot they
+  do not have their own expiry field; grant/allocation windows and revocation
+  affect authorization. Short-lived per-attempt managed keys were a research
+  proposal, not existing functionality or a selected design requirement.
+- Sessions bind signer state to allocation/key and execution-related fields.
+  Positive-balance authorization is not a reservation. Funding operations create
+  fresh posting IDs; blindly retrying a CLI funding call does not provide
+  caller-idempotent provisioning over HTTP.
+- Reports differ from stored records. Usage CLI output includes event/transport
+  identity, status/error, fee and timestamps but omits several stored request,
+  session and quantity dimensions. Balance comes from ledger reporting, not the
+  original allocated amount. Operator CLI reports are not an owner-scoped,
+  paginated user reporting API.
+- Duplicate event handling and accounting checkpoints do not prove all signer
+  events were published. Quarantine retains evidence without making an applied
+  fee; transport progress must not be presented as financial completeness.
+- Settlement attribution is session-level and may be matched, unmatched or
+  ambiguous. Chain compensation does not erase delivered off-chain usage.
+  Revocation prevents future authorized use while valid delayed charges remain.
+- SQLite/local broker operations require consistent backup and recovery.
+  Readiness is not accounting-lag monitoring; local locks do not establish
+  distributed HA. Public management/report APIs and hard ceilings are gaps,
+  not capabilities supplied by the existence of SQLite or Kafka.
+
+The research's proposed per-run credential scheme, exact new HTTP routes,
+Batteries outbox, PostgreSQL dispatch queue and production migration plan were
+not imported as requirements. Contracts and runtime evidence remain work under
+`netspe-vun.29`; additional streaming remains `netspe-vun.35`. Targeted failure
+and replay scenarios from the research are preserved in `.29` for acceptance
+planning, without creating a separate delivery roadmap.

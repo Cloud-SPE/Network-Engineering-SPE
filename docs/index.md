@@ -14,7 +14,8 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
   — repository roles, imported/service integration, self-operated/hosted payments,
   shared execution and separate accounting.
 - [Capability and gap inventory](design-docs/console-capability-and-gap-matrix.md)
-  — pinned implementation evidence, new homes and unverified integration gaps.
+  — pinned implementation evidence, preserved Console/Batteries source map,
+  MCP behavior, new homes and unverified integration gaps.
 - [Repository architecture](../ARCHITECTURE.md) — boundaries, information model,
   and source precedence.
 - [Core beliefs](design-docs/core-beliefs.md) — principles for shaping the SPE
