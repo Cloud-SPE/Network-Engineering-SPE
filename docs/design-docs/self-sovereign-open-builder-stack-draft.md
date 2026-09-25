@@ -2,8 +2,7 @@
 
 **Status:** Consolidated working proposal, not SPE-approved architecture or implementation\
 **Updated:** 25 September 2026\
-**Proposal and interim new-repository owner:** Mike Zupper\
-**Architecture work:** `netspe-vun.10`; decision review: `netspe-vun.11`
+**Proposal and interim new-repository owner:** Mike Zupper
 
 ## Executive summary
 
@@ -242,12 +241,12 @@ Source evidence establishes invocation paths for single-shot requests, queued
 asynchronous completion/recoverable handles, and persistent application endpoints.
 `lib/mcp/mcp-server.ts`, `lib/mcp/run-capability.ts` and `lib/mcp/gateway.ts`
 are the principal source locations; runtime parity through the Python SDK still
-needs verification under `netspe-vun.29`.
+needs runtime integration verification.
 
 Persistent applications are not necessarily streaming jobs. MCP progress/SSE
 messages are not proof of incremental inference output or live media transport.
 Additional incremental text streaming and continuous live audio/video are an
-open scope decision in `netspe-vun.35`, not committed delivery requirements.
+open scope decision, not committed delivery requirements.
 This does not block defining or implementing verified baseline behavior.
 Select representative supported capabilities and pin all participating revisions
 before accepting parity. Preserve failure, timeout and uncertain-result behavior;
@@ -322,8 +321,8 @@ assigned to an external integration, not silently added to core.
 
 ## Delivery and acceptance
 
-Work state and ordering live in Beads, not a parallel roadmap. The architecture
-and decision pitch precede final October–December milestone commitments.
+Architecture and scope review precede final October–December milestone
+commitments.
 Acceptance evidence should cover:
 
 - A pinned seven-outcome journey with no mandatory PymtHouse or commerce service.

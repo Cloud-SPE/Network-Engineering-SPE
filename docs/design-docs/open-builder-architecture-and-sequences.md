@@ -2,7 +2,7 @@
 
 **Status:** Diagram companion to the consolidated working proposal, not approved or implemented architecture\
 **Updated:** 23 September 2026\
-**Owner:** Mike Zupper; work tracked in `netspe-vun.10`
+**Owner:** Mike Zupper
 
 The [primary architecture](self-sovereign-open-builder-stack-draft.md) owns scope,
 contracts, evidence limits and open decisions. The new backend is not hosted
@@ -241,6 +241,6 @@ repaired solely by replaying the engine projection.
 Console `009a703d7b6434bab905902375f562e5980728af` is the pinned execution
 reference. The [matrix](console-capability-and-gap-matrix.md) distinguishes
 source paths from runtime verification. Additional text/media streaming is
-undecided under `netspe-vun.35`; API-key/OAuth policy and several provider
+undecided; API-key/OAuth policy and several provider
 contracts are still recommendations. Diagram rendering validates syntax and
 legibility, not implementation, interoperability or external commitments.

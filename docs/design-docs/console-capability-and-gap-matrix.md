@@ -4,9 +4,8 @@
 **Prepared:** 23 September 2026\
 **Evidence consolidation:** 24 September 2026\
 **Owner:** Mike Zupper\
-**Execution bead:** `netspe-vun.30`\
 **Design:** [Self-sovereign open builder stack](self-sovereign-open-builder-stack-draft.md)\
-**Decision link:** No accepted decision; input to `netspe-vun.10` and `netspe-vun.11`
+**Decision status:** Pending architecture and scope review; no accepted decision
 
 ## Selected product profile
 
@@ -39,8 +38,7 @@ the upstream implementation was not inspected. **Gap** means the reviewed
 components do not establish the required independent behavior.
 
 Source baseline: Mike's 22 September Console/Batteries engineering research,
-reviewed under `netspe-vun.27`, selectively preserved here on 24 September under
-`netspe-vun.29`. This document now contains the useful source map, behavior
+selectively preserved here on 24 September. This document now contains the useful source map, behavior
 qualifications and integration findings; no external research folder is needed.
 The original seven documents and 25 duplicated diagram sets were not imported.
 Their proposed replacement architecture and delivery choices are superseded by
@@ -159,7 +157,7 @@ handles and persistent application endpoint support. Its HTTP MCP adapter sends
 progress notifications; this does not establish continuous inference streaming.
 The new Python SDK path must prove representative runtime parity. Additional
 incremental text and continuous live audio/video scope is explicitly undecided
-in `netspe-vun.35` and does not block the baseline.
+and does not block the baseline.
 
 Persistence minimum: SQLite with a defined interface for engine records,
 migrations and recovery. PostgreSQL is a target. Enterprise stores integrate
@@ -173,17 +171,17 @@ implemented and verified in the supported deployment. Section D is external
 extension scope and is not part of core completion. A screen, adapter interface, database
 table or command-line primitive alone does not complete the user journey.
 
-For each inventory row, detailed follow-up `netspe-vun.29` must identify exact
+For each inventory row, implementation review must identify exact
 source calls, replacement contract, implementation repository, owner, remaining
 work and acceptance evidence. The source review does not establish estimates or
 external delivery commitments. The design's
 [acceptance requirements](self-sovereign-open-builder-stack-draft.md#delivery-and-acceptance)
-defines integration, parity and cutover gates.
+define integration, parity and cutover gates.
 
 Hard spending ceilings, immutable total-job quotes, provably complete final
 fees, production HA/SLAs and generic cancellation are additional guarantees to
 decide explicitly. They must not be mistaken for features already supplied by
-the inspected stack. Execution status and priority remain in Beads.
+the inspected stack.
 
 ## Preserved source evidence
 
@@ -303,7 +301,7 @@ worker topology or full application schema into the new engine.
 
 The research's proposed per-run credential scheme, exact new HTTP routes,
 Batteries outbox, PostgreSQL dispatch queue and production migration plan were
-not imported as requirements. Contracts and runtime evidence remain work under
-`netspe-vun.29`; additional streaming remains `netspe-vun.35`. Targeted failure
-and replay scenarios from the research are preserved in `.29` for acceptance
-planning, without creating a separate delivery roadmap.
+not imported as requirements. Contracts and runtime evidence still require
+validation; additional streaming remains an open scope decision. Acceptance
+should cover targeted failure and replay scenarios, as described in the
+[primary design](self-sovereign-open-builder-stack-draft.md#delivery-and-acceptance).
