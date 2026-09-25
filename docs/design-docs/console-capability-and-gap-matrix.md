@@ -9,6 +9,11 @@
 
 ## Selected product profile
 
+This inventory uses the existing `livepeer/console` prototype as source evidence.
+It is not a required component of the proposed architecture. Its
+[reference-only role](self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles)
+is distinct from the new reference application to be delivered.
+
 Mike's latest direction is a noncommercial open stack with commerce implemented
 externally through supported package interfaces or service APIs/events. This inventory still describes the larger
 existing Console surface. Section D is now **external extension scope**, not
@@ -17,7 +22,7 @@ superseded by the linked design.
 
 Core acceptance centers on access, discovery, rates, invocation, results,
 network payment, cost evidence and independent operation. Device login (A6) and enhanced upload/media storage (B8) remain experience
-choices to disposition. A Console-informed sample is selected; its exact browser
+choices to disposition. A reference application is selected; its exact browser
 feature set (B5) still needs definition. Basic result access remains core. Customer invoicing and
 retail charges are external; the standalone app shows network cost.
 
@@ -62,7 +67,7 @@ snapshot as if it described the newer code.
 
 Current providers named below:
 
-- **Console:** `livepeer/console`; application backend, browser UI and MCP.
+- **Console prototype (reference only):** `livepeer/console`; inspected application backend, browser UI and MCP.
 - **Batteries:** `livepeer/clearinghouse-batteries`; payment authorization and accounting.
 - **go-livepeer:** `livepeer/go-livepeer`; remote signer and Orchestrator roles.
 - **Python SDK:** `livepeer/livepeer-python-gateway`; client-side discovery, payment and execution code.
@@ -142,7 +147,7 @@ existing refund/chargeback behavior. Do not label these as verified parity.
 | --- | --- | --- |
 | New backend repository | Shared core packages, REST/MCP services, access context, B1–B4/B6–B7, C4–C5, persistence and provider adapters | Console behavior extracted/redesigned; no mandatory PymtHouse or commerce |
 | Sample enterprise app | Login/admission experience, browser journey, added tools/endpoints and mocked D1–D6 scenarios as selected | Import core or call deployed service; real commerce is enterprise work |
-| Console | Existing behavior and reusable code evidence | Its migration is not an automatic delivery assignment |
+| Console prototype (reference only) | Existing behavior and reusable code evidence | No deployment dependency; migration is not assigned |
 | Python SDK | Discovery/rates and execution/payment integration | Verify Console baseline compatibility; worker process topology remains open |
 | Batteries | Authorization, allocations and network ledger; proposed scoped management/reporting surfaces | Upstream changes require maintainer agreement; no customer/retail model |
 | go-livepeer | Signer, event production and current Orchestrator/Runner integration | Consume existing primitives; verify evidence and raise gaps upstream |

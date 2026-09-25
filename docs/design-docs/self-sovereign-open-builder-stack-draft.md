@@ -60,7 +60,6 @@ applications.
 | [livepeer-python-gateway](https://github.com/livepeer/livepeer-python-gateway) | Python SDK for discovery, prices, and job invocation | Existing maintainers own the SDK; Mike owns the engine's integration |
 | [go-livepeer](https://github.com/livepeer/go-livepeer) | Remote signer and Orchestrator/Live Runner integration | Existing maintainers; Josh coordinates network/runtime dependencies |
 | [clearinghouse-batteries](https://github.com/livepeer/clearinghouse-batteries) | Payment authorization and network accounting | Existing maintainers; Josh coordinates payment-core dependencies |
-| [console](https://github.com/livepeer/console) | Reference behavior and code for the example experience | Existing owners retain repository decisions; Mike proposes selected reuse |
 | **Enterprise application repositories** | Customer-facing products and commercial features | Inc and each independent builder own their applications |
 
 Required changes to upstream components need agreement from their maintainers.
@@ -98,8 +97,7 @@ evidence and gaps are in the [capability matrix](console-capability-and-gap-matr
 The deliverable is a reusable, noncommercial builder engine with installable
 packages and runnable REST and MCP services. Enterprises can import and extend
 its public interfaces or call it as a deployed service, without modifying core
-source. REST and MCP share core behavior. Console supplies reference behavior
-and code to extract or redesign; a Console rewrite is not the delivery premise.
+source. REST and MCP share core behavior.
 
 Self-sovereign means independent installation, operation, data control,
 credential administration, upgrades and recovery. Operators can run Batteries
@@ -116,6 +114,15 @@ Network, chain RPC and payment funding remain explicit dependencies.
 
 ## Repositories and application roles
 
+**Existing Console prototype — reference only.** The
+[`livepeer/console`](https://github.com/livepeer/console) repository provides
+examples of capability discovery, job submission, results, and usage
+presentation. Selected behavior and code may inform the builder engine and
+reference application. The proposed architecture does not require deploying
+Console. The reference application's implementation and repository location
+remain to be decided. Its existing owners retain decisions about the prototype;
+this proposal does not assign its migration or replacement.
+
 The [executive component map](#components-repositories-and-ownership) owns the
 repository and responsibility inventory. Reuse of the Python SDK requires
 verification against the selected Console execution baseline; it is not a
@@ -123,10 +130,19 @@ presumed replacement for Console's TypeScript gateway dependency. Batteries
 remains a narrow payment core, and its proposed management/reporting integration
 requires maintainer agreement. Payment-protocol redesign is outside this scope.
 
-Inc's capability schema and SDK REST wrapper are candidate sources for reuse.
-Qiang offered source access; Mike will confirm access and reuse permissions with
-the owners before fixing shared contracts. Review compatibility and separate
-product-specific behavior through supported extension interfaces.
+**Inc implementation — source review pending.** Mike identified
+`livepeer/simple-infra` on 25 September 2026 as the currently closed-source Inc
+repository for the implementation Qiang offered to share. Qiang will provide
+Mike access; access and code inspection are still pending. The capability schema
+and Python SDK REST wrapper discussed in the meeting are candidates to evaluate
+there, not verified reusable components.
+
+Mike will review that implementation with Qiang before fixing shared contracts,
+identify common behavior and separate product-specific concerns through supported
+extension interfaces. Repository access permits review only to the extent agreed
+with Inc; permission to reuse or redistribute code in the open-source engine must
+be confirmed separately. The proposed engine must be independently buildable and
+deployable without access to this closed-source repository.
 
 A repository is not necessarily a process. A Python core is the working
 implementation direction; exact package boundaries and MCP/runtime packaging
@@ -190,7 +206,9 @@ provider account or allocation for that customer.
 
 ## Execution baseline and streaming decision
 
-Mike requires the new backend to support Console's current execution behavior.
+The new backend must support the execution behavior identified in the inspected
+prototype: single-shot requests, queued completion and persistent application
+endpoints.
 The pinned review baseline is Console `009a703d7b6434bab905902375f562e5980728af`.
 Source evidence establishes invocation paths for single-shot requests, queued
 asynchronous completion/recoverable handles, and persistent application endpoints.
@@ -248,7 +266,7 @@ and handling outstanding jobs; an adapter does not make migration automatic.
 
 ## Examples and seven outcomes
 
-The sample should offer a useful Console-informed baseline: access, discovery,
+The reference application should demonstrate access, discovery,
 prices, invocation, results/history, usage/cost and administrative allowance
 management. Demonstrate adding enterprise authentication, additional endpoints
 and MCP tools, and mock commerce without changing core source. Use one example
@@ -257,8 +275,9 @@ with imported-extension and separate-service variants where practical.
 Full production commercial parity is not required. Mock purchases, entitlements
 and invoices can exercise integration behavior; no working Stripe checkout or
 Stripe test-account dependency is necessary. Enterprises implement real commerce.
-Exact selection of Console UI/asset/account features remains part of the matrix
-review rather than an implicit promise to copy every screen.
+The reference application's UI, asset and account features remain part of the
+matrix review; the prototype supplies examples rather than a screen-by-screen
+replication requirement.
 
 | Builder outcome | Responsibility |
 | --- | --- |
@@ -281,7 +300,7 @@ commitments.
 Acceptance evidence should cover:
 
 - A pinned seven-outcome journey with no mandatory PymtHouse or commerce service.
-- Console execution baseline through the Python SDK, with representative success,
+- The pinned prototype execution baseline through the Python SDK, with representative success,
   failure, queued recovery and restart behavior.
 - The same core package release used by standalone and imported enterprise modes;
   shared REST/MCP behavior, ownership isolation and added enterprise tools.
@@ -305,7 +324,7 @@ contribution agreements must be settled with the relevant owners.
 
 Selected by Mike for the proposal: new backend repository, installable packages
 and runnable services, imported and HTTP enterprise integration, noncommercial
-core, mocked example commerce, Console execution baseline, SQLite/persistence
+core, mocked example commerce, the pinned execution baseline, SQLite/persistence
 minimum, PostgreSQL target, and interim ownership/release preparation.
 
 Still unresolved: exact access/OAuth profile, payment credential/allocation

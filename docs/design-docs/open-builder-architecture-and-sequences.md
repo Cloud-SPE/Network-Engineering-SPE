@@ -5,8 +5,11 @@
 **Owner:** Mike Zupper
 
 The [primary architecture](self-sovereign-open-builder-stack-draft.md) owns scope,
-contracts, evidence limits and open decisions. The new backend is not hosted
-in the Console repository.
+contracts, evidence limits and open decisions. The new backend has its own
+repository. In the component diagram, `livepeer/console` is an existing prototype
+used as reference material; its dotted arrow represents possible code or behavior
+reuse, not a runtime connection or deployment dependency. See the
+[reference-only role](self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles).
 Every new engine interface below is proposed. Arrows express responsibilities,
 not a verified protocol ordering or accepted upstream API.
 
