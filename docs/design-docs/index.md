@@ -15,6 +15,7 @@ status is `Accepted` and it links to the decision that approved it.
 | [September–December milestone proposal](cloud-spe-september-december-2026-milestones-draft.md) | Historical draft awaiting reviewed scope | Input to later October–December milestone revision |
 
 Intermediate Console-replacement and enterprise deployment drafts were removed
-on 23 September after consolidation. Their relevant evolution is captured in
-the primary proposal; original stakeholder evidence remains in references.
+on 23 September after consolidation. Original stakeholder evidence and its chronology remain in the
+[reference catalog](../references/index.md); the primary proposal presents the
+current direction.
 No draft becomes accepted by being linked. Work state remains in Beads.

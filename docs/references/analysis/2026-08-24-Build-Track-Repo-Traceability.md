@@ -1,10 +1,13 @@
 # Build Track: Repository Traceability and Gap Analysis
 
-**Status:** Working draft
+**Status:** Historical source snapshot — reverify before use
 **Date:** 24 August 2026
 **Track:** Easy to Build — Builder
 **Track owner:** Mike Zupper
 **Companion to:** [Build Track: Outcome and High-Level Concepts](2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md)
+
+> **25 September review context:** Repository roles and deployment findings below describe the August review. They are not the current architecture or a verified description of the present Agent/payment path.
+> See the [current builder-engine proposal](../../design-docs/self-sovereign-open-builder-stack-draft.md).
 
 ## Purpose
 

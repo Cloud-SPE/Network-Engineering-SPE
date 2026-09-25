@@ -277,6 +277,17 @@ reverse issued tickets, remove late fees or guarantee job cancellation. Hosted
 provider switching may require credential replacement, allowance reconciliation
 and handling outstanding jobs; an adapter does not make migration automatic.
 
+## Service assurance and acceptance scope
+
+The [2 September stakeholder feedback](../references/stakeholder-input/meetings/2026-09-02-Rich-Doug-Hunter-Build-Track-Feedback.md)
+asks what builders can know about expected performance and what happens when a
+long-running job fails after incurring costs. Failure records and network-cost
+reporting address part of that concern. The minimum performance information,
+retry/failover ownership and any financial recourse still require an explicit
+scope disposition with the affected owners. No SLA, automatic refund or recovery
+guarantee follows from the current diagrams. Acceptance also needs named
+representative capabilities and supported deployment conditions.
+
 ## Evidence and open scope
 
 Console `009a703d7b6434bab905902375f562e5980728af` is the pinned execution

@@ -1,6 +1,9 @@
 # Draft Cloud SPE Milestones: September–December 2026
 
-**Status:** Draft — blocked on end-state architecture decision and joint approval
+**Status:** Historical August proposal — not the current delivery plan
+
+> **25 September review context:** The original September–December windows and workshop prerequisites below are preserved as planning history. The current direction is architecture review followed by an October–December milestone proposal; no revised dates or funding are approved here.
+> See the [current builder-engine proposal](../design-docs/self-sovereign-open-builder-stack-draft.md).
 
 **Date:** 25 August 2026
 

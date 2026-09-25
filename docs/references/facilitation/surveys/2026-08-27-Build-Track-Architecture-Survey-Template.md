@@ -1,5 +1,9 @@
 # Build Track Architecture Survey Response
 
+> **Historical survey material:** Preserved for the August–September collection.
+> The current [proposal-led architecture review](../../../design-docs/self-sovereign-open-builder-stack-draft.md)
+> does not require another survey round or completion of the old workshop sequence.
+
 **Expected completion time:** 10–15 minutes
 
 **Survey version:** `{SURVEY_VERSION}`

@@ -1,10 +1,13 @@
 # Build Track: Outcome and High-Level Concepts
 
-**Status:** Revised working draft
+**Status:** Historical outcome proposal — not an accepted delivery contract
 **Date:** 27 August 2026
 **Track:** Easy to Build — Builder
 **Track owner:** Mike Zupper
 **Source:** [Network Engineering SPE II notes](../source-material/2026-08-25-NetworkEngieneerSPE2-Notes-v2.md)
+
+> **25 September review context:** The seven outcomes remain useful context. The current proposal separates wholesale network costs from enterprise billing, and software delivery from hosted operation; spend guarantees and acceptance thresholds below are not automatically committed.
+> See the [current builder-engine proposal](../../design-docs/self-sovereign-open-builder-stack-draft.md).
 
 > **Scope correction:** Demand generation, application adoption, application
 > counts, production-traffic targets, and live-demand evidence are not Build

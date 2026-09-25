@@ -1,7 +1,9 @@
 # Emerging Build Track Architecture
 
-**Status:** Working architecture hypothesis; not an approved target design or
-delivery assignment
+**Status:** Historical architecture hypothesis; superseded as the current proposal
+
+> **25 September review context:** The image and component model below preserve the 9 September discussion. The current proposal separates the builder engine from the narrow payment core; this older Open Clearinghouse model is not an additional delivery requirement.
+> See the [current builder-engine proposal](../../design-docs/self-sovereign-open-builder-stack-draft.md).
 
 **Date:** 9 September 2026
 

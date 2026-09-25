@@ -1,9 +1,12 @@
 # Product Specification Index
 
-No Cloud SPE product specification has been accepted yet. The current wider
-Build Track outcome is working context in
-[the reference directory](../references/analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md),
-not a statement that the Cloud SPE owns every outcome it describes.
+No Cloud SPE product specification has been accepted yet. The
+[current architecture proposal](../design-docs/self-sovereign-open-builder-stack-draft.md)
+is the basis for scope review and subsequent October–December milestones.
+The [earlier outcome model](../references/analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md)
+is historical context, not an assignment of all programme outcomes to this
+workstream. The 24 September conceptual alignment does not itself approve a
+specification.
 
 A Cloud SPE specification promoted into this directory should include:
 

@@ -1,6 +1,9 @@
 # John Mull Clearinghouse Roadmap Discussion Guide
 
-**Status:** Draft facilitator guide
+**Status:** Historical facilitator guide; use only for relevant targeted verification
+
+> **25 September review context:** The broad legacy Pymthouse review below is no longer a prerequisite to drafting the architecture. Relevant source and interface questions remain useful; the 23 September John–Mike discussion is separately preserved in the reference index.
+> See the [current builder-engine proposal](../../../design-docs/self-sovereign-open-builder-stack-draft.md).
 
 **Prepared:** 2 September 2026
 

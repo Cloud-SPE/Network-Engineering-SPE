@@ -1,8 +1,9 @@
-# Required App Capabilities, Current Providers, and Gaps
+# Builder Capability Inventory and Source Evidence
 
 **Status:** Draft capability inventory for Mike's proposal; not approved implementation scope\
 **Prepared:** 23 September 2026\
 **Evidence consolidation:** 24 September 2026\
+**Documentation review:** 25 September 2026; no new implementation verification\
 **Owner:** Mike Zupper\
 **Design:** [Self-sovereign open builder stack](self-sovereign-open-builder-stack-draft.md)\
 **Decision status:** Pending architecture and scope review; no accepted decision
@@ -178,7 +179,7 @@ migrations and recovery. PostgreSQL is a target. Enterprise stores integrate
 through supported persistence adapters, stable IDs and events, not arbitrary
 shared-schema assumptions. Neither database choice establishes HA guarantees.
 
-## Definition of a complete replacement
+## Acceptance for selected features
 
 A selected core feature is complete only when its replacement behavior is
 implemented and verified in the supported deployment. Section D is external
@@ -196,6 +197,15 @@ Hard spending ceilings, immutable total-job quotes, provably complete final
 fees, production HA/SLAs and generic cancellation are additional guarantees to
 decide explicitly. They must not be mistaken for features already supplied by
 the inspected stack.
+
+## Inc source handoff awaiting review
+
+`livepeer/simple-infra` is a currently closed-source Inc repository identified
+by Mike on 25 September. Qiang will provide Mike access; the capability-schema
+and SDK REST-wrapper candidates have not been inspected for this inventory.
+The [source-handoff conditions](self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles)
+separate source access, permission for reuse and independent engine operation.
+No row marked Existing is based on inspection of that private repository.
 
 ## Preserved source evidence
 

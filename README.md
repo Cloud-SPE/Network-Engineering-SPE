@@ -54,26 +54,25 @@ SPE.
 
 ## Project status
 
-The Cloud SPE workstream is in the **scope, baseline, and decision** stage.
-Existing documents provide a strong code-level traceability draft, but they are
-not yet an approved specification of the Cloud SPE's assigned deliverables.
+The current review package is Mike Zupper's
+[open builder-engine proposal](docs/design-docs/self-sovereign-open-builder-stack-draft.md),
+with [technical diagrams](docs/design-docs/open-builder-architecture-and-sequences.md)
+and a [capability/evidence matrix](docs/design-docs/console-capability-and-gap-matrix.md).
+It proposes reusable packages and HTTP/MCP services, a reference application,
+and enterprise extensions that leave the shared core unchanged.
 
-The current review identifies several material gaps:
+The 24 September stakeholder meeting established conceptual alignment on this
+shared foundation and the separation of network costs from enterprise billing.
+Detailed architecture approval, upstream contracts, hosted-payment operation,
+representative capability acceptance, and long-term maintenance remain open.
+The repository has no accepted product specification or architecture decision
+record yet. Demand generation and application adoption are excluded from this
+workstream's delivery requirements.
 
-- the reported production Livepeer Agent payment path and the SPE clearinghouse
-  path do not connect;
-- no shared job identifier currently correlates builder invocation, usage,
-  metering, and network payment end to end;
-- credential, capability, pricing, and credit concepts are duplicated across
-  systems;
-- responsibility for recruiting or delivering the four additional demand
-  sources is not yet resolved; and
-- the timed first-call test, demand-source threshold, and required evidence
-  bundle still need committee approval.
-
-See the [quality review](docs/QUALITY.md) and
-[repository traceability report](docs/references/analysis/2026-08-24-Build-Track-Repo-Traceability.md)
-for the detailed assessment. Work state and blockers are maintained in Beads.
+The [quality review](docs/QUALITY.md) distinguishes current proposal gaps from
+historical findings. August repository observations remain dated evidence, not
+claims about today's Agent or payment deployment. Work state and dependencies
+are maintained in Beads.
 
 ## Cloud SPE scope
 
@@ -101,21 +100,19 @@ External work may be recorded as a dependency or handoff when it directly
 blocks a Cloud SPE deliverable, but its owner and external source of truth must
 remain explicit.
 
-## Systems touched by the current Cloud SPE work
+## Components and source references
 
-The current technical baseline examines these independently owned systems
-because Cloud SPE deliverables may integrate with or depend on them:
+The [architecture component map](docs/design-docs/self-sovereign-open-builder-stack-draft.md#components-repositories-and-ownership)
+identifies proposed deliverables and dependencies: a new builder-engine
+repository, reference application, Python gateway SDK, `go-livepeer` and
+`clearinghouse-batteries`. Existing maintainers retain upstream ownership.
 
-| System | Role in the journey |
-| --- | --- |
-| Livepeer Agent (`livepeer/storyboard`) | Possible reference integration and builder-facing MCP, CLI, and application surface |
-| Clearinghouse (`livepeer/clearinghouse`) | Credential issuance, walletless signer policy, metering, credits, and balances |
-| `go-livepeer` | Gateway, orchestrator, capability discovery, payment tickets, and network execution |
-| Livepeer Python Gateway | Builder SDK for discovery, signing, payment, and several job families |
-| SDK Service / discovery service | Deployed integration layer used by the Agent but not fully represented in the four reviewed repositories |
-
-Repository references are dated observations. Re-verify their commits and
-deployed behavior before using them for implementation or payout decisions.
+The [repository roles section](docs/design-docs/self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles)
+separately identifies the Console prototype as reference material and
+`livepeer/simple-infra` as closed-source Inc material awaiting access and review.
+Neither is a required runtime dependency of the proposed engine. Earlier
+Storyboard and `livepeer/clearinghouse` mappings remain in historical references;
+they do not define the current proposal or establish current deployed behavior.
 
 ## Repository structure
 
@@ -159,14 +156,18 @@ automated checks when possible.
 
 ## Using the repository
 
-### Read the programme context
+### Read the current proposal
 
 Start with:
 
-1. [Build Track outcome and high-level concepts](docs/references/analysis/2026-08-27-Build-Track-Outcome-and-High-Level-Concepts.md)
-2. [Repository traceability and gap analysis](docs/references/analysis/2026-08-24-Build-Track-Repo-Traceability.md)
-3. [Network Engineering SPE II notes](docs/references/source-material/2026-08-25-NetworkEngieneerSPE2-Notes-v2.md)
+1. [Architecture and executive summary](docs/design-docs/self-sovereign-open-builder-stack-draft.md)
+2. [Technical diagrams and accounting requirements](docs/design-docs/open-builder-architecture-and-sequences.md)
+3. [Capability evidence and verification gaps](docs/design-docs/console-capability-and-gap-matrix.md)
 4. [Quality review](docs/QUALITY.md)
+
+The [reference index](docs/references/index.md) preserves earlier outcomes,
+meeting evidence, surveys, and programme context. Historical plans are inputs
+to review rather than additional delivery commitments.
 
 ### Work with Beads
 

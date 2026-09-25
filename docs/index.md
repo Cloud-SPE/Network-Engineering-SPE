@@ -21,9 +21,8 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 - [Core beliefs](design-docs/core-beliefs.md) — principles for shaping the SPE
   and its agent-facing environment.
 - [Draft September–December 2026 Cloud SPE milestones](design-docs/cloud-spe-september-december-2026-milestones-draft.md)
-  — high-level proposal awaiting an end-state architecture decision and
-  subsequent Network Engineering SPE and Cloud SPE review; demand generation
-  and application adoption are explicitly excluded.
+  — historical August planning input; a revised October–December plan follows
+  review of the current architecture. Demand generation and adoption remain excluded.
 - [Design document index](design-docs/index.md) — accepted and proposed designs.
 - [Product specification index](product-specs/index.md) — intended outcomes and
   acceptance contracts.
@@ -33,9 +32,9 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 ## Source material and evidence
 
-- [24 September Agent–Network Engineering SPE sync](references/stakeholder-input/meetings/09-24-2026-Livepeer-Inc-Agent-Team-NE-SPE-sync-meeting.txt)
-  — conceptual alignment on shared primitives and enterprise boundaries;
-  offered schema/SDK-wrapper source handoffs, with detailed review still pending.
+- [24 September Agent–Network Engineering SPE sync findings](references/stakeholder-input/meetings/2026-09-24-Agent-NE-SPE-Sync-Findings.md)
+  — conceptual alignment, source handoffs, Console clarification and hosting
+  boundaries; links the preserved transcript and dates the simple-infra update.
 
 - [23 September John–Mike architecture discussion](references/stakeholder-input/meetings/john-mike-build-track-architecture-discussion-0923-2026.txt)
   — supplied transcript; working alignment on the reusable backend, enterprise
@@ -78,7 +77,11 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
   three access paths, shared builder layer, discovery and payment control,
   Live Runner execution, responsibility boundaries, and unresolved decisions.
 
-## Architecture alignment working materials
+## Historical architecture alignment materials
+
+The survey/workshop sequence below is preserved as facilitation material.
+Current work follows proposal-led review; these guides are not mandatory
+prerequisites to reviewing the architecture.
 
 - [Survey and workshop process](references/facilitation/2026-08-26-Build-Track-Architecture-Alignment-Process.md)
   — scheduling sequence, roles, decision classifications, and required outputs.

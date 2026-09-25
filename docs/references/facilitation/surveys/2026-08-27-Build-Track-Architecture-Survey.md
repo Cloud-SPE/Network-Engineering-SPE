@@ -1,6 +1,9 @@
 # Build Track Architecture Survey Administration
 
-**Status:** Internal working guide
+**Status:** Historical survey administration guide; optional reference
+
+> **25 September review context:** The mandatory survey/workshop sequence was superseded by proposal-led review on 21 September. Preserve completed responses as evidence; further survey distribution is not a prerequisite to architecture review.
+> See the [current builder-engine proposal](../../../design-docs/self-sovereign-open-builder-stack-draft.md).
 
 **Prepared:** 27 August 2026
 

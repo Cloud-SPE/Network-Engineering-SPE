@@ -307,8 +307,9 @@ minimum, PostgreSQL target, and interim ownership/release preparation.
 Still unresolved: exact access/OAuth profile, payment credential/allocation
 granularity, provider provisioning/reporting contracts, example feature selection
 and repository placement, execution-process packaging, extra streaming scope,
-PostgreSQL delivery commitment, hard spending limits, supported deployment
-guarantees, ongoing owners, a funded hosted-access operator
+representative acceptance capabilities, PostgreSQL delivery commitment, hard
+spending limits, supported deployment guarantees, service-assurance and recourse
+scope, ongoing owners, a funded hosted-access operator
 and final SPE scope/acceptance. The meeting evidence does not establish Inc adoption or
 obligate Josh/John to particular upstream changes. Preserve these distinctions
 when deriving milestones or presenting the proposal for approval.
