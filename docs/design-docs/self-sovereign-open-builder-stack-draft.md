@@ -204,73 +204,48 @@ opaque job/attempt/payment references. Per-application versus per-actor payment
 allocations remain a contract decision; onboarding a customer need not create a
 provider account or allocation for that customer.
 
-## Execution baseline and streaming decision
+## Execution scope
 
-The new backend must support the execution behavior identified in the inspected
-prototype: single-shot requests, queued completion and persistent application
-endpoints.
-The pinned review baseline is Console `009a703d7b6434bab905902375f562e5980728af`.
-Source evidence establishes invocation paths for single-shot requests, queued
-asynchronous completion/recoverable handles, and persistent application endpoints.
-`lib/mcp/mcp-server.ts`, `lib/mcp/run-capability.ts` and `lib/mcp/gateway.ts`
-are the principal source locations; runtime parity through the Python SDK still
-needs runtime integration verification.
+The proposed backend will support immediate results, jobs that complete
+asynchronously, and requests to persistent application endpoints. Support for
+incremental text streaming and continuous live audio/video remains to be agreed.
+Acceptance will verify supported execution modes, failure handling, and recovery
+without unintended duplicate jobs or charges.
 
-Persistent applications are not necessarily streaming jobs. MCP progress/SSE
-messages are not proof of incremental inference output or live media transport.
-Additional incremental text streaming and continuous live audio/video are an
-open scope decision, not committed delivery requirements.
-This does not block defining or implementing verified baseline behavior.
-Select representative supported capabilities and pin all participating revisions
-before accepting parity. Preserve failure, timeout and uncertain-result behavior;
-a retry must not silently duplicate work or payments. Session/price changes are
-validation cases, not grounds to assume undocumented signer guarantees.
+Implementation evidence and verification requirements are recorded in the
+[capability matrix](console-capability-and-gap-matrix.md#execution-baseline-and-additional-scope).
 
-## Persistence and accounting authority
+## Data and accounting responsibilities
 
-SQLite plus an explicit persistence interface is the required minimum.
-PostgreSQL is a delivery target, not a condition that replaces that minimum.
-Both should implement the same contract for engine-owned access mappings,
-jobs/attempts, result references, measured usage and cost projections, including
-migrations and backup/restore. Retention must be configurable.
+The engine will retain job history, results, usage, and network-cost reports,
+with support for backup and recovery. Batteries or the payment provider remains
+responsible for network payment accounting; each enterprise remains responsible
+for its customer bills. The engine connects execution records with payment
+information and clearly identifies costs that are still pending or uncertain.
+Enterprises can use these records in their own billing and analytics systems.
 
-Enterprises can correlate stable engine identifiers with their own stores and
-consume versioned events into billing/analytics. Supporting arbitrary enterprise
-database schemas is not required. A PostgreSQL adapter alone does not prove
-multi-instance scheduling, concurrency safety or high availability.
-
-| Record | Authority | Meaning |
-| --- | --- | --- |
-| Job inputs/outputs, status and measured work | Engine/SDK execution path | What was attempted and observed; quantities only where supported |
-| Allocations and ticket expected-value accounting | Batteries/payment provider | Network payment permission and observed ticket cost |
-| Winning-ticket redemption | Payment operator settlement evidence | On-chain settlement; not an exact per-job cash receipt |
-| Customer bill and commercial balance | Enterprise | Retail price/policy independent of network ticket settlement |
-
-Engine reporting is a projection, not a second authoritative network ledger.
-Correlate jobs, attempts, payment sessions/manifests and events explicitly; do not
-assume these identifiers are interchangeable. Missing or delayed evidence is
-pending/unknown, never automatically zero. Network expected-value accounting,
-settlement and retail charges must remain visibly distinct.
-
-Proposed provider management/read APIs need scoped authorization, exact units,
-idempotency and stable references. Proposed reporting events need stable IDs,
-versioned schemas, replay cursors and consumer deduplication. End-to-end event
-completeness remains unproven. A replayable backend feed cannot recover evidence
-that an upstream producer never delivered.
-
-Allocations do not fund signer escrow. Existing evidence does not establish
-strict spend reservations or hard ceilings. Revoking future access does not
-reverse issued tickets, remove late fees or guarantee job cancellation. Hosted
-provider switching may require credential replacement, allowance reconciliation
-and handling outstanding jobs; an adapter does not make migration automatic.
+Whether to guarantee hard spending limits remains an explicit scope decision.
+The [technical companion](open-builder-architecture-and-sequences.md#persistence-and-accounting-authority)
+defines the proposed storage, reporting and payment requirements and their limits.
 
 ## Examples and seven outcomes
 
-The reference application should demonstrate access, discovery,
-prices, invocation, results/history, usage/cost and administrative allowance
-management. Demonstrate adding enterprise authentication, additional endpoints
-and MCP tools, and mock commerce without changing core source. Use one example
-with imported-extension and separate-service variants where practical.
+The reference application will demonstrate how the shared builder components
+support an enterprise product. The existing
+[Livepeer Console prototype](#repositories-and-application-roles) provides a useful
+reference for access, capability discovery, pricing, job submission, results,
+history, and usage reporting.
+
+The demonstration will add enterprise authentication, custom API endpoints and
+MCP tools, administrative allowance management, and mock commerce through
+supported interfaces, without modifying the shared core. It should show both
+embedding the builder packages in an application and calling the separately
+deployed builder service.
+
+Success means an enterprise can customize its product while continuing to use
+the same released core components. The reference application may reuse selected
+Console code or patterns; whether to adapt that prototype or build a new example
+remains an implementation decision.
 
 Full production commercial parity is not required. Mock purchases, entitlements
 and invoices can exercise integration behavior; no working Stripe checkout or
@@ -289,9 +264,10 @@ replication requirement.
 | 6. Pay without holding crypto | Operator/provider-funded signer plus Batteries authorization |
 | 7. See usage and resulting charge | Core usage/network-cost evidence; enterprise supplies retail bill if applicable |
 
-Standalone “charge” is proposed as network cost against assigned allowance. Any
-SPE requirement for actual customer purchases or invoices must be explicitly
-assigned to an external integration, not silently added to core.
+The standalone engine reports network usage and costs against an assigned
+allowance. Enterprises use that information to implement their own pricing and
+billing. Customer payments and invoicing belong in enterprise integrations; the
+reference application demonstrates these features with mock commerce.
 
 ## Delivery and acceptance
 
@@ -303,7 +279,8 @@ Acceptance evidence should cover:
 - The pinned prototype execution baseline through the Python SDK, with representative success,
   failure, queued recovery and restart behavior.
 - The same core package release used by standalone and imported enterprise modes;
-  shared REST/MCP behavior, ownership isolation and added enterprise tools.
+  shared REST/MCP behavior, ownership isolation and enterprise features added
+  through supported interfaces without modifying core source.
 - Mock commerce disconnected from normal standalone operation, retry-safe commands,
   late/unmatched costs, duplicate events and replay without double application.
 - SQLite persistence, migrations and backup/restore; equivalent PostgreSQL contract
@@ -330,7 +307,8 @@ minimum, PostgreSQL target, and interim ownership/release preparation.
 Still unresolved: exact access/OAuth profile, payment credential/allocation
 granularity, provider provisioning/reporting contracts, example feature selection
 and repository placement, execution-process packaging, extra streaming scope,
-PostgreSQL delivery commitment, supported deployment guarantees, ongoing owners, a funded hosted-access operator
+PostgreSQL delivery commitment, hard spending limits, supported deployment
+guarantees, ongoing owners, a funded hosted-access operator
 and final SPE scope/acceptance. The meeting evidence does not establish Inc adoption or
 obligate Josh/John to particular upstream changes. Preserve these distinctions
 when deriving milestones or presenting the proposal for approval.

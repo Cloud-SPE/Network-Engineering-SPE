@@ -1,7 +1,7 @@
 # Open Builder Engine: Architecture and Sequences
 
 **Status:** Diagram companion to the consolidated working proposal, not approved or implemented architecture\
-**Updated:** 23 September 2026\
+**Updated:** 25 September 2026\
 **Owner:** Mike Zupper
 
 The [primary architecture](self-sovereign-open-builder-stack-draft.md) owns scope,
@@ -238,6 +238,44 @@ Mock commerce is an example/test fixture. Real customer billing may use a fixed
 subscription, application usage or markup and need not await network-cost
 reporting. Delayed/missing evidence is not zero; upstream event loss cannot be
 repaired solely by replaying the engine projection.
+
+## Persistence and accounting authority
+
+SQLite plus an explicit persistence interface is the required minimum.
+PostgreSQL is a delivery target, not a condition that replaces that minimum.
+Both should implement the same contract for engine-owned access mappings,
+jobs/attempts, result references, measured usage and cost projections, including
+migrations and backup/restore. Retention must be configurable.
+
+Enterprises can correlate stable engine identifiers with their own stores and
+consume versioned events into billing/analytics. Supporting arbitrary enterprise
+database schemas is not required. A PostgreSQL adapter alone does not prove
+multi-instance scheduling, concurrency safety or high availability.
+
+| Record | Authority | Meaning |
+| --- | --- | --- |
+| Job inputs/outputs, status and measured work | Engine/SDK execution path | What was attempted and observed; quantities only where supported |
+| Allocations and ticket expected-value accounting | Batteries/payment provider | Network payment permission and observed ticket cost |
+| Winning-ticket redemption | Payment operator settlement evidence | On-chain settlement; not an exact per-job cash receipt |
+| Customer bill and commercial balance | Enterprise | Retail price/policy independent of network ticket settlement |
+
+Engine reporting is a projection, not a second authoritative network ledger.
+Correlate jobs, attempts, payment sessions/manifests and events explicitly; do not
+assume these identifiers are interchangeable. Missing or delayed evidence is
+pending/unknown, never automatically zero. Network expected-value accounting,
+settlement and retail charges must remain visibly distinct.
+
+Proposed provider management/read APIs need scoped authorization, exact units,
+idempotency and stable references. Proposed reporting events need stable IDs,
+versioned schemas, replay cursors and consumer deduplication. End-to-end event
+completeness remains unproven. A replayable backend feed cannot recover evidence
+that an upstream producer never delivered.
+
+Allocations do not fund signer escrow. Existing evidence does not establish
+strict spend reservations or hard ceilings. Revoking future access does not
+reverse issued tickets, remove late fees or guarantee job cancellation. Hosted
+provider switching may require credential replacement, allowance reconciliation
+and handling outstanding jobs; an adapter does not make migration automatic.
 
 ## Evidence and open scope
 

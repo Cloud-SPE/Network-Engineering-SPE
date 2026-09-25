@@ -155,14 +155,23 @@ existing refund/chargeback behavior. Do not label these as verified parity.
 
 ## Execution baseline and additional scope
 
-Mike requires Console's current execution behavior. At the pinned Console
-revision, `lib/mcp/mcp-server.ts`, `lib/mcp/run-capability.ts` and
-`lib/mcp/gateway.ts` show single-shot invocation, queue completion/recoverable
-handles and persistent application endpoint support. Its HTTP MCP adapter sends
-progress notifications; this does not establish continuous inference streaming.
-The new Python SDK path must prove representative runtime parity. Additional
-incremental text and continuous live audio/video scope is explicitly undecided
-and does not block the baseline.
+The execution baseline is the inspected Console prototype at commit
+`009a703d7b6434bab905902375f562e5980728af`. Source paths
+`lib/mcp/mcp-server.ts`, `lib/mcp/run-capability.ts` and `lib/mcp/gateway.ts`
+show single-shot invocation, queued asynchronous completion/recoverable handles,
+and persistent application endpoint support. The new Python SDK path must prove
+representative runtime parity; source inspection alone does not establish it.
+
+Persistent application endpoints do not necessarily stream output. MCP
+progress/SSE messages do not establish incremental inference output or live media
+transport. Additional incremental text streaming and continuous live audio/video
+remain open scope decisions, not committed delivery requirements. These decisions
+do not block defining or implementing the baseline.
+
+Select representative supported capabilities and pin all participating revisions
+before accepting parity. Preserve failure, timeout and uncertain-result behavior;
+a retry must not silently duplicate work or payments. Session and price changes
+are validation cases, not grounds to assume undocumented signer guarantees.
 
 Persistence minimum: SQLite with a defined interface for engine records,
 migrations and recovery. PostgreSQL is a target. Enterprise stores integrate
