@@ -8,7 +8,7 @@ status is `Accepted` and it links to the decision that approved it.
 
 | Document | Status | Purpose |
 | --- | --- | --- |
-| [Self-sovereign open builder stack](self-sovereign-open-builder-stack-draft.md) | Primary working proposal | Repository roles, packages/services, enterprise extensions, scope and acceptance |
+| [Self-sovereign open builder stack](self-sovereign-open-builder-stack-draft.md) | Primary working proposal | Executive summary, component/repository ownership, stakeholder alignment, technical scope and acceptance |
 | [Builder engine diagrams and sequences](open-builder-architecture-and-sequences.md) | Companion to primary proposal | Components, enterprise integration modes, payment operation, execution and accounting |
 | [Capabilities and gap matrix](console-capability-and-gap-matrix.md) | Supporting pinned evidence | Current implementations, new homes and verification gaps |
 | [Core beliefs](core-beliefs.md) | Proposed | Agent-first and Cloud SPE delivery principles |

@@ -8,8 +8,8 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 ## Durable guidance
 
 - [Primary builder-engine architecture proposal](design-docs/self-sovereign-open-builder-stack-draft.md)
-  — consolidated 23 September direction: new backend packages/services,
-  enterprise extension, persistence and acceptance boundaries.
+  — stakeholder executive summary, component/repository ownership map, and
+  technical proposal refined after the 24 September conceptual alignment.
 - [Architecture diagrams and sequences](design-docs/open-builder-architecture-and-sequences.md)
   — repository roles, imported/service integration, self-operated/hosted payments,
   shared execution and separate accounting.
@@ -32,6 +32,10 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 - [Quality review](QUALITY.md) — current repository and Cloud SPE delivery-readiness gaps.
 
 ## Source material and evidence
+
+- [24 September Agent–Network Engineering SPE sync](references/stakeholder-input/meetings/09-24-2026-Livepeer-Inc-Agent-Team-NE-SPE-sync-meeting.txt)
+  — conceptual alignment on shared primitives and enterprise boundaries;
+  offered schema/SDK-wrapper source handoffs, with detailed review still pending.
 
 - [23 September John–Mike architecture discussion](references/stakeholder-input/meetings/john-mike-build-track-architecture-discussion-0923-2026.txt)
   — supplied transcript; working alignment on the reusable backend, enterprise

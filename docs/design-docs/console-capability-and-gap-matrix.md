@@ -3,7 +3,7 @@
 **Status:** Draft capability inventory for Mike's proposal; not approved implementation scope\
 **Prepared:** 23 September 2026\
 **Evidence consolidation:** 24 September 2026\
-**Owner:** Mike Zupper, Cloud SPE\
+**Owner:** Mike Zupper\
 **Execution bead:** `netspe-vun.30`\
 **Design:** [Self-sovereign open builder stack](self-sovereign-open-builder-stack-draft.md)\
 **Decision link:** No accepted decision; input to `netspe-vun.10` and `netspe-vun.11`

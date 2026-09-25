@@ -1,13 +1,95 @@
 # Self-Sovereign Open Builder Stack
 
 **Status:** Consolidated working proposal, not SPE-approved architecture or implementation\
-**Updated:** 23 September 2026\
-**Proposal and interim new-repository owner:** Mike Zupper, Cloud SPE\
+**Updated:** 25 September 2026\
+**Proposal and interim new-repository owner:** Mike Zupper\
 **Architecture work:** `netspe-vun.10`; decision review: `netspe-vun.11`
+
+## Executive summary
+
+**Proposal:** Mike Zupper proposes to deliver a reusable open-source builder engine as
+his contribution to the Network Engineering SPE Build Track. It will give
+application builders a common way to discover network capabilities, understand
+network prices, execute jobs, receive results, and inspect usage and network
+costs. Livepeer Inc and other builders can reuse this foundation while developing
+their own products. The 24 September sync established conceptual alignment;
+this document requests review of the delivery boundaries and architecture.
+
+### Architecture at a glance
+
+The architecture has three layers: enterprise products, the shared builder
+engine, and existing network/payment components. The engine connects these
+components and provides a consistent developer experience.
+
+```mermaid
+flowchart TB
+    Products["Enterprise products<br/>Livepeer Agent and independent applications<br/>Customer experience, workflows and retail billing"]
+    Engine["Shared builder engine — Mike Zupper, proposed delivery owner<br/>Importable packages and runnable REST / MCP services<br/>Access, discovery, jobs, results, usage and network costs"]
+    SDK["Python gateway SDK<br/>Network interaction"]
+    Payments["Remote signer + Clearinghouse Batteries<br/>Discovery, payment signing, authorization and accounting"]
+    Compute["Orchestrators + Live Runner<br/>Execute capabilities"]
+    Products -->|"Import and extend, or call a deployed service"| Engine
+    Engine --> SDK
+    Engine -->|"Payment management and reporting integration"| Payments
+    SDK --> Payments
+    SDK --> Compute
+```
+
+Arrows show proposed responsibilities, not a verified request sequence. REST
+provides an HTTP interface for applications; MCP exposes the same core functions
+to agent tools. Builders can embed the packages or run the supplied services.
+Enterprise extensions add their own authentication, tools and business logic.
+
+### Components, repositories and ownership
+
+The table describes proposed delivery responsibility. Existing repositories
+retain their own maintainers and approval processes; named coordination contacts
+do not imply new maintenance or delivery commitments.
+
+| Component / repository | Responsibility | Ownership and handoff |
+| --- | --- | --- |
+| **New builder-engine repository** — name pending; intended future Livepeer organization home | Shared packages, REST/MCP services, SDK/payment adapters, job and usage records, packaging and documentation | **Mike Zupper:** proposed delivery lead and interim repository owner; long-term maintenance and transfer require agreement |
+| **Reference application** — location pending | Demonstrate package extension and service integration, with a Console-informed UI and mock commerce | **Mike Zupper:** proposed owner of example delivery; final placement and feature selection need review |
+| [livepeer-python-gateway](https://github.com/livepeer/livepeer-python-gateway) | Reused Python SDK for network discovery, rates and job invocation | Upstream maintainers retain SDK ownership; Mike Zupper owns its integration and compatibility evidence; confirm upstream change owners with Josh |
+| [go-livepeer](https://github.com/livepeer/go-livepeer) | Remote signer and Orchestrator / Live Runner integration | Upstream network/runtime maintainers; **Josh is the network/Operate Track coordination contact** identified in the meeting; required changes need owner agreement |
+| [clearinghouse-batteries](https://github.com/livepeer/clearinghouse-batteries) | Reused payment authorization, allocations and network accounting | Upstream maintainers; **Josh is the payment-core coordination contact**; provisioning/reporting additions require agreement |
+| **Inc capability schema and SDK REST wrapper** — source access pending | Candidate source for common capability descriptions and reusable SDK service behavior | **Qiang / Inc:** offered source access; **Mike Zupper:** evaluate reuse with the owners before fixing shared contracts |
+| [console](https://github.com/livepeer/console) | Existing prototype supplying reference behavior and potentially reusable code | Reported as Foundation-held in the meeting; Mike Zupper proposes selected reuse; archive/retrofit decisions remain with its owners |
+| **Enterprise applications** — independently owned repositories | Product experience, customer identities, workflows, retail pricing and billing | **Inc owns its Agent product; other builders own theirs.** Integration and migration timing remain their decisions |
+
+### Software delivery and service operation
+
+The shared engine reports **wholesale network costs**. Each enterprise defines
+its **retail customer charges**, subscriptions and commercial policies. Network
+payment accounting remains with Batteries/the payment provider; the engine
+correlates that evidence with its job records.
+
+Two payment deployment choices are supported by the proposal. A self-operating
+organization runs and funds its signer and Batteries. A walletless builder uses
+a credential from a hosted payment operator that takes on those responsibilities.
+Both use the same builder engine. **A public walletless service still needs a
+named operator, funding, access policy and support commitment.** The meeting did
+not assign that service to Inc or Mike Zupper. Hosting the engine is also the
+responsibility of whoever deploys it.
+
+### What stakeholders are being asked to review
+
+Confirm the shared-core/enterprise boundary, Mike Zupper's proposed engine and
+reference-app deliverables, and the upstream handoffs in the table. Identify
+owners for required SDK/payment changes and for any hosted walletless offering.
+Agree acceptance around a working journey from credential and discovery through
+execution, results and understandable network-cost reporting, demonstrated in
+both package and service integration modes. Final milestones follow that scope
+review; Inc adoption is not an acceptance dependency.
+
+The technical sections below define the proposal and its unresolved interface
+and deployment choices. Detailed component flows are in the
+[diagram companion](open-builder-architecture-and-sequences.md); implementation
+evidence and gaps are in the [capability matrix](console-capability-and-gap-matrix.md).
 
 ## Purpose and source precedence
 
-This is the primary architecture proposal for the Cloud SPE contribution to the
+This is the primary architecture proposal for Mike Zupper's contribution to the
 Build Track. The [diagram companion](open-builder-architecture-and-sequences.md)
 illustrates this proposal; the [capability matrix](console-capability-and-gap-matrix.md)
 contains pinned source evidence. Earlier intermediate proposals were removed
@@ -20,7 +102,8 @@ evidence is preserved.
 
 Inputs include the [21 September Josh conversation](../references/stakeholder-input/meetings/2026-09-21-Mike-Josh-Clearinghouse-Batteries-Conversation.md),
 the [23 September John–Mike transcript](../references/stakeholder-input/meetings/john-mike-build-track-architecture-discussion-0923-2026.txt),
-and Mike's subsequent clarifications in this working session. Speaker 1 appears
+Mike's subsequent proposal clarifications, and the
+[24 September Agent–Network Engineering SPE sync](../references/stakeholder-input/meetings/09-24-2026-Livepeer-Inc-Agent-Team-NE-SPE-sync-meeting.txt). In the 23 September transcript, Speaker 1 appears
 to be Mike and Speaker 2 John from context; the supplied transcript ends mid-topic
 at 01:28:55. Reported software limitations and third-party commitments are not
 verified by meeting agreement. Personal commentary is not architectural evidence.
@@ -30,6 +113,36 @@ work to other SPE participants or establish programme-wide approval. Production
 facts require repository/deployment evidence; source inspection is not a runtime
 integration test. Final schemas, capability coverage, delivery assignments and
 external commitments remain subject to owner and SPE review.
+
+## 24 September alignment and source handoffs
+
+The [supplied sync transcript](../references/stakeholder-input/meetings/09-24-2026-Livepeer-Inc-Agent-Team-NE-SPE-sync-meeting.txt)
+supports conceptual alignment on shared capability descriptions, discovery,
+pricing, execution and usage, with enterprise product concerns above that layer.
+Peace restates the common capability contract at 15:00–16:09; Josh supports the
+wholesale/retail distinction at 20:10–21:41. At 48:44–51:52, Qiang offers the
+existing capability schema and SDK REST wrapper and supports a common approach.
+Rich recaps the source-access handoff at 53:48 and 1:00:19. Source access and any
+permission to redistribute extracted code still need confirmation; an offer to
+share is not evidence that access or an open-source release has occurred.
+
+Review those implementations with their owners before fixing shared schemas or
+package boundaries. Preserve compatible behavior where practical, separate
+product-specific concerns through extension interfaces, and validate a common
+end-to-end integration. Inc can continue its product work during this process;
+its eventual adoption and migration timing require a separate agreement.
+
+At 54:50–55:52, Inc participants report that their current Agent effort uses
+Batteries and distinguish it from the earlier PymtHouse-dependent Console
+prototype. This is reported direction, not newly verified code evidence. The
+pinned Console review remains a reference for selected behavior, not a claim
+about Inc's current stack. The 57:39–59:22 discussion supports retaining its value
+as an example; it does not settle retrofitting that repository versus creating
+the proposed sample application.
+
+At 1:00:19, architecture circulation and review are explicitly the next step.
+Conceptual alignment does not settle detailed interfaces, hosted-service
+operation, upstream delivery commitments or final SPE acceptance.
 
 ## Selected direction
 
@@ -44,19 +157,22 @@ credential administration, upgrades and recovery. Operators can run Batteries
 and the signer themselves, including funding the signer wallet, or delegate
 payment operations to a third party. Hosted access transfers funding and
 availability responsibility; it does not provide the same control as self-operation.
+For hosted access, the operator must be named and agree funding, credential
+issuance, usage policy, abuse controls, availability and support responsibilities.
+A reference deployment demonstrates integration; it does not establish an ongoing
+public service. Neither Inc nor Mike Zupper is assigned that operation by this
+proposal or by the 24 September meeting.
 Neither mode requires PymtHouse, a proprietary identity provider, or commerce.
 Network, chain RPC and payment funding remain explicit dependencies.
 
 ## Repositories and application roles
 
-| Repository/application | Role in the proposal | Boundary |
-| --- | --- | --- |
-| [go-livepeer](https://github.com/livepeer/go-livepeer) | Remote signer, discovery/signing, and current Orchestrator/Live Runner integration | Consume supported behavior; no payment-protocol redesign in this scope |
-| [livepeer-python-gateway](https://github.com/livepeer/livepeer-python-gateway) | Python SDK used by the new services to discover capabilities/rates and invoke jobs with payments | Verify parity with required Console behavior; not a presumed drop-in replacement for Console's TypeScript gateway dependency |
-| [clearinghouse-batteries](https://github.com/livepeer/clearinghouse-batteries) | Payment authorization, allocations and network accounting | Narrow payment core; provisioning/reporting gaps require maintainer agreement, not assumed existing APIs |
-| [console](https://github.com/livepeer/console) | Reference app and reusable behavior/code | No mandatory runtime dependency; upstream migration is separate from building the new engine |
-| New backend repository, name pending | Installable core packages, SDK adapter, REST/MCP entry points, persistence and deployment/release tooling | Intended future home in Livepeer GitHub organization; initially managed by Mike |
-| Sample enterprise application | Demonstrate imported extensions and standalone-service consumption with a Console-informed experience | One small example with two variants; placement in examples directory or separate repository remains open |
+The [executive component map](#components-repositories-and-ownership) owns the
+repository and responsibility inventory. Reuse of the Python SDK requires
+verification against the selected Console execution baseline; it is not a
+presumed replacement for Console's TypeScript gateway dependency. Batteries
+remains a narrow payment core, and its proposed management/reporting integration
+requires maintainer agreement. Payment-protocol redesign is outside this scope.
 
 A repository is not necessarily a process. A Python core is the working
 implementation direction; exact package boundaries and MCP/runtime packaging
@@ -241,7 +357,7 @@ minimum, PostgreSQL target, and interim ownership/release preparation.
 Still unresolved: exact access/OAuth profile, payment credential/allocation
 granularity, provider provisioning/reporting contracts, example feature selection
 and repository placement, execution-process packaging, extra streaming scope,
-PostgreSQL delivery commitment, supported deployment guarantees, ongoing owners
-and final SPE scope/acceptance. The transcript does not establish Inc adoption or
+PostgreSQL delivery commitment, supported deployment guarantees, ongoing owners, a funded hosted-access operator
+and final SPE scope/acceptance. The meeting evidence does not establish Inc adoption or
 obligate Josh/John to particular upstream changes. Preserve these distinctions
 when deriving milestones or presenting the proposal for approval.

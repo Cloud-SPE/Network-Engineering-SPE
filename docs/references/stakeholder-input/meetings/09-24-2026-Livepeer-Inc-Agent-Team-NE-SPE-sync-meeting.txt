@@ -1,0 +1,470 @@
+Sep 24, 2026
+[HOLD] Agent <> Net Eng Biweekly Sync - Transcript
+00:00:00
+
+Mike Zoop: starting to get into that fall weather. Getting getting into the 50s at night,
+Rich O'Grady: Yeah.
+Mike Zoop: 40s at night and Fahrenheit that is
+Rich O'Grady: Yeah. Yeah. Yeah. No, it's uh it's the same here. Things are are cooling down. Summer is well and truly over. But
+Mike Zoop: always like a pang of regret when the summer goes away. I don't know.
+Rich O'Grady: yeah, Steph, how you doing?
+Mike Zoop: My New York girl, what's up?
+Steph Alinsug: Hey, can you hear me?
+Mike Zoop: Yeah.
+Rich O'Grady: Yeah.
+Steph Alinsug: Yeah. Um, I'm I am a little sick. Uh, so I may go off camera at some point just because it's a lot of nose blowing unfortunately.
+Mike Zoop: Uh,
+Rich O'Grady: A lot of snot sn
+Mike Zoop: we were just talking about how the weather change is happening. So,
+Steph Alinsug: Exactly.
+Mike Zoop: I'd imagine you're getting that getting that time of the year.
+Steph Alinsug: You know, you know, Mike, and the kids go back to school, it's like all,
+
+
+00:00:54
+
+Rich O'Grady: Yeah.
+Steph Alinsug: you know, all at once.
+Mike Zoop: coughing all over everybody and bringing that home. Yummy.
+Steph Alinsug: Exactly.
+Rich O'Grady: I was on a plane yesterday and I thought the next pandemic was starting. Just like the array of coughs that was happening everywhere was uh was good fun. Hey Emran. Hey Pete. Hey Josh. How are you all doing?
+Emran Mahbub: Hey, good morning Chris.
+Rich O'Grady: Is this this this this do is getting very good. Very spicy.
+peace node: Hey. Oh, yeah. It's uh honestly my the last time I got a haircut, the lady messed up my hair so bad uh that I don't have anyone to go to. So, we'll see. It's going to just keep going for now. We're going to ride the wave.
+Rich O'Grady: Just just power on through. Love it. Awesome. Um, I know that Chun's going to be 15 minutes late. Um, so I think we just uh I think we just crack on.
+
+
+00:02:03
+
+Rich O'Grady: And um, thanks everyone for for for hopping on and thanks for sending over any questions. There weren't that many, but mostly from the network engineering SP towards the
+Rick Staa: I don't blur it.
+Rich O'Grady: Oh, Rick, are you testing? Are you there? Are you alive? There we go. Cool. Um, great. So, we can try and keep this meeting as uh as brief as possible. And uh yeah, this is basically just a space for everyone on on both sides just to uh to ask the questions that sort of bubble up over over the over the weeks, right? And to to to get some alignment. Um, I've got a quick intro which we can run through. Uh, I can see Steph, you you've already commented peace.I think you've been in here as well. But then I really just want to like hand it over to and crack on with some questions. I think Mike's got some questions which Steph started to to answer which is great.
+
+
+00:03:06
+
+Rich O'Grady: And then I think Rick had one as as well. Let me share the meeting notes here so that everyone can see it. Can everyone access that? Can anyone not access that? Otherwise I'll just share my screen. Cool. Can everyone see my screen? Yeah. Okay, cool. Um, yeah. So, quick quick intro. Um, working together. Obviously, we've got the agent team. Um, uh, Steph, Chang, M&P's, Josh. Josh, obviously, you're straddling both. We have the build build track within the network engineering SP that's led by Mike and then uh I put John Shane Speedy Mike I know you're still deciding exactly who's going to be contributing but main point of contact is Mike and then on this operate track and everything to do with the live runner that's uh and orchestrator side of life that's uh that's Josh um like a couple of reminders I asked Doug if there was anything that was top of mind for him and these first three were were were pretty much from him.
+
+
+00:04:26
+
+Rich O'Grady: Um, which it's basically, you know, key thing is that Josh and Mike, you talking together is going to be the most important thing to keep these two groups uh together.
+Rick Staa: Oh.
+Rich O'Grady: Uh, you're already doing that. So, um, yeah, that's that's awesome. And I think actually a lot of the the questions that come up between the questions that come up between these two groups will largely be able to be settled um by you. uh uh the SP will lead on the the sort of core runtime and core network um software uh and we'll follow on from the LIE agent. Right. So I I think Doug's reiterated this that the agent team should really have the ability to go sprint as fast as possible and then these meetings as well as you know other async one async discussions or or one-on- ones is where the sort of where the SPE can catch up with a lot that's happening on the the agent front. Uh the main thing is that the SP shouldn't be a blocker um on on the agent moving moving forward.
+
+
+00:05:35
+
+Rich O'Grady: Um I put in a couple more here. One came from Rick which was you know I think a really good one which is the other thing about this this um this meeting is try and minimize duplicated work. Uh life has a a fantastic history of duplicating work. So and it can be immensely frustrating. So, I think the more we try to um Hey, Chang, thanks thanks for joining, mate. Um, we're just we're just getting started in the in in the in the intro. Um, yeah,
+Qiang Han: Hey.
+Rich O'Grady: trying to trying to minimize as much work as uh minimize as much work, minimize as much duplicated work and minimize as much work as possible. Um, and the other thing is uh I I put peacehere, communicate proactively with my component design. I know Steph, you commented that there will be regular updates in the in the water cooler. I guess um maybe uh you know Mike, I know you're at most water coolers, but just making sure that each time there's a there's a little product update uh that that that Mike you're sort of aware of it.
+
+
+00:06:43
+
+Rich O'Grady: I don't know how you want to do that. I'll let you you um you think that through. Anything else that comes up for for people on both sides as to like what we want to remind these two teams working together? No. Any anything to bear in mind? I know we've discussed a lot of it already. No. Okay, cool. Then that I will shut up. Um, then let's hop over to some questions from the network engineering SP to the agent team. Um, how do we want to do this? Uh, maybe these first three questions are from from Mike. Um, should we should we just come straight to the response? Beth, do you wanna do you want to share your screen and and go into the response?
+Steph Alinsug: Yeah, I mean I um I think folks can can click into the the Google doc I dropped into the chat here. Um and in the in this doc um I'm just calling it the network uh the live pure agent network um workspace right now and I can give everyone um added access on this.
+
+
+00:08:08
+
+Steph Alinsug: Um, I'll go through and add emails. Um, but, um, I'm just we we have a we have a version of of this workbook on the, um, on our, uh, team side. So, it just is like our, um, source of truth for everything on the build. Um, so I'm standing one up for um, for this group as well. But um I'll I'll work to keep this um as updated as as possible with the latest info on product side um as we have it. Right. So I think something we'll say is like we're you know we're we're one week into our um full team working on this. So um and we're moving we're moving at pace. Uh, you know, we plan to have a um a full a full uh console
+Rick Staa: Oops.
+Steph Alinsug: um well full first-time user experience including the console um prototype set up by next Friday and then we're moving toward MVP for five weeks. Um and what MVP looks like uh will largely depend on the user insights that we develop over the next like two to three weeks.
+
+
+00:09:14
+
+Steph Alinsug: So um but at the core of it um you know we're focused on keeping the um agent experience or the user experience as much as we can within the agent um the the client interface so that we can focus on the core product functionality and not worry so much about an entire separate uh application at this stage. Um and also just to acknowledge that the you know cost of UI um the cost of product design is um is quite low. So that'll that'll be iterating and changing in real time um as we get insights on the interaction models that um that users are looking for with this workflow that we're going after. So um I say all that I guess just to yeah hope hope hopefully just to like set expectations on what we'll be able to to show and when um because we're you know we're we're working on on all these things in real time too and sort of discovering them. Um but yeah, so I threw I threw the MCPS um as they stand right now into uh this top of this doc.
+
+
+00:10:13
+
+Steph Alinsug: Um Chong is also which I'll hand over to Chong to talk about the specific um capabilities and stuff in a second here, but Chung's working on a major refratoring effort across these um MCPS just to clean out some of the quote unquote you know crud or leftover um things from the the proof of concept of storyboard. Um, so their stability on the the MCPS are probably going to be less stable in the next uh couple days if you're using them. Um, just to say and yeah, we've uh deprecated BYOC and then early access.livepure.org uh which was the proof of concept uh console that peace and John worked on as part of the uh original payment house architecture. Um that remains with the with the foundation that repo remains the foundation. So that pro that proof of concept or that prototype can be expanded or or built upon or integrated in some other way. Um and also Rick it that also was like way back the developer dashboard from you know April. So it's sort of it it this you know has maybe seen a few different skins but it remains at the foundation.
+
+
+00:11:17
+
+Steph Alinsug: Um and we're going to stand up a fresh a fresh repo for our console. Um and and then yeah this I did drop a Okay, cool. I see folks are in here already. Um, I dropped the just what I pulled from codeex on what the current capabilities and models are available in the MCP as of today. Um, but I think you're I think the question is probably more about overall architecture because you know that what the capabilities and and the tools and stuff that's this is uh we're all determining we're still determining what the best um uh like configuration of these things are. Um, so what's exposed here today is like is like, you know, relevant enough. Um, but it's not, this is not at all representative of like any sort of final product architecture, so to say.
+Rich O'Grady: Mike, I'm going to come to you because it's your question. Do you have any follow-ups? Does that uh explain everything?
+Mike Zoop: Um yeah pretty much I mean I think you know just to level set with the group here is that you know as part of the build track I think the important factor here is that you know we're trying to all build on a common baseline.
+
+
+00:12:34
+
+Mike Zoop: We have to have a core set of software that, you know, Inc.'s not building their own, Build Track's not building their own. All every community member who's out here trying to put a demand bet on the table, they're not out there building on their own. Uh, and I think, you know, as Rich mentioned, there are problems with that today where everyone is building on their own. So I think we're not the bill track's focus is literally to say let me tease from each group each community member and collect as much feedback and we've done that throughout the month of September and saying like what are those core things that are happening across the network that need to be foundational primitives into a stack that any entity could start building on top of or wrapping with their own enterprise capabilities. But there's got to be a core set of things and I'll give you an example of that with this MCP server. So looking at your list, great. You know, you got about a hundred things listed on there and I think that's perfect for what INC's go to market strategy desires, needs, requirements are.
+
+
+00:13:48
+
+Mike Zoop: But I think looking at that list, I see four that are core capabilities that have to exist across anyone who plans to build and leverage MCP. And when I look at the build track, the important factors in there that I see are I need to look at the network discovery. What are the capabilities that orchestrators are running? So that's number one, right? We got to know what capabilities are on the network. Inc. needs to know that you know whatever other demand bet is also going to need that. How much does that capability cost is another example where everyone's going to want to know that and I need to execute a capability. That is another one of those things. And I and I have an architecture document and a core set of software capabilities that I think that build track is going to ultimately release a set of software and it might just be as simple as taking all the independent pieces that exist today like remote sering house batteries project that Josh has put forward and it and it basically will give us a a blueprint for these core primitives.
+
+
+00:14:59
+
+Mike Zoop: that any enterprise or builder can take these core primitives, use them as is or extend them and build out their own set of capabilities. So they will automatically inherit what the network offers by default coming out of the build track or they can go above and beyond that. So if there want to be enterprise capabilities added onto it, go for it. But we are all going to be building on that same set of core primitives that are are the foundation for what it means to use live peer network and core software and thus eliminating duplication. So I see peace has his hand up. I'll let him jump in there and comment if you have
+peace node: I want to I want to ask a question uh to make sure that I'm understanding like how you're thinking about this cuz I I think that sounds to me bang on and what I'm hearing is or I I want to I want to parse the difference between just like core capabilities that is the standard software And guess am I I want to make sure I'm hearing you say there is a consistent way that we list a capability.
+
+
+00:16:09
+
+peace node: There's a consistent way that we advertise the cost. There's a consistent way that that's executed. And it's less about like saying here's how you run GPT image 2 or Grock imagine on here. And it's less about that and more about saying here's how you list a new tool or capability that is on the network. And here's here's how it's priced, etc.
+Mike Zoop: Right. So, and again I I have a document that I am going to circulate with with with everybody here including the network engineering SPE team. So, I will be putting out some comprehensive doc and I'm I was thinking today but it might end up being tomorrow. So I will give you something to read through that'll be very detailed that describes this stuff but I want to at least mention it at a high level. So I think of you know two different sets of things here. So the first part is the core network. So like an orchestrator is going to run capabilities and they're going to advertise those capabilities and those capabilities are going to be listed at a price and way that they're going to charge, right?
+
+
+00:17:16
+
+Mike Zoop: And I don't care what it is. If it's, you know, text to image, LLM, if it's they're doing an API pass through to some other thirdparty service, whatever that thing is, they're going to say this is how much it costs in way. And in my world, I would call that wholesale compute. That would be like, hey, I'm going to run my stuff on Amazon AWS and AWS is going to charge, I don't care about your customers. We don't care about what you're selling it at. We know that it costs X for this compute, right? So that's what an orchestrator is providing. They're going to provide that in way. And I think the primitives surrounding that are the LIER clearing house batteries project that Josh is working on and the remote signer. Now payment house is in there. We don't want to conflate things with the payment house because that's a separate beast. We'll talk about that one separately. But that's what I call wholesale compute and his cost is ter determined in way.
+
+
+00:18:11
+
+Mike Zoop: All right. Now, as an enterprise, you're going to say, "Hey customer, come buy my fancy little service that I have here." Whatever that may mean. And you're going to probably charge in USD. You know, you're going to have fiat. Maybe if you're, you know, ambitious and you want a c crypto angle on it, great. But let's just assume you're got and I and I will call this like retail cost. So you're going to charge users for whatever if they have a subscription or if they're paying per use, if you have some way to way to meter this and and track the usage, that's an enterprise concern. That's not part of the core concerns of the network. So if you want to charge your customers for minutes and usage and all these other things, that's something that you're going to have to build. And I and I look at what you guys are doing and you have Stripe integration, you have, you know, all these different things that you're doing to keep track of what that user is is getting build for and and they're going to have their usage.
+
+
+00:19:08
+
+Mike Zoop: But then as an enterprise, you're going to you're going to say, I'm going to do these things in my own system, but I'm still going to leverage the wholesale compute side. So you have to basically determine how to manage both sides of those costs. So what are your infrastructure costs, the wholesale costs, and what are your enterprise costs, the retail costs? And you have to as a business make that determination, you know, am I profitable, right? Like, and that's not something the build track is going to be concerned with. The build track is literally saying, what are the wholesale costs? How do we provide the proper tooling and software stack to allow you to build your enterprise solution on top of that? So, we'll give you what the clearing house battery project says. Here's your way cost, right? Like, it's going to tell you that and it'll have those capabilities built in, but it's not going to give you the retail side of it. Josh, you want to jump in here?
++1 949-***-**52: Yeah.
+
+
+00:20:10
+
++1 949-***-**52: Can you hear me?
+Mike Zoop: Yep.
++1 949-***-**52: Okay, cool. Yeah. Um, it's a good way of putting it, Mike. Yeah. Um, I just think that like going back to the question that I think maybe we shouldn't answer it right now, but I mean we will figure it out as we go along. I mean obviously um the guest has one set of requirements and then other people who are building on I don't know the top of this like that Mike is supporting they will also have like a little different requirement. Um, so the big question is what is the common subset that we need to have available and where is it okay for us to have like a fork a little bit like for example Mike mentioned like retail price or retail cost right so what do I charge my customer might look very different from what I am paying for that um compute Um, we need to be able to recognize that this is where like like the cost of living like for the network like from pre and post, right?
+
+
+00:21:41
+
++1 949-***-**52: And the app itself, it's up to like the project and how they want to define. And of course, like we have to try to make things as straightforward for them as possible, but there's always going to be a point where it's okay to have tools for them to take it over for the rest of the way. So, I think there's like a balance where we have to that we have to find
+Mike Zoop: Go ahead, Pete. Are you still hand up for something else? You're muted.
+peace node: I want to articulate I want to make sure maybe my question is understood because um makes sense that a client could have pricing that would be separate from building on on a network. Uh but maybe my question is more about like you know initially for the agent we might have uh I I don't know if we are listing capabilities in a way that makes it discoverable to the whole network but if I'm understanding this correctly there should be a pattern that all clients are uh listing and supplying capabilities and listing and supplying compute to the network in such a way that they would be discoverable on other clients.
+
+
+00:23:05
+
+Mike Zoop: Yeah. So again I think this is the this is the key part here is that if you look at the basic setup from a live peer orchestrator perspective there are orchestrators and the orchestrators are using live runner capabilities. So there's software called capabilities that are implemented using liveer runner which is part of go live pier that says you know you could put whatever feature in the world that you want underneath that right that's fine so I don't care what the capability is if it's LLM or if it's image generation or whatever that thing you might create you know a piece your team might say hey live here doesn't currently offer XYZ new widget and we want those so you're going to go off and build live runners yourself to actually fulfill those needs. Now the orchestrator is the manner in which we deliver those capabilities to the network and the remote signer and the um the remote signer is the the common way to say how do I discover these these orchestrator capabilities and how do I list them and and give cost out.
+
+
+00:24:18
+
+Mike Zoop: So that is a primitive on the network that if you follow Liverunner and you follow remote signer, you already now know everything you need to know to find a find them, how much they cost, and what are those capabilities. They're baked into that those basic primitives. Now you don't want to deal with a wallet. Now you're getting into lipier uh clearing house batteries where it will allow you to grant usage and and get authorization to to submit jobs to the network without having to use crypto wallets. And I think now that's a little bit of a different thing. We don't want to conflate the situation here, but I think at a core level, if you're building on Liverrunner, you're building on the remote signer, you now are able to get discovered capabilities and you're able to look at prices. Now, for the MCP server, well, guess what? If you're doing it, BlueClaw's doing it, everyone else is going to be doing that. So, like, why would we have an MCP server that is specific to you or some other community member?
+
+
+00:25:24
+
+Mike Zoop: I think there should be a a core package or MCP base service that you could extend and say well we know we need discovery we know we need price lookup and we know they're based on remote signer and the live runner so like you don't need to implement that every single project that someone wants to do that so if I want to stand up a vanilla MCP server that gives me pricing usage and um capability listing and executing a top. Those are four things every single app builder is going to do on the live pair network. And we have a single pattern that's already in place with remote signer, Python SDK, batteries, these are all baked in. So like you don't go have to build that. And if inc I know inc built those things right now, right? They built that stuff right now. And we're saying is from the build track is we're going to take that and generalize it so that you don't have to build that piece but we're going to give you an extension a hook that says and we can talk about the actual details of that but there's going to be a manner in which you can import the package into your code and then extend it to add whatever you want on top of that but at least those core things will just be there for you.
+
+
+00:26:38
+
+Mike Zoop: And guess what? But when remote signer changes in the future, when new capabilities change in the future, you just get that. You don't have to go reinvent that piece anymore. Is that clear? All right. Any follow-up questions on that? Josh, I saw you put your hand up. Put it back down. I must have answered it.
++1 949-***-**52: Yeah. Yeah, you answered it well. Yeah. Yeah. I guess I I wanted to add that I know that we discussed discovery. We talked about how to like found capability or how to find capabilities and on the network. So I mean you already kind of like mentioned it but um that part is already solved. It's already there. Um, it's interesting. Um, what about the MCP? I think you brought this up the other day. I never thought about also having an MCP end point as part of the discovery server or service. That's something um, we definitely could add.
+
+
+00:27:44
+
++1 949-***-**52: Um, I don't want to speak for like the agent, but um, in terms of agent, like they're not going to be using the network directly from the client, right? They're going to have their own harness around um, like the network that they run themselves. So, they'll h that will have like their own MCP. So I think that's where it's going to be in more of a product design directed question more than like a core perspective. So to package build Yeah.
+Mike Zoop: Well, that's why I Yeah.
++1 949-***-**52: It's more Yeah. More of like product level question. Yeah.
+Mike Zoop: And again,
++1 949-***-**52: Or production level.
+Mike Zoop: I think this goes back to my original discussion points about core primitives, right? And I think you and I Josh talked about this as well where is that we aren't trying to answer all the possible problems that an enterprise is going to offer as a solution and again we can't anticipate all of that and the more we bring that kind of stuff into the core software the worse it gets for the network like we have to say let's have a layer above where the enterprise developer and the app builders are going to operate that aren't aren't tied to the network directly, but knowing that we have the, as I said, the wholesale compute layer, that wholesale compute layer has to be generic enough that they can still build on it and do what they want to do, but they're not, you know, it's that layer of abstraction gives them the complete freedom and customization that they can build whatever enterprise
+
+
+00:29:31
+
+Mike Zoop: features they want and they can go like you said, MCP is a perfect example where we know that people want to use MCP servers. So from a build track perspective, we're going to give a generic vanilla MCP that literally is just one thin layer above the remote serer that gives them discovery, price lookup, basic usage coming out of battery. But like we're not going to we're not going to do anything more than that. Like now you want to build more capabilities like they have asset storage and asset lookups and all these other things that exist inside their MCP server. That's great. do that and do that your way as the enterprise. Do that the Inc. way, but don't reinvent the the lookup of the discovery of an ORC and don't reinvent, you know, basic wholesale metering because we already do that with the remote signer. We already do that with battery. So, like we're going to give them the ability to do that for their re their compute side, their their wholesale side, but they have the complete freedom and customization to add and extend and build anything that they want.
+
+
+00:30:35
+
+Mike Zoop: And I think that gives us that. And I have, like I said, I have this architecture documented. It's super detailed and I didn't want to share it today because it's still going through a bunch of review and I want to get the network engineering team's input on it before I share it publicly to everybody. So, we'll have Josh, believe me, you'll be the next one on the list. I've already been working with John to get this thing kind of stable. And so, you're next. Rick, you're next as well to get your hands on this. You'll get a chance at looking at it. and then we'll go back and and and circulate it to the broader group here to make sure we're in alignment. Uh Emran, you have your hand up. Rich, you're pointing.
+Rich O'Grady: Yeah,
+Mike Zoop: So,
+Rich O'Grady: that's I'm
+Mike Zoop: what do you guys got?
+Emran Mahbub: Yeah. So, um, can you guys hear me? Okay. Okay.
+Mike Zoop: Yep.
+Emran Mahbub: Um, I'm just taking a call on the car cuz I'm in the middle of a drop off.
+
+
+00:31:25
+
+Emran Mahbub: But uh based on the discussions that I'm hearing, it it seems like um I think everything that Mike says like I think I'm in agreement that you know we don't want to build things twice and like there's a lot of like core primitives that can be shared and we should just build it once. So in in for the sake of like alignment between Inc. and like the rest of the network and and like Josh, myself and Chung have been having some discussions on the side around this idea is that it almost feels like to align everyone and both the teams we're almost talking about a like a open router type of product, right? um where there's a single API or like an MC like MCP wrapping around an API, but at the core it's like an API that's basically a gateway into a lot of like uh models and uh capabilities on the network, right? And then there's like the other pieces like um all the core primitives like the signers and things like that, remote signers, everything's just like hidden behind the scenes behind the API basically.
+
+
+00:32:24
+
+Emran Mahbub: Um and and like looking at the market right now, there's like a lot of these kind of companies coming up right now. Comfy Router just released and you know, Open Router got acquired and like there's a lot of like routers basically in general on the market. To me,
+Mike Zoop: Yeah.
+Emran Mahbub: it like should align in that way that you know product A
+Mike Zoop: So,
+Emran Mahbub: is an API which is a router product. we build it together and anyone wrapping around the API can do whatever they want and extend those capabilities. One of them being like the agent surface that Inc. is uh trying to build. Um so I'm not to think about
+Mike Zoop: so let let me let me just touch on that a little bit. I think the the important piece here is that and I think Rich is mentioning it like that's a layer above the wholesale network. Like that's that is something that I think would be a good business that somebody could build. And if you look at what I'm doing as part of my I have a enterprise that I'm a company I work for that I'm building on and I and it's called BlueClaw.
+
+
+00:33:28
+
+Mike Zoop: And BlueClaw is exactly what you're saying. It is like an open router. And what it's going to be doing is it's going to be paying customers. Customers are going to pay BlueClaw to access AI inference like video generation or LLM. And we're going to have an API that's compatible with OpenAI. And we're going to have an MCP server as well that does the same stuff. And that that is going to sit on top of this layer we're talking about here. ware is the layer isn't an actual service that somebody can go sign up for. It's going to just be a core set of software. I'm going to say APIs or SDKs or some sort of software that you either run or you import into your project that will allow you to access those feature sets of the core network. But you, Inc. or whomever blue claw will need to build a public-f facing service that you're going to sell to customers. You still need to do that part. So if you're building an MCP server for agent.live.org or harness of that kind, that's great.
+
+
+00:34:37
+
+Mike Zoop: Build that. But you're not going to duplicate your efforts by that that core compute layer. The the software for accessing that core compute layer is going to be built for you. You import it and just use it. And but you still are responsible for building that layer. So I hope that clarifies what you were asking. Rick, you want to jump in there?
+Rick Staa: No, I think you said that's what I call
+Mike Zoop: I see you nodding. So I figured you're good. But so Emran, does that answer your question?
+Emran Mahbub: Yeah. Yeah, I think it helps me visualize this a little bit. Um, yeah, that makes sense to me.
+Mike Zoop: Again, this also this concept is also going to be documented as part of this architecture. So this will be stuff that once you get your hands on it, I think it'll lot it'll crystallize a lot better. I think we're just trying to get tease out the highlevel concepts so that I think everyone's nodding.
+
+
+00:35:28
+
+Mike Zoop: So, I don't hear any real issues at this point.
+peace node: It's it's interesting though because signers kind of are open router shaped in in in that they are uh the place where you can discover capabilities and send a job through tube. But it is I I I see the importance of your distinct your distinction.
+Mike Zoop: Yeah. But here though, think of that in this concept. So like a live pair inc is going to actually run their own remote signer. They're going to run their own clearing house battery, right? Like you have to do that cuz you're and again you're savvy enough as an organization to say we need to set up crypto wallets, deposits, reserves, and this and that. Now the one thing that I asked Josh as part of this from a Inc. perspective is that for the the build track to be successful, we're not setting up wallets. We're not going to run a remote signer or a clearing house battery. So, like, how do I get a user on the that wants to just kick the tires on the network?
+
+
+00:36:31
+
+Mike Zoop: How do I get them to try it without having them to go set up a wallet and do all this crap? Like, that's a non-starter. like that the build track is saying we got to be able to give the the the the the general community, the live pair community SDKs, APIs, tools that they can start building immediately but not have to deal with the crypto wallet. So I asked Josh to say maybe you guys just give us a a you know remotesigner.liper.org org endpoint or some basic layer that allows us to access the the remote signer and discovery parts of the app, but not the whole like go to market effort you guys are building on, right? Like there's something that we're going to allow to maybe this ends up being a public good, an SPE that says, hey, you want to kick the tires of the network, you want to submit jobs at a limited scale and rate limited and whatnot. But like you said, a generic open router kind of something simple that at least you can download the SDK and deploy your app and then just still be able to submit jobs and check prices and do the basic metering.
+
+
+00:37:39
+
+Mike Zoop: Like I think the build track's going to provide a reference site like that, but ultimately it's going to need to point to a remote signer and then if you're not setting up your own, you're going to need some way to kick the tires. And I think that's where I think Josh, you know, he and I are going to probably hopefully get something working where and if Josh and Live Pier Inc. doesn't want to do it, Cloud SPE is probably going to do it as well. If if you know, there will be some public goods approach to to accessing the network. And again, at the end of the day, if it helps get fees on the network, you know, why the hell would we want to do that? Go ahead, Rick.
+Rick Staa: Yeah. No, I think you said most of the things I want to say. I just want to say why I'm here mostly. I think I'm mostly here as a neutral uh intermediary of the network engineering SP as well and I think how I see it is very similar to Mike.
+
+
+00:38:28
+
+Rick Staa: Um essentially the core network just should be enable to enable any uh demand path and that's what Mike is guarding there together with Jos and then everything on top even like a like an agentic bat which is a very strong bet which has like uh like you say a router layer under it which can be a product direction. Uh that's why I said three levels. Uh that should that that should not be the only one. Right now it is. It's a good direction to to gain the traction but essentially essentially you have to keep in mind that there are other demand bets uh under it. And I think the primitives that Jos and Mike are discussing there are the most important ones.
+Mike Zoop: Go ahead, Chong. I I want to talk about payment house. So, just let's hear what Chung has to say and then I'll get to Piece's comment about payment house.
+Qiang Han: You know I just have a question around one particular piece. I think your articulation on the clean house on the live runnerability and you know is able to have a stand publish their capability and pricing as a wholesale make totally sense but one piece of the puzzle I want to ask you and Josh in terms of what you have in mind at the moment is the Python SDK is a whole building piece where do you see Python SDK as a layering or as a boundary where it sits at moment in the ink build this you know agent
+
+
+00:39:52
+
+Qiang Han: prototype which can be adjusted based on the agreement and alignment SDK is just sitting at another boundary basically in is hosting a particular instance of the SDK as a service and then hook up into whoever is providing you know clearhouse could be the payment house could be the clear house batteries could be something else also can you know hook up to so-called capabilities you know standard schema interface and using as a you know routing you know services as such so but I'm just wondering in your architecture I haven't heard you mention
+Mike Zoop: Yes.
+Qiang Han: about the SDK you know in any sense I'm just wondering how do you see that piece allow do you have a new new component proposed to do that work as your uh MCP you send it you know sing layer MCP to sit on top I'm quite interested and curious your your thoughts there
+Mike Zoop: Yeah. So this is a critical piece and this is something that I feel like when I started doing all the analysis of all the repos and all the project efforts that have been going on like you said like the one piece that Inc. didn't share and Chung this was that service you're talking about which leverages the SDK.
+
+
+00:41:07
+
+Mike Zoop: This is a part that I think is a critical component for the build track where we have to have a back-end API and I think there's going to be two two distinct components that come out of this. One of them is a restful endpoint that allows you to interact with the Python SDK. So when you want to submit a job to the network, the Python SDK is a tool that you can use as a developer. So if you want to go directly and use that Python SDK, that means you have to have a remote signer set up or available to you in order to call that Python SDK directly, which is cool. That's fine. But if you really if you have that, I think there would there should be a layer on top of that Python SDK that is more HTTP oriented, not Python oriented. So like the the build track is going to provide a Python restful endpoint that anyone can again like I said you can import this package yourself and deploy it to your own HTTP server or you can just run it as a standalone service and now you get the core set discovery execute job like the things that we mentioned the MCP server has well MCP is just one layer on top of that Python SDK.
+
+
+00:42:27
+
+Mike Zoop: Okay. And this this HTTP endpoint is another layer. So I think those two MCP and HTTP restful endpoints are the two components that have to exist on top of that Python SDK to give another layer of abstraction that developers can build on that are easy to use, but you can also take those capabilities and extend them and add more. So if it's if if that's the core get get you know discover orcs invoke a job find the capabilities get the metered usage if those are the core capabilities of a of the MCP server they're also going to be the core capabilities of a restful endpoint as well Josh go for
++1 949-***-**52: Yeah. So, like I don't want to get too deep like into the weeds right now. Um, but like it's really your um point to the network, right? It's your entry point to the network, right? For the most part, it's pretty appsp specific. And for better or worse, our protocol is almost by design, it's active. Um, it tends to be more than like one call to do to make to get something done.
+
+
+00:43:53
+
++1 949-***-**52: It's just how it is. Um that means if we want to wrap it up in another service um you only need to make one call um like who's running that how you will pay for that. It kind of becomes a service that you provide which is again I think that's a question for who provides that, who's responsible for that. It's the community, like the public, like who profits, like that kind of thing. It's a lot of like little things that I think could be answered.
+Mike Zoop: Yeah. And I think you know the the build track is probably going to take some basic steps to provide that that software service. So, it'll be something that if you configure if you're if you're going to do it in Doug's words, the self-s sovereign way, which means you're going to self-host everything. You're going to run your own remote ser. You're going to run your own clearing house battery. You're going to run your own MCP server. You're going to run your own HTTP endpoint that calls the Python SDK.
+
+
+00:45:16
+
+Mike Zoop: Great, man. Do that. You know, if that's what you really want to do, go for that. But there's going to be some level of, you know, interaction with the network that people aren't going to want to do. And I think the build track accounts for the walletless approach. So that means somebody's going to be hosting remote signer and batteries on a public endpoint that they can get an API key or a token of some sort and just deploy their MCP server, deploy their restful endpoint and then all they got to do is build an HTTP web app to to interact with the restful endpoint or all they got to do is build an agent harness to access that MCP server and then they're good to go. They won't need to worry about wallets and all that other stuff. And they probably won't even need to deal with the Python SDK directly if the HTTP service is, you know, gives them enough to find the the work on find the capabilities on the network, invoke a job and then get the the job results back and then also say how much did it cost.
+
+
+00:46:24
+
+Mike Zoop: If they can do those four things from that HTTP endpoint, they're good. They can they can build a whole web app doing whatever they want at that point and they really won't need to build any other software. And I think the build track is trying to encapsulate at its core essence that that scenario and providing the software and documentation to allow that use case the wallet one and the full wallet one if they really want to go down that road so that they can they have that outcome and it also gives the tooling the SDKs and capabilities which again most of it's already built. It's just documenting it and making sure it's clear so that Inc. can build on top of it, Blue Claw can build on top of it, any community member can build on top of it, and we're not duplicating work.
+Rich O'Grady: conscious. We've got about 10 minutes left and I think uh we we've sort of repeated a couple of points because they are critical. I just want to check Mike and Rick are the first four questions that you have down there answered.
+
+
+00:47:34
+
+Rick Staa: I did that mic first.
+Mike Zoop: Well, well, I'm I'm going to say I I gave the what I think the answers should be to those questions because I knew in my mind what I thought I wanted to hear from the agent team and from the responses I'm getting from my assertions about the architecture, it sounds like they are okay with what we are proposing at the build track. So like and again when I get the architecture out there we'll get a check mark on a checkbox saying yes we agree but I think the idea is the MCP server that they are building and the and the and the go to market effort they're building they agree that there's duplication that they're going to build some stuff right now that we're going to end up building but they they don't really want to build that stuff. They want to just use the network like everyone else. So, they're going to have to, and this is what I was saying in our last discussion, where there's going to be a period of divergence where Inc.'s going to go building some stuff because they want to go to market and get their responses done quickly, but the Build Track's going to start building some things to get these common patterns in place.
+
+
+00:48:44
+
+Mike Zoop: Then there's going to be some convergence. So, there's divergence, then convergence. They're going to converge and say, Inc.'s going to have to go back and say, "All right, we built capabilities lookup. We built discovery. We built these things already in our MCP server. All right, we don't need to use that anymore. Build track and the common APIs now provide that. I'm going to go back and rip those pieces we built out custom. Now I'm going to leverage the stuff that the Build Track is providing. And guess what? Okay, now we converge. We're back together again.
+Rich O'Grady: I I understand but let's try and converge a little bit more.
+Mike Zoop: And go
+Rich O'Grady: So I I want to hand over to Chong and Em to sort of respond to
+Mike Zoop: ahead.
+Rich O'Grady: the
+Qiang Han: Yeah, I think immediately I have two areas, you know, would like to uh converge with Mike's effort and because ink in this agent prototype already did, you know, we already did something. So I would like to share those with you and then see how you would do it and that we can do topic one is on this capability uh schema basically what is the standard for all traders you know to publish the you know capabilities in the way that everybody recognize the pricing what you do and how to call it.
+
+
+00:49:57
+
+Qiang Han: So you know uh life aid did this prototype about three weeks ago by on boarding six operators about 20 almost 30 capabilities uh in the effort. So we have some you know basic you know schema using another prototype. So I can share that with you Mike you know when you actually doing that design and hopefully we actually can converge on that you know quickly.
+Mike Zoop: Yeah, we we didn't build any of that.
+Qiang Han: Yes.
+Mike Zoop: We we're just talking conceptual. We have a diagram that we're working with.
+Qiang Han: Yes.
+Mike Zoop: So, if you have code that works, in fact, that'll be the best starting point.
+Qiang Han: Yes. Great.
+Mike Zoop: we'll take that code and and we you know we're going to try to eliminate as much breakage on your side as possible because you guys have software right now. No one else does.
+Qiang Han: Okay.
+Mike Zoop: So like the fact that you have software means we can take that now we're going to go through some process of sanitizing cleaning it up and and there might be some things in there that look very inksp specific and we might want to say look the core c the core code's not going to have these things but then you can account for them when you you know when you get that core code back you can then layer it back on how you see fit.
+
+
+00:51:00
+
+Mike Zoop: So if you have a schema and you have software that's running today, we can take that as our starting point so that it gets us real close to being like you are now
+Qiang Han: Okay.
+Mike Zoop: and prevent breakage going forward.
+Rich O'Grady: Let's Let's That's
+Qiang Han: Yeah, that's the first one. that definitely and the second one is the the SDK we do this rest you know singular wrapper around the Python SDK but the code is a it's private in the simple if I'm going to make that open source to you guys as well so when you think about that layer adding a you know thing rest API and you know whatever the MC on top of it you know there something experimentation already done in the in the areas you know hopefully can can drive the convergence to over there so those are the two things I think you know if we can
+Mike Zoop: Yeah.
+Qiang Han: together. We definitely don't want to build a second version or different from the community because that's exactly the thing I think we should all build on top of it with a common common way.
+
+
+00:51:52
+
+Qiang Han: Yeah.
+Mike Zoop: Yeah. Yeah, I mean again the bottom line is the more the community has access to these toolings, the better it's going to get from a security perspective, reliability. Like we're going to find defects and people are going to contribute to it. And guess what? Inc. just gets those benefits for free. They just get them because the community is building this stuff. Network engineering Engis paying for this stuff. So like why not just get free development? Like this is the whole point, right? That's what we want. We want it to stop the duplication and add that extra layer. So I think it's that's the benefit of of a enterprise getting this open-source technology. So you don't have to open source the stuff you have now. If you want to just invite me as a private contributor, I could at least extract out the pieces I need from what you have and then I can share what the the new results look like. You don't need to make it public, but I can I definitely will need to look at what you built in order for me to to generalize this in a in a opensource community approach to it.
+
+
+00:52:52
+
+Mike Zoop: Rick.
+Rick Staa: Um yeah I just want to make a general comment I think relate to what Mike is saying uh if I still remember it or a lot of words the end of the day um yeah what for me is important is that that ink doesn't slow is not slowed down by for example having syncsession with Mike on like what are core components in does their go to market it's a product anything on top that's why I as the question for me it's very unclear where like Mike MP server uh stops where ink server stops I know that Mike is working on it but then again that whole product space for me is not clear where the live network for me is just what Mike is describing it primitive to discover I wouldn't call it a capability but have compute do a job on the network discoverer price those kind of things I think if Mike's tracks go really well. It will mean that Mike finds a lot more use cases when the build track is built a lot a lot more companies meaning inc will not be the only one.
+
+
+00:53:48
+
+Rick Staa: Ink starts to contribute a lot but that means that then you get like a real longitativeity of the system. I think that's what I want to point out. um try to work together there but also don't try to overoptimize uh that because I think Mike can do a lot of things ship a lot of things where ink can move ahead and then contribute back
+Mike Zoop: Yeah.
+Rich O'Grady: I I think I think this is this is acknowledged on on all sides and it's a key
+Mike Zoop: And that's the plan is
+Rich O'Grady: point but it it has been acknowledged. I really want to get concrete now because Qiangyou've offered to AdMike as a private contributor towards to get the capability scheme in the Python SDK. What else needs to happen from here?
+Mike Zoop: Well, we need to talk about the payment house because I think that's something that the live peer inc stuff that I've seen is building on top of and I think that is something that Qiangis also building out and he himself has admitted he rebuilt built this thing three times now because things have been changing left and right and I think go ahead you're you want to say something well
+
+
+00:54:50
+
+Rich O'Grady: What's what's the exact question.
+Mike Zoop: the the the question is payment house cannot be what inc is building on top of like it can't payment house is not the answer like
++1 949-***-**52: No,
+Qiang Han: No,
++1 949-***-**52: no, we don't use any. No.
+Mike Zoop: well that's good I saw the console app when they published that console app that in repo And I think Josh, you mentioned it as well, like everything I saw in there was directly tied to payment house.
+Qiang Han: no.
+Mike Zoop: And I think even the agent
+Rich O'Grady: Okay. So,
+peace node: the the console the console app uh was a demo that Qiangand I did as a proof
+Rich O'Grady: that's
+peace node: of concept. cept for exactly what you were talking about with like a live peer network based MCP as services what's on the what's on the discovery side it's built around gate gateway web a repo that I linked which is a javascript version of the pythonk
+Mike Zoop: Yep. I read that too.
+peace node: okay cool so yeah that is just a prototype that lives uh in foundations github
+
+
+00:55:52
+
+Mike Zoop: Right.
+Qiang Han: Yeah,
+Rich O'Grady: Right.
+Mike Zoop: Don't
+Qiang Han: the the M we're building right now for the official go to market for this is building on top of the clear house specialist which is Josh
+Mike Zoop: now here's the here's the thing as it relates to payment house and I'll just be quick on this one is that Qiangalso looks at payment h or clearing house batteries and what we are going to do is for him as part of the bill track but this is his own project is he's going to retrofit payment house to sit on top of these tools as well. So, he's going to continue to run a business called Payment House. And he thinks he's hellbent on doing that.
+Rick Staa: Excuse me.
+Mike Zoop: And that's fine. But what he's going to want to do underneath it is he's going to leverage go live here, remote signer, and clearing house batteries instead of doing his welded approach that he has today. So he can continue to do that and I think that's a great idea but he's also going to be a contributor of the underlying layer of this compute Python SDK remote serer and clearing house batteries.
+
+
+00:56:53
+
+Rich O'Grady: All
+Mike Zoop: So with him aligned on that which we've he and I talked we that gives us another another layer of use cases on top of the core primitives that we're building. So, I think we are good on the payment house, but I just want to make sure that Inc.
+Rich O'Grady: right.
+Mike Zoop: and agent aren't building on that stuff because payment house got to change. It can't be that way. And if you're doing that, you're basically undermining the these primitives we're talking about.
+Rich O'Grady: I think we're everyone's aligned there. No,
+Mike Zoop: Good.
+Rich O'Grady: no need to to to move that forward. I do want to come to console. Rick had a question on console.
+Rick Staa: I think it's already answered. So,
+Rich O'Grady: It's been answered.
+Rick Staa: in my opinion,
+Rich O'Grady: It's in the foundation.
+Rick Staa: it it's it's confusing to have two consoles.
+Rich O'Grady: It's
+Rick Staa: If Mike doesn't need it, we can archive it. So,
+Mike Zoop: No,
+Rick Staa: that's my decision.
+
+
+00:57:39
+
+Mike Zoop: I I think console is a good UI proof of concept, but I think what has to happen with it is once these basic primitives are in place, then we need to just retrofit it to use those things.
+Rick Staa: Yes, we can decide together then.
+Mike Zoop: So like Right.
+Rick Staa: Huh?
+Mike Zoop: That's what I'm saying.
+peace node: Just just
+Mike Zoop: Like I think it's a good example for somebody that wants to build because that's the kind of stuff that app builders are going to want to do is what that console is doing.
+Rick Staa: Makes sense.
+Mike Zoop: But we just need to take it and polish it to use this these outcomes from the bill track. We need to use those things instead of having it welded to payment house and all these other different pieces that are in there.
+peace node: The the reason it looks that way is because uh when when Qiangwas out, we wanted to get the a raw MCP up based off discovery on the network. And we learned really quickly like, oh, actually there was a whole SDK that Daydream was using that we needed.
+
+
+00:58:32
+
+peace node: And so the answer was, well, payment house has a gateway web SDK right here that we can use for an app. And so that is how it got slapped together.
+Mike Zoop: Yeah,
+peace node: But understood.
+Mike Zoop: it's all good.
+peace node: Yeah. Because it it really was a it was a patchwork answer to uh satisfy the basic needs that the network wants to be serving.
+Rick Staa: Yeah, my question is answered. Thank you, peace node.
+Mike Zoop: Yeah, I think that's good. I mean, it's good to have that context, but I think it was just another one of those, you know, me sitting there, I'm going through this tangled web of software stacks and I I trying to piece together this puzzle in which we'll have an architecture that is unified so that everyone can build around. And I saw that and it was just another one of those like, wow, what's this? Why? And you answered that, we got it. I'm clear. I'm fine. And again, I thought that might have been something you guys were pushing for us to build towards.
+
+
+00:59:22
+
+Mike Zoop: It doesn't sound like it, but I still think the UI and the concept that's there is good as a reference app. And I think we should preserve that. But I think the the manner in which it integrates with the primitives of the network should change to be more in alignment with what Inc.'s building with BlueClaw's building with payment houses building. If we're all on that same underlying primitive layer, then I think it becomes a great example of how what could someone build if they wanted to leverage these payment these capabilities. So,
+Rich O'Grady: Great. Let's let's park that there. I think that's also discussed. If you do have to hop, um, please do hop. There's a question for Steph here. Question number five. Which domains will be used by inc agent project? Maybe you can just Okay,
+Rick Staa: It's already answered based on what Mike and peace nodesaid.
+Rich O'Grady: awesome. Next steps. Are there any like next steps that people uh any requests to anyone else in this call as a next step?
+
+
+01:00:19
+
+Rich O'Grady: We've got Qiangadding Mike as a private contributor to look at uh um some of the code on the agent side. Anything else?
+Mike Zoop: Well, as I mentioned, for me, I'm got to I'm going to produce this architecture that talks about these open-source primitives, and I'm going to circulate that and I need every single person looking at this because this is going to be what the build track produces and if it doesn't meet the needs or expectations based on all the discussions we've had up to this point today. I need to know about that right away because we can't stop like we have October 1st we're hitting the ground building. So like next week we're doing it. So this week is going to be document review it. We'll sign off early next week but then midweek next week we're we're going we're hitting the ground.
+Rich O'Grady: Right.
+Mike Zoop: We're hauling ass.
+Rich O'Grady: So concretely Mike to share tomorrow and by like Tuesday, Wednesday everyone to have reviewed.
+Mike Zoop: Yes. Abs. At least that's what I hope that we can get that done for next week early.
+
+
+01:01:19
+
+Rich O'Grady: idea. Okay, that that ask should also be in the group the the group chat that we have. Um but I'll um uh I'll add it as a next step. Anything else? Emran Mahbub,Qiang,Josh.
+Mike Zoop: I love it. This is what I was hoping we would have not a series of questions. This is where I really thought we would get to today.
+Rich O'Grady: Awesome.
+Mike Zoop: So this is really good.
+Rich O'Grady: Final question is when do we want to do this again? Is this in two weeks? Is this in four weeks?
+Mike Zoop: I think two weeks just to make sure we all look at that finalized architecture and documentation. And I mean we're going to get an async nod from everybody. I hope. But I just want to make sure there's nothing that surfaces from now and then.
+Rich O'Grady: Any
+Mike Zoop: Two weeks is probably a good one. Four weeks is too much. already built most of the the primitives, you know what I mean? In four weeks, six weeks. So, we don't want to wait that long.
+Rich O'Grady: any counters? Any counters to two weeks?
+Rick Staa: No fun.
+Rich O'Grady: Okay, everyone, thumbs up for me again in two weeks. Give me a emoji or something. But yeah. Okay, awesome. Then I will put that in there. Thank you everyone and uh yeah I'll share the followup meeting notes etc for for everyone to have a
+Mike Zoop: Raw transcripts, please,
+Rich O'Grady: look.
+Mike Zoop: if you can. I want the raw transcripts.
+Rich O'Grady: Yeah, we've got everyone should be um should get the raw transcript in the email but I'll add it as
+Mike Zoop: Cool.
+Rich O'Grady: well.
+Mike Zoop: Thank you.
+Rich O'Grady: All righty.
+Mike Zoop: Appreciate everybody.
+Rich O'Grady: Thanks all.
+Mike Zoop: Good call.
+Rick Staa: Thanks.
+Qiang Han: I feel much.
+peace node: Nice one. Cheers.
+
+
+Transcription ended after 01:03:22
+

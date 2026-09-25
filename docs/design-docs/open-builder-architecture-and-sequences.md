@@ -2,7 +2,7 @@
 
 **Status:** Diagram companion to the consolidated working proposal, not approved or implemented architecture\
 **Updated:** 23 September 2026\
-**Owner:** Mike Zupper, Cloud SPE; work tracked in `netspe-vun.10`
+**Owner:** Mike Zupper; work tracked in `netspe-vun.10`
 
 The [primary architecture](self-sovereign-open-builder-stack-draft.md) owns scope,
 contracts, evidence limits and open decisions. The new backend is not hosted
