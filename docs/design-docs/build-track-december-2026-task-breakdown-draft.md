@@ -2,7 +2,7 @@
 
 **Status:** Draft for review; not an approved delivery commitment\
 **Prepared:** 26 September 2026\
-**Updated:** 27 September 2026\
+**Updated:** 28 September 2026\
 **Owner:** Mike Zupper\
 **Purpose:** Agree the required work before creating or restructuring delivery issues
 
@@ -13,20 +13,23 @@ dependencies. Mike Zupper owns this Build Track delivery plan. Implementation
 assignees, estimates, dates, and detailed choices will follow review of the task
 inventory.
 
-The [proposed delivery stages](#proposed-delivery-stages) organize all 31 required
-tasks into four acceptance gates. The [stage assignment](#task-to-stage-mapping)
-and [blocking dependencies](#dependencies-that-can-block-a-stage) are review
+The [proposed delivery milestones](#proposed-delivery-milestones) organize all 31 required
+tasks into four acceptance gates. The [milestone assignment](#task-to-milestone-mapping)
+and [blocking dependencies](#dependencies-that-can-block-a-milestone) are review
 proposals, not an approved milestone schedule or a report of current progress.
 
 The [proposed delivery issues](build-track-december-2026-issue-proposal-draft.md)
 translate these tasks into 39 reviewable issue candidates, splitting work that
-contributes across stages and preserving a crosswalk back to all 31 source tasks.
+contributes across milestones and preserving a crosswalk back to all 31 source tasks.
 This document defines scope; the companion refines issue boundaries and
-prerequisites for review before tracker creation.
+prerequisites for review before repository issue creation.
 
-This Markdown review draft was explicitly requested before putting the breakdown
-into Beads or GitHub. Its task IDs are document references, not issue IDs or work
-status. No Beads or GitHub records were changed to produce this draft.
+The initial Markdown review draft was requested before creating tracker records.
+The proposals are now mirrored as draft items in the private
+[NE-SPE Build Track sandbox](https://github.com/orgs/Cloud-SPE/projects/13).
+Its **Build Track Milestone** custom field groups the drafts under M1–M4.
+These IDs and task IDs remain planning references, not repository issue numbers
+or approval of the delivery scope. Implementation assignments and dates remain unset.
 
 ## Basis and scope
 
@@ -96,47 +99,47 @@ the plan does not assign their implementation work or imply their agreement.
 | Reference application | A minimum user interface demonstrating all seven outcomes |
 | Verification and release | Reproducible evidence, installation guidance, and versioned release artifacts |
 
-## Proposed delivery stages
+## Proposed delivery milestones
 
-Each stage describes evidence needed to pass a delivery gate. The task-to-stage
-mapping assigns each required task exactly one stage for **full acceptance**.
+Each milestone describes evidence needed to pass a delivery gate. The mapping
+assigns each required task exactly one milestone for **full acceptance**.
 Implementation, documentation, tests, and examples may begin earlier. Passing a
-gate does not imply that later-stage work has not started, or that a task is
-complete before its full definition of done is met.
+gate does not imply that work for later milestones has not started, or that a
+task is complete before its full definition of done is met.
 
 These are candidate milestones for review. Together they cover the required
-December baseline; Stage 2 alone does not satisfy the entire delivery commitment.
+December baseline; Milestone 2 alone does not satisfy the entire delivery commitment.
 
-| Stage | Reviewable result and exit evidence | Full task acceptances | Gate prerequisite |
+| Milestone | Reviewable result and exit evidence | Full task acceptances | Gate prerequisite |
 | --- | --- | --- | --- |
-| **S1 — Foundation and integration contracts** | A versioned integration baseline, reviewed core/access/payment contracts, importable engine foundation, and working SQLite migration/restore evidence. Required upstream interfaces have verified source evidence or an explicit, agreed gap disposition. Runnable network integration is proven in S2. | 6 | Source review and the contract agreements described below |
-| **S2 — Complete builder journey** | The minimum reference application demonstrates all seven outcomes for selected representative job(s) through one documented access, interface, and payment configuration. A repeatable run connects discovery and expected rate to actual execution, result/failure, usage, and observed network cost. The catalog remains network-derived. | 11, plus required early contributions from S3 tasks | S1 and a working, funded integration with usable accounting evidence |
-| **S3 — Reuse and reliability** | The full required execution and integration matrix is demonstrated: immediate/asynchronous/persistent-endpoint behavior, REST/MCP, embedded/service use, enterprise-replaceable authentication, both payment configurations, and failure/accounting/recovery checks. Reference-app functionality and its supported interfaces meet their complete definitions of done. | 11 | S2, the remaining upstream execution/payment support, and the agreed acceptance matrix |
-| **S4 — Independent installation and release** | Versioned packages/containers, complete installation and integration guidance, successful clean-environment reproduction, and the assembled acceptance evidence are reviewed together. Known limits and payment/operator prerequisites are explicit. | 3 | S3, release checks, permitted reuse, and the agreed acceptance procedure |
+| **M1 — Foundation and integration contracts** | A versioned integration baseline, reviewed core/access/payment contracts, importable engine foundation, and working SQLite migration/restore evidence. Required upstream interfaces have verified source evidence or an explicit, agreed gap disposition. Runnable network integration is proven in M2. | 6 | Source review and the contract agreements described below |
+| **M2 — Complete builder journey** | The minimum reference application demonstrates all seven outcomes for selected representative job(s) through one documented access, interface, and payment configuration. A repeatable run connects discovery and expected rate to actual execution, result/failure, usage, and observed network cost. The catalog remains network-derived. | 11, plus required early contributions from M3 tasks | M1 and a working, funded integration with usable accounting evidence |
+| **M3 — Reuse and reliability** | The full required execution and integration matrix is demonstrated: immediate/asynchronous/persistent-endpoint behavior, REST/MCP, embedded/service use, enterprise-replaceable authentication, both payment configurations, and failure/accounting/recovery checks. Reference-app functionality and its supported interfaces meet their complete definitions of done. | 11 | M2, the remaining upstream execution/payment support, and the agreed acceptance matrix |
+| **M4 — Independent installation and release** | Versioned packages/containers, complete installation and integration guidance, successful clean-environment reproduction, and the assembled acceptance evidence are reviewed together. Known limits and payment/operator prerequisites are explicit. | 3 | M3, release checks, permitted reuse, and the agreed acceptance procedure |
 
 ### Work that contributes before full task acceptance
 
 The first complete journey needs working portions of several tasks whose broader
-acceptance belongs in S3. These contributions are required evidence for S2, not
+acceptance belongs in M3. These contributions are required evidence for M2, not
 new tasks or permission to close the original tasks early.
 
 | Task(s) | Required early contribution | Full acceptance remains |
 | --- | --- | --- |
-| I1 | REST operations needed for the selected S2 journey call the shared core, enforce access, and expose results and costs. | S3, after all baseline execution modes and shared error behavior are covered |
-| J2, J3 | If the selected S2 job uses asynchronous completion or a persistent endpoint, that mode must work for the initial journey before S2 passes. Job selection is not restricted to immediate results. | S3, after complete baseline mode and recovery acceptance |
-| R1, R2 | The reference application provides one usable access-to-reporting journey and a dynamic catalog. It may build against evolving interfaces while those interfaces are validated. | S3, when the complete required application behavior and dependencies are proven |
-| V2 | Record actual funded execution and correlated usage/cost evidence for the S2 journey. A mocked payment flow does not pass the gate. | S3, after the full acceptance matrix is exercised |
-| P4 | Document the funding, credential, configuration, and reporting prerequisites of the payment arrangement used in S2. | S3, after both self-operated and separately operated payment configurations are covered |
-| V3 | Run the checks relevant to each implemented feature as it develops, especially access isolation, repeat submission, and accounting deduplication. | S3, after the full failure and recovery set is exercised |
-| L1, L2 | Maintain runnable setup instructions, development builds, and automated checks from the foundation onward. Use the same versioned core build for the reuse demonstrations. | S4, with finalized release artifacts and documentation; L3 rechecks the delivered versions |
+| I1 | REST operations needed for the selected M2 journey call the shared core, enforce access, and expose results and costs. | M3, after all baseline execution modes and shared error behavior are covered |
+| J2, J3 | If the selected M2 job uses asynchronous completion or a persistent endpoint, that mode must work for the initial journey before M2 passes. Job selection is not restricted to immediate results. | M3, after complete baseline mode and recovery acceptance |
+| R1, R2 | The reference application provides one usable access-to-reporting journey and a dynamic catalog. It may build against evolving interfaces while those interfaces are validated. | M3, when the complete required application behavior and dependencies are proven |
+| V2 | Record actual funded execution and correlated usage/cost evidence for the M2 journey. A mocked payment flow does not pass the gate. | M3, after the full acceptance matrix is exercised |
+| P4 | Document the funding, credential, configuration, and reporting prerequisites of the payment arrangement used in M2. | M3, after both self-operated and separately operated payment configurations are covered |
+| V3 | Run the checks relevant to each implemented feature as it develops, especially access isolation, repeat submission, and accounting deduplication. | M3, after the full failure and recovery set is exercised |
+| L1, L2 | Maintain runnable setup instructions, development builds, and automated checks from the foundation onward. Use the same versioned core build for the reuse demonstrations. | M4, with finalized release artifacts and documentation; L3 rechecks the delivered versions |
 
 V1 selects the representative jobs once discovery, execution, and reporting are
-usable. That selection defines the full acceptance matrix and the first S2
+usable. That selection defines the full acceptance matrix and the first M2
 journey; it does not restrict the catalog to those jobs. Additional baseline modes
-are completed in S3. The access flow chosen for a demonstration does not prescribe
+are completed in M3. The access flow chosen for a demonstration does not prescribe
 how enterprise applications enroll or authenticate their users.
 
-### Task-to-stage mapping
+### Task-to-milestone mapping
 
 **Engine** means shared-engine behavior or contracts in this Build Track plan.
 **Integration** means work to verify, adapt, or agree upstream interfaces; an
@@ -146,60 +149,61 @@ choice and reuse. **Verification/release** means acceptance evidence, guidance,
 or delivery tooling. Mike Zupper owns the Build Track delivery plan across these
 work types. External component ownership remains with the relevant maintainers.
 
-| Task | Full acceptance stage | Work kind | Deliverable focus |
+| Task | Full acceptance milestone | Work kind | Deliverable focus |
 | --- | --- | --- | --- |
-| F1 | S1 | Integration | Verified source baseline, reusable material, and gaps |
-| F2 | S1 | Engine + integration | Shared contracts and supported boundaries |
-| F3 | S1 | Engine | Importable core and public integration interfaces |
-| F4 | S1 | Engine | SQLite records, migrations, and backup/restore |
-| A1 | S1 | Engine | Replaceable authentication and access-policy contract |
-| P1 | S1 | Integration | Agreed payment management, authorization, and reporting contracts |
-| A2 | S2 | Engine | Working standalone access adapter and ownership controls |
-| D1 | S2 | Engine + integration | Dynamic capability discovery and descriptions |
-| D2 | S2 | Engine + integration | Network rates, units, source, and assumptions |
-| P2 | S2 | Engine + integration | Scoped provisioning and allocation management |
-| P3 | S2 | Integration | SDK authorization and remote-signing path |
-| J1 | S2 | Engine + integration | Validated submission and immediate execution |
-| J4 | S2 | Engine | Owned history and basic input/result access |
-| U1 | S2 | Engine + integration | Execution measurements and payment correlation |
-| U2 | S2 | Engine + integration | Accounting ingestion and recoverable cost projections |
-| U3 | S2 | Engine | Scoped usage/cost reports and integration events |
-| V1 | S2 | Verification/release | Representative jobs and acceptance matrix |
-| P4 | S3 | Integration | Both payment-operation configurations |
-| J2 | S3 | Engine + integration | Asynchronous completion and recovery handles |
-| J3 | S3 | Engine + integration | Persistent application endpoint invocation |
-| J5 | S3 | Engine + integration | Failures and safe recovery across baseline modes |
-| I1 | S3 | Engine | Complete required REST interface |
-| I2 | S3 | Engine | MCP interface and equivalent core behavior |
-| I3 | S3 | Example + verification/release | Embedded/service reuse and enterprise extension proofs |
-| R1 | S3 | Example | Replaceable access flow, live catalog, and rates |
-| R2 | S3 | Example | Job-to-result-to-reporting user journey |
-| V2 | S3 | Verification/release | Funded journeys across the acceptance matrix |
-| V3 | S3 | Verification/release | Isolation, failure, replay, and recovery evidence |
-| L1 | S4 | Verification/release | Installation, integration, and operating guidance |
-| L2 | S4 | Verification/release | Packages, containers, CI, and release checks |
-| L3 | S4 | Verification/release | Independent reproduction and final acceptance evidence |
+| F1 | M1 | Integration | Verified source baseline, reusable material, and gaps |
+| F2 | M1 | Engine + integration | Shared contracts and supported boundaries |
+| F3 | M1 | Engine | Importable core and public integration interfaces |
+| F4 | M1 | Engine | SQLite records, migrations, and backup/restore |
+| A1 | M1 | Engine | Replaceable authentication and access-policy contract |
+| P1 | M1 | Integration | Agreed payment management, authorization, and reporting contracts |
+| A2 | M2 | Engine | Working standalone access adapter and ownership controls |
+| D1 | M2 | Engine + integration | Dynamic capability discovery and descriptions |
+| D2 | M2 | Engine + integration | Network rates, units, source, and assumptions |
+| P2 | M2 | Engine + integration | Scoped provisioning and allocation management |
+| P3 | M2 | Integration | SDK authorization and remote-signing path |
+| J1 | M2 | Engine + integration | Validated submission and immediate execution |
+| J4 | M2 | Engine | Owned history and basic input/result access |
+| U1 | M2 | Engine + integration | Execution measurements and payment correlation |
+| U2 | M2 | Engine + integration | Accounting ingestion and recoverable cost projections |
+| U3 | M2 | Engine | Scoped usage/cost reports and integration events |
+| V1 | M2 | Verification/release | Representative jobs and acceptance matrix |
+| P4 | M3 | Integration | Both payment-operation configurations |
+| J2 | M3 | Engine + integration | Asynchronous completion and recovery handles |
+| J3 | M3 | Engine + integration | Persistent application endpoint invocation |
+| J5 | M3 | Engine + integration | Failures and safe recovery across baseline modes |
+| I1 | M3 | Engine | Complete required REST interface |
+| I2 | M3 | Engine | MCP interface and equivalent core behavior |
+| I3 | M3 | Example + verification/release | Embedded/service reuse and enterprise extension proofs |
+| R1 | M3 | Example | Replaceable access flow, live catalog, and rates |
+| R2 | M3 | Example | Job-to-result-to-reporting user journey |
+| V2 | M3 | Verification/release | Funded journeys across the acceptance matrix |
+| V3 | M3 | Verification/release | Isolation, failure, replay, and recovery evidence |
+| L1 | M4 | Verification/release | Installation, integration, and operating guidance |
+| L2 | M4 | Verification/release | Packages, containers, CI, and release checks |
+| L3 | M4 | Verification/release | Independent reproduction and final acceptance evidence |
 
-### Dependencies that can block a stage
+### Dependencies that can block a milestone
 
 This table describes conditions to resolve, not a claim that they are all blocked
 today. Task-level dependencies remain in the inventory below. No task assigned
-full acceptance in an earlier stage depends on full acceptance of a later-stage
-task. The working contributions needed from later-stage tasks are explicit above.
+full acceptance in an earlier milestone depends on full acceptance of a task in
+a later milestone. The working contributions needed from tasks in later
+milestones are explicit above.
 
 | Dependency or unresolved condition | Acceptance affected | Handling in the plan |
 | --- | --- | --- |
-| Relevant upstream revisions and required source behavior are not verified. | F1 and S1 | Pin and inspect the components actually used. Review offered private material where relevant; the engine must remain independently buildable. Private-source availability is not a universal gate, and any omitted reuse must have an explicit disposition. |
-| Payment provisioning, authorization, reporting, or allocation contracts lack agreement. | P1 and S1 | Resolve the contract or an agreed alternative with the affected maintainer. A reported API push or a proposed adapter is not compatibility evidence. |
-| A required payment interface has no usable implementation. | P2, P3, U2 and S2; P4 and S3 for the second configuration | Verify the actual path, or agree and deliver the needed upstream change in its own repository. Keep upstream work distinct from the engine adapter. |
-| Discovery lacks usable schemas/rates, or SDK invocation cannot execute the selected journey. | D1, D2, J1, V1 and S2 | Preserve the full advertised catalog, expose missing metadata, and select representative executable jobs later. Resolve required integration gaps; do not fabricate prices or claim support from discovery alone. |
-| The test environment lacks funded signing, reachable execution, or retrievable accounting evidence. | The early V2 journey and S2; full V2 and S3 | Establish a reproducible funded environment with explicit prerequisites. The separately operated configuration may be a documented test arrangement; it does not create an ongoing hosted-service commitment. |
-| Job/payment references cannot be correlated, or real cost evidence cannot be obtained. | U1–U3 and S2 | Resolve correlation and reporting upstream where necessary. Pending/unmatched states remain visible, but cannot substitute for actual cost evidence on the selected acceptance jobs. |
-| Required asynchronous/persistent-endpoint behavior or recovery references are unavailable. | J2, J3, J5, I1, I2 and S3 | Verify selected SDK/runtime support and agree any necessary change. Stage 2's first journey does not waive these baseline modes. |
-| Enterprise authentication cannot replace the default adapter without core changes, or interface/integration modes behave inconsistently. | I3, V3 and S3 | Correct the public integration contract and its implementation. Examples must prove replacement and ownership enforcement without prescribing one enterprise login path. |
-| Reuse permissions, release artifacts, clean-install instructions, or the acceptance procedure remain unresolved. | L1–L3 and S4 | Resolve release and evidence requirements for the delivered code, verify the final artifact versions, and record actual acceptance. Publication, organization transfer, and service-operation commitments are separate actions. |
+| Relevant upstream revisions and required source behavior are not verified. | F1 and M1 | Pin and inspect the components actually used. Review offered private material where relevant; the engine must remain independently buildable. Private-source availability is not a universal gate, and any omitted reuse must have an explicit disposition. |
+| Payment provisioning, authorization, reporting, or allocation contracts lack agreement. | P1 and M1 | Resolve the contract or an agreed alternative with the affected maintainer. A reported API push or a proposed adapter is not compatibility evidence. |
+| A required payment interface has no usable implementation. | P2, P3, U2 and M2; P4 and M3 for the second configuration | Verify the actual path, or agree and deliver the needed upstream change in its own repository. Keep upstream work distinct from the engine adapter. |
+| Discovery lacks usable schemas/rates, or SDK invocation cannot execute the selected journey. | D1, D2, J1, V1 and M2 | Preserve the full advertised catalog, expose missing metadata, and select representative executable jobs later. Resolve required integration gaps; do not fabricate prices or claim support from discovery alone. |
+| The test environment lacks funded signing, reachable execution, or retrievable accounting evidence. | The early V2 journey and M2; full V2 and M3 | Establish a reproducible funded environment with explicit prerequisites. The separately operated configuration may be a documented test arrangement; it does not create an ongoing hosted-service commitment. |
+| Job/payment references cannot be correlated, or real cost evidence cannot be obtained. | U1–U3 and M2 | Resolve correlation and reporting upstream where necessary. Pending/unmatched states remain visible, but cannot substitute for actual cost evidence on the selected acceptance jobs. |
+| Required asynchronous/persistent-endpoint behavior or recovery references are unavailable. | J2, J3, J5, I1, I2 and M3 | Verify selected SDK/runtime support and agree any necessary change. Milestone 2's first journey does not waive these baseline modes. |
+| Enterprise authentication cannot replace the default adapter without core changes, or interface/integration modes behave inconsistently. | I3, V3 and M3 | Correct the public integration contract and its implementation. Examples must prove replacement and ownership enforcement without prescribing one enterprise login path. |
+| Reuse permissions, release artifacts, clean-install instructions, or the acceptance procedure remain unresolved. | L1–L3 and M4 | Resolve release and evidence requirements for the delivered code, verify the final artifact versions, and record actual acceptance. Publication, organization transfer, and service-operation commitments are separate actions. |
 
-Stretch goals do not block any of these stages. The required stages contain no
+Stretch goals do not block any of these milestones. The required milestones contain no
 full Console port, PostgreSQL adapter, additional inference/media streaming, or
 guaranteed hard spending limit. Those additions need their own scope and
 acceptance review if capacity later permits.
@@ -371,13 +375,13 @@ outcomes, whether each task is small and concrete enough to discuss, and whether
 any proposed requirement exceeds the minimum architecture. Dependencies and
 external gaps should be corrected before this becomes a delivery commitment.
 
-Review the proposed stage gates, task assignments, and upstream handoffs along
-with the task definitions. In particular, confirm that S2 proves a complete
-journey while S3 supplies the remaining required coverage, and that demonstration
+Review the proposed milestone gates, task assignments, and upstream handoffs along
+with the task definitions. In particular, confirm that M2 proves a complete
+journey while M3 supplies the remaining required coverage, and that demonstration
 choices do not become mandatory enterprise product policies.
 
-After review, convert the agreed stage/task structure into milestones and issues,
-then add implementation assignees, estimates, and dates. Decide the GitHub
-destination and its relationship to Beads before creating or restructuring tracker records. The
-stable document IDs can provide traceability during that conversion; this draft
-contains no live status board or implementation assignments.
+After sandbox review, agree the repository homes and GitHub/Beads tracking
+convention before converting drafts into repository issues and milestones.
+Add implementation assignees, estimates, and dates during subsequent planning.
+The stable document IDs preserve traceability during conversion; this document
+defines the proposed work and acceptance evidence rather than live work status.

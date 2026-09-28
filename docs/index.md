@@ -17,13 +17,13 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
   — pinned implementation evidence, preserved Console/Batteries source map,
   MCP behavior, new homes and unverified integration gaps.
 - [Build Track December delivery task breakdown](design-docs/build-track-december-2026-task-breakdown-draft.md)
-  — Mike Zupper's review draft of 31 required tasks mapped to four proposed acceptance stages,
+  — Mike Zupper's review draft of 31 required tasks mapped to four proposed acceptance milestones,
   with completion evidence, upstream dependencies, and separate stretch goals;
-  requested before creating delivery issues or assigning dates.
+  mirrored in the private sandbox for review before repository issues or dates.
 - [Proposed Build Track December delivery issues](design-docs/build-track-december-2026-issue-proposal-draft.md)
   — Mike Zupper's 39 issue candidates with single milestones, proposed repository homes,
   acceptance criteria, dependencies, and a crosswalk to the 31 source tasks;
-  Markdown review only, with upstream handoffs kept separate.
+  mirrored as sandbox drafts, with upstream handoffs kept separate.
 - [Repository architecture](../ARCHITECTURE.md) — boundaries, information model,
   and source precedence.
 - [Core beliefs](design-docs/core-beliefs.md) — principles for shaping the SPE
