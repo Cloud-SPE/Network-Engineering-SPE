@@ -25,8 +25,8 @@ This document defines scope; the companion refines issue boundaries and
 prerequisites for review before repository issue creation.
 
 The initial Markdown review draft was requested before creating tracker records.
-The proposals are now mirrored as draft items in the private
-[NE-SPE Build Track sandbox](https://github.com/orgs/Cloud-SPE/projects/13).
+The proposals are now mirrored as draft items in the public
+[NE-SPE Build Track project](https://github.com/orgs/Cloud-SPE/projects/13).
 Its **Build Track Milestone** custom field groups the drafts under M1–M4.
 These IDs and task IDs remain planning references, not repository issue numbers
 or approval of the delivery scope. Implementation assignments and dates remain unset.
@@ -380,7 +380,7 @@ with the task definitions. In particular, confirm that M2 proves a complete
 journey while M3 supplies the remaining required coverage, and that demonstration
 choices do not become mandatory enterprise product policies.
 
-After sandbox review, agree the repository homes and GitHub/Beads tracking
+After proposal review, agree the repository homes and GitHub/Beads tracking
 convention before converting drafts into repository issues and milestones.
 Add implementation assignees, estimates, and dates during subsequent planning.
 The stable document IDs preserve traceability during conversion; this document

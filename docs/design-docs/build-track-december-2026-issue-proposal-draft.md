@@ -1,6 +1,6 @@
 # Build Track December 2026 Proposed Delivery Issues
 
-**Status:** Review proposal; mirrored as draft items in the private GitHub sandbox\
+**Status:** Review proposal; mirrored as draft items in the public GitHub project\
 **Prepared:** 27 September 2026\
 **Updated:** 28 September 2026\
 **Owner:** Mike Zupper\
@@ -18,7 +18,7 @@ assignees, estimates, dates, and live work status remain unassigned. Upstream
 components retain their existing maintainers. The milestone plan and issue proposal
 remain subject to review and the applicable scope approvals.
 
-The private [NE-SPE Build Track sandbox](https://github.com/orgs/Cloud-SPE/projects/13)
+The public [NE-SPE Build Track project](https://github.com/orgs/Cloud-SPE/projects/13)
 uses a **Build Track Milestone** custom field for M1–M4. This supports project-only
 drafts while repository homes and the later tracking convention remain under review.
 
@@ -562,14 +562,14 @@ whether anything required by the source task is missing, and whether an example
 has inadvertently become an enterprise product requirement. Review the conditional
 execution-mode prerequisites when representative jobs are selected.
 
-After sandbox review, agree repository homes and the GitHub/Beads tracking
+After proposal review, agree repository homes and the GitHub/Beads tracking
 convention before converting drafts into repository issues. Add implementation
 assignees, estimates, and dates during subsequent planning. Translate these review
 IDs into actual issue links, keep upstream handoffs separate, and preserve the
 source-task crosswalk. Existing architecture and SPE scope approvals must be
 recorded rather than inferred from approval of issue formatting.
 
-The sandbox contains 39 project-only draft items; repository issues and Beads
+The project contains 39 project-only draft items; repository issues and Beads
 delivery records have not been created for this proposal. The captured auth
 discussion remains reference material; this proposal follows Mike's explicit
 enterprise-choice clarification and does not adopt an upstream JWT design or a
