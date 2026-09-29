@@ -2,24 +2,26 @@
 
 **Status:** Review proposal; mirrored as draft items in the public GitHub project\
 **Prepared:** 27 September 2026\
-**Updated:** 28 September 2026\
+**Updated:** 29 September 2026\
 **Owner:** Mike Zupper\
 **Basis:** [Task breakdown and proposed milestones](build-track-december-2026-task-breakdown-draft.md)
 
-This document translates the 31 source tasks into **39 proposed issues**, each
+This document includes **six September planning tasks** and translates the 31
+implementation source tasks into **39 proposed delivery issues** (45 tasks total), each
 with one milestone, a proposed implementation home, acceptance criteria, and
 explicit prerequisites. The extra issue boundaries separate first-journey work
 from broader coverage, documentation, and release completion; they do not add
 new December scope.
 
 These are review IDs, not GitHub or Beads issue numbers. Mike Zupper owns this
-Build Track delivery plan and its proposed delivery issues. Implementation
-assignees, estimates, dates, and live work status remain unassigned. Upstream
-components retain their existing maintainers. The milestone plan and issue proposal
+Build Track delivery plan and its September planning tasks. Implementation
+assignees, estimates and task-level dates remain unassigned; live status is in
+the project. Upstream components retain their existing maintainers. The milestone
+plan and issue proposal
 remain subject to review and the applicable scope approvals.
 
 The public [NE-SPE Build Track project](https://github.com/orgs/Cloud-SPE/projects/13)
-uses a **Build Track Milestone** custom field for M1–M4. This supports project-only
+uses a **Build Track Milestone** custom field for M1–M5. This supports project-only
 drafts while repository homes and the later tracking convention remain under review.
 
 ## Scope and reading guide
@@ -56,27 +58,28 @@ have been split into independently reviewable results.
 
 | Milestone | Proposed issues | Acceptance gate |
 | --- | --- | --- |
-| [M1: Foundation and integration contracts](#m1-foundation-and-integration-contracts) | 7 | Source baseline, shared/access/payment contracts, importable core, SQLite evidence, and development build checks are reviewable. |
-| [M2: Complete builder journey](#m2-complete-builder-journey) | 18 | One minimum-app journey demonstrates all seven outcomes with funded execution and correlated network-cost evidence. |
-| [M3: Reuse and reliability](#m3-reuse-and-reliability) | 11 | Remaining required execution modes, REST/MCP and embedded/service coverage, enterprise auth replacement, both payment configurations, and failure/recovery evidence are complete. |
-| [M4: Independent installation and release](#m4-independent-installation-and-release) | 3 | Final artifacts, documentation, clean-environment reproduction, and acceptance evidence are reviewed together. |
+| [M1: Define and approve the shared builder architecture](#m1-define-and-approve-the-shared-builder-architecture) | 6 planning tasks | September planning evidence and recorded approval of the architecture and executive summary. |
+| [M2: Foundation and integration contracts](#m2-foundation-and-integration-contracts) | 7 | Source baseline, shared/access/payment contracts, importable core, SQLite evidence, and development build checks are reviewable. |
+| [M3: Complete builder journey](#m3-complete-builder-journey) | 18 | One minimum-app journey demonstrates all seven outcomes with funded execution and correlated network-cost evidence. |
+| [M4: Reuse and reliability](#m4-reuse-and-reliability) | 11 | Remaining required execution modes, REST/MCP and embedded/service coverage, enterprise auth replacement, both payment configurations, and failure/recovery evidence are complete. |
+| [M5: Independent installation and release](#m5-independent-installation-and-release) | 3 | Final artifacts, documentation, clean-environment reproduction, and acceptance evidence are reviewed together. |
 
 A milestone passes when its assigned issues and gate evidence are accepted.
-Milestone 2 does not replace the required Milestone 3 coverage.
+Milestone 3 does not replace the required Milestone 4 coverage.
 
 ### Representative jobs can change placement without changing scope
 
 ISS-19 selects the jobs after the core execution and reporting path is usable.
-If the first selected job needs asynchronous execution, advance ISS-26 from M3
-to M2. If it needs a persistent endpoint, advance ISS-27 instead, or both if the
+If the first selected job needs asynchronous execution, advance ISS-26 from M4
+to M3. If it needs a persistent endpoint, advance ISS-27 instead, or both if the
 first journey requires both. ISS-20 then depends on the applicable advanced
 issue(s). Each issue still has exactly one milestone.
 
 These are explicit conditional prerequisites, not permission to accept the
 first journey while its execution support is unfinished. No capability or job
 has been selected by this proposal. Once chosen, update the placement and
-dependency before accepting M2; the remaining required modes still complete
-by M3.
+dependency before accepting M3; the remaining required modes still complete
+by M4.
 
 ## Proposed implementation homes
 
@@ -113,11 +116,99 @@ and prove compatibility. A missing upstream feature remains a visible dependency
 a mock or an adapter declaration does not satisfy funded-job or cost-reporting
 acceptance. Any later upstream issue should link back to its consuming Build Track issue.
 
-## M1: Foundation and integration contracts
+## M1: Define and approve the shared builder architecture
+
+**Period:** 1–30 September 2026 · **Owner:** Mike Zupper
+
+This milestone captures the September planning work and culminates in recorded
+approval of the architecture and executive summary. Its six planning tasks are
+ISS-40–ISS-45; existing implementation IDs remain unchanged. Work already present
+in the repository supports review, but approval is not inferred from the date or
+conceptual meeting agreement. Implementation verification and detailed contracts
+remain in M2. The implementation scope and dates of M2–M5 are unchanged.
+
+### ISS-40: Consolidate September stakeholder requirements and alignment
+
+**Milestone:** M1 · **Home:** PLAN · **Source:** S1\
+**Depends on:** None
+
+Synthesize September surveys and discussions with Network Engineering SPE participants and the Inc Agent team. Capture common builder needs, differences, scope boundaries and the conceptual alignment reached on 24 September.
+
+Acceptance:
+
+- Link the September stakeholder findings and distinguish participant input, conceptual agreement, unresolved questions and actual approval.
+- Record the exclusion of demand generation and application adoption and the separation of shared network behavior from enterprise product concerns.
+
+### ISS-41: Assess existing software and candidate reuse
+
+**Milestone:** M1 · **Home:** PLAN · **Source:** S2\
+**Depends on:** None
+
+Consolidate the September assessment of the Python SDK, remote signer, Batteries and Console prototype, including the offered Inc simple-infra source handoff. This is the planning assessment, not the later implementation-revision verification in ISS-01.
+
+Acceptance:
+
+- Link the component inventory and inspected source evidence, distinguishing existing behavior, integration gaps and unverified claims.
+- Identify Console as reference-only and simple-infra as closed source with access/inspection pending unless evidence establishes otherwise; record reuse-permission and independent-build requirements.
+- Record the disposition of unavailable source material rather than treating private access as a universal approval prerequisite.
+
+### ISS-42: Define the shared builder architecture
+
+**Milestone:** M1 · **Home:** PLAN · **Source:** S3\
+**Depends on:** ISS-40, ISS-41
+
+Document the common builder engine, HTTP/MCP interfaces, embedded and service integration, and self-operated and separately operated payment configurations.
+
+Acceptance:
+
+- Link a versioned architecture and diagrams covering access, discovery, expected rates, execution, results, usage and network costs.
+- Show the engine, SDK, signer, Batteries, execution components and enterprise boundaries without assigning unagreed upstream implementation or hosted-service commitments.
+- Separate the required baseline from stretch goals and unresolved implementation details.
+
+### ISS-43: Define ownership, enterprise extensions and acceptance
+
+**Milestone:** M1 · **Home:** PLAN · **Source:** S4\
+**Depends on:** ISS-40, ISS-41, ISS-42
+
+Define Mike Zupper ownership, proposed repository homes, upstream handoffs, enterprise extension boundaries and acceptance expectations. Prepare the basis for subsequent delivery planning.
+
+Acceptance:
+
+- Map the seven outcomes to components, responsibilities and proposed evidence; separate engine network costs from enterprise retail billing.
+- Define the minimum reference application and proof that enterprise authentication and other extensions work without changing released core components.
+- Identify open approval conditions, external owners, required handoffs and deferred choices without inventing acceptance of them.
+
+### ISS-44: Prepare and refine the stakeholder review package
+
+**Milestone:** M1 · **Home:** PLAN · **Source:** S5\
+**Depends on:** ISS-40, ISS-41, ISS-42, ISS-43
+
+Prepare the executive summary and supporting architecture material for stakeholder circulation. Incorporate feedback on terminology, component roles and the separation of reader-facing scope from technical evidence.
+
+Acceptance:
+
+- Provide a versioned executive summary and architecture with consistent terminology, ownership, scope, diagrams and supporting evidence links.
+- Keep Console reference-only, describe the private Inc source handoff accurately, and distinguish current evidence from proposed delivery.
+- Record the review revision and demonstrate that documentation validation passes.
+
+### ISS-45: Obtain and record architecture and executive-summary approval
+
+**Milestone:** M1 · **Home:** PLAN · **Source:** S6\
+**Depends on:** ISS-40, ISS-41, ISS-42, ISS-43, ISS-44
+
+Collect stakeholder review, resolve material objections and record the required approvals of the architecture and executive summary. This is the September milestone exit gate, separate from the later implementation and final-release acceptance.
+
+Acceptance:
+
+- Record the required reviewers, the exact approved revision, approval evidence and the agreed delivery boundary.
+- Resolve material objections or record explicitly accepted conditions and deferrals with owners. Conceptual meeting alignment or silence does not constitute approval.
+- Leave this task and M1 open until approval evidence is recorded; the September 30 target is not evidence of completion.
+
+## M2: Foundation and integration contracts
 
 ### ISS-01: Verify the integration baseline and reusable source material
 
-**Milestone:** M1 · **Home:** PLAN · **Source:** [F1](build-track-december-2026-task-breakdown-draft.md#foundation)\
+**Milestone:** M2 · **Home:** PLAN · **Source:** [F1](build-track-december-2026-task-breakdown-draft.md#foundation)\
 **Depends on:** None · **External:** H1, H2, H3, H5
 
 Acceptance:
@@ -127,7 +218,7 @@ Acceptance:
 
 ### ISS-02: Define the shared engine contracts and supported boundaries
 
-**Milestone:** M1 · **Home:** ENGINE · **Source:** [F2](build-track-december-2026-task-breakdown-draft.md#foundation)\
+**Milestone:** M2 · **Home:** ENGINE · **Source:** [F2](build-track-december-2026-task-breakdown-draft.md#foundation)\
 **Depends on:** ISS-01 · **External:** None
 
 Acceptance:
@@ -137,7 +228,7 @@ Acceptance:
 
 ### ISS-03: Define replaceable authentication and access-policy interfaces
 
-**Milestone:** M1 · **Home:** ENGINE · **Source:** [A1](build-track-december-2026-task-breakdown-draft.md#access-and-credentials)\
+**Milestone:** M2 · **Home:** ENGINE · **Source:** [A1](build-track-december-2026-task-breakdown-draft.md#access-and-credentials)\
 **Depends on:** ISS-02 · **External:** None
 
 Acceptance:
@@ -147,7 +238,7 @@ Acceptance:
 
 ### ISS-04: Agree payment provisioning, authorization, and reporting contracts
 
-**Milestone:** M1 · **Home:** PLAN · **Source:** [P1](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
+**Milestone:** M2 · **Home:** PLAN · **Source:** [P1](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
 **Depends on:** ISS-01, ISS-02 · **External:** H2, H3
 
 Acceptance:
@@ -157,7 +248,7 @@ Acceptance:
 
 ### ISS-05: Establish installable core packages and public extension interfaces
 
-**Milestone:** M1 · **Home:** ENGINE · **Source:** [F3](build-track-december-2026-task-breakdown-draft.md#foundation)\
+**Milestone:** M2 · **Home:** ENGINE · **Source:** [F3](build-track-december-2026-task-breakdown-draft.md#foundation)\
 **Depends on:** ISS-02 · **External:** None
 
 Acceptance:
@@ -167,7 +258,7 @@ Acceptance:
 
 ### ISS-06: Implement SQLite records, migrations, retention, and backup/restore
 
-**Milestone:** M1 · **Home:** ENGINE · **Source:** [F4](build-track-december-2026-task-breakdown-draft.md#foundation)\
+**Milestone:** M2 · **Home:** ENGINE · **Source:** [F4](build-track-december-2026-task-breakdown-draft.md#foundation)\
 **Depends on:** ISS-05 · **External:** None
 
 Acceptance:
@@ -177,7 +268,7 @@ Acceptance:
 
 ### ISS-07: Add development builds and continuous checks
 
-**Milestone:** M1 · **Home:** ENGINE · **Source:** [L2](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
+**Milestone:** M2 · **Home:** ENGINE · **Source:** [L2](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
 **Depends on:** ISS-05 · **External:** None
 
 Acceptance:
@@ -185,11 +276,11 @@ Acceptance:
 - Produce versioned development packages and establish automated test, lint/type, and install/start checks for the components available at this milestone.
 - Provide the build/test framework that later service and application components extend. Final service/application artifacts and release readiness remain ISS-38.
 
-## M2: Complete builder journey
+## M3: Complete builder journey
 
 ### ISS-08: Provide standalone credentials and shared ownership controls
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [A2](build-track-december-2026-task-breakdown-draft.md#access-and-credentials)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [A2](build-track-december-2026-task-breakdown-draft.md#access-and-credentials)\
 **Depends on:** ISS-03, ISS-06 · **External:** None
 
 Acceptance:
@@ -199,7 +290,7 @@ Acceptance:
 
 ### ISS-09: Integrate dynamic capability discovery
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [D1](build-track-december-2026-task-breakdown-draft.md#discovery-and-expected-rates)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [D1](build-track-december-2026-task-breakdown-draft.md#discovery-and-expected-rates)\
 **Depends on:** ISS-01, ISS-05 · **External:** H1, H3
 
 Acceptance:
@@ -209,7 +300,7 @@ Acceptance:
 
 ### ISS-10: Expose network rates and pricing assumptions
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [D2](build-track-december-2026-task-breakdown-draft.md#discovery-and-expected-rates)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [D2](build-track-december-2026-task-breakdown-draft.md#discovery-and-expected-rates)\
 **Depends on:** ISS-09 · **External:** H1, H3
 
 Acceptance:
@@ -219,7 +310,7 @@ Acceptance:
 
 ### ISS-11: Integrate scoped allocation provisioning and management
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [P2](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [P2](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
 **Depends on:** ISS-04, ISS-06, ISS-08 · **External:** H2
 
 Acceptance:
@@ -229,7 +320,7 @@ Acceptance:
 
 ### ISS-12: Connect SDK payment authorization and remote signing
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [P3](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [P3](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
 **Depends on:** ISS-04, ISS-05 · **External:** H1, H2, H3
 
 Acceptance:
@@ -239,7 +330,7 @@ Acceptance:
 
 ### ISS-13: Prepare the first funded payment configuration
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [P4](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [P4](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
 **Depends on:** ISS-11, ISS-12 · **External:** H4
 
 Acceptance:
@@ -249,7 +340,7 @@ Acceptance:
 
 ### ISS-14: Implement durable submission and immediate execution
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [J1](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [J1](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
 **Depends on:** ISS-06, ISS-08, ISS-10, ISS-11, ISS-12 · **External:** H1, H3
 
 Acceptance:
@@ -259,7 +350,7 @@ Acceptance:
 
 ### ISS-15: Expose owned job history and basic results
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [J4](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [J4](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
 **Depends on:** ISS-14 · **External:** None
 
 Acceptance:
@@ -269,7 +360,7 @@ Acceptance:
 
 ### ISS-16: Capture usage and correlate jobs with payment evidence
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [U1](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [U1](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting)\
 **Depends on:** ISS-04, ISS-06, ISS-14 · **External:** H1, H2, H3
 
 Acceptance:
@@ -279,7 +370,7 @@ Acceptance:
 
 ### ISS-17: Maintain replayable network-cost projections
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [U2](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [U2](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting)\
 **Depends on:** ISS-04, ISS-11, ISS-16 · **External:** H2, H3
 
 Acceptance:
@@ -289,7 +380,7 @@ Acceptance:
 
 ### ISS-18: Expose scoped usage, cost reports, and integration events
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [U3](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [U3](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting)\
 **Depends on:** ISS-08, ISS-17 · **External:** None
 
 Acceptance:
@@ -299,20 +390,20 @@ Acceptance:
 
 ### ISS-19: Select representative jobs and the acceptance matrix
 
-**Milestone:** M2 · **Home:** PLAN · **Source:** [V1](build-track-december-2026-task-breakdown-draft.md#verification)\
+**Milestone:** M3 · **Home:** PLAN · **Source:** [V1](build-track-december-2026-task-breakdown-draft.md#verification)\
 **Depends on:** ISS-09, ISS-14, ISS-18 · **External:** H4
 
 Acceptance:
 
 - Choose available jobs after discovery, execution, and reporting are usable; record inputs, expected observations, pinned versions, and the initial seven-outcome journey.
-- Define coverage of immediate/asynchronous/persistent endpoints, REST/MCP, embedded/service use, enterprise-auth replacement, and both payment configurations. Avoid a full catalog test requirement. If the first job needs ISS-26 or ISS-27, advance that prerequisite into M2 before accepting the journey.
+- Define coverage of immediate/asynchronous/persistent endpoints, REST/MCP, embedded/service use, enterprise-auth replacement, and both payment configurations. Avoid a full catalog test requirement. If the first job needs ISS-26 or ISS-27, advance that prerequisite into M3 before accepting the journey.
 
 ### ISS-20: Expose REST operations for the first complete journey
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [I1](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [I1](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse)\
 **Depends on:** ISS-08, ISS-10, ISS-15, ISS-18, ISS-19 · **External:** None
 
-**Conditional prerequisites:** ISS-26, ISS-27 only when required by the first job selected in ISS-19; advance the applicable issue into M2 as described above.
+**Conditional prerequisites:** ISS-26, ISS-27 only when required by the first job selected in ISS-19; advance the applicable issue into M3 as described above.
 
 Acceptance:
 
@@ -321,7 +412,7 @@ Acceptance:
 
 ### ISS-21: Build the reference application's access and live catalog
 
-**Milestone:** M2 · **Home:** APP · **Source:** [R1](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application)\
+**Milestone:** M3 · **Home:** APP · **Source:** [R1](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application)\
 **Depends on:** ISS-20 · **External:** None
 
 Acceptance:
@@ -331,7 +422,7 @@ Acceptance:
 
 ### ISS-22: Connect the reference application's first execution and reporting journey
 
-**Milestone:** M2 · **Home:** APP · **Source:** [R2](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application)\
+**Milestone:** M3 · **Home:** APP · **Source:** [R2](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application)\
 **Depends on:** ISS-20, ISS-21 · **External:** None
 
 Acceptance:
@@ -341,7 +432,7 @@ Acceptance:
 
 ### ISS-23: Verify access, repeat-command, and accounting behavior for the first journey
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [V3](build-track-december-2026-task-breakdown-draft.md#verification)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [V3](build-track-december-2026-task-breakdown-draft.md#verification)\
 **Depends on:** ISS-08, ISS-11, ISS-14, ISS-17, ISS-20 · **External:** None
 
 Acceptance:
@@ -351,7 +442,7 @@ Acceptance:
 
 ### ISS-24: Write the first runnable installation and journey guide
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [L1](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [L1](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
 **Depends on:** ISS-07, ISS-13, ISS-22 · **External:** None
 
 Acceptance:
@@ -361,7 +452,7 @@ Acceptance:
 
 ### ISS-25: Prove the first funded seven-outcome journey
 
-**Milestone:** M2 · **Home:** ENGINE · **Source:** [V2](build-track-december-2026-task-breakdown-draft.md#verification)\
+**Milestone:** M3 · **Home:** ENGINE · **Source:** [V2](build-track-december-2026-task-breakdown-draft.md#verification)\
 **Depends on:** ISS-13, ISS-19, ISS-22, ISS-23, ISS-24 · **External:** H4
 
 Acceptance:
@@ -369,31 +460,31 @@ Acceptance:
 - Run the selected journey and retain reproducible evidence connecting the builder credential, live discovery/rate, execution, result/failure, usage, and actual network-payment cost observations.
 - The builder handles no crypto; operator funding and all external prerequisites are explicit. Mocks, allowance creation alone, or pending-cost labels alone do not pass this gate. The remaining configuration matrix is ISS-36.
 
-## M3: Reuse and reliability
+## M4: Reuse and reliability
 
 ### ISS-26: Support asynchronous jobs and durable recovery handles
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [J2](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [J2](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
 **Depends on:** ISS-14, ISS-15, ISS-19 · **External:** H1, H3
 
 Acceptance:
 
 - A job outlives its original request and exposes durable status and eventual result/failure using the supported provider handle.
-- Disconnect and restart preserve identity and recovery references without submitting replacement execution. Default milestone is M3; ISS-19 advances this whole issue to M2 if needed for the first selected journey.
+- Disconnect and restart preserve identity and recovery references without submitting replacement execution. Default milestone is M4; ISS-19 advances this whole issue to M3 if needed for the first selected journey.
 
 ### ISS-27: Support persistent application endpoint invocation
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [J3](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [J3](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
 **Depends on:** ISS-14, ISS-19 · **External:** H1, H3
 
 Acceptance:
 
 - Invoke supported discovered persistent endpoints using the agreed inputs/results contract and preserve owned job, result, and payment references.
-- Demonstrate a representative endpoint and distinguish it from queued completion and continuous streaming. Default milestone is M3; ISS-19 advances this whole issue to M2 if needed for the first selected journey.
+- Demonstrate a representative endpoint and distinguish it from queued completion and continuous streaming. Default milestone is M4; ISS-19 advances this whole issue to M3 if needed for the first selected journey.
 
 ### ISS-28: Complete failure classification and recovery across baseline modes
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [J5](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [J5](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery)\
 **Depends on:** ISS-15, ISS-26, ISS-27 · **External:** H1, H3
 
 Acceptance:
@@ -403,7 +494,7 @@ Acceptance:
 
 ### ISS-29: Complete REST coverage across the required execution modes
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [I1](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [I1](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse)\
 **Depends on:** ISS-18, ISS-20, ISS-28 · **External:** None
 
 Acceptance:
@@ -413,7 +504,7 @@ Acceptance:
 
 ### ISS-30: Expose the same authorized journey through MCP
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [I2](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [I2](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse)\
 **Depends on:** ISS-29 · **External:** None
 
 Acceptance:
@@ -423,7 +514,7 @@ Acceptance:
 
 ### ISS-31: Complete both payment-operation configurations
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [P4](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [P4](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\
 **Depends on:** ISS-13 · **External:** H2, H3, H4
 
 Acceptance:
@@ -433,7 +524,7 @@ Acceptance:
 
 ### ISS-32: Prove package embedding, service consumption, and enterprise extensions
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [I3](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [I3](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse)\
 **Depends on:** ISS-07, ISS-29, ISS-30 · **External:** None
 
 Acceptance:
@@ -443,7 +534,7 @@ Acceptance:
 
 ### ISS-33: Demonstrate replacement of the reference application's access flow
 
-**Milestone:** M3 · **Home:** APP · **Source:** [R1](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application)\
+**Milestone:** M4 · **Home:** APP · **Source:** [R1](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application)\
 **Depends on:** ISS-21, ISS-32 · **External:** None
 
 Acceptance:
@@ -453,7 +544,7 @@ Acceptance:
 
 ### ISS-34: Complete reference-app coverage of baseline execution and reporting
 
-**Milestone:** M3 · **Home:** APP · **Source:** [R2](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application)\
+**Milestone:** M4 · **Home:** APP · **Source:** [R2](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application)\
 **Depends on:** ISS-22, ISS-28, ISS-29 · **External:** None
 
 Acceptance:
@@ -463,7 +554,7 @@ Acceptance:
 
 ### ISS-35: Verify full isolation, recovery, and accounting replay behavior
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [V3](build-track-december-2026-task-breakdown-draft.md#verification)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [V3](build-track-december-2026-task-breakdown-draft.md#verification)\
 **Depends on:** ISS-06, ISS-23, ISS-28, ISS-29, ISS-30, ISS-31, ISS-32 · **External:** H1, H2, H3
 
 Acceptance:
@@ -473,7 +564,7 @@ Acceptance:
 
 ### ISS-36: Prove funded journeys across the complete acceptance matrix
 
-**Milestone:** M3 · **Home:** ENGINE · **Source:** [V2](build-track-december-2026-task-breakdown-draft.md#verification)\
+**Milestone:** M4 · **Home:** ENGINE · **Source:** [V2](build-track-december-2026-task-breakdown-draft.md#verification)\
 **Depends on:** ISS-19, ISS-25, ISS-31, ISS-32, ISS-33, ISS-34, ISS-35 · **External:** H4
 
 Acceptance:
@@ -481,11 +572,11 @@ Acceptance:
 - Complete the matrix selected in ISS-19, demonstrating all seven outcomes across required modes and integration/payment configurations with pinned versions and real payment observations.
 - Retain reproducible commands, results, and correlation evidence with explicit limitations. No exhaustive catalog or Cartesian-product test obligation is introduced; final artifacts are rechecked in ISS-39.
 
-## M4: Independent installation and release
+## M5: Independent installation and release
 
 ### ISS-37: Complete installation, extension, and operating documentation
 
-**Milestone:** M4 · **Home:** ENGINE · **Source:** [L1](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
+**Milestone:** M5 · **Home:** ENGINE · **Source:** [L1](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
 **Depends on:** ISS-24, ISS-31, ISS-32, ISS-33, ISS-34, ISS-35 · **External:** None
 
 Acceptance:
@@ -495,7 +586,7 @@ Acceptance:
 
 ### ISS-38: Prepare final release artifacts and controlled release procedures
 
-**Milestone:** M4 · **Home:** ENGINE · **Source:** [L2](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
+**Milestone:** M5 · **Home:** ENGINE · **Source:** [L2](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
 **Depends on:** ISS-07, ISS-29, ISS-30, ISS-34, ISS-35, ISS-37 · **External:** H5
 
 Acceptance:
@@ -505,7 +596,7 @@ Acceptance:
 
 ### ISS-39: Prove independent installation and record final acceptance
 
-**Milestone:** M4 · **Home:** PLAN · **Source:** [L3](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
+**Milestone:** M5 · **Home:** PLAN · **Source:** [L3](build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\
 **Depends on:** ISS-36, ISS-37, ISS-38 · **External:** H6
 
 Acceptance:
@@ -522,37 +613,37 @@ broader task-level ordering so the first journey can be reviewed independently.
 
 | Source task | Proposed issue(s) | Full source-task acceptance |
 | --- | --- | --- |
-| [F1](build-track-december-2026-task-breakdown-draft.md#foundation) | ISS-01 | M1 |
-| [F2](build-track-december-2026-task-breakdown-draft.md#foundation) | ISS-02 | M1 |
-| [F3](build-track-december-2026-task-breakdown-draft.md#foundation) | ISS-05 | M1 |
-| [F4](build-track-december-2026-task-breakdown-draft.md#foundation) | ISS-06 | M1 |
-| [A1](build-track-december-2026-task-breakdown-draft.md#access-and-credentials) | ISS-03 | M1 |
-| [A2](build-track-december-2026-task-breakdown-draft.md#access-and-credentials) | ISS-08 | M2 |
-| [D1](build-track-december-2026-task-breakdown-draft.md#discovery-and-expected-rates) | ISS-09 | M2 |
-| [D2](build-track-december-2026-task-breakdown-draft.md#discovery-and-expected-rates) | ISS-10 | M2 |
-| [P1](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation) | ISS-04 | M1 |
-| [P2](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation) | ISS-11 | M2 |
-| [P3](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation) | ISS-12 | M2 |
-| [P4](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation) | ISS-13, ISS-31 | M3 |
-| [J1](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-14 | M2 |
-| [J2](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-26 | M3 by default; M2 if advanced for the first journey |
-| [J3](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-27 | M3 by default; M2 if advanced for the first journey |
-| [J4](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-15 | M2 |
-| [J5](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-28 | M3 |
-| [U1](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting) | ISS-16 | M2 |
-| [U2](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting) | ISS-17 | M2 |
-| [U3](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting) | ISS-18 | M2 |
-| [I1](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse) | ISS-20, ISS-29 | M3 |
-| [I2](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse) | ISS-30 | M3 |
-| [I3](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse) | ISS-32 | M3 |
-| [R1](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application) | ISS-21, ISS-33 | M3 |
-| [R2](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application) | ISS-22, ISS-34 | M3 |
-| [V1](build-track-december-2026-task-breakdown-draft.md#verification) | ISS-19 | M2 |
-| [V2](build-track-december-2026-task-breakdown-draft.md#verification) | ISS-25, ISS-36 | M3 |
-| [V3](build-track-december-2026-task-breakdown-draft.md#verification) | ISS-23, ISS-35 | M3 |
-| [L1](build-track-december-2026-task-breakdown-draft.md#documentation-and-release) | ISS-24, ISS-37 | M4 |
-| [L2](build-track-december-2026-task-breakdown-draft.md#documentation-and-release) | ISS-07, ISS-38 | M4 |
-| [L3](build-track-december-2026-task-breakdown-draft.md#documentation-and-release) | ISS-39 | M4 |
+| [F1](build-track-december-2026-task-breakdown-draft.md#foundation) | ISS-01 | M2 |
+| [F2](build-track-december-2026-task-breakdown-draft.md#foundation) | ISS-02 | M2 |
+| [F3](build-track-december-2026-task-breakdown-draft.md#foundation) | ISS-05 | M2 |
+| [F4](build-track-december-2026-task-breakdown-draft.md#foundation) | ISS-06 | M2 |
+| [A1](build-track-december-2026-task-breakdown-draft.md#access-and-credentials) | ISS-03 | M2 |
+| [A2](build-track-december-2026-task-breakdown-draft.md#access-and-credentials) | ISS-08 | M3 |
+| [D1](build-track-december-2026-task-breakdown-draft.md#discovery-and-expected-rates) | ISS-09 | M3 |
+| [D2](build-track-december-2026-task-breakdown-draft.md#discovery-and-expected-rates) | ISS-10 | M3 |
+| [P1](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation) | ISS-04 | M2 |
+| [P2](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation) | ISS-11 | M3 |
+| [P3](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation) | ISS-12 | M3 |
+| [P4](build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation) | ISS-13, ISS-31 | M4 |
+| [J1](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-14 | M3 |
+| [J2](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-26 | M4 by default; M3 if advanced for the first journey |
+| [J3](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-27 | M4 by default; M3 if advanced for the first journey |
+| [J4](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-15 | M3 |
+| [J5](build-track-december-2026-task-breakdown-draft.md#execution-results-and-recovery) | ISS-28 | M4 |
+| [U1](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting) | ISS-16 | M3 |
+| [U2](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting) | ISS-17 | M3 |
+| [U3](build-track-december-2026-task-breakdown-draft.md#usage-and-network-cost-reporting) | ISS-18 | M3 |
+| [I1](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse) | ISS-20, ISS-29 | M4 |
+| [I2](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse) | ISS-30 | M4 |
+| [I3](build-track-december-2026-task-breakdown-draft.md#rest-mcp-and-application-reuse) | ISS-32 | M4 |
+| [R1](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application) | ISS-21, ISS-33 | M4 |
+| [R2](build-track-december-2026-task-breakdown-draft.md#minimum-reference-application) | ISS-22, ISS-34 | M4 |
+| [V1](build-track-december-2026-task-breakdown-draft.md#verification) | ISS-19 | M3 |
+| [V2](build-track-december-2026-task-breakdown-draft.md#verification) | ISS-25, ISS-36 | M4 |
+| [V3](build-track-december-2026-task-breakdown-draft.md#verification) | ISS-23, ISS-35 | M4 |
+| [L1](build-track-december-2026-task-breakdown-draft.md#documentation-and-release) | ISS-24, ISS-37 | M5 |
+| [L2](build-track-december-2026-task-breakdown-draft.md#documentation-and-release) | ISS-07, ISS-38 | M5 |
+| [L3](build-track-december-2026-task-breakdown-draft.md#documentation-and-release) | ISS-39 | M5 |
 
 ## Review and conversion
 

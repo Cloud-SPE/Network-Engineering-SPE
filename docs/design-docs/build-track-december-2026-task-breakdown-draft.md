@@ -2,7 +2,7 @@
 
 **Status:** Draft for review; not an approved delivery commitment\
 **Prepared:** 26 September 2026\
-**Updated:** 28 September 2026\
+**Updated:** 29 September 2026\
 **Owner:** Mike Zupper\
 **Purpose:** Agree the required work before creating or restructuring delivery issues
 
@@ -14,7 +14,7 @@ assignees, estimates, dates, and detailed choices will follow review of the task
 inventory.
 
 The [proposed delivery milestones](#proposed-delivery-milestones) organize all 31 required
-tasks into four acceptance gates. The [milestone assignment](#task-to-milestone-mapping)
+implementation tasks into M2–M5. Six September planning tasks form the new M1. The [milestone assignment](#task-to-milestone-mapping)
 and [blocking dependencies](#dependencies-that-can-block-a-milestone) are review
 proposals, not an approved milestone schedule or a report of current progress.
 
@@ -27,9 +27,9 @@ prerequisites for review before repository issue creation.
 The initial Markdown review draft was requested before creating tracker records.
 The proposals are now mirrored as draft items in the public
 [NE-SPE Build Track project](https://github.com/orgs/Cloud-SPE/projects/13).
-Its **Build Track Milestone** custom field groups the drafts under M1–M4.
+Its **Build Track Milestone** custom field groups the drafts under M1–M5.
 These IDs and task IDs remain planning references, not repository issue numbers
-or approval of the delivery scope. Implementation assignments and dates remain unset.
+or approval of the delivery scope. Implementation assignments and task-level dates remain unset; milestone planning dates are shown below.
 
 ## Basis and scope
 
@@ -107,36 +107,66 @@ Implementation, documentation, tests, and examples may begin earlier. Passing a
 gate does not imply that work for later milestones has not started, or that a
 task is complete before its full definition of done is met.
 
-These are candidate milestones for review. Together they cover the required
-December baseline; Milestone 2 alone does not satisfy the entire delivery commitment.
+These are candidate milestones for review. M1 records September planning and
+approval; M2–M5 cover the required December baseline. Milestone 3 alone does not
+satisfy the entire delivery commitment.
 
 | Milestone | Reviewable result and exit evidence | Full task acceptances | Gate prerequisite |
 | --- | --- | --- | --- |
-| **M1 — Foundation and integration contracts** | A versioned integration baseline, reviewed core/access/payment contracts, importable engine foundation, and working SQLite migration/restore evidence. Required upstream interfaces have verified source evidence or an explicit, agreed gap disposition. Runnable network integration is proven in M2. | 6 | Source review and the contract agreements described below |
-| **M2 — Complete builder journey** | The minimum reference application demonstrates all seven outcomes for selected representative job(s) through one documented access, interface, and payment configuration. A repeatable run connects discovery and expected rate to actual execution, result/failure, usage, and observed network cost. The catalog remains network-derived. | 11, plus required early contributions from M3 tasks | M1 and a working, funded integration with usable accounting evidence |
-| **M3 — Reuse and reliability** | The full required execution and integration matrix is demonstrated: immediate/asynchronous/persistent-endpoint behavior, REST/MCP, embedded/service use, enterprise-replaceable authentication, both payment configurations, and failure/accounting/recovery checks. Reference-app functionality and its supported interfaces meet their complete definitions of done. | 11 | M2, the remaining upstream execution/payment support, and the agreed acceptance matrix |
-| **M4 — Independent installation and release** | Versioned packages/containers, complete installation and integration guidance, successful clean-environment reproduction, and the assembled acceptance evidence are reviewed together. Known limits and payment/operator prerequisites are explicit. | 3 | M3, release checks, permitted reuse, and the agreed acceptance procedure |
+| **M1 — Define and approve the shared builder architecture** | Consolidated September requirements, source assessment, architecture, ownership and acceptance boundaries, executive summary and recorded stakeholder approval. | 6 planning tasks | Required reviewers approve an identified revision, with accepted conditions/deferrals recorded |
+| **M2 — Foundation and integration contracts** | A versioned integration baseline, reviewed core/access/payment contracts, importable engine foundation, and working SQLite migration/restore evidence. Required upstream interfaces have verified source evidence or an explicit, agreed gap disposition. Runnable network integration is proven in M3. | 6 | Source review and the contract agreements described below |
+| **M3 — Complete builder journey** | The minimum reference application demonstrates all seven outcomes for selected representative job(s) through one documented access, interface, and payment configuration. A repeatable run connects discovery and expected rate to actual execution, result/failure, usage, and observed network cost. The catalog remains network-derived. | 11, plus required early contributions from M4 tasks | M2 and a working, funded integration with usable accounting evidence |
+| **M4 — Reuse and reliability** | The full required execution and integration matrix is demonstrated: immediate/asynchronous/persistent-endpoint behavior, REST/MCP, embedded/service use, enterprise-replaceable authentication, both payment configurations, and failure/accounting/recovery checks. Reference-app functionality and its supported interfaces meet their complete definitions of done. | 11 | M3, the remaining upstream execution/payment support, and the agreed acceptance matrix |
+| **M5 — Independent installation and release** | Versioned packages/containers, complete installation and integration guidance, successful clean-environment reproduction, and the assembled acceptance evidence are reviewed together. Known limits and payment/operator prerequisites are explicit. | 3 | M4, release checks, permitted reuse, and the agreed acceptance procedure |
+
+### Milestone planning dates
+
+| Milestone | Start | Target completion |
+| --- | --- | --- |
+| M1 — Architecture and executive-summary approval | 2026-09-01 | 2026-09-30 |
+| M2 — Foundation and integration contracts | 2026-10-01 | 2026-10-16 |
+| M3 — Complete builder journey | 2026-10-19 | 2026-11-20 |
+| M4 — Reuse and reliability | 2026-11-23 | 2026-12-18 |
+| M5 — Independent installation and release | 2026-12-21 | 2026-12-31 |
+
+M1 was added on 29 September. The existing October–December planning targets
+are unchanged. Dates are targets, not evidence of completion or final approval.
+
+### September planning tasks
+
+These six planning tasks supplement the 31 implementation tasks below. Their
+[detailed acceptance criteria](build-track-december-2026-issue-proposal-draft.md#m1-define-and-approve-the-shared-builder-architecture)
+are separate from the implementation-time source verification and contracts in M2.
+
+| Source task | Project task | September result |
+| --- | --- | --- |
+| S1 | ISS-40 | Consolidate September stakeholder requirements and alignment |
+| S2 | ISS-41 | Assess existing software and candidate reuse |
+| S3 | ISS-42 | Define the shared builder architecture |
+| S4 | ISS-43 | Define ownership, enterprise extensions and acceptance |
+| S5 | ISS-44 | Prepare and refine the stakeholder review package |
+| S6 | ISS-45 | Obtain and record architecture and executive-summary approval |
 
 ### Work that contributes before full task acceptance
 
 The first complete journey needs working portions of several tasks whose broader
-acceptance belongs in M3. These contributions are required evidence for M2, not
+acceptance belongs in M4. These contributions are required evidence for M3, not
 new tasks or permission to close the original tasks early.
 
 | Task(s) | Required early contribution | Full acceptance remains |
 | --- | --- | --- |
-| I1 | REST operations needed for the selected M2 journey call the shared core, enforce access, and expose results and costs. | M3, after all baseline execution modes and shared error behavior are covered |
-| J2, J3 | If the selected M2 job uses asynchronous completion or a persistent endpoint, that mode must work for the initial journey before M2 passes. Job selection is not restricted to immediate results. | M3, after complete baseline mode and recovery acceptance |
-| R1, R2 | The reference application provides one usable access-to-reporting journey and a dynamic catalog. It may build against evolving interfaces while those interfaces are validated. | M3, when the complete required application behavior and dependencies are proven |
-| V2 | Record actual funded execution and correlated usage/cost evidence for the M2 journey. A mocked payment flow does not pass the gate. | M3, after the full acceptance matrix is exercised |
-| P4 | Document the funding, credential, configuration, and reporting prerequisites of the payment arrangement used in M2. | M3, after both self-operated and separately operated payment configurations are covered |
-| V3 | Run the checks relevant to each implemented feature as it develops, especially access isolation, repeat submission, and accounting deduplication. | M3, after the full failure and recovery set is exercised |
-| L1, L2 | Maintain runnable setup instructions, development builds, and automated checks from the foundation onward. Use the same versioned core build for the reuse demonstrations. | M4, with finalized release artifacts and documentation; L3 rechecks the delivered versions |
+| I1 | REST operations needed for the selected M3 journey call the shared core, enforce access, and expose results and costs. | M4, after all baseline execution modes and shared error behavior are covered |
+| J2, J3 | If the selected M3 job uses asynchronous completion or a persistent endpoint, that mode must work for the initial journey before M3 passes. Job selection is not restricted to immediate results. | M4, after complete baseline mode and recovery acceptance |
+| R1, R2 | The reference application provides one usable access-to-reporting journey and a dynamic catalog. It may build against evolving interfaces while those interfaces are validated. | M4, when the complete required application behavior and dependencies are proven |
+| V2 | Record actual funded execution and correlated usage/cost evidence for the M3 journey. A mocked payment flow does not pass the gate. | M4, after the full acceptance matrix is exercised |
+| P4 | Document the funding, credential, configuration, and reporting prerequisites of the payment arrangement used in M3. | M4, after both self-operated and separately operated payment configurations are covered |
+| V3 | Run the checks relevant to each implemented feature as it develops, especially access isolation, repeat submission, and accounting deduplication. | M4, after the full failure and recovery set is exercised |
+| L1, L2 | Maintain runnable setup instructions, development builds, and automated checks from the foundation onward. Use the same versioned core build for the reuse demonstrations. | M5, with finalized release artifacts and documentation; L3 rechecks the delivered versions |
 
 V1 selects the representative jobs once discovery, execution, and reporting are
-usable. That selection defines the full acceptance matrix and the first M2
+usable. That selection defines the full acceptance matrix and the first M3
 journey; it does not restrict the catalog to those jobs. Additional baseline modes
-are completed in M3. The access flow chosen for a demonstration does not prescribe
+are completed in M4. The access flow chosen for a demonstration does not prescribe
 how enterprise applications enroll or authenticate their users.
 
 ### Task-to-milestone mapping
@@ -151,37 +181,37 @@ work types. External component ownership remains with the relevant maintainers.
 
 | Task | Full acceptance milestone | Work kind | Deliverable focus |
 | --- | --- | --- | --- |
-| F1 | M1 | Integration | Verified source baseline, reusable material, and gaps |
-| F2 | M1 | Engine + integration | Shared contracts and supported boundaries |
-| F3 | M1 | Engine | Importable core and public integration interfaces |
-| F4 | M1 | Engine | SQLite records, migrations, and backup/restore |
-| A1 | M1 | Engine | Replaceable authentication and access-policy contract |
-| P1 | M1 | Integration | Agreed payment management, authorization, and reporting contracts |
-| A2 | M2 | Engine | Working standalone access adapter and ownership controls |
-| D1 | M2 | Engine + integration | Dynamic capability discovery and descriptions |
-| D2 | M2 | Engine + integration | Network rates, units, source, and assumptions |
-| P2 | M2 | Engine + integration | Scoped provisioning and allocation management |
-| P3 | M2 | Integration | SDK authorization and remote-signing path |
-| J1 | M2 | Engine + integration | Validated submission and immediate execution |
-| J4 | M2 | Engine | Owned history and basic input/result access |
-| U1 | M2 | Engine + integration | Execution measurements and payment correlation |
-| U2 | M2 | Engine + integration | Accounting ingestion and recoverable cost projections |
-| U3 | M2 | Engine | Scoped usage/cost reports and integration events |
-| V1 | M2 | Verification/release | Representative jobs and acceptance matrix |
-| P4 | M3 | Integration | Both payment-operation configurations |
-| J2 | M3 | Engine + integration | Asynchronous completion and recovery handles |
-| J3 | M3 | Engine + integration | Persistent application endpoint invocation |
-| J5 | M3 | Engine + integration | Failures and safe recovery across baseline modes |
-| I1 | M3 | Engine | Complete required REST interface |
-| I2 | M3 | Engine | MCP interface and equivalent core behavior |
-| I3 | M3 | Example + verification/release | Embedded/service reuse and enterprise extension proofs |
-| R1 | M3 | Example | Replaceable access flow, live catalog, and rates |
-| R2 | M3 | Example | Job-to-result-to-reporting user journey |
-| V2 | M3 | Verification/release | Funded journeys across the acceptance matrix |
-| V3 | M3 | Verification/release | Isolation, failure, replay, and recovery evidence |
-| L1 | M4 | Verification/release | Installation, integration, and operating guidance |
-| L2 | M4 | Verification/release | Packages, containers, CI, and release checks |
-| L3 | M4 | Verification/release | Independent reproduction and final acceptance evidence |
+| F1 | M2 | Integration | Verified source baseline, reusable material, and gaps |
+| F2 | M2 | Engine + integration | Shared contracts and supported boundaries |
+| F3 | M2 | Engine | Importable core and public integration interfaces |
+| F4 | M2 | Engine | SQLite records, migrations, and backup/restore |
+| A1 | M2 | Engine | Replaceable authentication and access-policy contract |
+| P1 | M2 | Integration | Agreed payment management, authorization, and reporting contracts |
+| A2 | M3 | Engine | Working standalone access adapter and ownership controls |
+| D1 | M3 | Engine + integration | Dynamic capability discovery and descriptions |
+| D2 | M3 | Engine + integration | Network rates, units, source, and assumptions |
+| P2 | M3 | Engine + integration | Scoped provisioning and allocation management |
+| P3 | M3 | Integration | SDK authorization and remote-signing path |
+| J1 | M3 | Engine + integration | Validated submission and immediate execution |
+| J4 | M3 | Engine | Owned history and basic input/result access |
+| U1 | M3 | Engine + integration | Execution measurements and payment correlation |
+| U2 | M3 | Engine + integration | Accounting ingestion and recoverable cost projections |
+| U3 | M3 | Engine | Scoped usage/cost reports and integration events |
+| V1 | M3 | Verification/release | Representative jobs and acceptance matrix |
+| P4 | M4 | Integration | Both payment-operation configurations |
+| J2 | M4 | Engine + integration | Asynchronous completion and recovery handles |
+| J3 | M4 | Engine + integration | Persistent application endpoint invocation |
+| J5 | M4 | Engine + integration | Failures and safe recovery across baseline modes |
+| I1 | M4 | Engine | Complete required REST interface |
+| I2 | M4 | Engine | MCP interface and equivalent core behavior |
+| I3 | M4 | Example + verification/release | Embedded/service reuse and enterprise extension proofs |
+| R1 | M4 | Example | Replaceable access flow, live catalog, and rates |
+| R2 | M4 | Example | Job-to-result-to-reporting user journey |
+| V2 | M4 | Verification/release | Funded journeys across the acceptance matrix |
+| V3 | M4 | Verification/release | Isolation, failure, replay, and recovery evidence |
+| L1 | M5 | Verification/release | Installation, integration, and operating guidance |
+| L2 | M5 | Verification/release | Packages, containers, CI, and release checks |
+| L3 | M5 | Verification/release | Independent reproduction and final acceptance evidence |
 
 ### Dependencies that can block a milestone
 
@@ -193,15 +223,15 @@ milestones are explicit above.
 
 | Dependency or unresolved condition | Acceptance affected | Handling in the plan |
 | --- | --- | --- |
-| Relevant upstream revisions and required source behavior are not verified. | F1 and M1 | Pin and inspect the components actually used. Review offered private material where relevant; the engine must remain independently buildable. Private-source availability is not a universal gate, and any omitted reuse must have an explicit disposition. |
-| Payment provisioning, authorization, reporting, or allocation contracts lack agreement. | P1 and M1 | Resolve the contract or an agreed alternative with the affected maintainer. A reported API push or a proposed adapter is not compatibility evidence. |
-| A required payment interface has no usable implementation. | P2, P3, U2 and M2; P4 and M3 for the second configuration | Verify the actual path, or agree and deliver the needed upstream change in its own repository. Keep upstream work distinct from the engine adapter. |
-| Discovery lacks usable schemas/rates, or SDK invocation cannot execute the selected journey. | D1, D2, J1, V1 and M2 | Preserve the full advertised catalog, expose missing metadata, and select representative executable jobs later. Resolve required integration gaps; do not fabricate prices or claim support from discovery alone. |
-| The test environment lacks funded signing, reachable execution, or retrievable accounting evidence. | The early V2 journey and M2; full V2 and M3 | Establish a reproducible funded environment with explicit prerequisites. The separately operated configuration may be a documented test arrangement; it does not create an ongoing hosted-service commitment. |
-| Job/payment references cannot be correlated, or real cost evidence cannot be obtained. | U1–U3 and M2 | Resolve correlation and reporting upstream where necessary. Pending/unmatched states remain visible, but cannot substitute for actual cost evidence on the selected acceptance jobs. |
-| Required asynchronous/persistent-endpoint behavior or recovery references are unavailable. | J2, J3, J5, I1, I2 and M3 | Verify selected SDK/runtime support and agree any necessary change. Milestone 2's first journey does not waive these baseline modes. |
-| Enterprise authentication cannot replace the default adapter without core changes, or interface/integration modes behave inconsistently. | I3, V3 and M3 | Correct the public integration contract and its implementation. Examples must prove replacement and ownership enforcement without prescribing one enterprise login path. |
-| Reuse permissions, release artifacts, clean-install instructions, or the acceptance procedure remain unresolved. | L1–L3 and M4 | Resolve release and evidence requirements for the delivered code, verify the final artifact versions, and record actual acceptance. Publication, organization transfer, and service-operation commitments are separate actions. |
+| Relevant upstream revisions and required source behavior are not verified. | F1 and M2 | Pin and inspect the components actually used. Review offered private material where relevant; the engine must remain independently buildable. Private-source availability is not a universal gate, and any omitted reuse must have an explicit disposition. |
+| Payment provisioning, authorization, reporting, or allocation contracts lack agreement. | P1 and M2 | Resolve the contract or an agreed alternative with the affected maintainer. A reported API push or a proposed adapter is not compatibility evidence. |
+| A required payment interface has no usable implementation. | P2, P3, U2 and M3; P4 and M4 for the second configuration | Verify the actual path, or agree and deliver the needed upstream change in its own repository. Keep upstream work distinct from the engine adapter. |
+| Discovery lacks usable schemas/rates, or SDK invocation cannot execute the selected journey. | D1, D2, J1, V1 and M3 | Preserve the full advertised catalog, expose missing metadata, and select representative executable jobs later. Resolve required integration gaps; do not fabricate prices or claim support from discovery alone. |
+| The test environment lacks funded signing, reachable execution, or retrievable accounting evidence. | The early V2 journey and M3; full V2 and M4 | Establish a reproducible funded environment with explicit prerequisites. The separately operated configuration may be a documented test arrangement; it does not create an ongoing hosted-service commitment. |
+| Job/payment references cannot be correlated, or real cost evidence cannot be obtained. | U1–U3 and M3 | Resolve correlation and reporting upstream where necessary. Pending/unmatched states remain visible, but cannot substitute for actual cost evidence on the selected acceptance jobs. |
+| Required asynchronous/persistent-endpoint behavior or recovery references are unavailable. | J2, J3, J5, I1, I2 and M4 | Verify selected SDK/runtime support and agree any necessary change. Milestone 3's first journey does not waive these baseline modes. |
+| Enterprise authentication cannot replace the default adapter without core changes, or interface/integration modes behave inconsistently. | I3, V3 and M4 | Correct the public integration contract and its implementation. Examples must prove replacement and ownership enforcement without prescribing one enterprise login path. |
+| Reuse permissions, release artifacts, clean-install instructions, or the acceptance procedure remain unresolved. | L1–L3 and M5 | Resolve release and evidence requirements for the delivered code, verify the final artifact versions, and record actual acceptance. Publication, organization transfer, and service-operation commitments are separate actions. |
 
 Stretch goals do not block any of these milestones. The required milestones contain no
 full Console port, PostgreSQL adapter, additional inference/media streaming, or
@@ -376,8 +406,8 @@ any proposed requirement exceeds the minimum architecture. Dependencies and
 external gaps should be corrected before this becomes a delivery commitment.
 
 Review the proposed milestone gates, task assignments, and upstream handoffs along
-with the task definitions. In particular, confirm that M2 proves a complete
-journey while M3 supplies the remaining required coverage, and that demonstration
+with the task definitions. In particular, confirm that M3 proves a complete
+journey while M4 supplies the remaining required coverage, and that demonstration
 choices do not become mandatory enterprise product policies.
 
 After proposal review, agree the repository homes and GitHub/Beads tracking
