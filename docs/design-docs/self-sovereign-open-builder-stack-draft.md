@@ -191,7 +191,7 @@ separate administrator credential. Enterprise authentication supplies the same
 validated access context through a supported adapter, then loads the
 Clearinghouse allocation key from a user-scoped vault on the enterprise app's
 authentication server so MCP clients stay public OAuth clients. The contract is
-in the [authorization draft](enterprise-authorization-server.md). Google login and MCP
+in the [proposal extensions draft](builder-layer-proposal-extensions.md#access). Google login and MCP
 OAuth can be demonstrated in the example without becoming mandatory core identity
 infrastructure. This recommendation has not yet been explicitly selected by Mike.
 
@@ -208,10 +208,9 @@ service payment credentials separate from engine/user access, and correlate
 opaque job/attempt/payment references. Per-application versus per-actor payment
 allocations remain a contract decision; onboarding a customer need not create a
 provider account or allocation for that customer. The
-[provisioning draft](payment-provisioning-modes.md#wholesale-accounting-model)
-recommends one wholesale allocation per enterprise while the CLI is the only
-provisioner, with the allocation key held in the vault on the enterprise app's
-authentication server.
+[proposal extensions draft](builder-layer-proposal-extensions.md#paymentprovider-and-upstream-interfaces)
+provisions allocation keys through the Batteries management API and holds them
+in the vault on the enterprise app's authentication server.
 
 ## Execution scope
 
@@ -320,8 +319,8 @@ and repository placement, execution-process packaging, representative acceptance
 capabilities, supported deployment guarantees, service-assurance and recourse
 boundaries, ongoing owners, the funded acceptance environment and final-release
 acceptance procedure. The meeting evidence does not establish Inc adoption or
-obligate Josh/John to particular upstream changes. The authorization and
-provisioning drafts recommend public MCP OAuth and a user-scoped vault for the
+obligate Josh/John to particular upstream changes. The proposal extensions
+draft recommends public MCP OAuth and a user-scoped vault for the
 Clearinghouse API key, provisioned and funded through the Clearinghouse
 Batteries management HTTP API (on `main` since 23 September 2026, `a2ed175`,
 with service credentials since 30 September, `9cf68d6`); those remain review
