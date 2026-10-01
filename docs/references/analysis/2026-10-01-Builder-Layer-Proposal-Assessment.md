@@ -163,7 +163,9 @@ until it is upstream.
 
 **Cost correlation, units and usage provenance.** Reported cost is network cost
 in USD, priced per ticket by the remote signer; retail pricing stays with the
-enterprise application. Key cost by
+enterprise application. The proposal's cost feed (`cost_events`,
+`manifest_cost`) remains the usage source, and the engine delivers cost and
+usage to the enterprise application through its event feed. Key cost by
 provider deployment and `manifest_id`, and sum a job's attempts, since a capacity
 refusal after a session prepay produces several paid attempts. Keep the four
 statuses `none`, `pending`, `observed` and `corrected`. Batteries and the remote
@@ -187,8 +189,9 @@ protocol with descriptor and configuration-table implementations plus
 
 These changes would remove engine workarounds. None blocks M2.
 
-- Batteries: caller idempotency, per-allocation balance reads, attributed usage,
-  and a usage export topic carrying `manifest_id`.
+- Batteries: the cost read API behind the cost feed, merged from the Enterprise
+  App's fork into `main`; caller idempotency; per-allocation balance reads; and
+  attributed usage.
 - go-livepeer: reliable delivery of the signer's payment events, which are
   dropped today when its Kafka queue is full.
 - Python gateway SDK: runner-selection pool size and capacity classification
