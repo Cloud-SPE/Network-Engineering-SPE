@@ -321,7 +321,9 @@ capabilities, supported deployment guarantees, service-assurance and recourse
 boundaries, ongoing owners, the funded acceptance environment and final-release
 acceptance procedure. The meeting evidence does not establish Inc adoption or
 obligate Josh/John to particular upstream changes. The authorization and
-provisioning drafts recommend public MCP OAuth, a user-scoped vault for the
-Clearinghouse API key, and an external admin HTTP server for programmatic
-funding; those remain review material until this boundary is decided. Preserve
+provisioning drafts recommend public MCP OAuth and a user-scoped vault for the
+Clearinghouse API key, provisioned and funded through the Clearinghouse
+Batteries management HTTP API (on `main` since 23 September 2026, `a2ed175`,
+with service credentials since 30 September, `9cf68d6`); those remain review
+material until this boundary is decided. Preserve
 these distinctions during milestone execution. Resolve decisions before accepting dependent work.
