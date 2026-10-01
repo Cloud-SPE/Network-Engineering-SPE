@@ -10,9 +10,9 @@ No Cloud SPE decision record accepts this contract yet. Publishing an export top
 
 ## Source event
 
-The remote signer publishes `create_signed_ticket` envelopes to the signing topic. Clearinghouse Batteries consumes that topic in its own consumer group and posts the ledger in the same transaction as the checkpoint. The current `SignedTicketEvent` stores session, auth id, app, pipeline, request id, orchestrator, PM session, computed fee in wei, sequence, ticket count, timestamps, billable seconds, and pixels.
+The remote signer publishes `create_signed_ticket` envelopes to the signing topic. Clearinghouse Batteries consumes that topic in its own consumer group and posts the ledger in the same transaction as the checkpoint. The current `SignedTicketEvent` stores session, auth id, app, pipeline, request id, orchestrator, PM session, computed fee in wei and USD, sequence, ticket count, timestamps, billable seconds, and pixels, and keeps the raw payload.
 
-[go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095) is open. It adds `price_usd` on remote discovery and `computed_fee_usd` plus `payer_address` on the Kafka event. Encoding/json ignores unknown fields, so a merge keeps current ingest working. Those fields are stored on the export event when present. They appear in SQLite only if the ingest struct is extended later. The export copies them from the raw signer payload at apply time.
+[go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095) merged on 28 September 2026 ([`bd645a0`](https://github.com/livepeer/go-livepeer/commit/bd645a09266833fb859053445d9ac85846330756)) and is in v0.9.3. It adds `price_usd` on remote discovery and `computed_fee_usd` plus `payer_address` on the Kafka event. Batteries `main` already stores `computed_fee_usd` and debits allocations by it ([`69d7c25`](https://github.com/livepeer/clearinghouse-batteries/commit/69d7c25cc9320961c53aad46671065001de2e9ac)); `payer_address` and `manifest_id` stay only in the raw payload. The export copies them from that payload at apply time.
 
 ## Export point
 
@@ -54,7 +54,7 @@ OpenMeter can accept the canonical CloudEvent with a subject mapping. Lago and K
 - SQLite remains the ledger and the audit of quarantined events. It is not the enterprise query API.
 - `enterprise_id` on the allocation is the multi-tenant routing key. End-user attribution is not in the export.
 - `manifest_id` is the job correlation key. The signer's `request_id` is not.
-- `computed_fee_usd` and `payer_address` ride the export when #4095 has merged, and are optional until then.
+- `computed_fee_usd` and `payer_address` ride the export. `computed_fee_usd` is null when the signer has no USD rate configured.
 - One CloudEvent schema feeds every connector. Product-specific retail fields are added outside Batteries.
 
 ## Work this design implies

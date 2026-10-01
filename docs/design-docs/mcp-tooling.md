@@ -16,7 +16,7 @@ These tools belong to the shared journey. Each one calls the same core function 
 | --- | --- | --- |
 | `list_capabilities` | `GET /v1/capabilities` | Advertised capabilities and freshness |
 | `describe_capability` | `GET /v1/capabilities/lookup?name=` | Mode, inputs, and schema hints for the exact advertised name |
-| `get_pricing` | `GET /v1/capabilities/rate?name=` | Network rate, unit, and source. Optional `price_usd` when [go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095) is present |
+| `get_pricing` | `GET /v1/capabilities/rate?name=` | Network rate, unit, and source. `price_usd` from the signer's discovery ([go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095)), when the signer has a USD rate |
 | `run_capability` | `POST /v1/jobs` | Persist, then invoke. Progress notifications while the job runs. The tool returns the same payload as the job status route |
 | `get_cost_report` | `GET /v1/usage` | Owner-scoped network-cost projection, with pending and unmatched rows visible |
 | `me` | `GET /v1/me` | Opaque actor, scope, and public client identity from the access adapter |

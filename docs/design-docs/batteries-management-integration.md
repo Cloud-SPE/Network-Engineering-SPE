@@ -24,7 +24,7 @@ Batteries and the go-livepeer remote signer are the payment path in both payment
 | Batteries and the remote signer | The allowance, enforced at signing; network cost in USD | Retail prices |
 
 - **The allowance is a hard cap at signing.** The signer calls its `-remoteSignerWebhookUrl` during `GenerateLivePayment`. Batteries answers that webhook, resolving the `lpg_` key to its allocation and refusing with 402 when `allocation_available` is zero.
-- **Batteries meters network cost, not retail cost.** It debits allocations by the ticket event's `computed_fee_usd` and applies no markup.
+- **Batteries meters network cost, not retail cost.** The signer prices each ticket in USD (`computed_fee_usd`, [go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095)); Batteries debits allocations by that amount and applies no markup.
 - **Allocation and key creation are requirements.** The balance check works per key, so any per-tenant or per-user cap needs its own allocation and key, created through the management API.
 - **External billing systems are adapters, not payment providers.** Kong, PymtHouse or Stripe attach through a `BillingAdapter` that consumes engine usage and cost events. It never authorizes signing.
 
@@ -132,7 +132,7 @@ The fund check assumes the engine is the only party funding its allocations. An 
 | `PaymentProvider.allowance` | `GET /v1/allocations/{id}` for granted; `GET /v1/ledger/report` row `allocation_available` for remaining | The report returns every account. The engine filters it client-side |
 | Per-job network cost | `--usage-export-topic` CloudEvents, joined on `manifest_id` ([usage export](usage-event-export.md)) | Waits on [netspe-cz5.11](usage-event-export.md#work-this-design-implies). Until then, job cost stays `pending` |
 | Allocation spend | Ledger report `allocation_spent` | Aggregate only |
-| Prepaid session starts refused on capacity | None today | The signer reports no per-attempt payment event, so a failed prepaid start is invisible to the engine. Asked of go-livepeer; until then the attempt is `payment_sent` and its cost `pending` |
+| Prepaid session starts refused on capacity | The signer's `create_signed_ticket` event for that payment (`session_status` `new`, with `manifest_id` and `computed_fee_usd`) | Events are best-effort: the signer drops them when its Kafka queue is full. Until the export topic carries them, the attempt is `payment_sent` and its cost `pending` |
 
 `GET /v1/usage` cannot attribute an event to an allocation, so the engine does not build job cost from it.
 
@@ -180,4 +180,4 @@ Prior art for the tenant layer: the `pymthouse/clearinghouse-oss` admin API at `
 
 ## Work this design implies
 
-`netspe-cz5.16` is the Phase A `BatteriesProvider` client. `netspe-cz5.6` seeds the vault from it. The upstream asks are `netspe-scr.12` (idempotency), `netspe-scr.13` (narrow reads) and `netspe-scr.14` (attributed usage). `netspe-scr.15` is the Phase B tenant layer. `netspe-cz5.11` is still the export topic. `netspe-scr.25` is the go-livepeer ask for a per-attempt payment event, and `netspe-scr.26` is the `BillingAdapter` sink.
+`netspe-cz5.16` is the Phase A `BatteriesProvider` client. `netspe-cz5.6` seeds the vault from it. The upstream asks are `netspe-scr.12` (idempotency), `netspe-scr.13` (narrow reads) and `netspe-scr.14` (attributed usage). `netspe-scr.15` is the Phase B tenant layer. `netspe-cz5.11` is still the export topic. `netspe-scr.25` is the go-livepeer ask for reliable delivery of signer payment events, and `netspe-scr.26` is the `BillingAdapter` sink.

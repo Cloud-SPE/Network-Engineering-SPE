@@ -12,7 +12,7 @@ No Cloud SPE decision record accepts this contract yet.
 
 Job invocation uses the Live Runner interfaces in `livepeer-python-gateway`, including `call_runner` and the live session types. The server is the process boundary that replaces the Console prototype's hosted gateway package. Discovery rates come from the signer and orchestrator evidence the SDK already reads.
 
-[go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095) is open. It adds `price_usd` to remote discovery. Rate responses should carry that field when the signer revision includes it, and should omit it when the field is absent. A discovery rate is a published unit price with its source and freshness. It is a binding quote for a future job only when a later decision says so.
+[go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095) merged on 28 September 2026 ([`bd645a0`](https://github.com/livepeer/go-livepeer/commit/bd645a09266833fb859053445d9ac85846330756)) and is in v0.9.3. The signer's remote discovery now adds `price_usd` to each runner's price, derived from the signer's own USD rate. Rate responses carry that field, and omit it when a signer has no USD rate configured. A discovery rate is a published unit price with its source and freshness. It is a binding quote for a future job only when a later decision says so.
 
 ## Capability names
 
