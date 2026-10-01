@@ -47,6 +47,8 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 ## Source material and evidence
 
+- [October 1 builder-layer proposal](references/analysis/2026-10-01-Builder-Layer-Abstraction-and-Two-Application-Review.md) and [separate assessment](references/analysis/2026-10-01-Builder-Layer-Proposal-Assessment.md) — subsequent M1 supporting analysis and concrete M2 contract-review input; accepted scope remains unchanged.
+
 - [John–Josh auth and API-key discussion capture](references/stakeholder-input/meetings/2026-09-26-John-Josh-Auth-and-API-Key-Discussion.md)
   — supplied conversation and separate assistant assessment, recorded 26 September;
   reference only, with no change to the planning baseline.
