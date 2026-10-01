@@ -1,8 +1,9 @@
 # Open Builder Engine: Architecture and Sequences
 
-**Status:** Diagram companion to the consolidated working proposal, not approved or implemented architecture\
-**Updated:** 25 September 2026\
-**Owner:** Mike Zupper
+**Status:** Accepted architecture companion; runtime behavior remains to be verified\
+**Updated:** 1 October 2026\
+**Owner:** Mike Zupper\
+**Approval:** [Effective 30 September 2026](../decisions/2026-09-30-build-track-architecture-and-milestones.md)
 
 The [primary architecture](self-sovereign-open-builder-stack-draft.md) owns scope,
 contracts, evidence limits and open decisions. The new backend has its own
@@ -10,7 +11,7 @@ repository. In the component diagram, `livepeer/console` is an existing prototyp
 used as reference material; its dotted arrow represents possible code or behavior
 reuse, not a runtime connection or deployment dependency. See the
 [reference-only role](self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles).
-Every new engine interface below is proposed. Arrows express responsibilities,
+Detailed new interface contracts remain to be verified during delivery. Arrows express responsibilities,
 not a verified protocol ordering or accepted upstream API.
 
 ## Components and repository responsibilities
@@ -242,8 +243,8 @@ repaired solely by replaying the engine projection.
 ## Persistence and accounting authority
 
 SQLite plus an explicit persistence interface is the required minimum.
-PostgreSQL is a delivery target, not a condition that replaces that minimum.
-Both should implement the same contract for engine-owned access mappings,
+PostgreSQL is an optional stretch target; the diagram label does not make it
+required December scope. If delivered, both databases must implement the same contract for engine-owned access mappings,
 jobs/attempts, result references, measured usage and cost projections, including
 migrations and backup/restore. Retention must be configurable.
 

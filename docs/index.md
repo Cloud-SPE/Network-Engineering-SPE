@@ -7,9 +7,13 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 ## Durable guidance
 
-- [Primary builder-engine architecture proposal](design-docs/self-sovereign-open-builder-stack-draft.md)
+- [Accepted delivery specification](product-specs/build-track-2026.md) — architecture, scope, milestone gates and tracking convention.
+- [September 30 acceptance decision](decisions/2026-09-30-build-track-architecture-and-milestones.md) — review outcome and approval basis.
+- [Public milestone project](https://github.com/orgs/Cloud-SPE/projects/13) — ecosystem transparency; Beads remains Mike's internal tracker.
+
+- [Accepted builder-engine architecture](design-docs/self-sovereign-open-builder-stack-draft.md)
   — stakeholder executive summary, component/repository ownership map, and
-  technical proposal refined after the 24 September conceptual alignment.
+  accepted baseline effective 30 September, following stakeholder review.
 - [Architecture diagrams and sequences](design-docs/open-builder-architecture-and-sequences.md)
   — repository roles, imported/service integration, self-operated/hosted payments,
   shared execution and separate accounting.
@@ -17,11 +21,11 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
   — pinned implementation evidence, preserved Console/Batteries source map,
   MCP behavior, new homes and unverified integration gaps.
 - [Build Track December delivery task breakdown](design-docs/build-track-december-2026-task-breakdown-draft.md)
-  — Mike Zupper's review draft of six September planning tasks plus 31 implementation tasks across five milestones,
+  — Mike Zupper's accepted plan of six September planning tasks plus 31 implementation tasks across five milestones,
   with completion evidence, upstream dependencies, and separate stretch goals;
-  mirrored in the public project for review before repository issues or dates.
-- [Proposed Build Track December delivery issues](design-docs/build-track-december-2026-issue-proposal-draft.md)
-  — Mike Zupper's 45 task candidates (six planning and 39 implementation) with single milestones, proposed repository homes,
+  tracked in the public project, with implementation assignments refined during execution.
+- [Build Track December delivery issues](design-docs/build-track-december-2026-issue-proposal-draft.md)
+  — Mike Zupper's 45 delivery tasks (six planning and 39 implementation) with single milestones, proposed repository homes,
   acceptance criteria, dependencies, and a crosswalk to the implementation source tasks;
   mirrored as project drafts, with upstream handoffs kept separate.
 - [Repository architecture](../ARCHITECTURE.md) — boundaries, information model,
@@ -29,8 +33,7 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 - [Core beliefs](design-docs/core-beliefs.md) — principles for shaping the SPE
   and its agent-facing environment.
 - [Draft September–December 2026 Cloud SPE milestones](design-docs/cloud-spe-september-december-2026-milestones-draft.md)
-  — historical August planning input; a revised October–December plan follows
-  review of the current architecture. Demand generation and adoption remain excluded.
+  — historical August planning input, superseded by the accepted M1–M5 plan. Demand generation and adoption remain excluded.
 - [Design document index](design-docs/index.md) — accepted and proposed designs.
 - [Product specification index](product-specs/index.md) — intended outcomes and
   acceptance contracts.

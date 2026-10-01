@@ -1,34 +1,35 @@
-# Build Track December 2026 Proposed Delivery Issues
+# Build Track December 2026 Delivery Issues
 
-**Status:** Review proposal; mirrored as draft items in the public GitHub project\
+**Status:** Accepted delivery mapping; [approval effective 30 September 2026](../decisions/2026-09-30-build-track-architecture-and-milestones.md)\
 **Prepared:** 27 September 2026\
-**Updated:** 29 September 2026\
+**Updated:** 1 October 2026\
 **Owner:** Mike Zupper\
-**Basis:** [Task breakdown and proposed milestones](build-track-december-2026-task-breakdown-draft.md)
+**Basis:** [Task breakdown and milestones](build-track-december-2026-task-breakdown-draft.md)
 
 This document includes **six September planning tasks** and translates the 31
-implementation source tasks into **39 proposed delivery issues** (45 tasks total), each
+implementation source tasks into **39 delivery issues** (45 tasks total), each
 with one milestone, a proposed implementation home, acceptance criteria, and
 explicit prerequisites. The extra issue boundaries separate first-journey work
 from broader coverage, documentation, and release completion; they do not add
 new December scope.
 
-These are review IDs, not GitHub or Beads issue numbers. Mike Zupper owns this
+These are stable planning IDs, not GitHub or Beads issue numbers. Mike Zupper owns this
 Build Track delivery plan and its September planning tasks. Implementation
 assignees, estimates and task-level dates remain unassigned; live status is in
-the project. Upstream components retain their existing maintainers. The milestone
-plan and issue proposal
-remain subject to review and the applicable scope approvals.
+the project. Upstream components retain their existing maintainers. The milestone plan and issue mapping are accepted; remaining implementation
+decisions are resolved before their dependent work is accepted.
 
 The public [NE-SPE Build Track project](https://github.com/orgs/Cloud-SPE/projects/13)
 uses a **Build Track Milestone** custom field for M1–M5. This supports project-only
-drafts while repository homes and the later tracking convention remain under review.
+draft items while repository homes are finalized. GitHub tracks public milestones
+for ecosystem transparency; Beads tracks Mike's internal work. Draft item type
+does not mean the delivery baseline is unapproved.
 
 ## Scope and reading guide
 
 The [source scope](build-track-december-2026-task-breakdown-draft.md#basis-and-scope) and its
 [stretch-goal boundary](build-track-december-2026-task-breakdown-draft.md#stretch-goals-and-excluded-expansion)
-govern this proposal. All seven outcomes are required. Discovery displays
+govern this delivery mapping. All seven outcomes are required. Discovery displays
 orchestrator-advertised capabilities; representative execution jobs are selected
 later. Enterprises choose onboarding and authentication through supported
 integration interfaces. A reference access flow is an example, not a mandatory
@@ -50,13 +51,13 @@ or agreement needed; their evidence requirement is determined by the particular
 issue. Source review can record a runtime gap, whereas a funded execution issue
 cannot pass with that gap unresolved.
 
-## Proposed milestones
+## Milestones
 
 Counts below use the default placement, before representative job selection.
 They differ from the source plan's counts of whole tasks because several tasks
 have been split into independently reviewable results.
 
-| Milestone | Proposed issues | Acceptance gate |
+| Milestone | Delivery issues | Acceptance gate |
 | --- | --- | --- |
 | [M1: Define and approve the shared builder architecture](#m1-define-and-approve-the-shared-builder-architecture) | 6 planning tasks | September planning evidence and recorded approval of the architecture and executive summary. |
 | [M2: Foundation and integration contracts](#m2-foundation-and-integration-contracts) | 7 | Source baseline, shared/access/payment contracts, importable core, SQLite evidence, and development build checks are reviewable. |
@@ -77,7 +78,7 @@ issue(s). Each issue still has exactly one milestone.
 
 These are explicit conditional prerequisites, not permission to accept the
 first journey while its execution support is unfinished. No capability or job
-has been selected by this proposal. Once chosen, update the placement and
+has been selected in this plan. Once chosen, update the placement and
 dependency before accepting M3; the remaining required modes still complete
 by M4.
 
@@ -123,8 +124,9 @@ acceptance. Any later upstream issue should link back to its consuming Build Tra
 This milestone captures the September planning work and culminates in recorded
 approval of the architecture and executive summary. Its six planning tasks are
 ISS-40–ISS-45; existing implementation IDs remain unchanged. Work already present
-in the repository supports review, but approval is not inferred from the date or
-conceptual meeting agreement. Implementation verification and detailed contracts
+in the repository supports this milestone. The
+[September 30 acceptance record](../decisions/2026-09-30-build-track-architecture-and-milestones.md)
+documents approval separately from the earlier conceptual meeting agreement. Implementation verification and detailed contracts
 remain in M2. The implementation scope and dates of M2–M5 are unchanged.
 
 ### ISS-40: Consolidate September stakeholder requirements and alignment
@@ -200,9 +202,9 @@ Collect stakeholder review, resolve material objections and record the required 
 
 Acceptance:
 
-- Record the required reviewers, the exact approved revision, approval evidence and the agreed delivery boundary.
-- Resolve material objections or record explicitly accepted conditions and deferrals with owners. Conceptual meeting alignment or silence does not constitute approval.
-- Leave this task and M1 open until approval evidence is recorded; the September 30 target is not evidence of completion.
+- Link the accepted document set and record the review participants, approval basis and delivery boundary. Distinguish the accepted repository snapshot from the exact Discord-circulated revision if that revision was not supplied.
+- Record Mike's September 30 no-objection decision following the September 27–30 architecture review, plus committee milestone signoff following September 28 circulation. Preserve the distinction between Rick's positive response, thumbs-up reactions and silence.
+- Carry remaining decisions and late feedback into milestone execution. The linked acceptance record supplies approval evidence; completion of M1 also requires the other five planning tasks to meet their acceptance criteria.
 
 ## M2: Foundation and integration contracts
 
@@ -645,23 +647,23 @@ broader task-level ordering so the first journey can be reviewed independently.
 | [L2](build-track-december-2026-task-breakdown-draft.md#documentation-and-release) | ISS-07, ISS-38 | M5 |
 | [L3](build-track-december-2026-task-breakdown-draft.md#documentation-and-release) | ISS-39 | M5 |
 
-## Review and conversion
+## Execution and repository placement
 
-The useful review now is of issue boundaries, milestone exit evidence, and
-repository placement. Check whether an issue can be accepted on its own evidence,
-whether anything required by the source task is missing, and whether an example
-has inadvertently become an enterprise product requirement. Review the conditional
-execution-mode prerequisites when representative jobs are selected.
+Review issue boundaries and conditional execution-mode prerequisites as
+representative jobs and repository homes are selected. Add implementation
+assignees, estimates and task-level dates during execution, preserving stable
+IDs and the source-task crosswalk. Upstream handoffs remain separate.
 
-After proposal review, agree repository homes and the GitHub/Beads tracking
-convention before converting drafts into repository issues. Add implementation
-assignees, estimates, and dates during subsequent planning. Translate these review
-IDs into actual issue links, keep upstream handoffs separate, and preserve the
-source-task crosswalk. Existing architecture and SPE scope approvals must be
-recorded rather than inferred from approval of issue formatting.
+The public project contains 45 task items (six planning and 39 implementation)
+and five milestone summaries. GitHub tracks public milestones; Beads tracks
+internal work. The six completed September planning tasks ISS-40–ISS-45 were converted to
+[repository issues #1–#6](https://github.com/Cloud-SPE/Network-Engineering-SPE/issues?q=is%3Aissue%20is%3Aclosed)
+on 1 October. Original project Done timestamps were preserved and copied into
+each issue description; issue closure timestamps record the conversion operation.
+Repository placement for implementation tasks remains a later decision.
+Architecture and scope approval are recorded in the
+[September 30 decision](../decisions/2026-09-30-build-track-architecture-and-milestones.md).
 
-The project contains 39 project-only draft items; repository issues and Beads
-delivery records have not been created for this proposal. The captured auth
-discussion remains reference material; this proposal follows Mike's explicit
-enterprise-choice clarification and does not adopt an upstream JWT design or a
-compulsory onboarding path.
+The captured auth discussion remains reference material. This plan follows
+Mike's enterprise-choice clarification and does not adopt an upstream JWT design
+or a compulsory onboarding path.

@@ -1,17 +1,17 @@
 # Builder Capability Inventory and Source Evidence
 
-**Status:** Draft capability inventory for Mike's proposal; not approved implementation scope\
+**Status:** Final supporting inventory for the accepted architecture; source evidence is not runtime verification\
 **Prepared:** 23 September 2026\
 **Evidence consolidation:** 24 September 2026\
 **Documentation review:** 25 September 2026; no new implementation verification\
 **Owner:** Mike Zupper\
 **Design:** [Self-sovereign open builder stack](self-sovereign-open-builder-stack-draft.md)\
-**Decision status:** Pending architecture and scope review; no accepted decision
+**Decision status:** [Architecture accepted effective 30 September 2026](../decisions/2026-09-30-build-track-architecture-and-milestones.md); remaining verification follows milestone execution
 
 ## Selected product profile
 
 This inventory uses the existing `livepeer/console` prototype as source evidence.
-It is not a required component of the proposed architecture. Its
+It is not a required component of the accepted architecture. Its
 [reference-only role](self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles)
 is distinct from the new reference application to be delivered.
 
@@ -166,8 +166,8 @@ representative runtime parity; source inspection alone does not establish it.
 Persistent application endpoints do not necessarily stream output. MCP
 progress/SSE messages do not establish incremental inference output or live media
 transport. Additional incremental text streaming and continuous live audio/video
-remain open scope decisions, not committed delivery requirements. These decisions
-do not block defining or implementing the baseline.
+are stretch scope, outside required December delivery. They do not block
+defining or implementing the baseline.
 
 Select representative supported capabilities and pin all participating revisions
 before accepting parity. Preserve failure, timeout and uncertain-result behavior;
@@ -175,7 +175,7 @@ a retry must not silently duplicate work or payments. Session and price changes
 are validation cases, not grounds to assume undocumented signer guarantees.
 
 Persistence minimum: SQLite with a defined interface for engine records,
-migrations and recovery. PostgreSQL is a target. Enterprise stores integrate
+migrations and recovery. PostgreSQL is an optional stretch target. Enterprise stores integrate
 through supported persistence adapters, stable IDs and events, not arbitrary
 shared-schema assumptions. Neither database choice establishes HA guarantees.
 

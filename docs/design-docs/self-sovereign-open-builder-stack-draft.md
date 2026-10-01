@@ -1,18 +1,19 @@
 # Self-Sovereign Open Builder Stack
 
-**Status:** Consolidated working proposal, not SPE-approved architecture or implementation\
-**Updated:** 25 September 2026\
-**Proposal and interim new-repository owner:** Mike Zupper
+**Status:** Accepted implementation baseline; implementation verification remains open\
+**Updated:** 1 October 2026\
+**Delivery and interim new-repository owner:** Mike Zupper\
+**Approval:** [Effective 30 September 2026](../decisions/2026-09-30-build-track-architecture-and-milestones.md)
 
 ## Executive summary
 
 Every application built on Livepeer needs to find available capabilities, check
 prices, submit jobs, receive results, and understand what it used and what it
-cost. The proposed Build Track deliverable brings these functions into a shared
+cost. The Build Track deliverable brings these functions into a shared
 open-source **builder engine**, so teams can reuse them as they develop their
 own products.
 
-Mike Zupper proposes to lead delivery of the engine, its documentation, and a
+Mike Zupper leads delivery of the engine, its documentation, and a
 reference application. Livepeer Inc and other builders could embed the engine
 in their applications or run it as a service. Each team would retain control of
 its customer experience, workflows, and commercial model.
@@ -46,7 +47,7 @@ flowchart TB
     SDK --> Compute
 ```
 
-The diagram shows proposed component relationships. Builders could extend the
+The diagram shows accepted component relationships. Builders could extend the
 engine through supported interfaces without changing its core source.
 Improvements to the shared implementation could then benefit multiple
 applications.
@@ -55,8 +56,8 @@ applications.
 
 | Component and repository | Role | Responsibility |
 | --- | --- | --- |
-| **New builder-engine repository** — name pending | Shared packages, HTTP/MCP services, integration code, and documentation | Mike Zupper: proposed delivery lead and interim owner |
-| **Reference application** — location pending | Demonstrate embedding the engine and using it as a service | Mike Zupper: proposed delivery owner |
+| **New builder-engine repository** — name pending | Shared packages, HTTP/MCP services, integration code, and documentation | Mike Zupper: delivery lead and interim owner |
+| **Reference application** — location pending | Demonstrate embedding the engine and using it as a service | Mike Zupper: delivery owner |
 | [livepeer-python-gateway](https://github.com/livepeer/livepeer-python-gateway) | Python SDK for discovery, prices, and job invocation | Existing maintainers own the SDK; Mike owns the engine's integration |
 | [go-livepeer](https://github.com/livepeer/go-livepeer) | Remote signer and Orchestrator/Live Runner integration | Existing maintainers; Josh coordinates network/runtime dependencies |
 | [clearinghouse-batteries](https://github.com/livepeer/clearinghouse-batteries) | Payment authorization and network accounting | Existing maintainers; Josh coordinates payment-core dependencies |
@@ -79,14 +80,13 @@ a crypto wallet. That hosted option requires an operator willing to provide
 funding, access policies, availability, and support. The operator has yet to be
 assigned.
 
-### What stakeholders are being asked to review
+### Delivery baseline
 
-Stakeholders are asked to confirm the proposed deliverables, ownership
-boundaries, and upstream dependencies. Acceptance should demonstrate the
-complete builder journey—from obtaining access and discovering capabilities
-through execution, results, and network-cost reporting—in both embedded and
-service deployments. Final milestones follow that scope review; individual
-enterprises decide when to adopt the engine.
+The architecture and M1–M5 plan are accepted following the September review.
+Acceptance will demonstrate the complete builder journey—from access and
+discovery through execution, results and network-cost reporting—in embedded
+and service deployments. Remaining decisions and late feedback are addressed
+through milestone execution. Individual enterprises decide when to adopt the engine.
 
 Detailed component flows are in the
 [diagram companion](open-builder-architecture-and-sequences.md); implementation
@@ -108,7 +108,7 @@ For hosted access, the operator must be named and agree funding, credential
 issuance, usage policy, abuse controls, availability and support responsibilities.
 A reference deployment demonstrates integration; it does not establish an ongoing
 public service. Neither Inc nor Mike Zupper is assigned that operation by this
-proposal or by the 24 September meeting.
+architecture or by the 24 September meeting.
 Neither mode requires PymtHouse, a proprietary identity provider, or commerce.
 Network, chain RPC and payment funding remain explicit dependencies.
 
@@ -118,10 +118,10 @@ Network, chain RPC and payment funding remain explicit dependencies.
 [`livepeer/console`](https://github.com/livepeer/console) repository provides
 examples of capability discovery, job submission, results, and usage
 presentation. Selected behavior and code may inform the builder engine and
-reference application. The proposed architecture does not require deploying
+reference application. The architecture does not require deploying
 Console. The reference application's implementation and repository location
 remain to be decided. Its existing owners retain decisions about the prototype;
-this proposal does not assign its migration or replacement.
+this architecture does not assign its migration or replacement.
 
 The [executive component map](#components-repositories-and-ownership) owns the
 repository and responsibility inventory. Reuse of the Python SDK requires
@@ -141,7 +141,7 @@ Mike will review that implementation with Qiang before fixing shared contracts,
 identify common behavior and separate product-specific concerns through supported
 extension interfaces. Repository access permits review only to the extent agreed
 with Inc; permission to reuse or redistribute code in the open-source engine must
-be confirmed separately. The proposed engine must be independently buildable and
+be confirmed separately. The engine must be independently buildable and
 deployable without access to this closed-source repository.
 
 A repository is not necessarily a process. A Python core is the working
@@ -206,9 +206,9 @@ provider account or allocation for that customer.
 
 ## Execution scope
 
-The proposed backend will support immediate results, jobs that complete
+The backend will support immediate results, jobs that complete
 asynchronously, and requests to persistent application endpoints. Support for
-incremental text streaming and continuous live audio/video remains to be agreed.
+incremental text streaming and continuous live audio/video is stretch scope.
 Acceptance will verify supported execution modes, failure handling, and recovery
 without unintended duplicate jobs or charges.
 
@@ -224,9 +224,9 @@ for its customer bills. The engine connects execution records with payment
 information and clearly identifies costs that are still pending or uncertain.
 Enterprises can use these records in their own billing and analytics systems.
 
-Whether to guarantee hard spending limits remains an explicit scope decision.
+Guaranteed hard spending limits are stretch scope, outside required delivery.
 The [technical companion](open-builder-architecture-and-sequences.md#persistence-and-accounting-authority)
-defines the proposed storage, reporting and payment requirements and their limits.
+defines the storage, reporting and payment requirements and their limits.
 
 ## Examples and seven outcomes
 
@@ -271,8 +271,8 @@ reference application demonstrates these features with mock commerce.
 
 ## Delivery and acceptance
 
-Architecture and scope review precede final October–December milestone
-commitments.
+The [accepted delivery plan](build-track-december-2026-task-breakdown-draft.md)
+defines M1–M5, with implementation delivery from October through December.
 Acceptance evidence should cover:
 
 - A pinned seven-outcome journey with no mandatory PymtHouse or commerce service.
@@ -299,17 +299,17 @@ contribution agreements must be settled with the relevant owners.
 
 ## Decision boundaries
 
-Selected by Mike for the proposal: new backend repository, installable packages
+Accepted baseline: new backend repository, installable packages
 and runnable services, imported and HTTP enterprise integration, noncommercial
 core, mocked example commerce, the pinned execution baseline, SQLite/persistence
-minimum, PostgreSQL target, and interim ownership/release preparation.
+minimum and interim ownership/release preparation. PostgreSQL, additional
+streaming and hard spending guarantees remain stretch scope.
 
 Still unresolved: exact access/OAuth profile, payment credential/allocation
 granularity, provider provisioning/reporting contracts, example feature selection
-and repository placement, execution-process packaging, extra streaming scope,
-representative acceptance capabilities, PostgreSQL delivery commitment, hard
-spending limits, supported deployment guarantees, service-assurance and recourse
-scope, ongoing owners, a funded hosted-access operator
-and final SPE scope/acceptance. The meeting evidence does not establish Inc adoption or
+and repository placement, execution-process packaging, representative acceptance
+capabilities, supported deployment guarantees, service-assurance and recourse
+boundaries, ongoing owners, the funded acceptance environment and final-release
+acceptance procedure. The meeting evidence does not establish Inc adoption or
 obligate Josh/John to particular upstream changes. Preserve these distinctions
-when deriving milestones or presenting the proposal for approval.
+during milestone execution. Resolve decisions before accepting dependent work.

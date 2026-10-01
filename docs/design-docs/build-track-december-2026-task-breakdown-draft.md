@@ -1,35 +1,35 @@
 # Build Track December 2026 Task Breakdown
 
-**Status:** Draft for review; not an approved delivery commitment\
+**Status:** Accepted delivery plan; [approval effective 30 September 2026](../decisions/2026-09-30-build-track-architecture-and-milestones.md)\
 **Prepared:** 26 September 2026\
-**Updated:** 29 September 2026\
+**Updated:** 1 October 2026\
 **Owner:** Mike Zupper\
-**Purpose:** Agree the required work before creating or restructuring delivery issues
+**Purpose:** Define required delivery work and acceptance evidence
 
 The December deliverable must make all seven Build Track outcomes possible
 through the shared builder engine and a minimum reference application. This
-document breaks that deliverable into proposed tasks, completion evidence, and
+document breaks that deliverable into required tasks, completion evidence, and
 dependencies. Mike Zupper owns this Build Track delivery plan. Implementation
-assignees, estimates, dates, and detailed choices will follow review of the task
-inventory.
+assignees, estimates, dates, and detailed choices will be refined during milestone execution.
 
-The [proposed delivery milestones](#proposed-delivery-milestones) organize all 31 required
+The [delivery milestones](#delivery-milestones) organize all 31 required
 implementation tasks into M2–M5. Six September planning tasks form the new M1. The [milestone assignment](#task-to-milestone-mapping)
-and [blocking dependencies](#dependencies-that-can-block-a-milestone) are review
-proposals, not an approved milestone schedule or a report of current progress.
+and [blocking dependencies](#dependencies-that-can-block-a-milestone) define the accepted schedule and gates, not a report of current progress.
 
-The [proposed delivery issues](build-track-december-2026-issue-proposal-draft.md)
-translate these tasks into 39 reviewable issue candidates, splitting work that
+The [delivery issues](build-track-december-2026-issue-proposal-draft.md)
+translate these tasks into 39 delivery tasks, splitting work that
 contributes across milestones and preserving a crosswalk back to all 31 source tasks.
 This document defines scope; the companion refines issue boundaries and
-prerequisites for review before repository issue creation.
+prerequisites for implementation and acceptance.
 
 The initial Markdown review draft was requested before creating tracker records.
-The proposals are now mirrored as draft items in the public
+The accepted tasks are tracked in the public
 [NE-SPE Build Track project](https://github.com/orgs/Cloud-SPE/projects/13).
-Its **Build Track Milestone** custom field groups the drafts under M1–M5.
+Its **Build Track Milestone** custom field groups the items under M1–M5.
+The six completed September planning tasks are repository issues #1–#6;
+implementation tasks remain project draft items until repository placement.
 These IDs and task IDs remain planning references, not repository issue numbers
-or approval of the delivery scope. Implementation assignments and task-level dates remain unset; milestone planning dates are shown below.
+and do not themselves prove completion. Implementation assignments and task-level dates remain unset; milestone planning dates are shown below.
 
 ## Basis and scope
 
@@ -40,7 +40,7 @@ questions and evidence to verify. They do not establish that the proposed engine
 or required upstream interfaces already exist.
 
 Mike's 26 September planning clarifications define the following baseline for
-this draft:
+this delivery plan:
 
 - All seven builder outcomes are required for December.
 - Enterprises choose onboarding and authentication. The engine must support
@@ -99,7 +99,7 @@ the plan does not assign their implementation work or imply their agreement.
 | Reference application | A minimum user interface demonstrating all seven outcomes |
 | Verification and release | Reproducible evidence, installation guidance, and versioned release artifacts |
 
-## Proposed delivery milestones
+## Delivery milestones
 
 Each milestone describes evidence needed to pass a delivery gate. The mapping
 assigns each required task exactly one milestone for **full acceptance**.
@@ -107,7 +107,7 @@ Implementation, documentation, tests, and examples may begin earlier. Passing a
 gate does not imply that work for later milestones has not started, or that a
 task is complete before its full definition of done is met.
 
-These are candidate milestones for review. M1 records September planning and
+These are the accepted milestones. M1 records September planning and
 approval; M2–M5 cover the required December baseline. Milestone 3 alone does not
 satisfy the entire delivery commitment.
 
@@ -130,7 +130,7 @@ satisfy the entire delivery commitment.
 | M5 — Independent installation and release | 2026-12-21 | 2026-12-31 |
 
 M1 was added on 29 September. The existing October–December planning targets
-are unchanged. Dates are targets, not evidence of completion or final approval.
+are unchanged. Dates are targets, not evidence of completion. Approval is recorded separately.
 
 ### September planning tasks
 
@@ -243,7 +243,7 @@ acceptance review if capacity later permits.
 The dependencies below identify prerequisites for accepting a task. They are not
 a schedule: scaffolding, interface design, examples, and tests can develop together.
 Upstream dependencies are described separately after the inventory. Every task in
-this section belongs to the proposed required baseline; optional features appear
+this section belongs to the accepted required baseline; optional features appear
 only in the stretch-goal section.
 
 ### Foundation
@@ -325,7 +325,7 @@ only in the stretch-goal section.
 | --- | --- | --- | --- |
 | L1 | Write installation, integration, and operating guidance. | Version-matched instructions explain example access, discovering capabilities, inspecting rates, running jobs, reading results/costs, and extending the engine. Document how enterprises replace authentication/enrollment while retaining core authorization, including the limits of supplied adapters. Include both integration modes, payment setup/funding prerequisites, configuration, upgrades, backup/restore, recovery, and known limitations. Logs and correlation references support investigation without exposing secrets. | P4, I3, R2, F4 |
 | L2 | Prepare versioned packages, containers, and release checks. | Installable packages and runnable service/application artifacts build reproducibly. CI runs relevant tests, lint/type checks, and install/start smoke checks. Release notes, configuration examples, licensing/reuse decisions, and controlled release procedures are present. Repository publication/transfer and ongoing maintenance arrangements are resolved separately before those actions occur. | F3, I1, I2, R2, V3 |
-| L3 | Prove independent installation and assemble the acceptance evidence. | A reviewer can reproduce the agreed seven-outcome journey from a clean environment using the released artifacts and instructions, with stated operator/payment prerequisites. The evidence bundle identifies versions, commands, results, limitations, and remaining external dependencies. The designated acceptance authority reviews that evidence against the agreed scope; this draft does not appoint the reviewer or constitute sign-off. | V2, V3, L1, L2 |
+| L3 | Prove independent installation and assemble the acceptance evidence. | A reviewer can reproduce the agreed seven-outcome journey from a clean environment using the released artifacts and instructions, with stated operator/payment prerequisites. The evidence bundle identifies versions, commands, results, limitations, and remaining external dependencies. The designated acceptance authority reviews that evidence against the agreed scope; this plan does not appoint the reviewer or constitute final-release sign-off. | V2, V3, L1, L2 |
 
 ## Coverage of the seven outcomes
 
@@ -365,9 +365,8 @@ cannot close funded execution or network-cost acceptance.
 
 ## Decisions to resolve as the work is refined
 
-These decisions do not prevent reviewing this inventory. Resolve each before
-accepting its dependent delivery work; none requires assigning people or dates
-during this first review.
+These decisions do not reopen architecture approval. Resolve each during
+milestone execution before accepting its dependent delivery work.
 
 | Decision | What needs to be selected | Related tasks |
 | --- | --- | --- |
@@ -398,20 +397,16 @@ protocol redesign, a new public hosted-service obligation, application adoption,
 and demand generation are outside this delivery baseline. They are not added
 implicitly by the Console stretch goal.
 
-## Review and later project setup
+## Delivery tracking and changes
 
-The next review should establish whether the required inventory covers the seven
-outcomes, whether each task is small and concrete enough to discuss, and whether
-any proposed requirement exceeds the minimum architecture. Dependencies and
-external gaps should be corrected before this becomes a delivery commitment.
+The [acceptance decision](../decisions/2026-09-30-build-track-architecture-and-milestones.md)
+records the completed review and approval. [GitHub Project 13](https://github.com/orgs/Cloud-SPE/projects/13)
+tracks public milestones for ecosystem transparency; Beads tracks Mike's internal
+work and dependencies. Project draft items are a GitHub item type, not an
+indication that the delivery plan still awaits approval.
 
-Review the proposed milestone gates, task assignments, and upstream handoffs along
-with the task definitions. In particular, confirm that M3 proves a complete
-journey while M4 supplies the remaining required coverage, and that demonstration
-choices do not become mandatory enterprise product policies.
-
-After proposal review, agree the repository homes and GitHub/Beads tracking
-convention before converting drafts into repository issues and milestones.
-Add implementation assignees, estimates, and dates during subsequent planning.
-The stable document IDs preserve traceability during conversion; this document
-defines the proposed work and acceptance evidence rather than live work status.
+Implementation assignments, estimates, task-level dates and unresolved contracts
+are refined during execution. Late feedback is considered with explicit scope,
+schedule and acceptance impacts. Stable task IDs preserve traceability as
+repository homes are selected. This document defines the accepted work and
+acceptance evidence; live progress belongs in the trackers.

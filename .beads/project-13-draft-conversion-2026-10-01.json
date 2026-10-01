@@ -1,0 +1,1227 @@
+{
+  "project": "https://github.com/orgs/Cloud-SPE/projects/13",
+  "before": [
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eymg",
+      "createdAt": "2026-09-29T16:19:30Z",
+      "updatedAt": "2026-10-01T11:53:16Z",
+      "content": {
+        "id": "DI_lADODtKj2s4Bk8oxzgLO9xM",
+        "title": "ISS-45: Obtain and record architecture and executive-summary approval",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S6\n**Depends on:** ISS-40, ISS-41, ISS-42, ISS-43, ISS-44\n\n## Scope\n\nCollect stakeholder review, resolve material objections and record the required approvals of the architecture and executive summary. This is the September milestone exit gate, separate from the later implementation and final-release acceptance.\n\n## Acceptance evidence\n\n- Record the required reviewers, the exact approved revision, approval evidence and the agreed delivery boundary.\n- Resolve material objections or record explicitly accepted conditions and deferrals with owners. Conceptual meeting alignment or silence does not constitute approval.\n- Leave this task and M1 open until approval evidence is recorded; the September 30 target is not evidence of completion.\n\n## Supporting material\n\n- [Architecture review package](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md)\n- [Decision records](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/decisions/index.md)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n",
+        "createdAt": "2026-09-29T16:19:30Z",
+        "updatedAt": "2026-09-29T16:19:30Z"
+      },
+      "fieldValues": {
+        "nodes": [
+          {},
+          {
+            "text": "ISS-45: Obtain and record architecture and executive-summary approval",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eymjOLr_gjw",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:31Z",
+            "updatedAt": "2026-09-29T16:19:31Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eymjOLr_gnQ",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:31Z",
+            "updatedAt": "2026-09-29T16:19:31Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-45",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eymjOLr_gog",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:32Z",
+            "updatedAt": "2026-10-01T11:53:16Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eymjOLr_gpQ",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:32Z",
+            "updatedAt": "2026-09-29T16:19:32Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S6",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "ISS-40, ISS-41, ISS-42, ISS-43, ISS-44",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eyeU",
+      "createdAt": "2026-09-29T16:19:20Z",
+      "updatedAt": "2026-09-29T16:29:05Z",
+      "content": {
+        "id": "DI_lADODtKj2s4Bk8oxzgLO9wg",
+        "title": "ISS-40: Consolidate September stakeholder requirements and alignment",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S1\n**Depends on:** None\n\n## Scope\n\nSynthesize September surveys and discussions with Network Engineering SPE participants and the Inc Agent team. Capture common builder needs, differences, scope boundaries and the conceptual alignment reached on 24 September.\n\n## Acceptance evidence\n\n- Link the September stakeholder findings and distinguish participant input, conceptual agreement, unresolved questions and actual approval.\n- Record the exclusion of demand generation and application adoption and the separation of shared network behavior from enterprise product concerns.\n\n## Supporting material\n\n- [September stakeholder findings](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/references/stakeholder-input/meetings/2026-09-24-Agent-NE-SPE-Sync-Findings.md)\n- [Reference catalog](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/references/index.md)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n",
+        "createdAt": "2026-09-29T16:19:20Z",
+        "updatedAt": "2026-09-29T16:19:20Z"
+      },
+      "fieldValues": {
+        "nodes": [
+          {},
+          {
+            "text": "ISS-40: Consolidate September stakeholder requirements and alignment",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyeXOLr_e5Q",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:21Z",
+            "updatedAt": "2026-09-29T16:19:21Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyeXOLr_e8A",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:21Z",
+            "updatedAt": "2026-09-29T16:19:21Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-40",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyeXOLr_fAA",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:21Z",
+            "updatedAt": "2026-09-29T16:29:05Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyeXOLr_fBw",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:21Z",
+            "updatedAt": "2026-09-29T16:19:21Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S1",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "None",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eyhE",
+      "createdAt": "2026-09-29T16:19:24Z",
+      "updatedAt": "2026-09-29T16:28:54Z",
+      "content": {
+        "id": "DI_lADODtKj2s4Bk8oxzgLO9ws",
+        "title": "ISS-42: Define the shared builder architecture",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S3\n**Depends on:** ISS-40, ISS-41\n\n## Scope\n\nDocument the common builder engine, HTTP/MCP interfaces, embedded and service integration, and self-operated and separately operated payment configurations.\n\n## Acceptance evidence\n\n- Link a versioned architecture and diagrams covering access, discovery, expected rates, execution, results, usage and network costs.\n- Show the engine, SDK, signer, Batteries, execution components and enterprise boundaries without assigning unagreed upstream implementation or hosted-service commitments.\n- Separate the required baseline from stretch goals and unresolved implementation details.\n\n## Supporting material\n\n- [Architecture and executive summary](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md)\n- [Technical companion](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/open-builder-architecture-and-sequences.md)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n",
+        "createdAt": "2026-09-29T16:19:24Z",
+        "updatedAt": "2026-09-29T16:19:24Z"
+      },
+      "fieldValues": {
+        "nodes": [
+          {},
+          {
+            "text": "ISS-42: Define the shared builder architecture",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyhHOLr_ffA",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:24Z",
+            "updatedAt": "2026-09-29T16:19:24Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyhHOLr_ffw",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:25Z",
+            "updatedAt": "2026-09-29T16:19:25Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-42",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyhHOLr_fhw",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:25Z",
+            "updatedAt": "2026-09-29T16:28:54Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyhHOLr_fiQ",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:25Z",
+            "updatedAt": "2026-09-29T16:19:25Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S3",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "ISS-40, ISS-41",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eyf0",
+      "createdAt": "2026-09-29T16:19:22Z",
+      "updatedAt": "2026-09-29T16:28:31Z",
+      "content": {
+        "id": "DI_lADODtKj2s4Bk8oxzgLO9wo",
+        "title": "ISS-41: Assess existing software and candidate reuse",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S2\n**Depends on:** None\n\n## Scope\n\nConsolidate the September assessment of the Python SDK, remote signer, Batteries and Console prototype, including the offered Inc simple-infra source handoff. This is the planning assessment, not the later implementation-revision verification in ISS-01.\n\n## Acceptance evidence\n\n- Link the component inventory and inspected source evidence, distinguishing existing behavior, integration gaps and unverified claims.\n- Identify Console as reference-only and simple-infra as closed source with access/inspection pending unless evidence establishes otherwise; record reuse-permission and independent-build requirements.\n- Record the disposition of unavailable source material rather than treating private access as a universal approval prerequisite.\n\n## Supporting material\n\n- [Capability inventory](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/console-capability-and-gap-matrix.md)\n- [Repository roles](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n",
+        "createdAt": "2026-09-29T16:19:22Z",
+        "updatedAt": "2026-09-29T16:19:22Z"
+      },
+      "fieldValues": {
+        "nodes": [
+          {},
+          {
+            "text": "ISS-41: Assess existing software and candidate reuse",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyf3OLr_fOQ",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:23Z",
+            "updatedAt": "2026-09-29T16:19:23Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyf3OLr_fRQ",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:23Z",
+            "updatedAt": "2026-09-29T16:19:23Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-41",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyf3OLr_fSw",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:23Z",
+            "updatedAt": "2026-09-29T16:28:31Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyf3OLr_fUQ",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:23Z",
+            "updatedAt": "2026-09-29T16:19:23Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S2",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "None",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eyh8",
+      "createdAt": "2026-09-29T16:19:26Z",
+      "updatedAt": "2026-09-29T16:30:49Z",
+      "content": {
+        "id": "DI_lADODtKj2s4Bk8oxzgLO9w4",
+        "title": "ISS-43: Define ownership, enterprise extensions and acceptance",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S4\n**Depends on:** ISS-40, ISS-41, ISS-42\n\n## Scope\n\nDefine Mike Zupper ownership, proposed repository homes, upstream handoffs, enterprise extension boundaries and acceptance expectations. Prepare the basis for subsequent delivery planning.\n\n## Acceptance evidence\n\n- Map the seven outcomes to components, responsibilities and proposed evidence; separate engine network costs from enterprise retail billing.\n- Define the minimum reference application and proof that enterprise authentication and other extensions work without changing released core components.\n- Identify open approval conditions, external owners, required handoffs and deferred choices without inventing acceptance of them.\n\n## Supporting material\n\n- [Architecture ownership and acceptance](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md)\n- [Delivery scope and handoffs](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#external-handoffs-and-conditional-upstream-changes)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n",
+        "createdAt": "2026-09-29T16:19:26Z",
+        "updatedAt": "2026-09-29T16:19:26Z"
+      },
+      "fieldValues": {
+        "nodes": [
+          {},
+          {
+            "text": "ISS-43: Define ownership, enterprise extensions and acceptance",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyh_OLr_fyA",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:27Z",
+            "updatedAt": "2026-09-29T16:19:27Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyh_OLr_fyg",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:27Z",
+            "updatedAt": "2026-09-29T16:19:27Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-43",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyh_OLr_f2g",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:27Z",
+            "updatedAt": "2026-09-29T16:30:49Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyh_OLr_f4w",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:27Z",
+            "updatedAt": "2026-09-29T16:19:27Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S4",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "ISS-40, ISS-41, ISS-42",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eykg",
+      "createdAt": "2026-09-29T16:19:28Z",
+      "updatedAt": "2026-09-29T16:31:29Z",
+      "content": {
+        "id": "DI_lADODtKj2s4Bk8oxzgLO9xE",
+        "title": "ISS-44: Prepare and refine the stakeholder review package",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S5\n**Depends on:** ISS-40, ISS-41, ISS-42, ISS-43\n\n## Scope\n\nPrepare the executive summary and supporting architecture material for stakeholder circulation. Incorporate feedback on terminology, component roles and the separation of reader-facing scope from technical evidence.\n\n## Acceptance evidence\n\n- Provide a versioned executive summary and architecture with consistent terminology, ownership, scope, diagrams and supporting evidence links.\n- Keep Console reference-only, describe the private Inc source handoff accurately, and distinguish current evidence from proposed delivery.\n- Record the review revision and demonstrate that documentation validation passes.\n\n## Supporting material\n\n- [Architecture and executive summary](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md)\n- [Documentation review](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/QUALITY.md)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n",
+        "createdAt": "2026-09-29T16:19:28Z",
+        "updatedAt": "2026-09-29T16:19:28Z"
+      },
+      "fieldValues": {
+        "nodes": [
+          {},
+          {
+            "text": "ISS-44: Prepare and refine the stakeholder review package",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eykjOLr_gMw",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:29Z",
+            "updatedAt": "2026-09-29T16:19:29Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eykjOLr_gOQ",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:29Z",
+            "updatedAt": "2026-09-29T16:19:29Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-44",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eykjOLr_gTg",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:29Z",
+            "updatedAt": "2026-09-29T16:31:29Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eykjOLr_gUg",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:30Z",
+            "updatedAt": "2026-09-29T16:19:30Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S5",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "ISS-40, ISS-41, ISS-42, ISS-43",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "conversions": [
+    {
+      "projectItemId": "PVTI_lADODtKj2s4Bk8oxzg9eyeU",
+      "issue": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7Pjw",
+        "number": 1,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/1",
+        "state": "OPEN",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S1\n**Depends on:** None\n\n## Scope\n\nSynthesize September surveys and discussions with Network Engineering SPE participants and the Inc Agent team. Capture common builder needs, differences, scope boundaries and the conceptual alignment reached on 24 September.\n\n## Acceptance evidence\n\n- Link the September stakeholder findings and distinguish participant input, conceptual agreement, unresolved questions and actual approval.\n- Record the exclusion of demand generation and application adoption and the separation of shared network behavior from enterprise product concerns.\n\n## Supporting material\n\n- [September stakeholder findings](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/references/stakeholder-input/meetings/2026-09-24-Agent-NE-SPE-Sync-Findings.md)\n- [Reference catalog](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/references/index.md)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n"
+      },
+      "originalDoneStatusUpdatedAt": "2026-09-29T16:29:05Z",
+      "closed": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7Pjw",
+        "number": 1,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/1",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:35:57Z"
+      }
+    },
+    {
+      "projectItemId": "PVTI_lADODtKj2s4Bk8oxzg9eyf0",
+      "issue": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7S0w",
+        "number": 2,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/2",
+        "state": "OPEN",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S2\n**Depends on:** None\n\n## Scope\n\nConsolidate the September assessment of the Python SDK, remote signer, Batteries and Console prototype, including the offered Inc simple-infra source handoff. This is the planning assessment, not the later implementation-revision verification in ISS-01.\n\n## Acceptance evidence\n\n- Link the component inventory and inspected source evidence, distinguishing existing behavior, integration gaps and unverified claims.\n- Identify Console as reference-only and simple-infra as closed source with access/inspection pending unless evidence establishes otherwise; record reuse-permission and independent-build requirements.\n- Record the disposition of unavailable source material rather than treating private access as a universal approval prerequisite.\n\n## Supporting material\n\n- [Capability inventory](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/console-capability-and-gap-matrix.md)\n- [Repository roles](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n"
+      },
+      "originalDoneStatusUpdatedAt": "2026-09-29T16:28:31Z",
+      "closed": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7S0w",
+        "number": 2,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/2",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:01Z"
+      }
+    },
+    {
+      "projectItemId": "PVTI_lADODtKj2s4Bk8oxzg9eyhE",
+      "issue": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7VlA",
+        "number": 3,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/3",
+        "state": "OPEN",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S3\n**Depends on:** ISS-40, ISS-41\n\n## Scope\n\nDocument the common builder engine, HTTP/MCP interfaces, embedded and service integration, and self-operated and separately operated payment configurations.\n\n## Acceptance evidence\n\n- Link a versioned architecture and diagrams covering access, discovery, expected rates, execution, results, usage and network costs.\n- Show the engine, SDK, signer, Batteries, execution components and enterprise boundaries without assigning unagreed upstream implementation or hosted-service commitments.\n- Separate the required baseline from stretch goals and unresolved implementation details.\n\n## Supporting material\n\n- [Architecture and executive summary](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md)\n- [Technical companion](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/open-builder-architecture-and-sequences.md)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n"
+      },
+      "originalDoneStatusUpdatedAt": "2026-09-29T16:28:54Z",
+      "closed": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7VlA",
+        "number": 3,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/3",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:05Z"
+      }
+    },
+    {
+      "projectItemId": "PVTI_lADODtKj2s4Bk8oxzg9eyh8",
+      "issue": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7Y-Q",
+        "number": 4,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/4",
+        "state": "OPEN",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S4\n**Depends on:** ISS-40, ISS-41, ISS-42\n\n## Scope\n\nDefine Mike Zupper ownership, proposed repository homes, upstream handoffs, enterprise extension boundaries and acceptance expectations. Prepare the basis for subsequent delivery planning.\n\n## Acceptance evidence\n\n- Map the seven outcomes to components, responsibilities and proposed evidence; separate engine network costs from enterprise retail billing.\n- Define the minimum reference application and proof that enterprise authentication and other extensions work without changing released core components.\n- Identify open approval conditions, external owners, required handoffs and deferred choices without inventing acceptance of them.\n\n## Supporting material\n\n- [Architecture ownership and acceptance](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md)\n- [Delivery scope and handoffs](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#external-handoffs-and-conditional-upstream-changes)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n"
+      },
+      "originalDoneStatusUpdatedAt": "2026-09-29T16:30:49Z",
+      "closed": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7Y-Q",
+        "number": 4,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/4",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:08Z"
+      }
+    },
+    {
+      "projectItemId": "PVTI_lADODtKj2s4Bk8oxzg9eykg",
+      "issue": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7b1g",
+        "number": 5,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/5",
+        "state": "OPEN",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S5\n**Depends on:** ISS-40, ISS-41, ISS-42, ISS-43\n\n## Scope\n\nPrepare the executive summary and supporting architecture material for stakeholder circulation. Incorporate feedback on terminology, component roles and the separation of reader-facing scope from technical evidence.\n\n## Acceptance evidence\n\n- Provide a versioned executive summary and architecture with consistent terminology, ownership, scope, diagrams and supporting evidence links.\n- Keep Console reference-only, describe the private Inc source handoff accurately, and distinguish current evidence from proposed delivery.\n- Record the review revision and demonstrate that documentation validation passes.\n\n## Supporting material\n\n- [Architecture and executive summary](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md)\n- [Documentation review](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/QUALITY.md)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n"
+      },
+      "originalDoneStatusUpdatedAt": "2026-09-29T16:31:29Z",
+      "closed": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7b1g",
+        "number": 5,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/5",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:12Z"
+      }
+    },
+    {
+      "projectItemId": "PVTI_lADODtKj2s4Bk8oxzg9eymg",
+      "issue": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7eaw",
+        "number": 6,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/6",
+        "state": "OPEN",
+        "body": "**Owner:** Mike Zupper\n**Milestone:** M1 \u2014 September 1\u201330, 2026\n**Proposed home:** PLAN \u00b7 **Source task:** S6\n**Depends on:** ISS-40, ISS-41, ISS-42, ISS-43, ISS-44\n\n## Scope\n\nCollect stakeholder review, resolve material objections and record the required approvals of the architecture and executive summary. This is the September milestone exit gate, separate from the later implementation and final-release acceptance.\n\n## Acceptance evidence\n\n- Record the required reviewers, the exact approved revision, approval evidence and the agreed delivery boundary.\n- Resolve material objections or record explicitly accepted conditions and deferrals with owners. Conceptual meeting alignment or silence does not constitute approval.\n- Leave this task and M1 open until approval evidence is recorded; the September 30 target is not evidence of completion.\n\n## Supporting material\n\n- [Architecture review package](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/self-sovereign-open-builder-stack-draft.md)\n- [Decision records](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/decisions/index.md)\n\nSeptember planning task added on 29 September. Existing material is evidence of work, not an assertion of final approval. Status remains open pending acceptance against the criteria above.\n"
+      },
+      "originalDoneStatusUpdatedAt": "2026-10-01T11:53:16Z",
+      "closed": {
+        "id": "I_kwDOUDr_Qc8AAAABUX7eaw",
+        "number": 6,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/6",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:15Z"
+      }
+    }
+  ],
+  "after": [
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eymg",
+      "fieldValues": {
+        "nodes": [
+          {},
+          {},
+          {
+            "text": "ISS-45: Obtain and record architecture and executive-summary approval",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eymjOLr_gjw",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:31Z",
+            "updatedAt": "2026-09-29T16:19:31Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eymjOLr_gnQ",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:31Z",
+            "updatedAt": "2026-09-29T16:19:31Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-45",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eymjOLr_gog",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:32Z",
+            "updatedAt": "2026-10-01T11:53:16Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eymjOLr_gpQ",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:32Z",
+            "updatedAt": "2026-09-29T16:19:32Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S6",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "ISS-40, ISS-41, ISS-42, ISS-43, ISS-44",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      },
+      "content": {
+        "number": 6,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/6",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:15Z",
+        "assignees": {
+          "nodes": [
+            {
+              "login": "mikezupper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eyeU",
+      "fieldValues": {
+        "nodes": [
+          {},
+          {},
+          {
+            "text": "ISS-40: Consolidate September stakeholder requirements and alignment",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyeXOLr_e5Q",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:21Z",
+            "updatedAt": "2026-09-29T16:19:21Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyeXOLr_e8A",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:21Z",
+            "updatedAt": "2026-09-29T16:19:21Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-40",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyeXOLr_fAA",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:21Z",
+            "updatedAt": "2026-09-29T16:29:05Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyeXOLr_fBw",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:21Z",
+            "updatedAt": "2026-09-29T16:19:21Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S1",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "None",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      },
+      "content": {
+        "number": 1,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/1",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:35:57Z",
+        "assignees": {
+          "nodes": [
+            {
+              "login": "mikezupper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eyhE",
+      "fieldValues": {
+        "nodes": [
+          {},
+          {},
+          {
+            "text": "ISS-42: Define the shared builder architecture",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyhHOLr_ffA",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:24Z",
+            "updatedAt": "2026-09-29T16:19:24Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyhHOLr_ffw",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:25Z",
+            "updatedAt": "2026-09-29T16:19:25Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-42",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyhHOLr_fhw",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:25Z",
+            "updatedAt": "2026-09-29T16:28:54Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyhHOLr_fiQ",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:25Z",
+            "updatedAt": "2026-09-29T16:19:25Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S3",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "ISS-40, ISS-41",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      },
+      "content": {
+        "number": 3,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/3",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:05Z",
+        "assignees": {
+          "nodes": [
+            {
+              "login": "mikezupper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eyf0",
+      "fieldValues": {
+        "nodes": [
+          {},
+          {},
+          {
+            "text": "ISS-41: Assess existing software and candidate reuse",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyf3OLr_fOQ",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:23Z",
+            "updatedAt": "2026-09-29T16:19:23Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyf3OLr_fRQ",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:23Z",
+            "updatedAt": "2026-09-29T16:19:23Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-41",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyf3OLr_fSw",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:23Z",
+            "updatedAt": "2026-09-29T16:28:31Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyf3OLr_fUQ",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:23Z",
+            "updatedAt": "2026-09-29T16:19:23Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S2",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "None",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      },
+      "content": {
+        "number": 2,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/2",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:01Z",
+        "assignees": {
+          "nodes": [
+            {
+              "login": "mikezupper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eyh8",
+      "fieldValues": {
+        "nodes": [
+          {},
+          {},
+          {
+            "text": "ISS-43: Define ownership, enterprise extensions and acceptance",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyh_OLr_fyA",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:27Z",
+            "updatedAt": "2026-09-29T16:19:27Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyh_OLr_fyg",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:27Z",
+            "updatedAt": "2026-09-29T16:19:27Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-43",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyh_OLr_f2g",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:27Z",
+            "updatedAt": "2026-09-29T16:30:49Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eyh_OLr_f4w",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:27Z",
+            "updatedAt": "2026-09-29T16:19:27Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S4",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "ISS-40, ISS-41, ISS-42",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      },
+      "content": {
+        "number": 4,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/4",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:08Z",
+        "assignees": {
+          "nodes": [
+            {
+              "login": "mikezupper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9eykg",
+      "fieldValues": {
+        "nodes": [
+          {},
+          {},
+          {
+            "text": "ISS-44: Prepare and refine the stakeholder review package",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTf8",
+              "name": "Title"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eykjOLr_gMw",
+            "name": "M1: Define and approve the shared builder architecture",
+            "optionId": "9f018187",
+            "createdAt": "2026-09-29T16:19:29Z",
+            "updatedAt": "2026-09-29T16:19:29Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzU",
+              "name": "Build Track Milestone"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eykjOLr_gOQ",
+            "name": "Task",
+            "optionId": "eb8a6c3b",
+            "createdAt": "2026-09-29T16:19:29Z",
+            "updatedAt": "2026-09-29T16:19:29Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjyXeA",
+              "name": "Level"
+            }
+          },
+          {
+            "text": "ISS-44",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzc",
+              "name": "Plan ID"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eykjOLr_gTg",
+            "name": "Done",
+            "optionId": "98236657",
+            "createdAt": "2026-09-29T16:19:29Z",
+            "updatedAt": "2026-09-29T16:31:29Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTgQ",
+              "name": "Status"
+            }
+          },
+          {
+            "id": "PVTFSV_lQDODtKj2s4Bk8oxzg9eykjOLr_gUg",
+            "name": "PLAN",
+            "optionId": "75983f56",
+            "createdAt": "2026-09-29T16:19:30Z",
+            "updatedAt": "2026-09-29T16:19:30Z",
+            "field": {
+              "id": "PVTSSF_lADODtKj2s4Bk8oxzhjrTzY",
+              "name": "Proposed home"
+            }
+          },
+          {
+            "text": "S5",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzg",
+              "name": "Source task"
+            }
+          },
+          {
+            "text": "ISS-40, ISS-41, ISS-42, ISS-43",
+            "field": {
+              "id": "PVTF_lADODtKj2s4Bk8oxzhjrTzk",
+              "name": "Depends on"
+            }
+          }
+        ]
+      },
+      "content": {
+        "number": 5,
+        "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/5",
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "closedAt": "2026-10-01T12:36:12Z",
+        "assignees": {
+          "nodes": [
+            {
+              "login": "mikezupper"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

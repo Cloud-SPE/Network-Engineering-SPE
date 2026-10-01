@@ -54,25 +54,21 @@ SPE.
 
 ## Project status
 
-The current review package is Mike Zupper's
-[open builder-engine proposal](docs/design-docs/self-sovereign-open-builder-stack-draft.md),
-with [technical diagrams](docs/design-docs/open-builder-architecture-and-sequences.md)
-and a [capability/evidence matrix](docs/design-docs/console-capability-and-gap-matrix.md).
-It proposes reusable packages and HTTP/MCP services, a reference application,
-and enterprise extensions that leave the shared core unchanged.
+The [accepted delivery specification](docs/product-specs/build-track-2026.md)
+links Mike Zupper's final architecture, executive summary, technical companion,
+capability evidence and M1–M5 plan. [Approval is effective 30 September](docs/decisions/2026-09-30-build-track-architecture-and-milestones.md)
+following the stakeholder review and committee milestone responses reported by Mike.
 
-The 24 September stakeholder meeting established conceptual alignment on this
-shared foundation and the separation of network costs from enterprise billing.
-Detailed architecture approval, upstream contracts, hosted-payment operation,
-representative capability acceptance, and long-term maintenance remain open.
-The repository has no accepted product specification or architecture decision
-record yet. Demand generation and application adoption are excluded from this
-workstream's delivery requirements.
+Development proceeds toward the first implementation deliverable on 16 October
+and final delivery on 31 December. Remaining integration contracts, representative
+acceptance jobs and release arrangements are resolved during milestone execution.
+Architecture approval does not prove runtime compatibility or assign new upstream
+or hosted-service obligations. Demand generation and application adoption remain
+excluded.
 
-The [quality review](docs/QUALITY.md) distinguishes current proposal gaps from
-historical findings. August repository observations remain dated evidence, not
-claims about today's Agent or payment deployment. Work state and dependencies
-are maintained in Beads.
+[GitHub Project 13](https://github.com/orgs/Cloud-SPE/projects/13) tracks public
+milestones for ecosystem transparency. Beads tracks Mike's internal tasks and
+dependencies. The [quality review](docs/QUALITY.md) records evidence limits.
 
 ## Cloud SPE scope
 
@@ -103,16 +99,16 @@ remain explicit.
 ## Components and source references
 
 The [architecture component map](docs/design-docs/self-sovereign-open-builder-stack-draft.md#components-repositories-and-ownership)
-identifies proposed deliverables and dependencies: a new builder-engine
+identifies accepted deliverables and dependencies: a new builder-engine
 repository, reference application, Python gateway SDK, `go-livepeer` and
 `clearinghouse-batteries`. Existing maintainers retain upstream ownership.
 
 The [repository roles section](docs/design-docs/self-sovereign-open-builder-stack-draft.md#repositories-and-application-roles)
 separately identifies the Console prototype as reference material and
 `livepeer/simple-infra` as closed-source Inc material awaiting access and review.
-Neither is a required runtime dependency of the proposed engine. Earlier
+Neither is a required runtime dependency of the engine. Earlier
 Storyboard and `livepeer/clearinghouse` mappings remain in historical references;
-they do not define the current proposal or establish current deployed behavior.
+they do not define the accepted architecture or establish current deployed behavior.
 
 ## Repository structure
 
@@ -156,7 +152,7 @@ automated checks when possible.
 
 ## Using the repository
 
-### Read the current proposal
+### Read the accepted plan
 
 Start with:
 
