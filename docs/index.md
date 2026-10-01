@@ -41,6 +41,10 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
   records.
 - [Quality review](QUALITY.md) — current repository and Cloud SPE delivery-readiness gaps.
 
+## Monthly updates
+
+- [September 2026 Build Track monthly update](updates/2026-09-build-track-monthly-update.md) — draft for Mike’s review; not yet published to GitHub status updates or the Livepeer forum.
+
 ## Source material and evidence
 
 - [John–Josh auth and API-key discussion capture](references/stakeholder-input/meetings/2026-09-26-John-Josh-Auth-and-API-Key-Discussion.md)
