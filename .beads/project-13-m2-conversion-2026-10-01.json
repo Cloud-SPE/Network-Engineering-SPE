@@ -1,0 +1,225 @@
+{
+  "before": [
+    {
+      "assignees": [
+        "eliteprox",
+        "mikezupper"
+      ],
+      "build Track Milestone": "M2: Foundation and integration contracts",
+      "content": {
+        "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [F2](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#foundation)\\\n**Depends on:** ISS-01 \u00b7 **External:** None\n\nAcceptance:\n\n- Document access context, capabilities/rates, jobs/attempts, results, measured usage, cost states, and extension boundaries with examples sufficient to implement and test them.\n- Cover immediate, asynchronous, and persistent-endpoint execution; identify upstream contracts and explicitly dispose of deployment, performance, and recovery assumptions. New APIs, HA, financial recourse, and extra streaming are not assumed.\n\n**Planning reference:** [ISS-02 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-02-define-the-shared-engine-contracts-and-supported-boundaries)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n",
+        "title": "ISS-02: Define the shared engine contracts and supported boundaries",
+        "type": "DraftIssue"
+      },
+      "depends on": "ISS-01",
+      "external handoffs": "None",
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9NCpY",
+      "level": "Task",
+      "plan ID": "ISS-02",
+      "proposed home": "ENGINE",
+      "source task": "F2",
+      "status": "In progress",
+      "title": "ISS-02: Define the shared engine contracts and supported boundaries"
+    },
+    {
+      "assignees": [
+        "eliteprox",
+        "mikezupper"
+      ],
+      "build Track Milestone": "M2: Foundation and integration contracts",
+      "content": {
+        "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** PLAN \u00b7 **Source:** [F1](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#foundation)\\\n**Depends on:** None \u00b7 **External:** H1, H2, H3, H5\n\nAcceptance:\n\n- Record selected Console, Python SDK, Batteries, and go-livepeer revisions and recheck the behavior required by the task breakdown; distinguish source evidence from runtime proof.\n- Record reusable material, permissions, compatibility gaps, and their dispositions. Review offered private source if available and relevant; the engine remains independently buildable without it.\n\n**Planning reference:** [ISS-01 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-01-verify-the-integration-baseline-and-reusable-source-material)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n",
+        "title": "ISS-01: Verify the integration baseline and reusable source material",
+        "type": "DraftIssue"
+      },
+      "depends on": "None",
+      "external handoffs": "H1, H2, H3, H5",
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9NCnY",
+      "level": "Task",
+      "plan ID": "ISS-01",
+      "proposed home": "PLAN",
+      "source task": "F1",
+      "status": "In progress",
+      "title": "ISS-01: Verify the integration baseline and reusable source material"
+    },
+    {
+      "build Track Milestone": "M2: Foundation and integration contracts",
+      "content": {
+        "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [A1](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#access-and-credentials)\\\n**Depends on:** ISS-02 \u00b7 **External:** None\n\nAcceptance:\n\n- Define how trusted standalone and enterprise adapters produce validated actor identity, ownership scope, and permitted operations across imported and service modes.\n- Document browser and administrator trust boundaries and credential-lifecycle responsibilities. Enterprises can choose enrollment and authentication without core patches or an additional user-facing engine key; unchecked request fields cannot establish identity.\n\n**Planning reference:** [ISS-03 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-03-define-replaceable-authentication-and-access-policy-interfaces)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n",
+        "title": "ISS-03: Define replaceable authentication and access-policy interfaces",
+        "type": "DraftIssue"
+      },
+      "depends on": "ISS-02",
+      "external handoffs": "None",
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9NCqg",
+      "level": "Task",
+      "plan ID": "ISS-03",
+      "proposed home": "ENGINE",
+      "source task": "A1",
+      "status": "Planned",
+      "title": "ISS-03: Define replaceable authentication and access-policy interfaces"
+    },
+    {
+      "build Track Milestone": "M2: Foundation and integration contracts",
+      "content": {
+        "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** PLAN \u00b7 **Source:** [P1](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\\\n**Depends on:** ISS-01, ISS-02 \u00b7 **External:** H2, H3\n\nAcceptance:\n\n- Record credential/allocation mapping, permitted management operations, reporting access, units, stable references, and repeat-command semantics.\n- For each required interface, record available implementation evidence or an agreed gap disposition from the affected maintainer. Link any proposed upstream change to its owning repository; contract agreement does not count as implemented compatibility.\n\n**Planning reference:** [ISS-04 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-04-agree-payment-provisioning-authorization-and-reporting-contracts)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n",
+        "title": "ISS-04: Agree payment provisioning, authorization, and reporting contracts",
+        "type": "DraftIssue"
+      },
+      "depends on": "ISS-01, ISS-02",
+      "external handoffs": "H2, H3",
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9NCss",
+      "level": "Task",
+      "plan ID": "ISS-04",
+      "proposed home": "PLAN",
+      "source task": "P1",
+      "status": "Planned",
+      "title": "ISS-04: Agree payment provisioning, authorization, and reporting contracts"
+    },
+    {
+      "build Track Milestone": "M2: Foundation and integration contracts",
+      "content": {
+        "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [F3](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#foundation)\\\n**Depends on:** ISS-02 \u00b7 **External:** None\n\nAcceptance:\n\n- The shared core imports and starts independently of the reference application, proprietary identity, PymtHouse, and private Inc source.\n- Document supported interfaces for persistence, execution/payment adapters, and enterprise extension. Provide an import/start smoke check using a versioned development build.\n\n**Planning reference:** [ISS-05 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-05-establish-installable-core-packages-and-public-extension-interfaces)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n",
+        "title": "ISS-05: Establish installable core packages and public extension interfaces",
+        "type": "DraftIssue"
+      },
+      "depends on": "ISS-02",
+      "external handoffs": "None",
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9NCuc",
+      "level": "Task",
+      "plan ID": "ISS-05",
+      "proposed home": "ENGINE",
+      "source task": "F3",
+      "status": "Planned",
+      "title": "ISS-05: Establish installable core packages and public extension interfaces"
+    },
+    {
+      "build Track Milestone": "M2: Foundation and integration contracts",
+      "content": {
+        "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [F4](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#foundation)\\\n**Depends on:** ISS-05 \u00b7 **External:** None\n\nAcceptance:\n\n- Persist the required engine-owned access mappings, jobs/attempts, result references, measured usage, and cost projections behind the defined storage interface.\n- Exercise restart, schema migration, and restore with representative records; document configurable retention. Preserve the provider ledger as the network-accounting authority.\n\n**Planning reference:** [ISS-06 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-06-implement-sqlite-records-migrations-retention-and-backuprestore)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n",
+        "title": "ISS-06: Implement SQLite records, migrations, retention, and backup/restore",
+        "type": "DraftIssue"
+      },
+      "depends on": "ISS-05",
+      "external handoffs": "None",
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9NCv8",
+      "level": "Task",
+      "plan ID": "ISS-06",
+      "proposed home": "ENGINE",
+      "source task": "F4",
+      "status": "Planned",
+      "title": "ISS-06: Implement SQLite records, migrations, retention, and backup/restore"
+    },
+    {
+      "build Track Milestone": "M2: Foundation and integration contracts",
+      "content": {
+        "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [L2](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\\\n**Depends on:** ISS-05 \u00b7 **External:** None\n\nAcceptance:\n\n- Produce versioned development packages and establish automated test, lint/type, and install/start checks for the components available at this milestone.\n- Provide the build/test framework that later service and application components extend. Final service/application artifacts and release readiness remain ISS-38.\n\n**Planning reference:** [ISS-07 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-07-add-development-builds-and-continuous-checks)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n",
+        "title": "ISS-07: Add development builds and continuous checks",
+        "type": "DraftIssue"
+      },
+      "depends on": "ISS-05",
+      "external handoffs": "None",
+      "id": "PVTI_lADODtKj2s4Bk8oxzg9NCxo",
+      "level": "Task",
+      "plan ID": "ISS-07",
+      "proposed home": "ENGINE",
+      "source task": "L2",
+      "status": "Planned",
+      "title": "ISS-07: Add development builds and continuous checks"
+    }
+  ],
+  "conversions": [
+    {
+      "planId": "ISS-01",
+      "item": {
+        "id": "PVTI_lADODtKj2s4Bk8oxzg9NCnY",
+        "content": {
+          "id": "I_kwDOUDr_Qc8AAAABUaZHEQ",
+          "number": 7,
+          "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/7",
+          "state": "OPEN",
+          "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** PLAN \u00b7 **Source:** [F1](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#foundation)\\\n**Depends on:** None \u00b7 **External:** H1, H2, H3, H5\n\nAcceptance:\n\n- Record selected Console, Python SDK, Batteries, and go-livepeer revisions and recheck the behavior required by the task breakdown; distinguish source evidence from runtime proof.\n- Record reusable material, permissions, compatibility gaps, and their dispositions. Review offered private source if available and relevant; the engine remains independently buildable without it.\n\n**Planning reference:** [ISS-01 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-01-verify-the-integration-baseline-and-reusable-source-material)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n"
+        }
+      }
+    },
+    {
+      "planId": "ISS-02",
+      "item": {
+        "id": "PVTI_lADODtKj2s4Bk8oxzg9NCpY",
+        "content": {
+          "id": "I_kwDOUDr_Qc8AAAABUaZIQA",
+          "number": 8,
+          "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/8",
+          "state": "OPEN",
+          "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [F2](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#foundation)\\\n**Depends on:** ISS-01 \u00b7 **External:** None\n\nAcceptance:\n\n- Document access context, capabilities/rates, jobs/attempts, results, measured usage, cost states, and extension boundaries with examples sufficient to implement and test them.\n- Cover immediate, asynchronous, and persistent-endpoint execution; identify upstream contracts and explicitly dispose of deployment, performance, and recovery assumptions. New APIs, HA, financial recourse, and extra streaming are not assumed.\n\n**Planning reference:** [ISS-02 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-02-define-the-shared-engine-contracts-and-supported-boundaries)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n"
+        }
+      }
+    },
+    {
+      "planId": "ISS-03",
+      "item": {
+        "id": "PVTI_lADODtKj2s4Bk8oxzg9NCqg",
+        "content": {
+          "id": "I_kwDOUDr_Qc8AAAABUaZJNw",
+          "number": 9,
+          "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/9",
+          "state": "OPEN",
+          "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [A1](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#access-and-credentials)\\\n**Depends on:** ISS-02 \u00b7 **External:** None\n\nAcceptance:\n\n- Define how trusted standalone and enterprise adapters produce validated actor identity, ownership scope, and permitted operations across imported and service modes.\n- Document browser and administrator trust boundaries and credential-lifecycle responsibilities. Enterprises can choose enrollment and authentication without core patches or an additional user-facing engine key; unchecked request fields cannot establish identity.\n\n**Planning reference:** [ISS-03 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-03-define-replaceable-authentication-and-access-policy-interfaces)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n"
+        }
+      }
+    },
+    {
+      "planId": "ISS-04",
+      "item": {
+        "id": "PVTI_lADODtKj2s4Bk8oxzg9NCss",
+        "content": {
+          "id": "I_kwDOUDr_Qc8AAAABUaZKFg",
+          "number": 10,
+          "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/10",
+          "state": "OPEN",
+          "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** PLAN \u00b7 **Source:** [P1](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#payment-authorization-and-operation)\\\n**Depends on:** ISS-01, ISS-02 \u00b7 **External:** H2, H3\n\nAcceptance:\n\n- Record credential/allocation mapping, permitted management operations, reporting access, units, stable references, and repeat-command semantics.\n- For each required interface, record available implementation evidence or an agreed gap disposition from the affected maintainer. Link any proposed upstream change to its owning repository; contract agreement does not count as implemented compatibility.\n\n**Planning reference:** [ISS-04 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-04-agree-payment-provisioning-authorization-and-reporting-contracts)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n"
+        }
+      }
+    },
+    {
+      "planId": "ISS-05",
+      "item": {
+        "id": "PVTI_lADODtKj2s4Bk8oxzg9NCuc",
+        "content": {
+          "id": "I_kwDOUDr_Qc8AAAABUaZK4w",
+          "number": 11,
+          "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/11",
+          "state": "OPEN",
+          "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [F3](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#foundation)\\\n**Depends on:** ISS-02 \u00b7 **External:** None\n\nAcceptance:\n\n- The shared core imports and starts independently of the reference application, proprietary identity, PymtHouse, and private Inc source.\n- Document supported interfaces for persistence, execution/payment adapters, and enterprise extension. Provide an import/start smoke check using a versioned development build.\n\n**Planning reference:** [ISS-05 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-05-establish-installable-core-packages-and-public-extension-interfaces)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n"
+        }
+      }
+    },
+    {
+      "planId": "ISS-06",
+      "item": {
+        "id": "PVTI_lADODtKj2s4Bk8oxzg9NCv8",
+        "content": {
+          "id": "I_kwDOUDr_Qc8AAAABUaZLng",
+          "number": 12,
+          "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/12",
+          "state": "OPEN",
+          "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [F4](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#foundation)\\\n**Depends on:** ISS-05 \u00b7 **External:** None\n\nAcceptance:\n\n- Persist the required engine-owned access mappings, jobs/attempts, result references, measured usage, and cost projections behind the defined storage interface.\n- Exercise restart, schema migration, and restore with representative records; document configurable retention. Preserve the provider ledger as the network-accounting authority.\n\n**Planning reference:** [ISS-06 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-06-implement-sqlite-records-migrations-retention-and-backuprestore)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n"
+        }
+      }
+    },
+    {
+      "planId": "ISS-07",
+      "item": {
+        "id": "PVTI_lADODtKj2s4Bk8oxzg9NCxo",
+        "content": {
+          "id": "I_kwDOUDr_Qc8AAAABUaZMng",
+          "number": 13,
+          "url": "https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/13",
+          "state": "OPEN",
+          "body": "**Proposed milestone:** M2 \u00b7 **Proposed home:** ENGINE \u00b7 **Source:** [L2](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-task-breakdown-draft.md#documentation-and-release)\\\n**Depends on:** ISS-05 \u00b7 **External:** None\n\nAcceptance:\n\n- Produce versioned development packages and establish automated test, lint/type, and install/start checks for the components available at this milestone.\n- Provide the build/test framework that later service and application components extend. Final service/application artifacts and release readiness remain ISS-38.\n\n**Planning reference:** [ISS-07 in the committed issue proposal](https://github.com/Cloud-SPE/Network-Engineering-SPE/blob/eea61ba3ddec7326934d0218cb5503f16ffc5286/docs/design-docs/build-track-december-2026-issue-proposal-draft.md#iss-07-add-development-builds-and-continuous-checks)\n\nPlanning draft for scope and workflow review. Implementation assignee and dates are unset; this item does not establish an upstream commitment or scope approval.\n"
+        }
+      }
+    }
+  ],
+  "verification": "Project IDs, statuses, milestone/dependency fields and acceptance descriptions preserved. Exception: GitHub dropped eliteprox from issues 7 and 8 and rejected reassignment as not found. Intended assignment preserved in body notes; mikezupper retained."
+}
