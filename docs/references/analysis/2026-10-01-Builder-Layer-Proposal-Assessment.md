@@ -136,8 +136,8 @@ records only the boundaries those tasks start from.
 | --- | --- | --- |
 | Python gateway SDK | [`44df061`](https://github.com/livepeer/livepeer-python-gateway/commit/44df06157fcdb864e37d971e8caba86b2a7dc92e) | [`RunnerSelectionCursor`](https://github.com/livepeer/livepeer-python-gateway/blob/44df06157fcdb864e37d971e8caba86b2a7dc92e/src/livepeer_gateway/selection.py#L159-L227) already fails over across runners, but only within the [first orchestrator batch](https://github.com/livepeer/livepeer-python-gateway/blob/44df06157fcdb864e37d971e8caba86b2a7dc92e/src/livepeer_gateway/discovery.py#L203-L229) that returns any. It has no pool-size setting, ranking, capacity-versus-other distinction or per-attempt payment record. Multipart, `payment_sent` and the stream manifest id are not on `main` |
 | Python gateway SDK | [`44df061`](https://github.com/livepeer/livepeer-python-gateway/commit/44df06157fcdb864e37d971e8caba86b2a7dc92e) | Runner modes (`single-shot`, `persistent`) and payment types by price unit (`fixed`, `live`, `lv2v`) are [already defined](https://github.com/livepeer/livepeer-python-gateway/blob/44df06157fcdb864e37d971e8caba86b2a7dc92e/src/livepeer_gateway/live_runner.py#L44-L54) |
-| go-livepeer | [`773734d9`](https://github.com/livepeer/go-livepeer/commit/773734d91e068a6ad9f870d16af97a27abea6216) | The remote signer [authorizes through a webhook](https://github.com/livepeer/go-livepeer/blob/773734d91e068a6ad9f870d16af97a27abea6216/server/remote_signer.go#L311-L361) and uses the same [payment types](https://github.com/livepeer/go-livepeer/blob/773734d91e068a6ad9f870d16af97a27abea6216/server/remote_signer.go#L35-L37). It reports no per-attempt payment event, so a prepaid start that fails is not visible (known gap, not yet reproduced) |
-| Clearinghouse Batteries | [`9cf68d6`](https://github.com/livepeer/clearinghouse-batteries/commit/9cf68d6b97ec263911ddfb383f0df66492c1417e) | A management HTTP API exists on `main` ([`a2ed175`](https://github.com/livepeer/clearinghouse-batteries/commit/a2ed17529deba702437a68b709fe4ac4cdc20ef0)). Batteries answers the signer webhook with [402 at zero balance](https://github.com/livepeer/clearinghouse-batteries/blob/9cf68d6b97ec263911ddfb383f0df66492c1417e/internal/store/auth.go#L151-L152) and meters [network cost in USD](https://github.com/livepeer/clearinghouse-batteries/blob/9cf68d6b97ec263911ddfb383f0df66492c1417e/internal/store/ingest.go#L100-L126); it does not store `manifest_id`. The `/v1/cost/events` read API is fork-only |
+| go-livepeer | [`773734d9`](https://github.com/livepeer/go-livepeer/commit/773734d91e068a6ad9f870d16af97a27abea6216) | The remote signer [authorizes through a webhook](https://github.com/livepeer/go-livepeer/blob/773734d91e068a6ad9f870d16af97a27abea6216/server/remote_signer.go#L311-L361) and uses the same [payment types](https://github.com/livepeer/go-livepeer/blob/773734d91e068a6ad9f870d16af97a27abea6216/server/remote_signer.go#L35-L37). Since [go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095), discovery adds `price_usd` to runner prices and each [`create_signed_ticket` event](https://github.com/livepeer/go-livepeer/blob/773734d91e068a6ad9f870d16af97a27abea6216/server/remote_signer.go#L740-L785) carries `computed_fee_usd`, `payer_address` and the caller's `manifest_id`, including a session's first prepay. Events are best-effort: they are dropped when the signer's Kafka queue is full |
+| Clearinghouse Batteries | [`9cf68d6`](https://github.com/livepeer/clearinghouse-batteries/commit/9cf68d6b97ec263911ddfb383f0df66492c1417e) | A management HTTP API exists on `main` ([`a2ed175`](https://github.com/livepeer/clearinghouse-batteries/commit/a2ed17529deba702437a68b709fe4ac4cdc20ef0)). Batteries answers the signer webhook with [402 at zero balance](https://github.com/livepeer/clearinghouse-batteries/blob/9cf68d6b97ec263911ddfb383f0df66492c1417e/internal/store/auth.go#L151-L152) and [debits allocations by the signer's `computed_fee_usd`](https://github.com/livepeer/clearinghouse-batteries/blob/9cf68d6b97ec263911ddfb383f0df66492c1417e/internal/store/ingest.go#L100-L126). It keeps `manifest_id` only in the raw event and does not expose it. The `/v1/cost/events` read API is fork-only |
 | simple-infra (second application) | [`4ec364f`](https://github.com/livepeer/simple-infra/commit/4ec364fe5e51e6fa6771481a8f39cc571b180330) | Matches the proposal except for the training path, admission caps, limiter, registry and job store. It pays through PymtHouse composite keys, not Batteries. Its SDK is a fork, [`4dbcee69`](https://github.com/livepeer/livepeer-python-gateway/commit/4dbcee69a46b7dddc60c7c4b2eaf4666166c99e4) |
 | Console | [`009a703`](https://github.com/livepeer/console/commit/009a703d7b6434bab905902375f562e5980728af) | Reference for authorization patterns only. Console, Batteries and PymtHouse carry no license, so no code is copied from them |
 
@@ -162,7 +162,8 @@ so a capacity refusal moves to the next candidate. Do not rely on `payment_sent`
 until it is upstream.
 
 **Cost correlation, units and usage provenance.** Reported cost is network cost
-in USD; retail pricing stays with the enterprise application. Key cost by
+in USD, priced per ticket by the remote signer; retail pricing stays with the
+enterprise application. Key cost by
 provider deployment and `manifest_id`, and sum a job's attempts, since a capacity
 refusal after a session prepay produces several paid attempts. Keep the four
 statuses `none`, `pending`, `observed` and `corrected`. Batteries and the remote
@@ -179,7 +180,8 @@ request and reply.
 **Capabilities.** A capability is data, not a class. Its descriptor uses the
 runner mode and price unit gateway core already defines, and resolution is a
 protocol with descriptor and configuration-table implementations plus
-`allowed_orchestrators` (gap 3). BYOC (gap 5) is excluded.
+`allowed_orchestrators` (gap 3). Offering rates can carry the signer's
+`price_usd` from discovery. BYOC (gap 5) is excluded.
 
 ### Upstream work
 
@@ -187,7 +189,8 @@ These changes would remove engine workarounds. None blocks M2.
 
 - Batteries: caller idempotency, per-allocation balance reads, attributed usage,
   and a usage export topic carrying `manifest_id`.
-- go-livepeer: a per-attempt payment event from the remote signer.
+- go-livepeer: reliable delivery of the signer's payment events, which are
+  dropped today when its Kafka queue is full.
 - Python gateway SDK: runner-selection pool size and capacity classification
   (related: [#36](https://github.com/livepeer/livepeer-python-gateway/issues/36)),
   and the fork-only fields upstreamed.
