@@ -2,6 +2,7 @@
 
 **Date:** 1 October 2026\
 **Status:** Review guidance for milestone execution; not an architecture amendment\
+**Updated:** 1 October 2026, with ISS-01 and ISS-02 review findings\
 **Prepared by:** Assistant, at Mike Zupper's request\
 **Proposal author:** Mike Zupper
 
@@ -119,6 +120,84 @@ The earlier missing pair was asynchronous jobs and persistent sessions. Correct
 that statement in a future proposal revision; persistent-endpoint evidence is
 still outstanding in this document. Claims that applications run these paths in
 production remain unverified by this assessment.
+
+## ISS-01 and ISS-02 review findings
+
+**Reviewed:** 1 October 2026 by John (`eliteprox`), against source at the revisions
+below. These are source findings, not runtime proof. They answer the contract
+questions above for ISS-01 ([#7](https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/7))
+and ISS-02 ([#8](https://github.com/Cloud-SPE/Network-Engineering-SPE/issues/8)).
+Access detail belongs to ISS-03 and payment contracts to ISS-04; this section
+records only the boundaries those tasks start from.
+
+### Evidence register
+
+| Component | Revision | Finding that affects the proposal |
+| --- | --- | --- |
+| Python gateway SDK | [`44df061`](https://github.com/livepeer/livepeer-python-gateway/commit/44df06157fcdb864e37d971e8caba86b2a7dc92e) | [`RunnerSelectionCursor`](https://github.com/livepeer/livepeer-python-gateway/blob/44df06157fcdb864e37d971e8caba86b2a7dc92e/src/livepeer_gateway/selection.py#L159-L227) already fails over across runners, but only within the [first orchestrator batch](https://github.com/livepeer/livepeer-python-gateway/blob/44df06157fcdb864e37d971e8caba86b2a7dc92e/src/livepeer_gateway/discovery.py#L203-L229) that returns any. It has no pool-size setting, ranking, capacity-versus-other distinction or per-attempt payment record. Multipart, `payment_sent` and the stream manifest id are not on `main` |
+| Python gateway SDK | [`44df061`](https://github.com/livepeer/livepeer-python-gateway/commit/44df06157fcdb864e37d971e8caba86b2a7dc92e) | Runner modes (`single-shot`, `persistent`) and payment types by price unit (`fixed`, `live`, `lv2v`) are [already defined](https://github.com/livepeer/livepeer-python-gateway/blob/44df06157fcdb864e37d971e8caba86b2a7dc92e/src/livepeer_gateway/live_runner.py#L44-L54) |
+| go-livepeer | [`773734d9`](https://github.com/livepeer/go-livepeer/commit/773734d91e068a6ad9f870d16af97a27abea6216) | The remote signer [authorizes through a webhook](https://github.com/livepeer/go-livepeer/blob/773734d91e068a6ad9f870d16af97a27abea6216/server/remote_signer.go#L311-L361) and uses the same [payment types](https://github.com/livepeer/go-livepeer/blob/773734d91e068a6ad9f870d16af97a27abea6216/server/remote_signer.go#L35-L37). Since [go-livepeer#4095](https://github.com/livepeer/go-livepeer/pull/4095), discovery adds `price_usd` to runner prices and each [`create_signed_ticket` event](https://github.com/livepeer/go-livepeer/blob/773734d91e068a6ad9f870d16af97a27abea6216/server/remote_signer.go#L740-L785) carries `computed_fee_usd`, `payer_address` and the caller's `manifest_id`, including a session's first prepay. Events are best-effort: they are dropped when the signer's Kafka queue is full |
+| Clearinghouse Batteries | [`9cf68d6`](https://github.com/livepeer/clearinghouse-batteries/commit/9cf68d6b97ec263911ddfb383f0df66492c1417e) | A management HTTP API exists on `main` ([`a2ed175`](https://github.com/livepeer/clearinghouse-batteries/commit/a2ed17529deba702437a68b709fe4ac4cdc20ef0)). Batteries answers the signer webhook with [402 at zero balance](https://github.com/livepeer/clearinghouse-batteries/blob/9cf68d6b97ec263911ddfb383f0df66492c1417e/internal/store/auth.go#L151-L152) and [debits allocations by the signer's `computed_fee_usd`](https://github.com/livepeer/clearinghouse-batteries/blob/9cf68d6b97ec263911ddfb383f0df66492c1417e/internal/store/ingest.go#L100-L126). It keeps `manifest_id` only in the raw event and does not expose it. The `/v1/cost/events` read API is fork-only |
+| simple-infra (second application) | [`4ec364f`](https://github.com/livepeer/simple-infra/commit/4ec364fe5e51e6fa6771481a8f39cc571b180330) | Matches the proposal except for the training path, admission caps, limiter, registry and job store. It pays through PymtHouse composite keys, not Batteries. Its SDK is a fork, [`4dbcee69`](https://github.com/livepeer/livepeer-python-gateway/commit/4dbcee69a46b7dddc60c7c4b2eaf4666166c99e4) |
+| Console | [`009a703`](https://github.com/livepeer/console/commit/009a703d7b6434bab905902375f562e5980728af) | Reference for authorization patterns only. Console, Batteries and PymtHouse carry no license, so no code is copied from them |
+
+### Recommended resolutions
+
+**Trusted access, administration and payment credentials.** Authentication
+sits above the engine core: the service package runs it, with configurable
+trusted issuers, and an importing application supplies its own. The core
+receives only `ActorContext`. Cost, event, key and provider-administration
+methods take that context and check scope, like job methods. A separate
+credential resolver returns a reference resolved at call time, never copied
+into actor attributes, jobs or events. Detail: ISS-03.
+
+**Idempotency, failover and recovery.** Adopt the proposal's gap 4:
+join-and-return replaces `OperationExists`. Release the operation reference on a
+pre-dispatch decline; refuse a changed payload under the same reference with 409;
+allow one dispatch for simultaneous duplicates; expire with configurable
+retention. Write job and attempt rows before dispatch, and mark payment sent with
+an unknown outcome as `uncertain`, never retried. Build failover on the SDK's
+runner selection and add a maximum pool size and capacity classification there,
+so a capacity refusal moves to the next candidate. Do not rely on `payment_sent`
+until it is upstream.
+
+**Cost correlation, units and usage provenance.** Reported cost is network cost
+in USD, priced per ticket by the remote signer; retail pricing stays with the
+enterprise application. The proposal's cost feed (`cost_events`,
+`manifest_cost`) remains the usage source, and the engine delivers cost and
+usage to the enterprise application through its event feed. Key cost by
+provider deployment and `manifest_id`, and sum a job's attempts, since a capacity
+refusal after a session prepay produces several paid attempts. Keep the four
+statuses `none`, `pending`, `observed` and `corrected`. Batteries and the remote
+signer are the planned payment path, so missing cost is `pending`; the proposal's
+gap 2 `unavailable` status is not needed. Usage keeps its source (`meter`,
+`runner_reported`, `app_reported`). Provisioning and reporting contracts: ISS-04.
+
+**Events, retention and extension behavior.** Replace replay from zero with a
+retention window; an expired cursor returns 410 and the consumer resynchronizes
+from job and cost listings. "No callbacks" means no commercial orchestration
+during a job. Usage meters and selection policies are pure functions over the
+request and reply.
+
+**Capabilities.** A capability is data, not a class. Its descriptor uses the
+runner mode and price unit gateway core already defines, and resolution is a
+protocol with descriptor and configuration-table implementations plus
+`allowed_orchestrators` (gap 3). Offering rates can carry the signer's
+`price_usd` from discovery. BYOC (gap 5) is excluded.
+
+### Upstream work
+
+These changes would remove engine workarounds. None blocks M2.
+
+- Batteries: the cost read API behind the cost feed, merged from the Enterprise
+  App's fork into `main`; caller idempotency; per-allocation balance reads; and
+  attributed usage.
+- go-livepeer: reliable delivery of the signer's payment events, which are
+  dropped today when its Kafka queue is full.
+- Python gateway SDK: runner-selection pool size, capacity classification and
+  a per-attempt payment record, and the fork-only fields upstreamed.
+- simple-infra: two defects handed to Inc, a pinned-request 500 and a job-store
+  setting missing from its Pulumi template.
 
 ## Relationship to M1 and M2
 
