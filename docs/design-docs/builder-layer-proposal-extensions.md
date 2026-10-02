@@ -119,6 +119,13 @@ Batteries and the remote signer are the payment path.
 - **Several paid attempts.** A capacity refusal after a session prepay leaves
   more than one paid attempt, so a job's cost sums its attempts' manifests.
 
+## Second application
+
+Extends *Review against a second application*. The
+[simple-infra adoption plan](simple-infra-builder-migration.md) maps each of
+its Live Runner modules to a `BuilderEngine` argument or protocol, keeps its
+legacy routes as its own facade, and follows the proposal's extraction steps.
+
 ## Decisions
 
 - Authentication sits above the engine core. `OidcAuthenticator` with trusted

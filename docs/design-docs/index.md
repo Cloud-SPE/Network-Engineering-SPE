@@ -16,6 +16,7 @@ status is `Accepted` and it links to the decision that approved it.
 | [Core beliefs](core-beliefs.md) | Proposed | Agent-first and Cloud SPE delivery principles |
 | [September–December milestone proposal](cloud-spe-september-december-2026-milestones-draft.md) | Historical; superseded by accepted M1–M5 plan | Input to later October–December milestone revision |
 | [Builder-layer proposal extensions](builder-layer-proposal-extensions.md) | Draft for review | Access, payment credential custody, route changes, Batteries management provisioning and cost-feed delivery, as extensions of the October 1 proposal |
+| [simple-infra on the builder engine](simple-infra-builder-migration.md) | Draft for review | Class-level adoption of `BuilderEngine` by the proposal's second application, behind its legacy-route facade |
 
 Intermediate Console-replacement and enterprise deployment drafts were removed
 on 23 September after consolidation. Original stakeholder evidence and its chronology remain in the
