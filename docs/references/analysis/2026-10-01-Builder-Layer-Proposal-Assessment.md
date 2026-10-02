@@ -194,9 +194,8 @@ These changes would remove engine workarounds. None blocks M2.
   attributed usage.
 - go-livepeer: reliable delivery of the signer's payment events, which are
   dropped today when its Kafka queue is full.
-- Python gateway SDK: runner-selection pool size and capacity classification
-  (related: [#36](https://github.com/livepeer/livepeer-python-gateway/issues/36)),
-  and the fork-only fields upstreamed.
+- Python gateway SDK: runner-selection pool size, capacity classification and
+  a per-attempt payment record, and the fork-only fields upstreamed.
 - simple-infra: two defects handed to Inc, a pinned-request 500 and a job-store
   setting missing from its Pulumi template.
 
