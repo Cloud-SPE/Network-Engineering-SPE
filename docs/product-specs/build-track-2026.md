@@ -34,7 +34,7 @@ not assign them new delivery obligations.
 ## Delivery and acceptance
 
 The plan runs from September planning through 31 December delivery. M2's first
-implementation deliverable is due 16 October. Milestone completion requires the
+implementation deliverable was due 16 October and was completed on 19 October 2026. Milestone completion requires the
 linked evidence gates; architecture approval is not implementation acceptance.
 Unresolved contracts, representative jobs, deployment details and final-release
 review arrangements are settled before accepting their dependent work.
@@ -49,3 +49,9 @@ changes are assessed during delivery and recorded when they affect this baseline
   process recorded in the linked decision.
 - 1 October 2026: accepted specification published in the repository; existing
   document paths retained to preserve links and Git history.
+- 19 October 2026: M2, Foundation and integration contracts, completed three days after its
+  16 October target, with nothing descoped. All seven M2 tickets (ISS-01 to ISS-07) are closed;
+  `livepeer-builder-core` is tagged `v0.1.0` and the NE-Build-Track forks `build-track/v0.1.0`.
+  Ticket-by-ticket evidence and the items carried into M3 are in the engine repository's
+  [M2 traceability](https://github.com/NE-Build-Track/livepeer-builder-core/blob/releases/m3/docs/product-specs/m2-traceability.md).
+  The M2 wrap demo was given on 20 October ([deck and run sheet](../updates/2026-10-m2-wrap-demo.md)).

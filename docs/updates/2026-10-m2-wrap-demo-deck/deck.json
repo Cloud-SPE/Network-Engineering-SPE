@@ -1,0 +1,19 @@
+{
+  "v": 4,
+  "createdOnFiles": { "v": 1, "at": "2026-10-20T15:10:00Z" },
+  "lists": "css",
+  "title": "M2 Wrap Demo",
+  "order": ["cover", "outcomes", "what", "fit", "upstream", "repos", "m3", "close", "demos"],
+  "sections": {
+    "s1": { "description": "Where M2 landed.", "start": "cover" },
+    "s2": { "description": "The seven outcomes, what builder core is, where it fits, and the upstream work.", "start": "outcomes" },
+    "s3": { "description": "Two apps built on builder core: one over REST, one embedded.", "start": "demos" },
+    "s4": { "description": "What carries into M3, and questions.", "start": "m3" }
+  },
+  "faces": {
+    "space-grotesk": { "family": "Space Grotesk", "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap" },
+    "ibm-plex-sans": { "family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" },
+    "jetbrains-mono": { "family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" }
+  },
+  "designSystems": []
+}

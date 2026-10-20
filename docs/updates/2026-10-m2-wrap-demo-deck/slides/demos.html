@@ -1,0 +1,33 @@
+<section id="demos" data-transition="fade" style="background:#16705F;color:#F2EFE8;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#F6D9A6">Demos</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.1;color:#F2EFE8">One engine, two ways to build on it</h2>
+</div>
+<div style="display:flex;gap:48px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#12594C;border-radius:16px;padding:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#F6D9A6">John · over REST</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;color:#F2EFE8">Enterprise desk</h3>
+<ul style="font-size:28px;line-height:1.5;color:#D7EEE8">
+<li>Next.js app on the engine’s REST API</li>
+<li>Each actor signs in with its own engine key</li>
+<li>Operator funds actors from a grant</li>
+<li>Paid jobs, cost classes, reconciliation</li>
+</ul>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#D7EEE8">NE-Build-Track/enterprise-ui</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#12594C;border-radius:16px;padding:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#F6D9A6">Mike · embedded</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;color:#F2EFE8">ChatLPT</h3>
+<ul style="font-size:28px;line-height:1.5;color:#D7EEE8">
+<li>Chat app that imports the engine package</li>
+<li>Qwen3.8-27B replies, streamed as they arrive</li>
+<li>The model draws with FLUX schnell</li>
+<li>Retail price beside the network’s charge</li>
+</ul>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#D7EEE8">NE-Build-Track/chatlpt-sample-enterprise-app</p>
+</div>
+</div>
+<aside>Two apps on the same engine. John demos first (REST): 1) sign in with the admin key and open Operator; 2) provision an actor from the grant and issue its key, shown once; 3) sign in as that actor and run one paid job from an offering; 4) show its cost class and the actor's reconciliation (Batteries spent = delivered + failed after payment + uncertain); optionally the ISS-04 page, which runs the M2 payment checks live. [desk URL]
+
+Then Mike (embedded): 1) sign in, ask a question, let the reply stream; 2) point at the line under it: tokens, retail at Alibaba's Qwen list price, network cost going from pending to filled in from the engine; 3) ask it to draw something: the model calls the image tool and the engine pays an orchestrator running FLUX schnell; 4) open Usage in the profile menu, then the admin page for retail vs network per user and the margin. Say clearly that streaming comes from builder-core work for M3 that is in review, not from the M2 tag.</aside>
+</section>
