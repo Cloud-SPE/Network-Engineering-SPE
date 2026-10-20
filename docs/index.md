@@ -43,8 +43,8 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 ## Monthly updates
 
-- [M2 complete: project status update](updates/2026-10-m2-complete-status-update.md) — draft for
-  Mike's review; not yet published to GitHub Project 13.
+- [M2 complete: project status update](updates/2026-10-m2-complete-status-update.md) — published to
+  [GitHub Project 13](https://github.com/orgs/Cloud-SPE/projects/13) on 20 October 2026 (On track).
 - [M2 wrap demo, 20 October 2026](updates/2026-10-m2-wrap-demo.md) — the slide deck and demo run
   sheet; M2 completed on 19 October 2026.
 - [September 2026 Build Track monthly update](updates/2026-09-build-track-monthly-update.md) — draft for Mike’s review; not yet published to GitHub status updates or the Livepeer forum.
