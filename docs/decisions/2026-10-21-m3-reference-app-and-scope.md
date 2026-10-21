@@ -35,8 +35,9 @@ on 20 October, reads one builder stack through the engine's REST API and is read
    an AI coding agent, under his review.
 4. **The integration events feed in ISS-18 is held.** It is revisited once the rest of M3 is under
    way, if there is room. Until then the engine's `/v1/events` stays defined but unimplemented.
-5. **The funded environment (ISS-13) is the builder-core dev stack** until a deployment on real
-   infrastructure exists.
+5. **The funded environment (ISS-13) is the console's stack**: builder-core's engine, Batteries and
+   the node signer at pinned commits, plus the console. It is the M3 dev stack until a deployment on
+   real infrastructure exists.
 6. **Wholesale is the engine's only cost.** Wholesale (network cost) is what the Livepeer network
    charged for a job: tickets paid to orchestrators, in USD and in the orchestrator's own unit,
    reported by the engine from Batteries accounting. Retail (app price) is what an application
@@ -68,3 +69,5 @@ on 20 October, reads one builder stack through the engine's REST API and is read
 ## Review and change history
 
 - 21 October 2026: recorded from Mike's decisions in the internal planning conversation.
+- 21 October 2026: decision 5 clarified by Mike: the M3 dev stack is the console's stack, not a
+  separate builder-core dev stack.
