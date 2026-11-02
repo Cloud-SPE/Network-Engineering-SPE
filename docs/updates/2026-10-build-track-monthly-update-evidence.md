@@ -4,7 +4,7 @@ Working record behind the [draft update](2026-10-build-track-monthly-update.md).
 of what gets posted. Data pulled from GitHub on 2 November 2026 (Project 13, every NE-Build-Track
 repository, all branches, and the upstream `livepeer/*` repositories). Reporting period: 1–31 October 2026.
 
-**Publication state:** nothing posted. Waiting on Mike's review.
+**Publication state:** published to [Project 13](https://github.com/orgs/Cloud-SPE/projects/13/views/4?pane=info&statusUpdateId=307941) on 2 November 2026 (On track, start 2026-10-01, target 2026-11-20), from commit `567597c`. Not yet posted to the Livepeer forum.
 
 ## GitHub status update settings
 
