@@ -43,6 +43,8 @@ catalog. Cloud SPE work status and dependency ordering live in Beads (`bd ready`
 
 ## Monthly updates
 
+- [M3 demo, 3 November 2026](updates/2026-11-m3-demo.md) — the slide deck and demo run sheet for the
+  builder console on builder core's HTTP server; M3 gate 20 November 2026.
 - [M2 complete: project status update](updates/2026-10-m2-complete-status-update.md) — published to
   [GitHub Project 13](https://github.com/orgs/Cloud-SPE/projects/13) on 20 October 2026 (On track).
 - [M2 wrap demo, 20 October 2026](updates/2026-10-m2-wrap-demo.md) — the slide deck and demo run
