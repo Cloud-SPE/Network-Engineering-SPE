@@ -71,3 +71,5 @@ on 20 October, reads one builder stack through the engine's REST API and is read
 - 21 October 2026: recorded from Mike's decisions in the internal planning conversation.
 - 21 October 2026: decision 5 clarified by Mike: the M3 dev stack is the console's stack, not a
   separate builder-core dev stack.
+- 2 November 2026: item 4 and its consequence for ISS-18 superseded by
+  [Events feed moves to M4](2026-11-02-events-feed-moves-to-m4.md): ISS-18 closed for M3; the feed is ISS-46.
